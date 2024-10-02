@@ -37,6 +37,7 @@ body {
     display: inline-block;
     width: 200px; /* Set the width of the tile */
     height: 100px; /* Set the height of the tile */
+    max-height: fit-content;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
     position: relative;
     cursor: move;
