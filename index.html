@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css"> <!-- Your CSS file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
+    <title>Cheat Sheet App</title>
+</head>
+<body>
+    
+    <div id="sidebar-tab" class="sidebar-tab">☰</div>
+    
+        
+        <div id="sidebar" class="sidebar">
+            <div class ="header">
+                <h1>CheatSheet v0.1</h1>
+                <p>BadPharma </p>
+
+                </div>
+
+            <h2 id="section-header">Sections  <span id="toggle-section-button" class="triangle-down"></span> </h2> <!-- Clickable header to toggle -->
+            <ul id="section-list"></ul>
+        <input type="text" id="section-name" placeholder="New Section Name">
+        <input type="color" id="section-color">
+        <button id="add-section">Add Section</button>
+
+        <div class="Add-Entry-Section">
+        <h2>Add Entry</h2>
+        <select id="section-select"></select>
+        <input type="text" id="command" placeholder="Command">
+        <input type="text" id="description" placeholder="Description">
+        <button id="add-entry">Add Entry</button>
+        </div>
+
+        <div class="Down/Up-Section">
+        <h2> Download/Upload</h2>
+        <button id="download-btn">Download XLSX</button>
+        <input type="file" id="upload-xlsx" accept=".xlsx"/>
+        </div>
+
+        <div class="template-Section">
+            <h2> Templates </h2>
+            <p> Here's a few templates weve created to get you started! </p>
+           <ul id="template-List">
+            <li data-template="test_sheets/cisco-test.xlsx">Cisco OS</li>
+            <li data-template="test_sheets/Git-test.xlsx">Github</li>
+            <li data-template="template3.xlsx">Template 3</li>
+           </ul>
+        </div>
+    
+
+        </div>
+
+      
+    <div id="config-list" class="config-list open"></div>
+    
+
+</div>
+  
+    <script src="app.js"></script> <!-- Ensure this is at the bottom -->
+
+    <!-- Custom Confirmation Modal -->
+<div id="customModal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <p id="modalMessage">Are you sure you want to proceed?</p>
+        <button id="confirmBtn">OK</button>
+        <button id="cancelBtn">Cancel</button>
+    </div>
+</div>
+   
+</body>
+</html>

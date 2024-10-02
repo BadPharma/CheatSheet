@@ -1,0 +1,254 @@
+body {
+    font-family: Aeonik;
+    background-color: #000000;
+    height: 100%;
+}
+
+.left {
+    display: block;
+    height: 100%;
+    width: fit-content;
+}
+
+.sheet {
+    height: 100%;
+    width: 100%;
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the sidebar horizontally */
+    align-items: center; /* Center the sidebar vertically */
+}
+
+#app {
+    display: flex;
+    position: relative;
+}
+
+
+#section-list {
+    list-style: none;
+    padding: 0;
+}
+
+.tile {
+    background-color: #f1f1f1;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    display: inline-block;
+    width: 200px; /* Set the width of the tile */
+    height: 100px; /* Set the height of the tile */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    position: relative;
+    cursor: move;
+
+}
+
+.tile strong {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.tile p {
+    font-size: 14px;
+    margin: 5px 0;
+    transition: transform 0.2s ease; /* Smooth transition for the tile */
+}
+
+/* Delete button styles */
+.tile .delete-button {
+    position: absolute; /* Absolute positioning to place it within the tile */
+    top: 10px; /* Move it 10px from the top */
+    right: 10px; /* Move it 10px from the right */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    color: #ff0000;
+}
+
+.tile .edit-button {
+    position: absolute; /* Absolute positioning to place it within the tile */
+    top: 10px; /* Move it 10px from the top */
+    right:35px; /* Move it 10px from the right */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    color: #ff0000;
+}
+
+.tile.dragging {
+    opacity: 0.5;
+    border: 2px dashed #000;
+    transform: scale(1.05); /* Slightly enlarge the tile */
+    z-index: 10; /* Raise the tile above others */
+}
+
+.sidebar {
+    position: fixed; /* Make the sidebar fixed */
+    left: 0; /* Align it to the left of the screen */
+    top: 0; /* Start from the top */
+    height: 100%; /* Make it fill the height of the screen */
+    width: 250px;
+    padding: 20px;
+    padding-top: 45px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0; /* Remove any border-radius */
+    z-index: 10; /* Ensure it's above other elements */
+    transition: transform 0.3s ease; /* Smooth transition for toggling */
+}
+
+.header {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.sidebar-tab {
+    position: fixed;
+    left: 10px;
+    top: 20px;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+#toggle-section-button {
+    display: inline-block;
+    margin-left: 10px; /* Space between header and triangle */
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #000; /* Color of the triangle */
+    transition: transform 0.3s ease; /* Smooth rotation */
+}
+
+#toggle-section-button.collapsed {
+    transform: rotate(180deg); /* Rotate triangle when collapsed */
+}
+
+
+
+#section-list {
+    list-style: none;
+    padding: 0;
+    transition: max-height 0.3s ease, padding 0.3s ease; /* Added padding transition */
+    overflow: hidden;
+}
+#section-list li {
+    list-style: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    font-size: 16px; /* Default font size */
+}
+
+/* Hover effect: Enlarging the section on hover */
+#section-list li:hover {
+    transform: scale(1.1); /* Scale up by 10% */
+    background-color: #e0e0e0; /* Change background on hover */
+}
+
+/* Optional: Adjust the font size on hover for emphasis */
+#section-list li:hover {
+    font-size: 18px;
+}
+
+#add-entry-form {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0; /* No padding when collapsed */
+}
+
+.add-entry-section {
+    margin-top: 20px; /* Add margin to separate it from the section list */
+}
+
+.add-entry-section.expanded #add-entry-form {
+    max-height: 300px; /* Set this to a value that allows the form to be fully visible */
+    padding: 10px; /* Add padding when expanded */
+}
+
+
+
+.collapsed {
+    display: none;
+}
+
+.open {
+    margin-left: 300px;
+}
+
+
+.hidden {
+transform: translateX(-100%);
+}
+
+.config-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+    transition: margin-left 0.6s ease; /* Add transition for smooth movement */
+}
+
+.sidebar.open + .config-list {
+    margin-left: 250px; /* Adjust this value to match the sidebar width */
+}
+
+.sidebar.closed + .config-list {
+    margin-left: 0; /* Reset margin when sidebar is closed */
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 101; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.839); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+    text-align: center;
+    border-radius: 25px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
