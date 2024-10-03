@@ -4,6 +4,23 @@ body {
     height: 100%;
 }
 
+::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: antiquewhite;
+    transition: background-color 2s ease-in-out;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgb(102, 101, 99);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
 .left {
     display: block;
     height: 100%;
@@ -36,12 +53,10 @@ body {
     border-radius: 8px;
     display: inline-block;
     width: 200px; /* Set the width of the tile */
-    height: 100px; /* Set the height of the tile */
     max-height: fit-content;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
     position: relative;
     cursor: move;
-
 }
 
 .tile strong {
@@ -56,27 +71,31 @@ body {
     transition: transform 0.2s ease; /* Smooth transition for the tile */
 }
 
+
 /* Delete button styles */
 .tile .delete-button {
-    position: absolute; /* Absolute positioning to place it within the tile */
-    top: 10px; /* Move it 10px from the top */
-    right: 10px; /* Move it 10px from the right */
+    position: absolute; /* Absolute positioning */
+    top: 10px; /* Adjusted to be closer to the top */
+    right: 10px; /* Adjusted to be closer to the right */
     background: none;
     border: none;
     cursor: pointer;
     font-size: 13px;
     color: #ff0000;
+    z-index: 1; /* Ensure the button is above other elements */
 }
 
+/* Edit button styles */
 .tile .edit-button {
-    position: absolute; /* Absolute positioning to place it within the tile */
-    top: 10px; /* Move it 10px from the top */
-    right:35px; /* Move it 10px from the right */
+    position: absolute; /* Absolute positioning */
+    top: 10px; /* Adjusted to be closer to the top */
+    right: 35px; /* Position it to the left of the delete button */
     background: none;
     border: none;
     cursor: pointer;
     font-size: 13px;
     color: #ff0000;
+    z-index: 1; /* Ensure the button is above other elements */
 }
 
 .tile.dragging {
@@ -87,6 +106,10 @@ body {
 }
 
 .sidebar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     position: fixed; /* Make the sidebar fixed */
     left: 0; /* Align it to the left of the screen */
     top: 0; /* Start from the top */
@@ -94,12 +117,12 @@ body {
     width: 250px;
     padding: 20px;
     padding-top: 45px;
-    background: #fff;
+    background: antiquewhite;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 0; /* Remove any border-radius */
+    border-radius: 15px; /* Remove any border-radius */
     z-index: 10; /* Ensure it's above other elements */
     transition: transform 0.3s ease; /* Smooth transition for toggling */
-    overflow-y: scroll;
+    overflow-x: scroll;
     margin-bottom: 20px;
 }
 
@@ -122,6 +145,32 @@ body {
     z-index: 100;
 }
 
+.sidebar button  {
+    padding: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    border-color: antiquewhite;
+    box-shadow: none;
+    background-color: #329dd3;
+    font-size: 1em;
+    color: antiquewhite;
+    font-weight: 700;
+}
+
+
+
+.sections {
+margin-top: 20px; /* Add margin to separate it from the section list */
+display: flex;
+flex-direction: column;
+flex-wrap: nowrap;
+align-items: center;
+justify-content: center;
+align-content: center;
+   
+}
+
 #toggle-section-button {
     display: inline-block;
     margin-left: 10px; /* Space between header and triangle */
@@ -141,6 +190,7 @@ body {
 
 #section-list {
     list-style: none;
+    width: calc(100% - 10px);
     padding: 0;
     transition: max-height 0.3s ease, padding 0.3s ease; /* Added padding transition */
     overflow: hidden;
@@ -158,7 +208,7 @@ body {
 
 /* Hover effect: Enlarging the section on hover */
 #section-list li:hover {
-    transform: scale(1.1); /* Scale up by 10% */
+    transform: scale(0.9); /* Scale up by 10% */
     background-color: #e0e0e0; /* Change background on hover */
 }
 
@@ -175,13 +225,60 @@ body {
 }
 
 .add-entry-section {
-    margin-top: 20px; /* Add margin to separate it from the section list */
+    margin-top: 10px; /* Add margin to separate it from the section list */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 
 .add-entry-section.expanded #add-entry-form {
     max-height: 300px; /* Set this to a value that allows the form to be fully visible */
     padding: 10px; /* Add padding when expanded */
 }
+
+
+#section-name, #command {
+    width: calc(100% - 20px); /* Full width with some padding */
+    padding: 10px; /* Padding inside input fields */
+    margin-bottom: 10px; /* Space between input fields */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1em; /* Font size */
+}
+
+#section-select {
+    width: calc(100% - 0px); /* Full width with some padding */
+    padding: 10px; /* Padding inside input fields */
+    margin-bottom: 10px; /* Space between input fields */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1em; /* Font size */
+}
+
+
+#description{
+    width: calc(100% - 20px); /* Full width with some padding */
+    padding: 10px; /* Padding inside input fields */
+    margin-bottom: 10px; /* Space between input fields */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1em; /* Font size */
+}
+
+
+.down-up-section {
+    margin-top: 10px; /* Add margin to separate it from the section list */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
 
 .template-Section{
     margin-bottom: 20px;
@@ -232,6 +329,8 @@ transform: translateX(-100%);
     background-color: rgba(0, 0, 0, 0.839); /* Black w/ opacity */
 }
 
+
+
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
@@ -256,5 +355,23 @@ transform: translateX(-100%);
     cursor: pointer;
 }
 
+#editModal input,
+#editModal textarea,
+#editModal select {
+    width: calc(100% - 20px);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
 
+/* Text styles */
 
+h1{
+font-weight: 900;
+}
+
+h2{
+    font-weight: 400;
+    font-size: 1.8em;
+}

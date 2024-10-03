@@ -17,24 +17,29 @@
             <div class ="header">
                 <h1>CheatSheet v0.1</h1>
                 <p>BadPharma </p>
-
                 </div>
 
+                <button id="clear-sheet-btn" style="margin-bottom: 10px;">Clear Sheet</button>
+
+        <div class="sections">
             <h2 id="section-header">Sections  <span id="toggle-section-button" class="triangle-down"></span> </h2> <!-- Clickable header to toggle -->
             <ul id="section-list"></ul>
-        <input type="text" id="section-name" placeholder="New Section Name">
-        <input type="color" id="section-color">
-        <button id="add-section">Add Section</button>
+            
+            <input type="text" id="section-name" placeholder="New Section Name">
+            <input type="color" id="section-color">
+            
+            <button id="add-section">Add Section</button>
+         </div>
 
-        <div class="Add-Entry-Section">
+        <div class="add-entry-section">
         <h2>Add Entry</h2>
         <select id="section-select"></select>
         <input type="text" id="command" placeholder="Command">
-        <input type="text" id="description" placeholder="Description">
+        <textarea id="description" placeholder="Description" required rows="2"></textarea>
         <button id="add-entry">Add Entry</button>
         </div>
 
-        <div class="Down/Up-Section">
+        <div class="down-up-section">
         <h2> Download/Upload</h2>
         <button id="download-btn">Download XLSX</button>
         <input type="file" id="upload-xlsx" accept=".xlsx"/>
@@ -44,9 +49,11 @@
             <h2> Templates </h2>
             <p> Here's a few templates weve created to get you started! </p>
            <ul id="template-List">
+            <li data-template="test_sheets/canva.xlsx">Canva</li>
             <li data-template="test_sheets/cisco-test.xlsx">Cisco OS</li>
             <li data-template="test_sheets/Git-test.xlsx">Github</li>
             <li data-template="test_sheets/sql.xlsx">SQL</li>
+            <li data-template="test_sheets/unix_cli.xlsx">UNIX CLI</li>
            </ul>
         </div>
     
@@ -68,6 +75,18 @@
         <p id="modalMessage">Are you sure you want to proceed?</p>
         <button id="confirmBtn">Clear</button>
         <button id="cancelBtn">Merge</button>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span id="closeEditModal" class="close">&times;</span>
+        <h2>Edit Tile</h2>
+        <select id="edit-section-select"></select>
+        <input type="text" id="edit-command" placeholder="Command">
+        <textarea id="edit-description" placeholder="Description"></textarea>
+        <button id="save-edit-btn">Save Changes</button>
     </div>
 </div>
    

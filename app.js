@@ -10,18 +10,82 @@ document.addEventListener('DOMContentLoaded', () => {
     const uploadXlsx = document.getElementById('upload-xlsx');
     const sidebar = document.getElementById('sidebar');
     const sidebarTab = document.getElementById('sidebar-tab');
-    const toggleButton = document.getElementById('toggle-section-button'); // Updated toggle button
+    const toggleButton = document.getElementById('toggle-section-button');
     const sectionHeader = document.getElementById('section-header');
     let modalResponse = false;
-    const sections = {}; // Store sections with their colors
+    let sections = {}; // Store sections with their colors and entries
 
-
-    
     // Function to toggle the section list visibility
     function toggleSectionList() {
         sectionList.classList.toggle('collapsed');
         toggleButton.classList.toggle('collapsed'); // Toggle triangle direction
     }
+
+
+    // Function to open and pre-fill the edit modal
+function openEditModal(tile, sectionName, command, description) {
+    const editModal = document.getElementById('editModal');
+    const editSectionSelect = document.getElementById('edit-section-select');
+    const editCommandInput = document.getElementById('edit-command');
+    const editDescriptionInput = document.getElementById('edit-description');
+
+    // Pre-fill the modal inputs with the current tile data
+    editCommandInput.value = command;
+    editDescriptionInput.value = description;
+
+    // Populate the section dropdown and set the current section
+    editSectionSelect.innerHTML = ''; // Clear the dropdown
+    for (const section in sections) {
+        const option = document.createElement('option');
+        option.value = section;
+        option.textContent = section;
+        if (section === sectionName) {
+            option.selected = true;
+        }
+        editSectionSelect.appendChild(option);
+    }
+
+    // Show the modal
+    editModal.style.display = 'block';
+
+    // Handle saving changes
+    document.getElementById('save-edit-btn').onclick = function () {
+        const newSectionName = editSectionSelect.value;
+        const newCommand = editCommandInput.value;
+        const newDescription = editDescriptionInput.value;
+
+        // Update the tile's content
+        tile.querySelector('strong').textContent = newCommand;
+        tile.querySelector('p:nth-of-type(2)').textContent = newDescription;
+
+        // If the section was changed, update the tile's section data
+        if (sectionName !== newSectionName) {
+            // Update the tile's section name in the dataset
+            tile.dataset.section = newSectionName;
+
+            // Remove the tile from the current section
+            configList.removeChild(tile);
+
+            // Move the tile visually to the correct section and re-append it
+            bringTilesToTop(newSectionName); // Ensure section tiles are grouped
+
+            // Re-append the tile at the end of the new section
+            configList.appendChild(tile);
+
+            // Optionally you can re-sort or re-arrange based on order rules
+        }
+
+        // Hide the modal after saving
+        editModal.style.display = 'none';
+    };
+}
+
+// Close the modal when the user clicks the 'x'
+document.getElementById('closeEditModal').onclick = function () {
+    document.getElementById('editModal').style.display = 'none';
+};
+
+
 
     // Function to toggle the sidebar visibility
     function toggleSidebar() {
@@ -29,24 +93,21 @@ document.addEventListener('DOMContentLoaded', () => {
         configList.classList.toggle('open');
     }
 
-    // Event listener for the toggle button
+    // Event listeners for toggling sidebar and sections
     toggleButton.addEventListener('click', toggleSectionList);
-
-    // Optionally: Click on the section header to toggle
     sectionHeader.addEventListener('click', toggleSectionList);
-
-    // Event listener for the sidebar tab
-   
     sidebarTab.addEventListener('click', toggleSidebar);
 
-    // Function to create a section
-    function createSection(name, color) {
-        if (sections[name]) {
-            alert("Section already exists!");
-            return;
-        }
-        sections[name] = { color: color, entries: [] }; // Store color with entries
-        addSectionToSidebar(name, color);
+    // Function to create a new section
+    function createSection(sectionName, color) {
+        const li = document.createElement('li');
+        li.textContent = sectionName;
+        li.style.backgroundColor = color;
+        sectionList.appendChild(li);
+        sections[sectionName] = { color: color, entries: [] };
+
+        li.addEventListener('click', () => bringTilesToTop(sectionName));
+        populateSectionDropdown();
     }
 
     // Function to add an entry to a section
@@ -57,91 +118,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Function to add section to the sidebar
-    function addSectionToSidebar(name, color) {
-        const li = document.createElement('li');
-        li.textContent = name;
-        li.style.color = color;
-        sectionList.appendChild(li);
-
-        // Event listener to bring all tiles from this section to the top
-        li.addEventListener('click', () => {
-            bringTilesToTop(name);
-        });
-
-        populateSectionDropdown(); // Update dropdown
-    }
-
-    // Function to bring all tiles from a section to the top
+    // Function to bring all tiles of a section to the top
     function bringTilesToTop(sectionName) {
         const allTiles = Array.from(document.querySelectorAll('.tile'));
-
-        // Separate tiles by section
         const sectionTiles = allTiles.filter(tile => tile.dataset.section === sectionName);
         const otherTiles = allTiles.filter(tile => tile.dataset.section !== sectionName);
-
-        // Clear the configList (the tile grid)
         configList.innerHTML = '';
-
-        // Append section tiles first, followed by other tiles
         sectionTiles.forEach(tile => configList.appendChild(tile));
         otherTiles.forEach(tile => configList.appendChild(tile));
     }
 
-    // Modify the tile creation to store section name in a data attribute
-    function createTile(sectionName, command, description, color) {
-        const tile = document.createElement('div');
-        tile.className = 'tile';
-        tile.dataset.section = sectionName; // Store the section name in the tile
-        tile.style.backgroundColor = color;
-        tile.innerHTML = `
-            <p>${sectionName}</p>
-            <strong>${command}</strong>
-            <p>${description}</p>
-            <button class="edit-button">✏️</button>
-            <button class="delete-button">🗑️</button>
-        `;
-        configList.appendChild(tile);
+    // Drag-and-drop functionality
+    function enableDragAndDrop() {
+        let draggedTile = null;
 
-        // Add delete functionality
-        tile.querySelector('.delete-button').addEventListener('click', () => {
-            configList.removeChild(tile);
-        });
-        
-        tile.querySelector('.edit-button').addEventListener('click', () => {
-            commandInput.value = command;
-            descriptionInput.value = description;
-            // Optionally set section dropdown to the relevant section
-            sectionSelect.value = sectionName;
-            // Remove tile after editing (optional)
-            configList.removeChild(tile);
+        document.querySelectorAll('.tile').forEach(tile => {
+            tile.setAttribute('draggable', 'true');
+
+            tile.addEventListener('dragstart', function () {
+                draggedTile = tile;
+                tile.classList.add('dragging');
+            });
+
+            tile.addEventListener('dragend', function () {
+                draggedTile = null;
+                tile.classList.remove('dragging');
+            });
         });
 
-        // Drag-and-drop functionality
-        tile.addEventListener('dragstart', () => {
-            tile.classList.add('dragging');
-        });
-
-        tile.addEventListener('dragend', () => {
-            tile.classList.remove('dragging');
+        configList.addEventListener('dragover', function (e) {
+            e.preventDefault();
+            const afterElement = getDragAfterElement(configList, e.clientY);
+            if (afterElement == null) {
+                configList.appendChild(draggedTile);
+            } else {
+                configList.insertBefore(draggedTile, afterElement);
+            }
         });
     }
 
-    // Enable dragging within the configList
-    configList.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        const draggingTile = document.querySelector('.dragging');
-        const afterElement = getDragAfterElement(configList, e.clientY);
-        if (afterElement == null) {
-            configList.appendChild(draggingTile);
-        } else {
-            configList.insertBefore(draggingTile, afterElement);
-        }
-    });
-
     function getDragAfterElement(container, y) {
         const draggableElements = [...container.querySelectorAll('.tile:not(.dragging)')];
-
         return draggableElements.reduce((closest, child) => {
             const box = child.getBoundingClientRect();
             const offset = y - box.top - box.height / 2;
@@ -153,160 +170,182 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { offset: Number.NEGATIVE_INFINITY }).element;
     }
 
+    // Modify the existing tile edit button functionality
+    function createTile(sectionName, command, description, color) {
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+    tile.dataset.section = sectionName;
+    tile.style.backgroundColor = color;
+    tile.innerHTML = `
+        <p>${sectionName}</p>
+        <strong>${command}</strong>
+        <p>${description}</p>
+        <button class="edit-button">✏️</button>
+        <button class="delete-button">🗑️</button>
+    `;
+    configList.appendChild(tile);
+
+    // Delete functionality
+    tile.querySelector('.delete-button').addEventListener('click', () => {
+        configList.removeChild(tile);
+    });
+
+    // Open the modal to edit the tile
+    tile.querySelector('.edit-button').addEventListener('click', () => {
+        openEditModal(tile, sectionName, command, description);
+    });
+
+    enableDragAndDrop(); // Ensure new tiles are draggable
+    }
+
+    // Function to bring all tiles of a section to the top (re-arrange)
+    function bringTilesToTop(sectionName) {
+    const allTiles = Array.from(document.querySelectorAll('.tile'));
+
+    // Separate tiles by section
+    const sectionTiles = allTiles.filter(tile => tile.dataset.section === sectionName);
+    const otherTiles = allTiles.filter(tile => tile.dataset.section !== sectionName);
+
+    // Clear the configList (the tile grid)
+    configList.innerHTML = '';
+
+    // Append section tiles first, followed by other tiles
+    sectionTiles.forEach(tile => configList.appendChild(tile));
+    otherTiles.forEach(tile => configList.appendChild(tile));
+    }
+
+
     // Function to download XLSX
     function downloadXLSX() {
         const workbook = XLSX.utils.book_new();
         const data = [];
 
-        // Prepare data for the workbook
         for (const sectionName in sections) {
             const section = sections[sectionName];
-
             section.entries.forEach(entry => {
                 data.push([sectionName, entry.command, entry.description, section.color]);
             });
         }
 
-        // Add headers
         data.unshift(["Section", "Command", "Description", "Color"]);
-
-        // Create a worksheet
         const worksheet = XLSX.utils.aoa_to_sheet(data);
         XLSX.utils.book_append_sheet(workbook, worksheet, "Cheatsheet");
-
-        // Export the workbook
         XLSX.writeFile(workbook, "cheatsheet.xlsx");
     }
+
+    // Function to handle XLSX upload
+    async function handleXLSXUpload(file) {
+        const userResponse = await showConfirmationDialog("Do you want to clear the current list or merge it with the uploaded file?");
+        
+        if (userResponse) {
+            configList.innerHTML = '';
+            sectionList.innerHTML = '';
+            sections = {};
+        }
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const data = new Uint8Array(event.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            processWorkbook(workbook);
+        };
+        reader.readAsArrayBuffer(file);
+    }
+
+    // Function to process the uploaded workbook
+    function processWorkbook(workbook) {
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+        const sheetData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+        sheetData.forEach((row, index) => {
+            if (index > 0 && row.length === 4) {
+                const section = row[0];
+                const command = row[1];
+                const description = row[2];
+                const color = row[3];
+
+                if (!sections[section]) {
+                    createSection(section, color);
+                }
+                addEntryToSection(section, command, description);
+            }
+        });
+    }
+
+    // Function to load template
+    async function loadTemplate(templateFile) {
+        const userResponse = await showConfirmationDialog("Do you want to clear the current list or merge it with the selected template?");
+        
+        if (userResponse) {
+            configList.innerHTML = '';
+            sectionList.innerHTML = '';
+            sections = {};
+        }
+
+        try {
+            const response = await fetch(templateFile);
+            const data = await response.arrayBuffer();
+            const workbook = XLSX.read(data, { type: 'array' });
+            processWorkbook(workbook);
+        } catch (error) {
+            console.error('Error loading template:', error);
+        }
+    }
+
+    document.querySelectorAll('#template-List li').forEach(item => {
+        item.addEventListener('click', () => {
+            const templateFile = item.getAttribute('data-template');
+            loadTemplate(templateFile);
+        });
+    });
 
     // Function to show custom confirmation dialog
     function showConfirmationDialog(message) {
         return new Promise((resolve) => {
             const modal = document.getElementById('customModal');
             const modalMessage = document.getElementById('modalMessage');
-        const confirmBtn = document.getElementById('confirmBtn');
-        const cancelBtn = document.getElementById('cancelBtn');
-        const closeModal = document.getElementById('closeModal');
+            const confirmBtn = document.getElementById('confirmBtn');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const closeModal = document.getElementById('closeModal');
 
-        // Set the modal message
-        modalMessage.textContent = message;
-        modal.style.display = "block";
+            // Set the modal message
+            modalMessage.textContent = message;
+            modal.style.display = "block";
 
-        // Confirm button
-        confirmBtn.onclick = function() {
-            modalResponse = true;
-            modal.style.display = "none";
-            resolve(modalResponse);
-        };
+            // Confirm button
+            confirmBtn.onclick = function() {
+                modalResponse = true;
+                modal.style.display = "none";
+                resolve(modalResponse);
+            };
 
-        // Cancel button
-        cancelBtn.onclick = function() {
-            modalResponse = false;
-            modal.style.display = "none";
-            resolve(modalResponse);
-        };
-
-        // Close modal on clicking (x)
-        closeModal.onclick = function() {
-            modalResponse = false;
-            modal.style.display = "none";
-            resolve(modalResponse);
-        };
-
-        // Close modal on outside click
-        window.onclick = function(event) {
-            if (event.target === modal) {
+            // Cancel button
+            cancelBtn.onclick = function() {
                 modalResponse = false;
                 modal.style.display = "none";
                 resolve(modalResponse);
-            }
-        };
-    });
-}
+            };
 
-    // Function to handle XLSX upload
-async function handleXLSXUpload(file) {
-    const userResponse = await showConfirmationDialog("Do you want to clear the current list or merge it with the uploaded file?");
-    if (userResponse) {
-        configList.innerHTML = ''; // Clear the current list
-    }
+            // Close modal on clicking (x)
+            closeModal.onclick = function() {
+                modalResponse = false;
+                modal.style.display = "none";
+                resolve(modalResponse);
+            };
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-        const data = new Uint8Array(event.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const firstSheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[firstSheetName];
-        const json = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-
-        json.forEach((row, index) => {
-            if (index > 0 && row.length === 4) { // Skip header
-                const section = row[0];
-                const command = row[1];
-                const description = row[2];
-                const color = row[3];
-
-                // Create section if it doesn't exist
-                if (!sections[section]) {
-                    createSection(section, color);
+            // Close modal on outside click
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modalResponse = false;
+                    modal.style.display = "none";
+                    resolve(modalResponse);
                 }
-
-                // Add the entry to the respective section
-                addEntryToSection(section, command, description);
-            }
-        });
-    };
-    reader.readAsArrayBuffer(file);
-}
-
-// Function to load template
-async function loadTemplate(templateFile) {
-    const userResponse = await showConfirmationDialog("Do you want to clear the current sheet or merge it with the selected template?");
-    if (userResponse) {
-        configList.innerHTML = ''; // Clear the current list
-    }
-
-    fetch(`${templateFile}`)
-        .then(response => response.arrayBuffer()) // Read the file as binary data
-        .then(data => {
-            const workbook = XLSX.read(data, { type: 'array' }); // Read the binary data into XLSX
-            processWorkbook(workbook); // Call your existing logic to process the workbook
-        })
-        .catch(error => console.error('Error loading template:', error));
-}
-    
-    function processWorkbook(workbook) {
-        const firstSheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[firstSheetName];
-        const sheetData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-    
-        sheetData.forEach((row, index) => {
-            if (index > 0 && row.length === 4) { // Skip header
-                const section = row[0];
-                const command = row[1];
-                const description = row[2];
-                const color = row[3];
-    
-                // Create section if it doesn't exist
-                if (!sections[section]) {
-                    createSection(section, color);
-                }
-    
-                // Add the entry to the respective section
-                addEntryToSection(section, command, description);
-            }
+            };
         });
     }
 
-
-    // Attach event listener to the template list
-    document.querySelectorAll('#template-List li').forEach(item => {
-    item.addEventListener('click', () => {
-        const templateFile = item.getAttribute('data-template');
-        loadTemplate(templateFile);
-    });
-    });
-
-    // Add event listeners
+    // Event listeners for buttons
     document.getElementById('add-section').addEventListener('click', () => {
         const sectionName = sectionNameInput.value;
         const sectionColor = sectionColorInput.value;
@@ -331,8 +370,7 @@ async function loadTemplate(templateFile) {
         }
     });
 
-
-    // Populate section dropdown
+    // Populate the section dropdown
     function populateSectionDropdown() {
         sectionSelect.innerHTML = '';
         for (const sectionName in sections) {
@@ -343,14 +381,22 @@ async function loadTemplate(templateFile) {
         }
     }
 
-    
+    // Function to clear the entire sheet
+function clearSheet() {
+    const confirmation = confirm("Are you sure you want to clear the entire sheet?");
+    if (confirmation) {
+        configList.innerHTML = ''; // Clear the tile grid
+        sectionList.innerHTML = ''; // Clear the section list
+        sections = {}; // Reset the sections object
+        populateSectionDropdown(); // Refresh the dropdown
+    }
+}
 
-    window.addEventListener('beforeunload', (event) => {
-        const warningMessage = "Warning: Reloading the page will lose any unsaved data. Please save your configurations.";
-        event.preventDefault();
-        event.returnValue = warningMessage; // Chrome requires this to be set
-        return warningMessage; // Some browsers will display this message
-    });
 
 
+// Attach the clear sheet function to the button
+document.getElementById('clear-sheet-btn').addEventListener('click', clearSheet);
+
+    // Enable drag-and-drop on page load
+    enableDragAndDrop();
 });
