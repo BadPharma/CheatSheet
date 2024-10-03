@@ -16,10 +16,10 @@
         <div id="sidebar" class="sidebar">
             <div class ="header">
                 <h1>CheatSheet v0.1</h1>
-                <p>BadPharma </p>
+                <strong>BadPharma </strong>
                 </div>
 
-                <button id="clear-sheet-btn" style="margin-bottom: 10px;">Clear Sheet</button>
+                <button id="clear-sheet-btn" style="margin-bottom: 10px;">Reset Sheet</button>
 
         <div class="sections">
             <h2 id="section-header">Sections  <span id="toggle-section-button" class="triangle-down"></span> </h2> <!-- Clickable header to toggle -->
@@ -42,6 +42,7 @@
         <div class="down-up-section">
         <h2> Download/Upload</h2>
         <button id="download-btn">Download XLSX</button>
+        <label for="upload-xlsx" class="custom-file-upload">Upload XLSX</label>
         <input type="file" id="upload-xlsx" accept=".xlsx"/>
         </div>
 
@@ -54,6 +55,7 @@
             <li data-template="test_sheets/Git-test.xlsx">Github</li>
             <li data-template="test_sheets/sql.xlsx">SQL</li>
             <li data-template="test_sheets/unix_cli.xlsx">UNIX CLI</li>
+            <li data-template="test_sheets/excel-shortcuts.xlsx">Excel Quick Keys</li>
            </ul>
         </div>
     
@@ -88,6 +90,22 @@
         <textarea id="edit-description" placeholder="Description"></textarea>
         <button id="save-edit-btn">Save Changes</button>
     </div>
+</div>
+
+<!-- Reload Warning Modal -->
+<div id="reloadWarningModal" class="modal">
+    <div class="modal-content">
+        <span id="closeReloadWarningModal" class="close">&times;</span>
+        <h2>Warning!</h2>
+        <p>Are you sure you want to leave this page? All unsaved data will be lost.</p>
+        <button id="stay-button">Stay on Page</button>
+        <button id="leave-button">Leave Page</button>
+    </div>
+</div>
+
+<!-- Feedback Popup -->
+<div id="feedback-popup" class="feedback-popup">
+    <p id="feedback-message"></p>
 </div>
    
 </body>

@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebarTab = document.getElementById('sidebar-tab');
     const toggleButton = document.getElementById('toggle-section-button');
     const sectionHeader = document.getElementById('section-header');
+    const reloadWarningModal = document.getElementById('reloadWarningModal');
+    let isWarningModalVisible = false; // Flag to track modal visibility
     let modalResponse = false;
     let sections = {}; // Store sections with their colors and entries
 
@@ -21,71 +23,87 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleButton.classList.toggle('collapsed'); // Toggle triangle direction
     }
 
-
     // Function to open and pre-fill the edit modal
-function openEditModal(tile, sectionName, command, description) {
-    const editModal = document.getElementById('editModal');
-    const editSectionSelect = document.getElementById('edit-section-select');
-    const editCommandInput = document.getElementById('edit-command');
-    const editDescriptionInput = document.getElementById('edit-description');
+    function openEditModal(tile, sectionName, command, description) {
+        const editModal = document.getElementById('editModal');
+        const editSectionSelect = document.getElementById('edit-section-select');
+        const editCommandInput = document.getElementById('edit-command');
+        const editDescriptionInput = document.getElementById('edit-description');
 
-    // Pre-fill the modal inputs with the current tile data
-    editCommandInput.value = command;
-    editDescriptionInput.value = description;
+        // Pre-fill the modal inputs with the current tile data
+        editCommandInput.value = command;
+        editDescriptionInput.value = description;
 
-    // Populate the section dropdown and set the current section
-    editSectionSelect.innerHTML = ''; // Clear the dropdown
-    for (const section in sections) {
-        const option = document.createElement('option');
-        option.value = section;
-        option.textContent = section;
-        if (section === sectionName) {
-            option.selected = true;
+        // Populate the section dropdown and set the current section
+        editSectionSelect.innerHTML = ''; // Clear the dropdown
+        for (const section in sections) {
+            const option = document.createElement('option');
+            option.value = section;
+            option.textContent = section;
+            if (section === sectionName) {
+                option.selected = true;
+            }
+            editSectionSelect.appendChild(option);
         }
-        editSectionSelect.appendChild(option);
+
+        // Show the modal
+        editModal.style.display = 'block';
+
+        // Handle saving changes
+        document.getElementById('save-edit-btn').onclick = function () {
+    const newSectionName = editSectionSelect.value;
+    const newCommand = editCommandInput.value;
+    const newDescription = editDescriptionInput.value;
+
+    // Update the tile's content
+    tile.querySelector('strong').textContent = newCommand;
+    tile.querySelector('p:nth-of-type(2)').textContent = newDescription;
+
+    if (sectionName !== newSectionName) {
+        tile.dataset.section = newSectionName;
+        tile.querySelector('p:nth-of-type(1)').textContent = newSectionName;
+        tile.style.backgroundColor = sections[newSectionName].color;
+        configList.removeChild(tile);
+        bringTilesToTop(newSectionName);
+        configList.appendChild(tile);
     }
 
-    // Show the modal
-    editModal.style.display = 'block';
+    // Show feedback popup
+    showFeedback("Entry updated successfully!", "warning");
 
-    // Handle saving changes
-    document.getElementById('save-edit-btn').onclick = function () {
-        const newSectionName = editSectionSelect.value;
-        const newCommand = editCommandInput.value;
-        const newDescription = editDescriptionInput.value;
+    // Hide the modal after saving
+    editModal.style.display = 'none';
 
-        // Update the tile's content
-        tile.querySelector('strong').textContent = newCommand;
-        tile.querySelector('p:nth-of-type(2)').textContent = newDescription;
+        };  
+    }
 
-        // If the section was changed, update the tile's section data
-        if (sectionName !== newSectionName) {
-            // Update the tile's section name in the dataset
-            tile.dataset.section = newSectionName;
+    // Function to show the feedback popup
+    function showFeedback(message, type) {
+    const feedbackPopup = document.getElementById('feedback-popup');
+    const feedbackMessage = document.getElementById('feedback-message');
 
-            // Remove the tile from the current section
-            configList.removeChild(tile);
+    // Set the feedback message
+    feedbackMessage.textContent = message;
 
-            // Move the tile visually to the correct section and re-append it
-            bringTilesToTop(newSectionName); // Ensure section tiles are grouped
+    // Set the class based on the type
+    feedbackPopup.className = 'feedback-popup show'; // Reset the class
+    if (type) {
+        feedbackPopup.classList.add(type); // Add the type class (success, warning, error)
+    }
 
-            // Re-append the tile at the end of the new section
-            configList.appendChild(tile);
+    // Show the popup
+    feedbackPopup.classList.add('show');
 
-            // Optionally you can re-sort or re-arrange based on order rules
-        }
+    // Hide the popup after 3 seconds
+    setTimeout(() => {
+        feedbackPopup.classList.remove('show');
+    }, 3000);
+    }
 
-        // Hide the modal after saving
-        editModal.style.display = 'none';
+    // Close the modal when the user clicks the 'x'
+    document.getElementById('closeEditModal').onclick = function () {
+        document.getElementById('editModal').style.display = 'none';
     };
-}
-
-// Close the modal when the user clicks the 'x'
-document.getElementById('closeEditModal').onclick = function () {
-    document.getElementById('editModal').style.display = 'none';
-};
-
-
 
     // Function to toggle the sidebar visibility
     function toggleSidebar() {
@@ -172,48 +190,33 @@ document.getElementById('closeEditModal').onclick = function () {
 
     // Modify the existing tile edit button functionality
     function createTile(sectionName, command, description, color) {
-    const tile = document.createElement('div');
-    tile.className = 'tile';
-    tile.dataset.section = sectionName;
-    tile.style.backgroundColor = color;
-    tile.innerHTML = `
-        <p>${sectionName}</p>
-        <strong>${command}</strong>
-        <p>${description}</p>
-        <button class="edit-button">✏️</button>
-        <button class="delete-button">🗑️</button>
-    `;
-    configList.appendChild(tile);
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        tile.dataset.section = sectionName;
+        tile.style.backgroundColor = color;
+        tile.innerHTML = `
+            <p>${sectionName}</p>
+            <strong>${command}</strong>
+            <p>${description}</p>
+            <button class="edit-button">✏️</button>
+            <button class="delete-button">🗑️</button>
+        `;
+        configList.appendChild(tile);
 
-    // Delete functionality
-    tile.querySelector('.delete-button').addEventListener('click', () => {
+        // Delete functionality
+        tile.querySelector('.delete-button').addEventListener('click', () => {
         configList.removeChild(tile);
-    });
+    // Show feedback popup
+        showFeedback("Entry deleted successfully!", "error");
+        });
 
-    // Open the modal to edit the tile
-    tile.querySelector('.edit-button').addEventListener('click', () => {
-        openEditModal(tile, sectionName, command, description);
-    });
+        // Open the modal to edit the tile
+        tile.querySelector('.edit-button').addEventListener('click', () => {
+            openEditModal(tile, sectionName, command, description);
+        });
 
-    enableDragAndDrop(); // Ensure new tiles are draggable
+        enableDragAndDrop(); // Ensure new tiles are draggable
     }
-
-    // Function to bring all tiles of a section to the top (re-arrange)
-    function bringTilesToTop(sectionName) {
-    const allTiles = Array.from(document.querySelectorAll('.tile'));
-
-    // Separate tiles by section
-    const sectionTiles = allTiles.filter(tile => tile.dataset.section === sectionName);
-    const otherTiles = allTiles.filter(tile => tile.dataset.section !== sectionName);
-
-    // Clear the configList (the tile grid)
-    configList.innerHTML = '';
-
-    // Append section tiles first, followed by other tiles
-    sectionTiles.forEach(tile => configList.appendChild(tile));
-    otherTiles.forEach(tile => configList.appendChild(tile));
-    }
-
 
     // Function to download XLSX
     function downloadXLSX() {
@@ -357,9 +360,13 @@ document.getElementById('closeEditModal').onclick = function () {
         const selectedSection = sectionSelect.value;
         const command = commandInput.value;
         const description = descriptionInput.value;
+
         addEntryToSection(selectedSection, command, description);
         commandInput.value = '';
         descriptionInput.value = '';
+
+        // Show feedback popup
+        showFeedback("New entry added successfully!");
     });
 
     downloadBtn.addEventListener('click', downloadXLSX);
@@ -381,21 +388,53 @@ document.getElementById('closeEditModal').onclick = function () {
         }
     }
 
-    // Function to clear the entire sheet
-function clearSheet() {
-    const confirmation = confirm("Are you sure you want to clear the entire sheet?");
-    if (confirmation) {
-        configList.innerHTML = ''; // Clear the tile grid
-        sectionList.innerHTML = ''; // Clear the section list
-        sections = {}; // Reset the sections object
-        populateSectionDropdown(); // Refresh the dropdown
+     // Function to show the reload warning modal
+     function showReloadWarning() {
+        reloadWarningModal.style.display = 'block';
+        isWarningModalVisible = true; // Set the flag to true
     }
-}
 
+    // Event listener for the leave button
+    document.getElementById('leave-button').addEventListener('click', () => {
+        reloadWarningModal.style.display = 'none';
+        window.location.reload(); // Proceed with the reload
+    });
 
+    // Event listener for the stay button
+    document.getElementById('stay-button').addEventListener('click', () => {
+        reloadWarningModal.style.display = 'none'; // Close the modal
+        isWarningModalVisible = false; // Reset the flag
+    });
 
-// Attach the clear sheet function to the button
-document.getElementById('clear-sheet-btn').addEventListener('click', clearSheet);
+    // Close the modal when the user clicks the 'x'
+    document.getElementById('closeReloadWarningModal').onclick = function () {
+        reloadWarningModal.style.display = 'none';
+        isWarningModalVisible = false; // Reset the flag
+    };
+
+    // Prevent the default reload behavior
+    window.addEventListener('beforeunload', (event) => {
+        if (!isWarningModalVisible) {
+            showReloadWarning(); // Show the custom modal
+            // This line is needed to trigger the built-in confirmation
+            event.preventDefault(); // Prevent default action
+            event.returnValue = ''; // Chrome requires this
+        }
+    });
+
+    // Function to clear the entire sheet
+    function clearSheet() {
+        const confirmation = confirm("Are you sure you want to clear the entire sheet?");
+        if (confirmation) {
+            configList.innerHTML = ''; // Clear the tile grid
+            sectionList.innerHTML = ''; // Clear the section list
+            sections = {}; // Reset the sections object
+            populateSectionDropdown(); // Refresh the dropdown
+        }
+    }
+
+    // Attach the clear sheet function to the button
+    document.getElementById('clear-sheet-btn').addEventListener('click', clearSheet);
 
     // Enable drag-and-drop on page load
     enableDragAndDrop();

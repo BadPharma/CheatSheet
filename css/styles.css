@@ -145,7 +145,7 @@ body {
     z-index: 100;
 }
 
-.sidebar button  {
+.sidebar button, .custom-file-upload  {
     padding: 20px;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -217,6 +217,8 @@ align-content: center;
     font-size: 18px;
 }
 
+/* ADD ENTRY SECTION */
+
 #add-entry-form {
     max-height: 0;
     overflow: hidden;
@@ -279,6 +281,14 @@ align-content: center;
     align-content: center;
 }
 
+#upload-xlsx{
+  display: none;
+
+}
+
+.custom-file-upload:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
 
 .template-Section{
     margin-bottom: 20px;
@@ -363,6 +373,57 @@ transform: translateX(-100%);
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+}
+
+/* Feedback Popup Styles */
+.feedback-popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4caf50; /* Green for success */
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0; /* Invisible by default */
+    transition: opacity 0.3s ease;
+}
+
+/* Feedback Popup Styles */
+.feedback-popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0; /* Invisible by default */
+    transition: opacity 0.3s ease;
+}
+
+.feedback-popup.show {
+    display: block;
+    opacity: 1; /* Make it visible */
+}
+
+/* Specific colors for different types of feedback */
+.feedback-popup.success {
+    background-color: #4caf50; /* Green for success */
+}
+
+.feedback-popup.warning {
+    background-color: #ffc107; /* Yellow for warning */
+}
+
+.feedback-popup.error {
+    background-color: #f44336; /* Red for error */
 }
 
 /* Text styles */
