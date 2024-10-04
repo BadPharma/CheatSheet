@@ -58,15 +58,17 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleButton.classList.toggle('collapsed'); // Toggle triangle direction
     }
 
-    // Function to open the modal for editing a tile
-    function openEditModal(tile, sectionName, command, description) {
-        currentTile = tile; // Store reference to the tile being edited
-
-        // Pre-fill modal fields with the current tile data
+    function openEditModal(tile) {
+        // Get the current values from the tile
+        const sectionName = tile.dataset.section;
+        const command = tile.querySelector('strong').textContent;
+        const description = tile.querySelector('p:nth-of-type(2)').textContent;
+    
+        // Pre-fill the modal inputs with the current tile data
         editCommandInput.value = command;
         editDescriptionInput.value = description;
-
-        // Populate the section dropdown and set the current section
+    
+        // Populate the section dropdown with the current section selected
         editSectionSelect.innerHTML = ''; // Clear the dropdown
         for (const section in sections) {
             const option = document.createElement('option');
@@ -77,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             editSectionSelect.appendChild(option);
         }
-
+    
         // Show the modal
         editModal.style.display = 'block';
     }
@@ -87,21 +89,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const newSectionName = editSectionSelect.value;
         const newCommand = editCommandInput.value;
         const newDescription = editDescriptionInput.value;
-
+    
         // Update the tile's content
         currentTile.querySelector('strong').textContent = newCommand;
         currentTile.querySelector('p:nth-of-type(2)').textContent = newDescription;
-
-        // If the section was changed, update the tile's section data and color
+    
+        // If the section has changed, update it
         if (currentTile.dataset.section !== newSectionName) {
             currentTile.dataset.section = newSectionName;
             currentTile.querySelector('p:nth-of-type(1)').textContent = newSectionName;
-            currentTile.style.backgroundColor = sections[newSectionName].color;
-            configList.removeChild(currentTile);
-            bringTilesToTop(newSectionName);
-            configList.appendChild(currentTile);
+            currentTile.style.backgroundColor = sections[newSectionName].color; // Update the tile color
+            bringTilesToTop(newSectionName); // Optional: Re-arrange the tiles by section
         }
-
+    
         // Close the modal after saving
         editModal.style.display = 'none';
     };
@@ -233,6 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Open the modal to edit the tile
         tile.querySelector('.edit-button').addEventListener('click', () => {
+            currentTile = tile;
             openEditModal(tile, sectionName, command, description);
         });
 
@@ -300,8 +301,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-
-    
 
     function populateTemplateDropdown(templateGroups) {
         const templateSelect = document.getElementById('template-select');
