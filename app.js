@@ -21,6 +21,36 @@ document.addEventListener('DOMContentLoaded', () => {
     let modalResponse = false;
     let sections = {}; // Store sections with their colors and entries
     let currentTile = null; // Reference to the currently edited tile
+    const templates = [
+        {
+            category: 'Design Tools',
+            templates: [
+                { name: 'Photoshop Shortcuts', file: 'test_sheets/psd-shortcuts.xlsx' },
+                { name: 'Canva Shortcuts', file: 'test_sheets/canva.xlsx' }
+            ]
+        },
+        {
+            category: 'Developer Tools',
+            templates: [
+                { name: 'Git Bash', file: 'test_sheets/Git-test.xlsx' },
+                { name: 'SQL', file: 'test_sheets/sql.xlsx' }
+            ]
+        },
+        {
+            category: 'Operating Systems',
+            templates: [
+                { name: 'Cisco OS', file: 'test_sheets/cisco-test.xlsx' },
+                { name: 'UNIX', file: 'test_sheets/unix_cli.xlsx' }
+            ]
+        },
+        {
+            category: 'MS Office',
+            templates: [
+                { name: 'Excel Shortcuts', file: 'test_sheets/excel-shortcuts.xlsx' },
+                { name: 'Excel Functions', file: 'test_sheets/excel-functions.xlsx' }
+            ]
+        }
+    ];
 
     // Function to toggle the section list visibility
     function toggleSectionList() {
@@ -227,6 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
         XLSX.writeFile(workbook, "cheatsheet.xlsx");
     }
 
+    downloadBtn.addEventListener('click', downloadXLSX);
+
     // Function to handle XLSX upload
     async function handleXLSXUpload(file) {
         const userResponse = await showConfirmationDialog("Do you want to clear the current list or merge it with the uploaded file?");
@@ -267,43 +299,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Example function to load templates into the dropdown
-    function populateTemplateDropdown(templates) {
-        const templateSelect = document.getElementById('template-select');
-        templateSelect.innerHTML = ''; // Clear any existing options
 
-        // Add a default option
+
+    
+
+    function populateTemplateDropdown(templateGroups) {
+        const templateSelect = document.getElementById('template-select');
+        templateSelect.innerHTML = ''; // Clear existing options
+    
+        // Add default 'Select a Template' option
         const defaultOption = document.createElement('option');
         defaultOption.value = '';
         defaultOption.textContent = 'Select a Template';
         templateSelect.appendChild(defaultOption);
-
-        // Populate the dropdown with template options
-        templates.forEach(template => {
-            const option = document.createElement('option');
-            option.value = template.file; // Assuming `file` is the path to the template
-            option.textContent = template.name; // Assuming `name` is the display name
-            templateSelect.appendChild(option);
+    
+        // Loop through each category and its templates
+        templateGroups.forEach(group => {
+            // Create an optgroup for each category
+            const optgroup = document.createElement('optgroup');
+            optgroup.label = group.category; // Set the label as the category name
+    
+            // Add each template as an option under the optgroup
+            group.templates.forEach(template => {
+                const option = document.createElement('option');
+                option.value = template.file;
+                option.textContent = template.name;
+                optgroup.appendChild(option);
+            });
+    
+            // Append the optgroup to the select element
+            templateSelect.appendChild(optgroup);
         });
     }
 
-    // Sample templates array (you can modify this based on your actual template data)
-    const templates = [
-        { name: 'Photoshop Shortcuts', file: 'test_sheets/psd-shortcuts.xlsx' },
-        { name: 'Cisco OS', file: 'test_sheets/cisco-test.xlsx' },
-        { name: 'Git Bash', file: 'test_sheets/Git-test.xlsx' },
-        { name: 'UNIX', file: 'test_sheets/unix_cli.xlsx' },
-        { name: 'Excel Shortcuts', file: 'test_sheets/excel-shortcuts.xlsx' },
-        { name: 'SQL', file: 'test_sheets/sql.xlsx' },
-    ];
-
-    // Event listener for template loading button
     document.getElementById('load-template-btn').addEventListener('click', () => {
         const templateSelect = document.getElementById('template-select');
         const selectedTemplate = templateSelect.value;
-
+    
         if (selectedTemplate) {
-            loadTemplate(selectedTemplate); // This function should already exist in your code
+            loadTemplate(selectedTemplate); // Load the selected template
         } else {
             showFeedback("Please select a template to load.", "warning");
         }
@@ -438,13 +472,13 @@ document.addEventListener('DOMContentLoaded', () => {
         isWarningModalVisible = false; // Reset the flag
     };
 
-    // Prevent the default reload behavior
+    // Prevent the default reload modal behavior
     window.addEventListener('beforeunload', (event) => {
         if (!isWarningModalVisible) {
             showReloadWarning(); // Show the custom modal
-            // Prevent default action and show confirmation dialog
             event.preventDefault(); // Prevent default action
-            event.returnValue = ''; // Chrome requires this
+
+            
         }
     });
 

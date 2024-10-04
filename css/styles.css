@@ -136,12 +136,7 @@ body {
     z-index: 1; /* Ensure the button is above other elements */
 }
 
-.tile.dragging {
-    opacity: 0.5;
-    border: 2px dashed #000;
-    transform: scale(1.05); /* Slightly enlarge the tile */
-    z-index: 10; /* Raise the tile above others */
-}
+
 
 
  /* Sidebar styles */
