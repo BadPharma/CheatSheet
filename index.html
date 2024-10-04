@@ -46,17 +46,13 @@
         <input type="file" id="upload-xlsx" accept=".xlsx"/>
         </div>
 
-        <div class="template-Section">
-            <h2> Templates </h2>
-            <p> Here's a few templates weve created to get you started! </p>
-           <ul id="template-List">
-            <li data-template="test_sheets/canva.xlsx">Canva</li>
-            <li data-template="test_sheets/cisco-test.xlsx">Cisco OS</li>
-            <li data-template="test_sheets/Git-test.xlsx">Github</li>
-            <li data-template="test_sheets/sql.xlsx">SQL</li>
-            <li data-template="test_sheets/unix_cli.xlsx">UNIX CLI</li>
-            <li data-template="test_sheets/excel-shortcuts.xlsx">Excel Quick Keys</li>
-           </ul>
+        <div class="templates-section">
+            <h2>Templates</h2>
+            <select id="template-select">
+                <option value="">Select a Template</option>
+                <!-- Options will be populated dynamically here -->
+            </select>
+            <button id="load-template-btn">Load Template</button>
         </div>
     
 

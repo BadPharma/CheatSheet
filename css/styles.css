@@ -4,6 +4,44 @@ body {
     height: 100%;
 }
 
+/* CORE PAGE CSS */
+/* FONTS +S CROLL BAR */
+/* Regular */
+@font-face {
+    font-family: "Aeonik";
+    src: url("fonts/Aeonik-Regular.woff2") format("woff2"),
+      url("fonts/Aeonik-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  /* Black */
+  @font-face {
+    font-family: "Aeonik";
+    src: url("fonts/Aeonik-Black.woff2") format("woff2"),
+      url("fonts/Aeonik-Black.woff") format("woff");
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  /*Black Italic */
+  @font-face {
+    font-family: "Aeonik";
+    src: url("fonts/Aeonik-BlackItalic.woff2") format("woff2"),
+      url("fonts/Aeonik-BlackItalic.woff") format("woff");
+    font-weight: 800;
+    font-style: italic;
+  }
+  
+  /* light */
+  @font-face {
+    font-family: "Aeonik";
+    src: url("fonts/Aeonik-Light.woff2") format("woff2"),
+      url("fonts/Aeonik-Light.woff") format("woff");
+    font-weight: 200;
+    font-style: normal;
+  }
+
 ::-webkit-scrollbar {
     width: 3px;
   }
@@ -105,6 +143,8 @@ body {
     z-index: 10; /* Raise the tile above others */
 }
 
+
+ /* Sidebar styles */
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -126,12 +166,6 @@ body {
     margin-bottom: 20px;
 }
 
-.header {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
 
 .sidebar-tab {
     position: fixed;
@@ -145,7 +179,7 @@ body {
     z-index: 100;
 }
 
-.sidebar button, .custom-file-upload  {
+.sidebar button, .custom-file-upload, #confirmBtn, #cancelBtn  {
     padding: 20px;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -156,8 +190,19 @@ body {
     font-size: 1em;
     color: antiquewhite;
     font-weight: 700;
+    transition: scale 0.2s ease;
 }
 
+.sidebar button:hover, .custom-file-upload:hover, #confirmBtn:hover, #cancelBtn:hover  {
+   scale: 1.05;
+}
+
+.header {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
 
 .sections {
@@ -202,7 +247,7 @@ align-content: center;
     cursor: pointer;
     background-color: #f1f1f1;
     border-radius: 5px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, font-size 0.3s ease, font-weight 0.3s ease;
     font-size: 16px; /* Default font size */
 }
 
@@ -210,11 +255,18 @@ align-content: center;
 #section-list li:hover {
     transform: scale(0.9); /* Scale up by 10% */
     background-color: #e0e0e0; /* Change background on hover */
+    font-weight: 800;
+    font-size: 18px;
 }
 
-/* Optional: Adjust the font size on hover for emphasis */
-#section-list li:hover {
-    font-size: 18px;
+
+#section-color{
+    border-radius: 8px; /* Adjusted to be more subtle */
+    background-color: #f0f0f0; /* Light background to match a clean UI */
+    color: #333; /* Dark text for readability */
+    border: 1px solid #ccc; /* A soft border that blends with the UI */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
 /* ADD ENTRY SECTION */
@@ -251,13 +303,14 @@ align-content: center;
     font-size: 1em; /* Font size */
 }
 
-#section-select {
+#section-select, #template-select {
     width: calc(100% - 0px); /* Full width with some padding */
     padding: 10px; /* Padding inside input fields */
     margin-bottom: 10px; /* Space between input fields */
     border: 1px solid #ccc; /* Light border */
     border-radius: 5px; /* Rounded corners */
     font-size: 1em; /* Font size */
+    font-family: Aeonik;
 }
 
 
@@ -268,6 +321,7 @@ align-content: center;
     border: 1px solid #ccc; /* Light border */
     border-radius: 5px; /* Rounded corners */
     font-size: 1em; /* Font size */
+    font-family: Aeonik;
 }
 
 
@@ -290,9 +344,16 @@ align-content: center;
     background-color: #0056b3; /* Darker blue on hover */
 }
 
-.template-Section{
+.templates-section{
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+   
 }
+
 
 
 .collapsed {

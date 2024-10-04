@@ -13,9 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('toggle-section-button');
     const sectionHeader = document.getElementById('section-header');
     const reloadWarningModal = document.getElementById('reloadWarningModal');
+    const editModal = document.getElementById('editModal');
+    const editSectionSelect = document.getElementById('edit-section-select');
+    const editCommandInput = document.getElementById('edit-command');
+    const editDescriptionInput = document.getElementById('edit-description');
     let isWarningModalVisible = false; // Flag to track modal visibility
     let modalResponse = false;
     let sections = {}; // Store sections with their colors and entries
+    let currentTile = null; // Reference to the currently edited tile
 
     // Function to toggle the section list visibility
     function toggleSectionList() {
@@ -23,14 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleButton.classList.toggle('collapsed'); // Toggle triangle direction
     }
 
-    // Function to open and pre-fill the edit modal
+    // Function to open the modal for editing a tile
     function openEditModal(tile, sectionName, command, description) {
-        const editModal = document.getElementById('editModal');
-        const editSectionSelect = document.getElementById('edit-section-select');
-        const editCommandInput = document.getElementById('edit-command');
-        const editDescriptionInput = document.getElementById('edit-description');
+        currentTile = tile; // Store reference to the tile being edited
 
-        // Pre-fill the modal inputs with the current tile data
+        // Pre-fill modal fields with the current tile data
         editCommandInput.value = command;
         editDescriptionInput.value = description;
 
@@ -48,66 +50,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Show the modal
         editModal.style.display = 'block';
-
-        // Handle saving changes
-        document.getElementById('save-edit-btn').onclick = function () {
-    const newSectionName = editSectionSelect.value;
-    const newCommand = editCommandInput.value;
-    const newDescription = editDescriptionInput.value;
-
-    // Update the tile's content
-    tile.querySelector('strong').textContent = newCommand;
-    tile.querySelector('p:nth-of-type(2)').textContent = newDescription;
-
-    if (sectionName !== newSectionName) {
-        tile.dataset.section = newSectionName;
-        tile.querySelector('p:nth-of-type(1)').textContent = newSectionName;
-        tile.style.backgroundColor = sections[newSectionName].color;
-        configList.removeChild(tile);
-        bringTilesToTop(newSectionName);
-        configList.appendChild(tile);
     }
 
-    // Show feedback popup
-    showFeedback("Entry updated successfully!", "warning");
+    // Function to save the edits made in the modal
+    document.getElementById('save-edit-btn').onclick = function () {
+        const newSectionName = editSectionSelect.value;
+        const newCommand = editCommandInput.value;
+        const newDescription = editDescriptionInput.value;
 
-    // Hide the modal after saving
-    editModal.style.display = 'none';
+        // Update the tile's content
+        currentTile.querySelector('strong').textContent = newCommand;
+        currentTile.querySelector('p:nth-of-type(2)').textContent = newDescription;
 
-        };  
-    }
+        // If the section was changed, update the tile's section data and color
+        if (currentTile.dataset.section !== newSectionName) {
+            currentTile.dataset.section = newSectionName;
+            currentTile.querySelector('p:nth-of-type(1)').textContent = newSectionName;
+            currentTile.style.backgroundColor = sections[newSectionName].color;
+            configList.removeChild(currentTile);
+            bringTilesToTop(newSectionName);
+            configList.appendChild(currentTile);
+        }
 
-    // Function to show the feedback popup
-    function showFeedback(message, type) {
-    const feedbackPopup = document.getElementById('feedback-popup');
-    const feedbackMessage = document.getElementById('feedback-message');
-
-    // Set the feedback message
-    feedbackMessage.textContent = message;
-
-    // Set the class based on the type
-    feedbackPopup.className = 'feedback-popup show'; // Reset the class
-    if (type) {
-        feedbackPopup.classList.add(type); // Add the type class (success, warning, error)
-    }
-
-    // Show the popup
-    feedbackPopup.classList.add('show');
-
-    // Hide the popup after 3 seconds
-    setTimeout(() => {
-        feedbackPopup.classList.remove('show');
-    }, 3000);
-    }
+        // Close the modal after saving
+        editModal.style.display = 'none';
+    };
 
     // Close the modal when the user clicks the 'x'
     document.getElementById('closeEditModal').onclick = function () {
-        document.getElementById('editModal').style.display = 'none';
+        editModal.style.display = 'none';
     };
+
+    // Function to show the feedback popup
+    function showFeedback(message, type = 'success') {
+        const feedbackPopup = document.getElementById('feedback-popup');
+        const feedbackMessage = document.getElementById('feedback-message');
+
+        // Set the feedback message and style based on type
+        feedbackMessage.textContent = message;
+        feedbackPopup.className = 'feedback-popup show'; // Reset classes
+        if (type) feedbackPopup.classList.add(type); // Add feedback type (success, error, etc.)
+
+        // Auto-close after 3 seconds
+        setTimeout(() => {
+            feedbackPopup.classList.remove('show');
+        }, 3000);
+    }
 
     // Function to toggle the sidebar visibility
     function toggleSidebar() {
-        sidebar.classList.toggle('collapsed'); // Toggle sidebar visibility
+        sidebar.classList.toggle('collapsed');
         configList.classList.toggle('open');
     }
 
@@ -188,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { offset: Number.NEGATIVE_INFINITY }).element;
     }
 
-    // Modify the existing tile edit button functionality
+    // Function to create a new tile
     function createTile(sectionName, command, description, color) {
         const tile = document.createElement('div');
         tile.className = 'tile';
@@ -205,9 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Delete functionality
         tile.querySelector('.delete-button').addEventListener('click', () => {
-        configList.removeChild(tile);
-    // Show feedback popup
-        showFeedback("Entry deleted successfully!", "error");
+            configList.removeChild(tile);
+            showFeedback("Entry deleted successfully!", "error");
         });
 
         // Open the modal to edit the tile
@@ -276,9 +267,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Example function to load templates into the dropdown
+    function populateTemplateDropdown(templates) {
+        const templateSelect = document.getElementById('template-select');
+        templateSelect.innerHTML = ''; // Clear any existing options
+
+        // Add a default option
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Select a Template';
+        templateSelect.appendChild(defaultOption);
+
+        // Populate the dropdown with template options
+        templates.forEach(template => {
+            const option = document.createElement('option');
+            option.value = template.file; // Assuming `file` is the path to the template
+            option.textContent = template.name; // Assuming `name` is the display name
+            templateSelect.appendChild(option);
+        });
+    }
+
+    // Sample templates array (you can modify this based on your actual template data)
+    const templates = [
+        { name: 'Photoshop Shortcuts', file: 'test_sheets/psd-shortcuts.xlsx' },
+        { name: 'Cisco OS', file: 'test_sheets/cisco-test.xlsx' },
+        { name: 'Git Bash', file: 'test_sheets/Git-test.xlsx' },
+        { name: 'UNIX', file: 'test_sheets/unix_cli.xlsx' },
+        { name: 'Excel Shortcuts', file: 'test_sheets/excel-shortcuts.xlsx' },
+        { name: 'SQL', file: 'test_sheets/sql.xlsx' },
+    ];
+
+    // Event listener for template loading button
+    document.getElementById('load-template-btn').addEventListener('click', () => {
+        const templateSelect = document.getElementById('template-select');
+        const selectedTemplate = templateSelect.value;
+
+        if (selectedTemplate) {
+            loadTemplate(selectedTemplate); // This function should already exist in your code
+        } else {
+            showFeedback("Please select a template to load.", "warning");
+        }
+    });
+
     // Function to load template
     async function loadTemplate(templateFile) {
-        const userResponse = await showConfirmationDialog("Do you want to clear the current list or merge it with the selected template?");
+        const userResponse = await showConfirmationDialog("Do you want to clear the current sheet or merge it with the selected template?");
         
         if (userResponse) {
             configList.innerHTML = '';
@@ -295,13 +328,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error loading template:', error);
         }
     }
-
-    document.querySelectorAll('#template-List li').forEach(item => {
-        item.addEventListener('click', () => {
-            const templateFile = item.getAttribute('data-template');
-            loadTemplate(templateFile);
-        });
-    });
 
     // Function to show custom confirmation dialog
     function showConfirmationDialog(message) {
@@ -366,10 +392,10 @@ document.addEventListener('DOMContentLoaded', () => {
         descriptionInput.value = '';
 
         // Show feedback popup
-        showFeedback("New entry added successfully!");
+        showFeedback("New entry added successfully!", "success");
     });
 
-    downloadBtn.addEventListener('click', downloadXLSX);
+    // Event listener for XLSX file uploads
     uploadXlsx.addEventListener('change', (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -388,19 +414,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-     // Function to show the reload warning modal
-     function showReloadWarning() {
+    // Function to show the reload warning modal
+    function showReloadWarning() {
         reloadWarningModal.style.display = 'block';
         isWarningModalVisible = true; // Set the flag to true
     }
 
-    // Event listener for the leave button
+    // Event listener for the leave button (proceed with reload)
     document.getElementById('leave-button').addEventListener('click', () => {
         reloadWarningModal.style.display = 'none';
         window.location.reload(); // Proceed with the reload
     });
 
-    // Event listener for the stay button
+    // Event listener for the stay button (cancel reload)
     document.getElementById('stay-button').addEventListener('click', () => {
         reloadWarningModal.style.display = 'none'; // Close the modal
         isWarningModalVisible = false; // Reset the flag
@@ -416,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('beforeunload', (event) => {
         if (!isWarningModalVisible) {
             showReloadWarning(); // Show the custom modal
-            // This line is needed to trigger the built-in confirmation
+            // Prevent default action and show confirmation dialog
             event.preventDefault(); // Prevent default action
             event.returnValue = ''; // Chrome requires this
         }
@@ -438,4 +464,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Enable drag-and-drop on page load
     enableDragAndDrop();
+
+    // Populate the template dropdown on page load
+    populateTemplateDropdown(templates);
+
 });
