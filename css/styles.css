@@ -79,11 +79,6 @@ body {
 }
 
 
-#section-list {
-    list-style: none;
-    padding: 0;
-}
-
 .tile {
     background-color: #f1f1f1;
     padding: 15px;
@@ -94,7 +89,7 @@ body {
     max-height: fit-content;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
     position: relative;
-    cursor: move;
+    
 }
 
 .tile strong {
@@ -175,9 +170,9 @@ body {
 }
 
 .sidebar button, .custom-file-upload, #confirmBtn, #cancelBtn  {
-    padding: 20px;
+    padding: 10px;
     margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border-radius: 15px;
     border-color: antiquewhite;
     box-shadow: none;
@@ -185,11 +180,21 @@ body {
     font-size: 1em;
     color: antiquewhite;
     font-weight: 700;
-    transition: scale 0.2s ease;
+    transition: scale 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+#clear-sheet-btn {
+    margin-bottom: 40px;
+    background-color: #f03;
+    font-size: 1.2em;
+    font-weight: 700;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar button:hover, .custom-file-upload:hover, #confirmBtn:hover, #cancelBtn:hover  {
    scale: 1.05;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .header {
@@ -197,11 +202,16 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-top: 20px;
+}
+
+#hide-all-tiles-btn{
+    margin-top: 35px;
 }
 
 
 .sections {
-margin-top: 20px; /* Add margin to separate it from the section list */
+margin-top: 15px; /* Add margin to separate it from the section list */
 display: flex;
 flex-direction: column;
 flex-wrap: nowrap;
@@ -211,47 +221,53 @@ align-content: center;
    
 }
 
-#toggle-section-button {
+#toggle-section-button, #toggle-add-form-button, #toggle-down-up-button, #toggle-templates-button {
     display: inline-block;
     margin-left: 10px; /* Space between header and triangle */
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 10px solid #000; /* Color of the triangle */
-    transition: transform 0.3s ease; /* Smooth rotation */
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid #000; /* Color of the triangle */
+    transition: transform 2s ease,border-top 2s ease; /* Smooth rotation */
 }
 
-#toggle-section-button.collapsed {
+#toggle-section-button.collapsed,#toggle-add-form-button.collapsed,#toggle-down-up-button.collapsed,#toggle-templates-button.collapsed {
     transform: rotate(180deg); /* Rotate triangle when collapsed */
+    border-top: 15px solid #f03; /* Color of the triangle */
 }
-
 
 
 #section-list {
     list-style: none;
     width: calc(100% - 10px);
     padding: 0;
-    transition: max-height 0.3s ease, padding 0.3s ease; /* Added padding transition */
+    transition: max-height 0.3s ease, padding 0.3s ease, font-size 0.3s ease, box-shadow 0.3s ease; /* Added padding transition */
     overflow: hidden;
 }
 #section-list li {
     list-style: none;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 1px;;
+    margin-bottom: 15px;
     cursor: pointer;
-    background-color: #f1f1f1;
     border-radius: 5px;
     transition: transform 0.3s ease, background-color 0.3s ease, font-size 0.3s ease, font-weight 0.3s ease;
-    font-size: 16px; /* Default font size */
+    font-size: 14px; /* Default font size */
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+#section-list > li > span {
+    margin-left: 20px;
 }
 
 /* Hover effect: Enlarging the section on hover */
 #section-list li:hover {
     transform: scale(0.9); /* Scale up by 10% */
     background-color: #e0e0e0; /* Change background on hover */
-    font-weight: 800;
-    font-size: 18px;
+    
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -262,7 +278,44 @@ align-content: center;
     border: 1px solid #ccc; /* A soft border that blends with the UI */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
     transition: background-color 0.3s ease; /* Smooth transition on hover */
+    font-size: larger;
 }
+
+#section-list > li > button {
+    background-color: rgba(214, 174, 174, 0.563); 
+    box-shadow: #000000 ;/* No background */
+    margin-right: 10px;
+    cursor: pointer; /* Pointer cursor */
+    font-size: 20px;
+    padding:0px;
+    
+    
+}
+
+#section-list > li > button:active {
+    background-color: rgba(214, 174, 174, 0.563); 
+    box-shadow: #fae79f ;/* No background */
+    margin-right: 10px;
+    cursor: pointer; /* Pointer cursor */
+    font-size: 20px;
+    padding:0px;
+    
+    
+}
+
+
+ #newSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+
+ #newSection.collapsed {
+    display: none;
+    
+ }
+
 
 /* ADD ENTRY SECTION */
 
@@ -287,6 +340,8 @@ align-content: center;
     max-height: 300px; /* Set this to a value that allows the form to be fully visible */
     padding: 10px; /* Add padding when expanded */
 }
+
+
 
 
 #section-name, #command {
@@ -330,6 +385,19 @@ align-content: center;
     align-content: center;
 }
 
+#down-up-buttons {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+     
+}
+
+#down-up-buttons.collapsed{
+    display: none;
+}
+
 #upload-xlsx{
   display: none;
 
@@ -349,20 +417,32 @@ align-content: center;
    
 }
 
+#template-form {
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
 
-
-.collapsed {
+#template-form.collapsed {
     display: none;
 }
 
+.collapsed {
+    display: none ;
+}
+
 .open {
-    margin-left: 300px;
+    margin-left: calc(0vw + 270px);
 }
 
 
 .hidden {
 transform: translateX(-100%);
 }
+
 
 .config-list{
     display: flex;
@@ -490,5 +570,13 @@ font-weight: 900;
 
 h2{
     font-weight: 400;
-    font-size: 1.8em;
+    font-size: 1.3em;
+    letter-spacing: 3px;
+}
+
+
+@media screen and (max-width:800px) {
+    .open {
+        margin-left: calc(0vw + 270px);
+    }
 }

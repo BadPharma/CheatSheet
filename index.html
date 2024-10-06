@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/styles.css"> <!-- Your CSS file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 
-    <title>Cheat Sheet App</title>
+    <title>CheatSheet V0.2</title>
 </head>
 <body>
     
@@ -15,46 +15,57 @@
         
         <div id="sidebar" class="sidebar">
             <div class ="header">
-                <h1>CheatSheet v0.1</h1>
-                <strong>BadPharma </strong>
+                <h1>CheatSheet V0.2</h1>
+                <strong>A BadPharma Project</strong>
                 </div>
 
-                <button id="clear-sheet-btn" style="margin-bottom: 10px;">Reset Sheet</button>
+                
+                <button id="hide-all-tiles-btn">Hide All Tiles</button>
 
         <div class="sections">
-            <h2 id="section-header">Sections  <span id="toggle-section-button" class="triangle-down"></span> </h2> <!-- Clickable header to toggle -->
+            <h2 id="section-header">Sections  <span id="toggle-section-button" class="triangle-down"></span> </h2> 
             <ul id="section-list"></ul>
+                <div id="newSection">
+                <input type="text" id="section-name" placeholder="New Section Name">
+                <input type="color" id="section-color">
+                <button id="add-section">Add Section</button>    
+                </div>
             
-            <input type="text" id="section-name" placeholder="New Section Name">
-            <input type="color" id="section-color">
-            
-            <button id="add-section">Add Section</button>
          </div>
 
         <div class="add-entry-section">
-        <h2>Add Entry</h2>
-        <select id="section-select"></select>
-        <input type="text" id="command" placeholder="Command">
-        <textarea id="description" placeholder="Description" required rows="2"></textarea>
-        <button id="add-entry">Add Entry</button>
+         <h2 id="add-entry-header">Add Entry<span id="toggle-add-form-button" class="triangle-down"></span> </h2> 
+                <div id="form-inputs">
+                <select id="section-select"></select>
+                <input type="text" id="command" placeholder="Command">
+                <textarea id="description" placeholder="Description" required rows="2"></textarea>
+                 </div>
+                 <button id="add-entry">Add Entry</button>
         </div>
 
         <div class="down-up-section">
-        <h2> Download/Upload</h2>
-        <button id="download-btn">Download XLSX</button>
-        <label for="upload-xlsx" class="custom-file-upload">Upload XLSX</label>
-        <input type="file" id="upload-xlsx" accept=".xlsx"/>
+        <h2 id="down-up-header"> Save / Upload <span id="toggle-down-up-button" class="triangle-down"></span> </h2> 
+        
+            <div id="down-up-buttons">
+            <button id="download-btn">Download XLSX</button>
+            <label for="upload-xlsx" class="custom-file-upload">Upload XLSX</label>
+            <input type="file" id="upload-xlsx" accept=".xlsx"/>
+            </div>  
         </div>
 
         <div class="templates-section">
-            <h2>Templates</h2>
+            <h2 id="templates-header"> Templates <span id="toggle-templates-button" class="triangle-down"></span> </h2> 
+            <div id="template-form">
             <select id="template-select">
                 
                 <!-- Options will be populated dynamically here -->
             </select>
             <button id="load-template-btn">Load Template</button>
+            </div>  
+        
         </div>
     
+        <button id="clear-sheet-btn">RESET SHEET</button>
 
         </div>
 
