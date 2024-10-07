@@ -26,7 +26,7 @@
             <h2 id="section-header">Sections  <span id="toggle-section-button" class="triangle-down"></span> </h2> 
             <ul id="section-list"></ul>
                 <div id="newSection">
-                <input type="text" id="section-name" placeholder="New Section Name">
+                <input type="text" id="section-name" placeholder="New Section Name" maxlength="30">
                 <input type="color" id="section-color">
                 <button id="add-section">Add Section</button>    
                 </div>
@@ -37,8 +37,8 @@
          <h2 id="add-entry-header">Add Entry<span id="toggle-add-form-button" class="triangle-down"></span> </h2> 
                 <div id="form-inputs">
                 <select id="section-select"></select>
-                <input type="text" id="command" placeholder="Command">
-                <textarea id="description" placeholder="Description" required rows="2"></textarea>
+                <input type="text" id="command" placeholder="Command" maxlength="100">
+                <textarea id="description" placeholder="Description" required rows="2" maxlength="150"></textarea>
                  </div>
                  <button id="add-entry">Add Entry</button>
         </div>
@@ -93,8 +93,8 @@
         <span id="closeEditModal" class="close">&times;</span>
         <h2>Edit Tile</h2>
         <select id="edit-section-select"></select>
-        <input type="text" id="edit-command" placeholder="Command">
-        <textarea id="edit-description" placeholder="Description"></textarea>
+        <input type="text" id="edit-command" placeholder="Command" maxlength="100">
+        <textarea id="edit-description" placeholder="Description" maxlength="150"></textarea>
         <button id="save-edit-btn">Save Changes</button>
     </div>
 </div>

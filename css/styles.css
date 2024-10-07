@@ -229,7 +229,7 @@ align-content: center;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 15px solid #000; /* Color of the triangle */
-    transition: transform 2s ease,border-top 2s ease; /* Smooth rotation */
+    transition: transform 0.5s ease,border-top 2s ease; /* Smooth rotation */
 }
 
 #toggle-section-button.collapsed,#toggle-add-form-button.collapsed,#toggle-down-up-button.collapsed,#toggle-templates-button.collapsed {
@@ -244,6 +244,7 @@ align-content: center;
     padding: 0;
     transition: max-height 0.3s ease, padding 0.3s ease, font-size 0.3s ease, box-shadow 0.3s ease; /* Added padding transition */
     overflow: hidden;
+    max-width: 250px;
 }
 #section-list li {
     list-style: none;
@@ -255,10 +256,13 @@ align-content: center;
     font-size: 14px; /* Default font size */
     font-weight: 400;
     letter-spacing: 2px;
+    word-wrap: break-word;
+    
 }
 
 #section-list > li > span {
     margin-left: 20px;
+    max-width: 180px;
 }
 
 /* Hover effect: Enlarging the section on hover */
@@ -326,6 +330,11 @@ align-content: center;
     padding: 0; /* No padding when collapsed */
 }
 
+#form-inputs {
+
+width: 100%;
+}
+
 .add-entry-section {
     margin-top: 10px; /* Add margin to separate it from the section list */
     display: flex;
@@ -334,6 +343,7 @@ align-content: center;
     align-items: center;
     justify-content: center;
     align-content: center;
+    width: 100%;
 }
 
 .add-entry-section.expanded #add-entry-form {
@@ -366,12 +376,16 @@ align-content: center;
 
 #description{
     width: calc(100% - 20px); /* Full width with some padding */
+    max-width: calc(100% - 20px);
+    min-width: calc(100% - 20px);
+    max-height:120px ;
     padding: 10px; /* Padding inside input fields */
     margin-bottom: 10px; /* Space between input fields */
     border: 1px solid #ccc; /* Light border */
     border-radius: 5px; /* Rounded corners */
     font-size: 1em; /* Font size */
     font-family: Aeonik;
+    text-wrap: break-word;
 }
 
 
@@ -574,6 +588,9 @@ h2{
     letter-spacing: 3px;
 }
 
+.tile-header{
+    margin-top: 18px !important;
+}
 
 @media screen and (max-width:800px) {
     .open {

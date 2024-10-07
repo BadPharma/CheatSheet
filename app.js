@@ -37,34 +37,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const templates = [
         {
+            category: 'Audio Editing',
+            templates: [
+                { name: 'Ableton Live 12 ', file: 'test_sheets/audio/al12-shortcuts-macosx.xlsx' },
+                { name: 'Ableton Live 12', file: 'test_sheets/audio/al12-shortcuts-windows.xlsx' }
+            ]
+        },
+        {
             category: 'Design Tools',
             templates: [
-                { name: 'Photoshop Shortcuts', file: 'test_sheets/psd-shortcuts.xlsx' },
-                { name: 'Canva Shortcuts', file: 'test_sheets/canva.xlsx' },
-                { name: 'Illustrator Shortcuts', file: 'test_sheets/ai-shortcuts.xlsx' }
+                { name: 'Photoshop Shortcuts', file: 'test_sheets/design/psd-shortcuts-windows.xlsx' },
+                { name: 'Photoshop Shortcuts', file: 'test_sheets/design/psd-shortcuts-macosx.xlsx' },
+                { name: 'Canva Shortcuts', file: 'test_sheets/design/canva.-windows.xlsx' },
+                { name: 'Illustrator Shortcuts', file: 'test_sheets/design/ai-shortcuts-windows.xlsx' },
+                { name: 'Illustrator Shortcuts', file: 'test_sheets/design/ai-shortcuts-macosx.xlsx' },
+                { name: 'Lightroom Shortcuts', file: 'test_sheets/design/lightroom-macosx.xlsx' },
+                { name: 'Lightroom Shortcuts', file: 'test_sheets/design/lightroom-windows.xlsx' }
+            ]
+        },
+        {
+            category: 'Video Editing',
+            templates: [
+                { name: 'Davinci Resolve', file: 'test_sheets/video/dvrosx-shortcuts-macos.xlsx' },
+                { name: 'Davinci Resolve ', file: 'test_sheets/video/dvr-shortcuts-windows.xlsx' },
+                { name: 'Premiere Pro', file: 'test_sheets/video/premierepro-shortcuts-macosx.xlsx' },
+                { name: 'Premiere Pro', file: 'test_sheets/video/premierepro-shortcuts-windows.xlsx'},  
             ]
         },
         {
             category: 'Developer Tools',
             templates: [
-                { name: 'Git Bash', file: 'test_sheets/Git-test.xlsx' },
-                { name: 'SQL', file: 'test_sheets/sql.xlsx' }
+                { name: 'Git', file: 'test_sheets/devtools/Git-test.xlsx' },
+                { name: 'SQL', file: 'test_sheets/devtools/sql.xlsx' }
             ]
         },
         {
             category: 'Operating Systems',
             templates: [
-                { name: 'Cisco OS', file: 'test_sheets/cisco-test.xlsx' },
-                { name: 'UNIX', file: 'test_sheets/unix_cli.xlsx' }
+                { name: 'Cisco OS', file: 'test_sheets/os/cisco-test.xlsx' },
+                { name: 'UNIX', file: 'test_sheets/os/unix_cli.xlsx' }
             ]
         },
         {
             category: 'MS Office',
             templates: [
-                { name: 'Excel Shortcuts', file: 'test_sheets/excel-shortcuts.xlsx' },
-                { name: 'Excel Functions', file: 'test_sheets/excel-functions.xlsx' }
+                { name: 'Excel Shortcuts', file: 'test_sheets/microsoft/excel-shortcuts-windows.xlsx' },
+                { name: 'Excel Functions', file: 'test_sheets/microsoft/excel-functions-windows.xlsx' }
             ]
         }
+        
     ];
 
 
@@ -285,13 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    
-    
-    
-
-    
-    
-
     function toggleSectionVisibility(sectionName, eyeIcon) {
         const tiles = Array.from(document.querySelectorAll('.tile'));
         const sectionTiles = tiles.filter(tile => tile.dataset.section === sectionName);
@@ -334,9 +348,9 @@ document.addEventListener('DOMContentLoaded', () => {
         tile.style.backgroundColor = color;
     
         tile.innerHTML = `
-            <p>${sectionName}</p>
+            <p class="tile-header">${sectionName}</p>
             <strong>${command}</strong>
-            <p>${description}</p>
+            <p class="description-text">${description}</p>
             <button class="edit-button">✏️</button>
             <button class="delete-button">🗑️</button>
         `;
@@ -396,6 +410,25 @@ document.addEventListener('DOMContentLoaded', () => {
         reader.readAsArrayBuffer(file);
     }
 
+    async function loadTemplate(templateFile) {
+        const userResponse = await showConfirmationDialog("Do you want to clear the current sheet or merge it with the selected template?");
+        
+        if (userResponse) {
+            configList.innerHTML = '';
+            sectionList.innerHTML = '';
+            sections = {};
+        }
+
+        try {
+            const response = await fetch(templateFile);
+            const data = await response.arrayBuffer();
+            const workbook = XLSX.read(data, { type: 'array' });
+            processWorkbook(workbook);
+        } catch (error) {
+            console.error('Error loading template:', error);
+        }
+    }
+
     // Function to process the uploaded workbook
     function processWorkbook(workbook) {
         const firstSheetName = workbook.SheetNames[0];
@@ -427,24 +460,49 @@ document.addEventListener('DOMContentLoaded', () => {
         defaultOption.textContent = 'Select a Template';
         templateSelect.appendChild(defaultOption);
     
-        // Loop through each category and its templates
-        templateGroups.forEach(group => {
-            // Create an optgroup for each category
+        // Helper function to add subcategory optgroup
+        function createOptgroupWithSubcategory(templates, label) {
             const optgroup = document.createElement('optgroup');
-            optgroup.label = group.category; // Set the label as the category name
-    
-            // Add each template as an option under the optgroup
-            group.templates.forEach(template => {
+            optgroup.label = label; // Set the label as the subcategory (Mac/Windows)
+            
+            templates.forEach(template => {
                 const option = document.createElement('option');
                 option.value = template.file;
                 option.textContent = template.name;
                 optgroup.appendChild(option);
             });
     
-            // Append the optgroup to the select element
-            templateSelect.appendChild(optgroup);
+            return optgroup;
+        }
+    
+        // Loop through each category and its templates
+        templateGroups.forEach(group => {
+            const windowsTemplates = group.templates.filter(template => template.file.toLowerCase().includes('windows'));
+            const macTemplates = group.templates.filter(template => template.file.toLowerCase().includes('mac'));
+            const otherTemplates = group.templates.filter(template => !template.file.toLowerCase().includes('windows') && !template.file.toLowerCase().includes('mac'));
+    
+            // If there are Windows templates, create an optgroup for Windows
+            if (windowsTemplates.length > 0) {
+                const windowsOptgroup = createOptgroupWithSubcategory(windowsTemplates, `${group.category} - Windows`);
+                templateSelect.appendChild(windowsOptgroup);
+            }
+    
+            // If there are Mac templates, create an optgroup for Mac
+            if (macTemplates.length > 0) {
+                const macOptgroup = createOptgroupWithSubcategory(macTemplates, `${group.category} - MAC OSX`);
+                templateSelect.appendChild(macOptgroup);
+            }
+    
+            // If there are templates that don't belong to Windows or Mac, just list them under the main category
+            if (otherTemplates.length > 0) {
+                const otherOptgroup = createOptgroupWithSubcategory(otherTemplates, group.category);
+                templateSelect.appendChild(otherOptgroup);
+            }
         });
     }
+    
+    
+
 
     document.getElementById('load-template-btn').addEventListener('click', () => {
         const templateSelect = document.getElementById('template-select');
@@ -456,27 +514,6 @@ document.addEventListener('DOMContentLoaded', () => {
             showFeedback("Please select a template to load.", "warning");
         }
     });
-
-    // Function to load template
-    async function loadTemplate(templateFile) {
-        const userResponse = await showConfirmationDialog("Do you want to clear the current sheet or merge it with the selected template?");
-        
-        if (userResponse) {
-            configList.innerHTML = '';
-            sectionList.innerHTML = '';
-            sections = {};
-        }
-
-        try {
-            const response = await fetch(templateFile);
-            const data = await response.arrayBuffer();
-            const workbook = XLSX.read(data, { type: 'array' });
-            processWorkbook(workbook);
-        } catch (error) {
-            console.error('Error loading template:', error);
-        }
-    }
-
     // Function to show custom confirmation dialog
     function showConfirmationDialog(message) {
         return new Promise((resolve) => {
