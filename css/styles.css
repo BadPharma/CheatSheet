@@ -523,6 +523,14 @@ transform: translateX(-100%);
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    max-height: 150px;
+    
+}
+
+#edit-description {
+    max-height: 150px;
+    max-width: calc(100% - 19px);
+    min-width: none;
 }
 
 /* Feedback Popup Styles */

@@ -82,7 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'MS Office',
             templates: [
                 { name: 'Excel Shortcuts', file: 'test_sheets/microsoft/excel-shortcuts-windows.xlsx' },
-                { name: 'Excel Functions', file: 'test_sheets/microsoft/excel-functions-windows.xlsx' }
+                { name: 'Excel Functions', file: 'test_sheets/microsoft/excel-functions-windows.xlsx' },
+                { name: 'Word Shortcuts', file: 'test_sheets/microsoft/word-shortcuts-windows..xlsx' }
             ]
         }
         
@@ -589,25 +590,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show feedback popup
     showFeedback("New entry added successfully!", "success");
-});
+    });
 
 
-uploadXlsx.addEventListener('change', (event) => {
-    const file = event.target.files[0];
+    uploadXlsx.addEventListener('change', (event) => {
+        const file = event.target.files[0];
 
-    if (!file) {
-        showFeedback("No file selected. Please upload an XLSX file.", "error");
-        return;
-    }
+            if (!file) {
+                showFeedback("No file selected. Please upload an XLSX file.", "error");
+            return;
+            }
 
     // Ensure the uploaded file is of type .xlsx
-    if (!file.name.endsWith('.xlsx')) {
-        showFeedback("Invalid file type. Please upload an XLSX file.", "error");
-        return;
-    }
+            if (!file.name.endsWith('.xlsx')) {
+                showFeedback("Invalid file type. Please upload an XLSX file.", "error");
+             return;
+            }
 
-    handleXLSXUpload(file); // Process the file
-});
+        handleXLSXUpload(file); // Process the file
+    });
 
     // Populate the section dropdown
     function populateSectionDropdown() {
