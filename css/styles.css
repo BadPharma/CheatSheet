@@ -101,8 +101,9 @@ body {
 .tile p {
     font-size: 14px;
     margin: 5px 0;
-    transition: transform 0.2s ease; /* Smooth transition for the tile */
+    transition: transform 0.2s ease, margin 0.4s ease-in; /* Smooth transition for the tile */
 }
+
 
 
 /* Delete button styles */
@@ -114,11 +115,11 @@ body {
     border: none;
     cursor: pointer;
     font-size: 13px;
-    color: #ff0000;
     z-index: 1; /* Ensure the button is above other elements */
+    
+    
 }
 
-/* Edit button styles */
 .tile .edit-button {
     position: absolute; /* Absolute positioning */
     top: 10px; /* Adjusted to be closer to the top */
@@ -127,11 +128,75 @@ body {
     border: none;
     cursor: pointer;
     font-size: 13px;
-    color: #ff0000;
     z-index: 1; /* Ensure the button is above other elements */
+  
+}
+
+/* Hide the buttons by default */
+.tile .delete-button,
+.tile .edit-button {
+    visibility: hidden; /* Hide buttons */
+    opacity: 0; /* Optional: Make them fully transparent */
+    transition: visibility 0.9s, opacity 0.7s ease, fill 0.9s ease; /* Smooth transition */
+}
+
+/* Show the buttons when the tile is hovered */
+.tile:hover .delete-button,
+.tile:hover .edit-button {
+    visibility: visible; /* Show buttons */
+    opacity: 1; /* Make them visible */
 }
 
 
+.tile .delete-button:hover {
+    fill: red;
+}
+
+
+.edit-button:hover {
+    animation: pencil 0.6s ease-in-out infinite;
+    fill: #329dd3;
+   
+}
+/* trashcan-animations */
+
+.cls-1, .cls-3 {
+    transform-origin: 100px 10px; /* Default: center of the SVG */
+}
+
+/* Animation to open the trash can on user hover */
+.tile .delete-button:hover .cls-1, .tile .delete-button:hover .cls-3 {
+    animation: delete 0.6s ease;
+   }   
+
+@keyframes delete {
+    0% {
+        transform: scale(1);
+        
+    }
+    50% {   
+        transform: scale(1.2);
+        rotate: 25deg;          
+    }
+    100% {
+        transform: scale(1);
+    }
+}   
+
+/* Edit button styles */
+
+
+@keyframes pencil {
+    0% {
+        rotate: 0deg;
+    }
+    50% {
+        rotate: 10deg;
+    }
+    100% {
+        rotate: 0deg;
+    }
+}
 
 
  /* Sidebar styles */
@@ -274,10 +339,43 @@ align-content: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.color-picker {
+    display: inline-block; /* Align with other elements */
+    position: relative; /* Allow positioning of child elements */
+}
+
+.color-picker input[type="color"] {
+    width: 40px; /* Hide the actual input */
+    height: 0; /* Hide the actual input */
+    opacity: 0; /* Make it invisible but still functional */
+    position: absolute; /* Position it so it's still clickable */
+}
+
+.color-display {
+    width: 40px; /* Custom width */
+    height: 40px; /* Custom height */
+  
+    border-radius: 5px; /* Optional: Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+   
+    display: flex;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.color-display:hover {
+    scale: 1.1; /* Darker border on hover */
+}
+
+/* Change border color on hover */
+.color-picker:hover .color-display {
+    border-color: #888; /* Darker border on hover */
+}
+
 
 #section-color{
     border-radius: 8px; /* Adjusted to be more subtle */
-    background-color: #f0f0f0; /* Light background to match a clean UI */
+    background-color: #de4848; /* Light background to match a clean UI */
     color: #333; /* Dark text for readability */
     border: 1px solid #ccc; /* A soft border that blends with the UI */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
@@ -596,7 +694,7 @@ h2{
     letter-spacing: 3px;
 }
 
-.tile-header{
+.tile:hover .tile-header{
     margin-top: 18px !important;
 }
 
