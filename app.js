@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let tourRunning = true; // Track whether the tour is currently running
 
     // Check if the tour has already been completed
-    //if (localStorage.getItem('tourCompleted')) {
-    //    tourRunning = false; // Prevent the tour from running if completed
-    //}
+    if (localStorage.getItem('tourCompleted')) {
+        tourRunning = false; // Prevent the tour from running if completed
+    }
 
 
 
