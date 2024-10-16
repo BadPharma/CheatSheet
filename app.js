@@ -34,8 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
     let modalResponse = false;
     let sections = {}; // Store sections with their colors and entries
     let currentTile = null; // Reference to the currently edited tile
-     
     let draggedSectionName = null; // Variable to store the name of the dragged section
+
+    
+    const tooltip = document.createElement('div');
+    tooltip.className = 'tooltip';
+    document.body.appendChild(tooltip); // Append tooltip to the body
+
+    const elements = document.querySelectorAll('[data-step]');
+    let currentStep = 1;
+    let tourRunning = true; // Track whether the tour is currently running
+
+    // Check if the tour has already been completed
+    //if (localStorage.getItem('tourCompleted')) {
+    //    tourRunning = false; // Prevent the tour from running if completed
+    //}
+
+
+
 
     const templates = [
         {
@@ -91,6 +107,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
     ];
+
+
+          // Function to show tooltip
+    function showTooltip(element) {
+        const introText = element.getAttribute('data-intro');
+        const rect = element.getBoundingClientRect();
+        const sidebarWidth = sidebar.offsetWidth;
+
+        tooltip.innerHTML = introText;
+        tooltip.style.display = 'block';
+        tooltip.style.left = `${sidebarWidth + 20}px`; // Position to the right of sidebar
+        tooltip.style.top = `${rect.top + window.scrollY}px`; // Align vertically with the element
+    }
+
+    // Function to highlight the current step
+    function highlightElement(step) {
+        elements.forEach(el => el.classList.remove('highlight')); // Remove previous highlights
+        const currentElement = document.querySelector(`[data-step="${step + 1}"]`);
+        if (currentElement) {
+            currentElement.classList.add('highlight'); // Highlight current element
+            showTooltip(currentElement); // Show tooltip
+        }
+    }
+
+    // Function to proceed to the next step
+    function nextStep() {
+        if (tourRunning && currentStep < elements.length) {
+            highlightElement(currentStep);
+            currentStep++;
+        } else if (tourRunning && currentStep >= elements.length) {
+            endTour(); // End the tour when all steps are completed
+        }
+    }
+
+    // Function to end the tour
+    function endTour() {
+        tooltip.style.display = 'none'; // Hide tooltip
+        elements.forEach(el => el.classList.remove('highlight')); // Remove all highlights
+        localStorage.setItem('tourCompleted', 'true'); // Mark tour as completed
+        tourRunning = false; // Stop the tour from running again
+        currentStep = 0; // Reset steps for future use (if needed)
+    }
+
+    // Start the tour on page load, only if it hasn't already been completed
+    if (tourRunning) {
+        nextStep();
+    }
+
+    // Click event to proceed to the next step
+    document.addEventListener('click', () => {
+        if (tourRunning) {
+            tooltip.style.display = 'none'; // Hide tooltip
+            nextStep(); // Go to the next step
+        }
+    });
+
+    // Stop tour when the user presses Enter
+    document.addEventListener('keydown', (e) => {
+        if (tourRunning && e.key === 'Escape' ) {
+            endTour(); // End the tour when Enter is pressed
+        }
+    });
 
 
     // Function to hide all tiles and gray out the eye buttons
@@ -783,4 +861,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Populate the template dropdown on page load
     populateTemplateDropdown(templates);
+
+    
 });
