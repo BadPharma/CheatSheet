@@ -396,8 +396,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const trashSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     trashSvg.setAttribute("viewBox", "-20 -20 117.16 123.49");
-    trashSvg.setAttribute("width", "17");
-    trashSvg.setAttribute("height", "17");
+    trashSvg.setAttribute("width", "25");
+    trashSvg.setAttribute("height", "25");
 
     // Create the rectangle part of the trash can
     const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -433,9 +433,9 @@ document.addEventListener('DOMContentLoaded', () => {
     pencilButton.style.cursor = 'pointer';
 
     const pencilSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    pencilSvg.setAttribute("viewBox", "0 0 93.79 80.63");
-    pencilSvg.setAttribute("width", "16");
-    pencilSvg.setAttribute("height", "16");
+    pencilSvg.setAttribute("viewBox", "-20 -20 117.16 123.49");
+    pencilSvg.setAttribute("width", "25");
+    pencilSvg.setAttribute("height", "25");
 
     const pencilPath1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
     pencilPath1.setAttribute("class", "cls-1");

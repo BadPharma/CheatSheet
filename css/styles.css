@@ -123,7 +123,7 @@ body {
 .tile .edit-button {
     position: absolute; /* Absolute positioning */
     top: 10px; /* Adjusted to be closer to the top */
-    right: 35px; /* Position it to the left of the delete button */
+    right: 50px; /* Position it to the left of the delete button */
     background: none;
     border: none;
     cursor: pointer;
