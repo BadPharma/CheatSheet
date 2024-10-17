@@ -257,11 +257,11 @@ body, html {
 }
 
 #hide-all-tiles-btn, #add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn,  .custom-file-upload, #confirmBtn, #cancelBtn, #save-edit-btn, #saveSectionTitleBtn  {
-    padding: 10px;
+    padding: 8px;
     margin-top: 15px;
     margin-bottom: 10px;
     border-radius: 15px;
-    border-color: antiquewhite;
+    border-color: rgba(160, 143, 143, 0.225);
     box-shadow: none;
     background-color: #329dd3;
     font-size: 1em;

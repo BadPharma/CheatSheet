@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const colorInput = document.getElementById('section-color');
     const colorDisplay = document.querySelector('.color-display');
     let isWarningModalVisible = false; // Flag to track modal visibility
-    let modalResponse = false;
     let sections = {}; // Store sections with their colors and entries
     let currentTile = null; // Reference to the currently edited tile
     let draggedSectionName = null; // Variable to store the name of the dragged section
@@ -87,7 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'Developer Tools',
             templates: [
                 { name: 'Git', file: 'test_sheets/devtools/Git-test.xlsx' },
-                { name: 'SQL', file: 'test_sheets/devtools/sql.xlsx' }
+                { name: 'SQL', file: 'test_sheets/devtools/sql.xlsx' },
+                { name: 'CSS', file: 'test_sheets/devtools/css.xlsx' },
             ]
         },
         {
@@ -706,22 +706,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to handle XLSX upload
     async function handleXLSXUpload(file) {
+        // Validate file type (only .xlsx allowed)
+        if (!file.name.endsWith('.xlsx')) {
+            showFeedback("Invalid file type. Please upload an XLSX file.", "error");
+            return;
+        }
+    
+        // Limit file size (e.g., 5MB limit)
+        const MAX_FILE_SIZE_MB = 5;
+        if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+            showFeedback(`File is too large. Maximum allowed size is ${MAX_FILE_SIZE_MB}MB.`, "error");
+            return;
+        }
+    
+        // Show confirmation dialog to user
         const userResponse = await showConfirmationDialog("Do you want to clear the current list or merge it with the uploaded file?");
         
         if (userResponse) {
+            // Clear existing list if user confirms
             configList.innerHTML = '';
             sectionList.innerHTML = '';
             sections = {};
         }
-
+    
+        // Read the file securely
         const reader = new FileReader();
-        reader.onload = (event) => {
-            const data = new Uint8Array(event.target.result);
-            const workbook = XLSX.read(data, { type: 'array' });
-            processWorkbook(workbook);
+        
+        reader.onerror = () => {
+            showFeedback("Error reading the file. Please try again.", "error");
         };
+    
+        reader.onload = (event) => {
+            try {
+                const data = new Uint8Array(event.target.result);
+                const workbook = XLSX.read(data, { type: 'array' });
+    
+                // Validate workbook structure (optional, depends on your file format)
+                if (!workbook || !workbook.SheetNames.length) {
+                    throw new Error("Invalid XLSX structure.");
+                }
+    
+                processWorkbook(workbook);  // Process the workbook data
+            } catch (error) {
+                showFeedback(`Failed to process file: ${error.message}`, "error");
+            }
+        };
+    
+        // Safely read the file as an ArrayBuffer
         reader.readAsArrayBuffer(file);
     }
+    
 
     async function loadTemplate(templateFile) {
         const userResponse = await showConfirmationDialog("Do you want to clear the current sheet or merge it with the selected template?");
