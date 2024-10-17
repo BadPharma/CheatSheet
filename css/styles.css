@@ -256,7 +256,7 @@ body, html {
     z-index: 100;
 }
 
-.sidebar button, .custom-file-upload, #confirmBtn, #cancelBtn  {
+#hide-all-tiles-btn, #add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn,  .custom-file-upload, #confirmBtn, #cancelBtn, #save-edit-btn, #saveSectionTitleBtn  {
     padding: 10px;
     margin-top: 15px;
     margin-bottom: 10px;
@@ -279,7 +279,7 @@ body, html {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.sidebar button:hover, .custom-file-upload:hover, #confirmBtn:hover, #cancelBtn:hover  {
+#hide-all-tiles-btn, #add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn, .custom-file-upload:hover, #confirmBtn:hover, #cancelBtn:hover  {
    scale: 1.05;
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -332,15 +332,17 @@ align-content: center;
     transition: max-height 0.3s ease, padding 0.3s ease, font-size 0.3s ease, box-shadow 0.3s ease; /* Added padding transition */
     overflow: hidden;
     max-width: 250px;
+    border-radius: 5px;
 }
+
 #section-list li {
     list-style: none;
-    padding: 1px;;
+    padding: 10px;;
     margin-bottom: 15px;
     cursor: pointer;
     border-radius: 5px;
     transition: transform 0.3s ease, background-color 0.3s ease, font-size 0.3s ease, font-weight 0.3s ease;
-    font-size: 14px; /* Default font size */
+    font-size: 13px; /* Default font size */
     font-weight: 400;
     letter-spacing: 2px;
     word-wrap: break-word;
@@ -350,6 +352,7 @@ align-content: center;
 #section-list > li > span {
     margin-left: 20px;
     max-width: 180px;
+    
 }
 
 /* Hover effect: Enlarging the section on hover */
@@ -360,6 +363,31 @@ align-content: center;
     font-size: 14px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* Initially hide the buttons */
+li .eye-button, li .edit-button {
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  /* Show buttons on hover over the list item */
+  li:hover .eye-button, li:hover .edit-button {
+    opacity: 1;
+  }
+
+@keyframes wink {
+    0%, 100% {
+      transform: scaleY(1);
+    }
+    50% {
+      transform: scaleY(0.1);
+    }
+  }
+  
+  .eye-button svg:hover path {
+    animation: wink 0.5s ease-in-out 2; /* 0.5s wink animation */
+    transform-origin: center; /* Set the transform origin to the center of the path */
+  }
 
 .color-picker {
     display: inline-block; /* Align with other elements */

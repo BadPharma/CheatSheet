@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Function to hide all tiles and gray out the eye buttons
-        function hideAllTiles() {
+    function hideAllTiles() {
             const tiles = document.querySelectorAll('.tile'); // Select all tiles
             const eyeButtons = document.querySelectorAll('.eye-button'); // Select all eye buttons
             
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             showFeedback("All tiles hidden!", "info"); // Optional feedback
-        }
+       }
 
 // Event listener for the "Hide All Tiles" button
     document.getElementById('hide-all-tiles-btn').addEventListener('click', hideAllTiles);
@@ -318,57 +318,191 @@ document.addEventListener('DOMContentLoaded', () => {
         li.style.display = 'flex';
         li.style.justifyContent = 'space-between';
         li.style.alignItems = 'center';
-    
+        
+        // Create a span for the section name
         const sectionNameSpan = document.createElement('span');
         sectionNameSpan.textContent = sectionName;
     
+        // Create a container to hold the section title
+        const titleContainer = document.createElement('div');
+        titleContainer.className = 'title-container';
+        titleContainer.style.display = 'flex';
+        titleContainer.style.alignItems = 'center';
+        titleContainer.style.marginLeft = '18px';
+        
+        // Append the section name to the title container
+        titleContainer.appendChild(sectionNameSpan);
+        
+        // Create a container for the action buttons (eye and pencil)
+        const actionsContainer = document.createElement('div');
+        actionsContainer.style.display = 'flex';
+        actionsContainer.style.alignItems = 'center';
+        
+        // Create the SVG for the pencil (edit) button
+        const pencilButton = document.createElement('button');
+        pencilButton.className = 'edit-button';
+        pencilButton.style.background = 'none';
+        pencilButton.style.border = 'none';
+        pencilButton.style.cursor = 'pointer';
+
+        // Create the new SVG for the pencil icon
+        const pencilSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        pencilSvg.setAttribute("viewBox", "-20 -20 117.16 123.49");
+        pencilSvg.setAttribute("width", "25");
+        pencilSvg.setAttribute("height", "25");
+
+        const pencilPath1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        pencilPath1.setAttribute("class", "cls-1");
+        pencilPath1.setAttribute("d", "M1.71,80.23l17.94-3.11c.58-.1.84-.79.47-1.25l-11.31-14.04c-.62-.78-1.85-.58-2.2.36L.45,78.71c-.31.83.4,1.68,1.27,1.53Z");
+        pencilSvg.appendChild(pencilPath1);
+
+        const pencilPath2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        pencilPath2.setAttribute("class", "cls-2");
+        pencilPath2.setAttribute("d", "M65.5,11.75l13.35,16.57-54.06,45.27c-.91.76-2.26.63-3.01-.3l-10.24-12.71c-.97-1.2-.79-2.97.38-3.95L65.5,11.75Z");
+        pencilSvg.appendChild(pencilPath2);
+
+        const pencilPath3 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        pencilPath3.setAttribute("class", "cls-2");
+        pencilPath3.setAttribute("d", "M70.48,8.72l12.45,15.46c.25.31.2.76-.11,1.02l-1.37,1.15c-.31.26-.75.21-1-.09l-12.45-15.46c-.25-.31-.2-.76.11-1.02l1.37-1.15c.31-.26.75-.21,1,.09Z");
+        pencilSvg.appendChild(pencilPath3);
+
+        const pencilPath4 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        pencilPath4.setAttribute("class", "cls-2");
+        pencilPath4.setAttribute("d", "M81.73,1.22c1.95,1.38,1.83,3.12,3.74,6.52,1.53,2.73,2.29,4.09,3.75,4.71.58.24,2.07.74,3.4,1.74.26.2.96.74.92,1.34-.03.36-.24.7-.24.7-.08.13-.18.24-.31.35l-7.42,6.21c-.2.16-.49.14-.65-.06l-12.76-15.84c1.42-1.32,7.08-6.59,7.18-6.62.04-.01.08-.02.08-.02.03,0,.07,0,.1,0,.54.12,1.37.38,2.21.97Z");
+        pencilSvg.appendChild(pencilPath4);
+
+        // Append the pencil SVG to the button
+        pencilButton.appendChild(pencilSvg);
+        
+        // Create the eye button for toggling section visibility
         const eyeButton = document.createElement('button');
         eyeButton.className = 'eye-button';
         eyeButton.style.cursor = 'pointer';
         eyeButton.style.background = 'none';
         eyeButton.style.border = 'none';
-
+        
+        
         const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svgIcon.setAttribute("viewBox", "0 0 93 50.77");
         svgIcon.setAttribute("width", "24");
         svgIcon.setAttribute("height", "24");
-
-        // First path
+        
         const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
         path1.setAttribute("d", "M0,24.88C9.8,9.24,27.81-.28,47.08,0c30.17.44,45.28,24.67,45.92,25.73-.71,1.14-16.08,24.86-45.92,25.03-19.46.11-37.53-9.84-47.08-25.88ZM46.5,9.06c-9.02,0-16.33,7.31-16.33,16.33s7.31,16.33,16.33,16.33,16.33-7.31,16.33-16.33-7.31-16.33-16.33-16.33Z");
-       
         svgIcon.appendChild(path1);
-
-        // Second path
+        
         const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
         path2.setAttribute("d", "M56.06,25.38c0-5.28-4.28-9.56-9.56-9.56s-9.56,4.28-9.56,9.56,4.28,9.56,9.56,9.56c1.79,0,3.47-.49,4.9-1.35-.82-.16-1.44-.89-1.44-1.76,0-.99.8-1.8,1.79-1.8s1.8.81,1.8,1.8h0c1.56-1.69,2.51-3.96,2.51-6.45Z");
-        
         svgIcon.appendChild(path2);
-
         eyeButton.appendChild(svgIcon);
-
-    
-        li.appendChild(sectionNameSpan);
-        li.appendChild(eyeButton);
+        
+        // Append both the eye and pencil buttons to the actions container
+        actionsContainer.appendChild(eyeButton);
+        actionsContainer.appendChild(pencilButton);
+        
+        // Add the title and action buttons to the section
+        li.appendChild(titleContainer);
+        li.appendChild(actionsContainer);
+        
+        // Append the section to the section list
         sectionList.appendChild(li);
-        sections[sectionName] = { color: color, entries: [] }; // Store the section data
-    
+        
+        // Store the section data
+        sections[sectionName] = { color: color, entries: [] };
+        
         // Add drag event listeners
         li.addEventListener('dragstart', handleSectionDragStart);
         li.addEventListener('dragover', handleSectionDragOver);
         li.addEventListener('drop', handleSectionDrop);
-    
-        // Eye button functionality
+        
+        // Eye button functionality for toggling visibility
         eyeButton.addEventListener('click', (event) => {
             event.stopPropagation();
             toggleSectionVisibility(sectionName, eyeButton);
         });
-    
+        
+        // Pencil button functionality for editing section name
+        pencilButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent triggering the 'bring to top' click event
+            editSectionTitle(sectionNameSpan, li);
+        });
+        
         // Bring tiles to top functionality
         li.addEventListener('click', () => bringTilesToTop(sectionName));
         
-        populateSectionDropdown(); // Populate the dropdown as before
+        // Update dropdown menu
+        populateSectionDropdown();
     }
+    
+    
+    // Function to enable editing of the section title
+    function editSectionTitle(sectionNameSpan, li) {
+        const currentName = sectionNameSpan.textContent;
+        
+        // Open the modal
+        const modal = document.getElementById('editSectionModal');
+        const sectionTitleInput = document.getElementById('sectionTitleInput');
+        const saveButton = document.getElementById('saveSectionTitleBtn');
+        
+        // Set the input field's current value to the section's name
+        sectionTitleInput.value = currentName;
+        modal.style.display = 'block';
+        
+        // Close modal when 'X' is clicked
+        const closeModal = document.getElementById('closeEditSectionModal');
+        closeModal.onclick = function() {
+            modal.style.display = 'none ';
+        };
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    
+        // Save the new section name when the save button is clicked
+        saveButton.onclick = function() {
+            const newName = sectionTitleInput.value.trim();
+            
+            if (newName !== "" && newName !== currentName) {
+                // Ensure the new name isn't empty and is different from the current name
+
+                // Update the sections object
+                sections[newName] = { ...sections[currentName] }; // Copy the entries from the old section
+                delete sections[currentName]; // Remove the old section
+
+                // Update the section name in the UI
+                sectionNameSpan.textContent = newName;
+                li.dataset.sectionName = newName; // Update the data attribute for the section
+
+                // Update all tiles related to this section
+                const tiles = document.querySelectorAll(`[data-section='${currentName}']`);
+                tiles.forEach(tile => {
+                    tile.dataset.section = newName;
+                    const tileHeader = tile.querySelector('.tile-header');
+                    if (tileHeader) {
+                        tileHeader.textContent = newName; // Update the tile's section title
+                    }
+                });
+
+                // Update the dropdown options
+                populateSectionDropdown();
+
+                // Provide feedback
+                showFeedback("Category name updated successfully!", "success");
+
+                // Close the modal
+                modal.style.display = 'none';
+            } else if (newName === currentName) {
+                // If the new name is the same as the current, just close the modal
+                modal.style.display = 'none';
+            } else {
+                showFeedback("Category name cannot be empty!", "error");
+            }
+        };
+    }
+    
     
    
 
@@ -407,13 +541,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    function rebuildSectionList() {
-    sectionList.innerHTML = ''; // Clear the current section list
-
-    Object.keys(sections).forEach(sectionName => {
-        createSection(sectionName, sections[sectionName].color); // Recreate each section with its color
-    });
-    }
 
 
     function toggleSectionVisibility(sectionName, eyeIcon) {
