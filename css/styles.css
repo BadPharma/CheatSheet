@@ -79,8 +79,8 @@ body, html {
 }
 
 .highlight {
-    position: relative; /* For tooltip positioning */
-    border: 2px solid #007bff; /* Highlight border */
+    position: relative; 
+    border: 2px solid #007bff; 
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
     border-radius: 24px;
     padding: 20px;
@@ -94,7 +94,7 @@ body, html {
     padding: 17px;
     border-radius: 5px;
     z-index: 1000;
-    display: none; /* Hidden by default */
+    display: none; 
     max-width: 200px;
     word-wrap: break-word;
     letter-spacing: 1.2px;
@@ -107,7 +107,7 @@ body, html {
     margin: 10px;
     border-radius: 8px;
     display: inline-block;
-    width: 200px; /* Set the width of the tile */
+    width: 200px; 
     max-height: fit-content;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
     position: relative;
@@ -123,7 +123,7 @@ body, html {
 .tile p {
     font-size: 14px;
     margin: 5px 0;
-    transition: transform 0.2s ease, margin 0.4s ease-in; /* Smooth transition for the tile */
+    transition: transform 0.2s ease, margin 0.4s ease-in; 
 }
 
 .description-text {
@@ -689,7 +689,7 @@ transform: translateX(-100%);
     min-width: none;
 }
 
-/* Feedback Popup Styles */
+
 .feedback-popup {
     display: none; /* Hidden by default */
     position: fixed;
@@ -706,7 +706,7 @@ transform: translateX(-100%);
     transition: opacity 0.3s ease;
 }
 
-/* Feedback Popup Styles */
+
 .feedback-popup {
     display: none; /* Hidden by default */
     position: fixed;
@@ -727,7 +727,7 @@ transform: translateX(-100%);
     opacity: 1; /* Make it visible */
 }
 
-/* Specific colors for different types of feedback */
+
 .feedback-popup.success {
     background-color: #4caf50; /* Green for success */
 }
