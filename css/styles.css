@@ -126,6 +126,14 @@ body, html {
     transition: transform 0.2s ease, margin 0.4s ease-in; /* Smooth transition for the tile */
 }
 
+.description-text {
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-line;
+    text-justify: auto;
+    text-wrap: break-word;
+}
+
 
 
 /* Delete button styles */
