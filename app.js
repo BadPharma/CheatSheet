@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const reloadWarningModal = document.getElementById('reloadWarningModal');
     const editModal = document.getElementById('editModal');
     const editSectionSelect = document.getElementById('edit-section-select');
+    const editSectionColorInput = document.getElementById('editSectionColorInput'); // Assume this input is added in the modal HTML
     const editCommandInput = document.getElementById('edit-command');
     const editDescriptionInput = document.getElementById('edit-description');
     const addEntryHeader = document.getElementById('add-entry-header');
@@ -30,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const templateForm = document.getElementById('template-form');
     const colorInput = document.getElementById('section-color');
     const colorDisplay = document.querySelector('.color-display');
+    const modalColorDisplay = document.querySelector('#editSectionModal .color-display');
+
     let isWarningModalVisible = false; // Flag to track modal visibility
     let sections = {}; // Store sections with their colors and entries
     let currentTile = null; // Reference to the currently edited tile
@@ -439,13 +442,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function editSectionTitle(sectionNameSpan, li) {
         const currentName = sectionNameSpan.textContent;
         
+        
         // Open the modal
         const modal = document.getElementById('editSectionModal');
         const sectionTitleInput = document.getElementById('sectionTitleInput');
+        
         const saveButton = document.getElementById('saveSectionTitleBtn');
         
         // Set the input field's current value to the section's name
         sectionTitleInput.value = currentName;
+       
         modal.style.display = 'block';
         
         // Close modal when 'X' is clicked
@@ -462,43 +468,43 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     
         // Save the new section name when the save button is clicked
-        saveButton.onclick = function() {
+        saveButton.onclick = function () {
             const newName = sectionTitleInput.value.trim();
-            
-            if (newName !== "" && newName !== currentName) {
-                // Ensure the new name isn't empty and is different from the current name
-
-                // Update the sections object
-                sections[newName] = { ...sections[currentName] }; // Copy the entries from the old section
-                delete sections[currentName]; // Remove the old section
-
-                // Update the section name in the UI
-                sectionNameSpan.textContent = newName;
-                li.dataset.sectionName = newName; // Update the data attribute for the section
-
-                // Update all tiles related to this section
-                const tiles = document.querySelectorAll(`[data-section='${currentName}']`);
-                tiles.forEach(tile => {
-                    tile.dataset.section = newName;
-                    const tileHeader = tile.querySelector('.tile-header');
-                    if (tileHeader) {
-                        tileHeader.textContent = newName; // Update the tile's section title
-                    }
-                });
-
-                // Update the dropdown options
-                populateSectionDropdown();
-
-                // Provide feedback
-                showFeedback("Category name updated successfully!", "success");
-
-                // Close the modal
-                modal.style.display = 'none';
-            } else if (newName === currentName) {
-                // If the new name is the same as the current, just close the modal
-                modal.style.display = 'none';
+            const newColor = editSectionColorInput.value;
+        
+            if (newName !== "" && (newName !== currentName || newColor !== sections[currentName].color)) {
+                // Update section name if changed
+                if (newName !== currentName) {
+                    sections[newName] = { ...sections[currentName], color: newColor };
+                    delete sections[currentName];
+                    sectionNameSpan.textContent = newName;
+                    li.dataset.sectionName = newName;
+        
+                    // Update all related tiles
+                    const tiles = document.querySelectorAll(`[data-section='${currentName}']`);
+                    tiles.forEach(tile => {
+                        tile.dataset.section = newName;
+                        tile.style.backgroundColor = newColor; // Update color
+                        const tileHeader = tile.querySelector('.tile-header');
+                        if (tileHeader) tileHeader.textContent = newName;
+                    });
+                } else {
+                    // Update color only if name is unchanged
+                    sections[currentName].color = newColor;
+        
+                    // Update section and tiles color
+                    li.style.backgroundColor = newColor;
+                    const tiles = document.querySelectorAll(`[data-section='${currentName}']`);
+                    tiles.forEach(tile => (tile.style.backgroundColor = newColor));
+                }
+        
+                populateSectionDropdown(); // Update dropdown options
+                showFeedback("Section updated successfully!", "success");
+                modal.style.display = 'none'; // Close modal
+            } else if (newName === currentName && newColor === sections[currentName].color) {
+                modal.style.display = 'none'; // Close modal if no changes
             } else {
-                showFeedback("Category name cannot be empty!", "error");
+                showFeedback("Section name cannot be empty!", "error");
             }
         };
     }
@@ -1011,11 +1017,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Set the initial color display based on the default value of the color input
     colorDisplay.style.backgroundColor = colorInput.value;
+    modalColorDisplay.style.backgroundColor = editSectionColorInput.value;
 
     // Update the color display when the user selects a new color
     colorInput.addEventListener('input', (event) => {
         colorDisplay.style.backgroundColor = event.target.value; // Update display color to current selection
     }); 
+
+   // Update modal color display when the user selects a new color
+editSectionColorInput.addEventListener('input', (event) => {
+    modalColorDisplay.style.backgroundColor = event.target.value; // Update the background color
+});
 
     // Attach the clear sheet function to the button
     document.getElementById('clear-sheet-btn').addEventListener('click', clearSheet);

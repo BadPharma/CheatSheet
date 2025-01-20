@@ -83,11 +83,21 @@
     </div>
 </div>
 
-<div id="editSectionModal" class="modal" >
+<div id="editSectionModal" class="modal">
     <div class="modal-content">
         <span id="closeEditSectionModal" class="close">&times;</span>
         <h2>Edit Category Title</h2>
-        <input type="text" id="sectionTitleInput" style="width: 50%;" maxlength="30">
+        
+        <!-- Section Title Input -->
+        <label for="sectionTitleInput">Category Title:</label>
+        <input type="text" id="sectionTitleInput" maxlength="30">
+        
+        <!-- Section Color Input -->
+        <label for="editSectionColorInput" class="color-picker">
+        <input type="color" id="editSectionColorInput"/>
+        <span class="color-display"></span>
+    </label>
+        <!-- Save Button -->
         <button id="saveSectionTitleBtn">Save</button>
     </div>
 </div>

@@ -431,7 +431,7 @@ li .eye-button, li .edit-button {
 }
 
 
-#section-color{
+#section-color, #editSectionColorInput{
     border-radius: 8px; /* Adjusted to be more subtle */
     background-color: #de4848; /* Light background to match a clean UI */
     color: #333; /* Dark text for readability */
@@ -689,6 +689,15 @@ transform: translateX(-100%);
     min-width: none;
 }
 
+#editSectionModal > .modal-content > .color-picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-content > .color-picker {
+    margin-top: 20px;
+}
 
 .feedback-popup {
     display: none; /* Hidden by default */
