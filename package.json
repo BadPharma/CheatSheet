@@ -1,0 +1,17 @@
+{
+  "name": "cheatsheet",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">\r <h1>CheatSheet </h1>\r <h2>BadPharma </h2>\r </div>\r <p align=\"center\">",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dompurify": "^3.2.3",
+    "isomorphic-dompurify": "^2.20.0",
+    "jsdom": "^26.0.0"
+  }
+}

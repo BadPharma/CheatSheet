@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/styles.css"> <!-- Your CSS file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     
-
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
     <title>CheatSheet</title>
 </head>
 <body>
@@ -95,7 +95,7 @@
         <!-- Section Color Input -->
         <label for="editSectionColorInput" class="color-picker">
         <input type="color" id="editSectionColorInput"/>
-        <span class="color-display"></span>
+        <span class="color-display" id="editColorDisplay"></span>
     </label>
         <!-- Save Button -->
         <button id="saveSectionTitleBtn">Save</button>
@@ -129,6 +129,7 @@
 <div id="feedback-popup" class="feedback-popup">
     <p id="feedback-message"></p>
 </div>
-   
+
+
 </body>
 </html>
