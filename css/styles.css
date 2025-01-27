@@ -2,6 +2,7 @@ body, html {
     font-family: Aeonik;
     background-color: #000000;
     height: 100%;
+    zoom: 0.85;
 }
 
 /* CORE PAGE CSS */
