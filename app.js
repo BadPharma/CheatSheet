@@ -199,6 +199,43 @@ document.addEventListener('DOMContentLoaded', () => {
         return pencilSvg;
     }
 
+
+    function createCopySvg() {
+        const copySvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        copySvg.setAttribute("viewBox", "0 0 454 625");
+        copySvg.setAttribute("width", "25");
+        copySvg.setAttribute("height", "25");
+        
+        const paths = [
+            { d: "M557.54,146H277.72A55.72,55.72,0,0,0,222,201.72V681.28A56,56,0,0,0,223.46,694h-2.74A55.72,55.72,0,0,1,165,638.28V158.72A55.72,55.72,0,0,1,220.72,103H503.28A55.76,55.76,0,0,1,557.54,146Z", transform: "translate(-165 -103)" }
+        ];
+        
+        const rects = [
+            { x: "72", y: "56", width: "382", height: "569", rx: "55.72" }
+        ];
+        
+        paths.forEach(({ d, transform }) => {
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path.setAttribute("d", d);
+            if (transform) path.setAttribute("transform", transform);
+            copySvg.appendChild(path);
+        });
+        
+        rects.forEach(({ x, y, width, height, rx }) => {
+            const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            rect.setAttribute("x", x);
+            rect.setAttribute("y", y);
+            rect.setAttribute("width", width);
+            rect.setAttribute("height", height);
+            rect.setAttribute("rx", rx);
+            copySvg.appendChild(rect);
+        });
+        
+        return copySvg;
+    }
+    
+    
+
     // Function to create the eye SVG
     function createEyeSvg() {
         const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -219,6 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return svgIcon;
     }
+
 
 
 
@@ -339,6 +377,23 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="description-text">${sanitizeInput(description)}</p>
         `;
     
+
+        // Create the copy button
+        const copyButton = document.createElement('button');
+        copyButton.className = 'copy-button';
+        copyButton.style.background = 'none';
+        copyButton.style.border = 'none';
+        copyButton.style.cursor = 'pointer';
+        copyButton.appendChild(createCopySvg());
+        tile.appendChild(copyButton);
+
+        // Add event listener to copy the command to clipboard
+        copyButton.addEventListener('click', () => {
+            navigator.clipboard.writeText(description);
+            showFeedback("Description copied to clipboard!", "success");
+        });
+
+
         // Create the SVG for the trash can
         const trashButton = document.createElement('button');
         trashButton.className = 'delete-button';

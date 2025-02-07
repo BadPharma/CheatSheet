@@ -2,7 +2,7 @@ body, html {
     font-family: Aeonik;
     background-color: #000000;
     height: 100%;
-    zoom: 0.85;
+    zoom: 0.89;
 }
 
 /* CORE PAGE CSS */
@@ -163,9 +163,21 @@ body, html {
   
 }
 
+.tile .copy-button {
+    position: absolute; /* Absolute positioning */
+    top: 10px; /* Adjusted to be closer to the top */
+    right: 85px; /* Position it to the left of the delete button */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    z-index: 1; /* Ensure the button is above other elements */
+  
+}
+
 /* Hide the buttons by default */
 .tile .delete-button,
-.tile .edit-button {
+.tile .edit-button, .tile .copy-button {
     visibility: hidden; /* Hide buttons */
     opacity: 0; /* Optional: Make them fully transparent */
     transition: visibility 0.9s, opacity 0.7s ease, fill 0.9s ease; /* Smooth transition */
@@ -173,7 +185,7 @@ body, html {
 
 /* Show the buttons when the tile is hovered */
 .tile:hover .delete-button,
-.tile:hover .edit-button {
+.tile:hover .edit-button, .tile:hover .copy-button {
     visibility: visible; /* Show buttons */
     opacity: 1; /* Make them visible */
 }
