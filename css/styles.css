@@ -2,7 +2,7 @@ body, html {
     font-family: Aeonik;
     background-color: #000000;
     height: 100%;
-    zoom: 0.89;
+    zoom: 0.45;
 }
 
 /* CORE PAGE CSS */
@@ -781,5 +781,11 @@ h2{
 @media screen and (max-width:800px) {
     .open {
         margin-left: calc(0vw + 270px);
+    }
+}
+
+@media screen and (max-width: 1920px) {
+    body, html {
+        zoom: 0.85;
     }
 }
