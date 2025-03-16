@@ -460,47 +460,64 @@ document.addEventListener('DOMContentLoaded', () => {
     
     
     function updateSection(oldName, newName, newColor) {
-            if (newName !== oldName) {
-                sections[newName] = { ...sections[oldName], color: newColor };
-                delete sections[oldName];
-            } else {
-                sections[oldName].color = newColor;
+        if (!sections[oldName]) return; // Ensure the section exists
+    
+        // 🔹 Check if the section is currently hidden
+        const sectionTiles = document.querySelectorAll(`.tile[data-section="${oldName}"]`);
+        const isHidden = [...sectionTiles].every(tile => tile.style.display === "none");
+    
+        // 🔹 Update the section name & color in the sections object
+        if (newName !== oldName) {
+            sections[newName] = { ...sections[oldName], color: newColor };
+            delete sections[oldName];
+        } else {
+            sections[oldName].color = newColor;
+        }
+    
+        // 🔹 Update the section in the sidebar
+        const li = document.querySelector(`li[data-section-name='${oldName}']`);
+        if (li) {
+            li.dataset.sectionName = sanitizeInput(newName);
+            li.style.backgroundColor = newColor;
+            const sectionNameSpan = li.querySelector('span');
+            sectionNameSpan.textContent = newName;
+        }
+    
+        // 🔹 Update all tiles linked to this section
+        sectionTiles.forEach((tile) => {
+            tile.dataset.section = newName;
+            tile.style.backgroundColor = newColor;
+    
+            // ✅ Update the tile's header text
+            const tileHeader = tile.querySelector('.tile-header');
+            if (tileHeader) {
+                tileHeader.textContent = newName;
             }
-        
-            const li = document.querySelector(`li[data-section-name='${oldName}']`);
-            if (li) {
-                li.dataset.sectionName = sanitizeInput(newName);
-                li.style.backgroundColor = newColor;
-                const sectionNameSpan = li.querySelector('span');
-                sectionNameSpan.textContent = newName;
-            }
-        
-            // Update all the tiles associated with the section
-            const tiles = document.querySelectorAll(`[data-section='${oldName}']`);
-            tiles.forEach((tile) => {
-                tile.dataset.section = newName;
-                tile.style.backgroundColor = newColor;
-                const tileHeader = tile.querySelector('.tile-header');
-                if (tileHeader) tileHeader.textContent = newName; // Update the tile header with the new section name
-            });
-        
-            // Rebind event listeners to updated sections
-            const eyeButton = li.querySelector('.eye-button');
-            const pencilButton = li.querySelector('.edit-button');
-            
-            // Reattach event listeners for the eye and pencil buttons
+    
+            // 🛠 Ensure tiles stay hidden if they were hidden before
+            tile.style.display = isHidden ? "none" : "";
+        });
+    
+        // 🔹 Rebind the event listener to the eye button to keep toggling working
+        const eyeButton = li.querySelector('.eye-button');  
+        if (eyeButton) {
             eyeButton.onclick = (event) => {
                 event.stopPropagation();
                 toggleSectionVisibility(newName, eyeButton);
             };
-            pencilButton.onclick = (event) => {
-                event.stopPropagation();
-                editSectionTitle(sectionNameSpan, li);
-            };
-        
-            // Update the dropdown and provide feedback
-            populateSectionDropdown();
+    
+            // 🛠 If the section was hidden, keep the eye icon gray
+            eyeButton.style.fill = isHidden ? "gray" : "black";
+        }
+    
+        // 🔹 Update the dropdown
+        populateSectionDropdown();
     }
+    
+    
+    
+    
+    
         
     function editSectionTitle(sectionNameSpan, li) {
             const currentName = sectionNameSpan.textContent.trim();
@@ -714,19 +731,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function toggleSectionVisibility(sectionName, eyeIcon) {
-        const tiles = Array.from(document.querySelectorAll('.tile'));
-        const sectionTiles = tiles.filter(tile => tile.dataset.section === sectionName);
+        const tiles = document.querySelectorAll(`.tile[data-section="${sectionName}"]`);
+        let allHidden = [...tiles].every(tile => tile.style.display === "none");
     
-        sectionTiles.forEach(tile => {
-            if (tile.style.display === 'none') {
-                tile.style.display = ''; // Show the tile
-                eyeIcon.style.fill = 'black'; // Change icon color to indicate visibility
-            } else {
-                tile.style.display = 'none'; // Hide the tile
-                eyeIcon.style.fill = 'gray'; // Change icon color to indicate hidden
-            }
+        tiles.forEach(tile => {
+            tile.style.display = allHidden ? "" : "none"; // Toggle visibility
         });
+    
+        // 🔹 Update the eye button color based on visibility state
+        eyeIcon.style.fill = allHidden ? "black" : "gray";
     }
+    
     
 
     // Function to add an entry to a section
