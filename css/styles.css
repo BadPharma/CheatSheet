@@ -781,11 +781,16 @@ h2{
     .open {
         margin-left: calc(0vw + 270px);
     }
+
+    body, html {
+        zoom: 0.85;
+    }
+}
 }
 
 @media screen and (min-width: 800px) {
     body, html {
-        zoom: 0.99;
+        zoom: 0.86;
     }
 }
 
@@ -797,6 +802,6 @@ h2{
 
 @media screen and (min-width: 1920px) {
     body, html {
-        zoom: 0.99;
+        zoom: 0.91;
     }
 }
