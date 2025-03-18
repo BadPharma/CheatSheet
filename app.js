@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTile = null; // Reference to the currently edited tile
     let draggedSectionName = null; // Variable to store the name of the dragged section
 
-    // Function to sanitize user input
+
     function sanitizeInput(input) {
         return DOMPurify.sanitize(input);
     }
@@ -234,8 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return copySvg;
     }
     
-    
-
     // Function to create the eye SVG
     function createEyeSvg() {
         const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -258,6 +256,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // 🔥 Function to create the Trash SVG
+    function createTrashSvg() {
+        const trashSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        trashSvg.setAttribute("viewBox", "-20 -20 117.16 123.49");
+        trashSvg.setAttribute("width", "25");
+        trashSvg.setAttribute("height", "25");
+
+        const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        rect.setAttribute("class", "cls-1");
+        rect.setAttribute("x", "2.5");
+        rect.setAttribute("y", "10.4");
+        rect.setAttribute("width", "72.16");
+        rect.setAttribute("height", "4.78");
+        rect.setAttribute("rx", ".49");
+        rect.setAttribute("ry", ".49");
+        trashSvg.appendChild(rect);
+
+        const topPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        topPath.setAttribute("class", "cls-3");
+        topPath.setAttribute("d", "M45.76,11.06c.49-4.57-3.04-8.44-7.07-8.56-4.18-.12-8,3.82-7.51,8.56h14.58Z");
+        trashSvg.appendChild(topPath);
+
+        const bodyPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        bodyPath.setAttribute("class", "cls-2");
+        bodyPath.setAttribute("d", "M72.55,15.19l-12.17,64.57c-.15.8-.57,1.48-1.16,1.97-.9.74-1.88.78-2.15.78-6.18.48-12.85.76-19.95.74-6.52-.02-12.66-.29-18.4-.74-1.58,0-2.93-1.15-3.18-2.71L5.14,15.19h67.41ZM40.34,73.28V26.19c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5,1.5v47.09c0,.83.67,1.5,1.5,1.5s1.5-.67,1.5-1.5ZM53.43,73.46l6.47-46.85c.11-.82-.46-1.58-1.28-1.69-.82-.12-1.58.46-1.69,1.28l-6.47,46.85c-.11.82.46,1.58,1.28,1.69.07,0,.14.01.21.01.74,0,1.38-.54,1.48-1.29ZM24.91,74.76c.82-.09,1.42-.83,1.33-1.65l-5.01-46.95c-.09-.82-.82-1.41-1.65-1.33-.82.09-1.42.83-1.33,1.65l5.01,46.95c.08.77.73,1.34,1.49,1.34.05,0,.11,0,.16,0Z");
+        trashSvg.appendChild(bodyPath);
+
+        return trashSvg;
+    }
 
 
     // Function to hide all tiles and gray out the eye buttons
@@ -284,85 +311,100 @@ document.addEventListener('DOMContentLoaded', () => {
     function createSection(sectionName, color) {
         const li = document.createElement('li');
         li.style.backgroundColor = sanitizeInput(color);
-        li.dataset.sectionName = sanitizeInput(sectionName); // Store the section name
-        li.draggable = true; // Make the section draggable
+        li.dataset.sectionName = sanitizeInput(sectionName);
+        li.draggable = true;
         li.style.display = 'flex';
         li.style.justifyContent = 'space-between';
         li.style.alignItems = 'center';
-        
-        // Create a span for the section name
+    
+        // Create section name span
         const sectionNameSpan = document.createElement('span');
         sectionNameSpan.textContent = sanitizeInput(sectionName);
     
-        // Create a container to hold the section title
+        // Title container
         const titleContainer = document.createElement('div');
         titleContainer.className = 'title-container';
         titleContainer.style.display = 'flex';
         titleContainer.style.alignItems = 'center';
         titleContainer.style.marginLeft = '18px';
-        
-        // Append the section name to the title container
         titleContainer.appendChild(sectionNameSpan);
-        
-        // Create a container for the action buttons (eye and pencil)
+    
+        // Actions container
         const actionsContainer = document.createElement('div');
         actionsContainer.style.display = 'flex';
         actionsContainer.style.alignItems = 'center';
-        
-        // Create the SVG for the pencil (edit) button
+    
+        // 🖊️ Edit (Pencil) Button
         const pencilButton = document.createElement('button');
         pencilButton.className = 'edit-button';
         pencilButton.style.background = 'none';
         pencilButton.style.border = 'none';
         pencilButton.style.cursor = 'pointer';
         pencilButton.appendChild(createPencilSvg());
-        
-        // Create the eye button for toggling section visibility
+    
+        // 👁️ Eye Button for toggling visibility
         const eyeButton = document.createElement('button');
         eyeButton.className = 'eye-button';
         eyeButton.style.cursor = 'pointer';
         eyeButton.style.background = 'none';
         eyeButton.style.border = 'none';
         eyeButton.appendChild(createEyeSvg());
-        
-        // Append both the eye and pencil buttons to the actions container
+    
+        // 🗑️ Trash Button (from separate function)
+        const trashButton = document.createElement('button');
+        trashButton.className = 'delete-button';
+        trashButton.style.background = 'none';
+        trashButton.style.border = 'none';
+        trashButton.style.cursor = 'pointer';
+        trashButton.appendChild(createTrashSvg());
+    
+        // Append buttons to actions container
         actionsContainer.appendChild(eyeButton);
         actionsContainer.appendChild(pencilButton);
-        
-        // Add the title and action buttons to the section
+        actionsContainer.appendChild(trashButton);
+    
         li.appendChild(titleContainer);
         li.appendChild(actionsContainer);
-        
-        // Append the section to the section list
         sectionList.appendChild(li);
-        
+    
         // Store the section data
         sections[sanitizeInput(sectionName)] = { color: color, entries: [] };
-        
-        // Add drag event listeners
-        li.addEventListener('dragstart', handleSectionDragStart);
-        li.addEventListener('dragover', handleSectionDragOver);
-        li.addEventListener('drop', handleSectionDrop);
-        
-        // Eye button functionality for toggling visibility
+    
+        // 🗑️ Trash Button: Delete section with custom confirmation dialog
+        trashButton.addEventListener('click', async (event) => {
+        event.stopPropagation();
+    
+        const confirmed = await showConfirmationDialog(
+        `Are you sure you want to permanently delete the section "${sectionName}" and all its associated tiles?`, 
+        "Yes, Delete Section", 
+        "Cancel"
+        );
+    
+        if (confirmed) {
+        deleteSection(sectionName, li);
+        showFeedback(`Section "${sectionName}" deleted successfully.`, "success");
+        }
+    });
+
+    
+        // 👁️ Eye Button: Toggle visibility
         eyeButton.addEventListener('click', (event) => {
             event.stopPropagation();
             toggleSectionVisibility(sectionName, eyeButton);
         });
-        
-        // Pencil button functionality for editing section name
+    
+        // 🖊️ Pencil Button: Edit section
         pencilButton.addEventListener('click', (event) => {
-            event.stopPropagation(); // Prevent triggering the 'bring to top' click event
+            event.stopPropagation();
             editSectionTitle(sectionNameSpan, li);
         });
-        
-        // Bring tiles to top functionality
+    
+        // Click to bring tiles to top
         li.addEventListener('click', () => bringTilesToTop(sectionName));
-        
+    
         // Update dropdown menu
         populateSectionDropdown();
     }
-
     
         // Function to create a new tile with pencil and trash can icons
     function createTile(sectionName, command, description, color) {
@@ -400,36 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
         trashButton.style.background = 'none';
         trashButton.style.border = 'none';
         trashButton.style.cursor = 'pointer';
-    
-        const trashSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        trashSvg.setAttribute("viewBox", "-20 -20 117.16 123.49");
-        trashSvg.setAttribute("width", "25");
-        trashSvg.setAttribute("height", "25");
-    
-        // Create the rectangle part of the trash can
-        const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-        rect.setAttribute("class", "cls-1");
-        rect.setAttribute("x", "2.5");
-        rect.setAttribute("y", "10.4");
-        rect.setAttribute("width", "72.16");
-        rect.setAttribute("height", "4.78");
-        rect.setAttribute("rx", ".49");
-        rect.setAttribute("ry", ".49");
-        trashSvg.appendChild(rect);
-    
-        // Create the top part of the trash can
-        const topPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        topPath.setAttribute("class", "cls-3");
-        topPath.setAttribute("d", "M45.76,11.06c.49-4.57-3.04-8.44-7.07-8.56-4.18-.12-8,3.82-7.51,8.56h14.58Z");
-        trashSvg.appendChild(topPath);
-    
-        // Create the main body of the trash can
-        const bodyPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        bodyPath.setAttribute("class", "cls-2");
-        bodyPath.setAttribute("d", "M72.55,15.19l-12.17,64.57c-.15.8-.57,1.48-1.16,1.97-.9.74-1.88.78-2.15.78-6.18.48-12.85.76-19.95.74-6.52-.02-12.66-.29-18.4-.74-1.58,0-2.93-1.15-3.18-2.71L5.14,15.19h67.41ZM40.34,73.28V26.19c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5,1.5v47.09c0,.83.67,1.5,1.5,1.5s1.5-.67,1.5-1.5ZM53.43,73.46l6.47-46.85c.11-.82-.46-1.58-1.28-1.69-.82-.12-1.58.46-1.69,1.28l-6.47,46.85c-.11.82.46,1.58,1.28,1.69.07,0,.14.01.21.01.74,0,1.38-.54,1.48-1.29ZM24.91,74.76c.82-.09,1.42-.83,1.33-1.65l-5.01-46.95c-.09-.82-.82-1.41-1.65-1.33-.82.09-1.42.83-1.33,1.65l5.01,46.95c.08.77.73,1.34,1.49,1.34.05,0,.11,0,.16,0Z");
-        trashSvg.appendChild(bodyPath);
-    
-        trashButton.appendChild(trashSvg);
+        trashButton.appendChild(createTrashSvg());
         tile.appendChild(trashButton);
     
         // Create the SVG for the pencil (edit) button
@@ -458,65 +471,121 @@ document.addEventListener('DOMContentLoaded', () => {
         configList.appendChild(tile);
     }
     
-    
-    function updateSection(oldName, newName, newColor) {
-        if (!sections[oldName]) return; // Ensure the section exists
-    
-        // 🔹 Check if the section is currently hidden
-        const sectionTiles = document.querySelectorAll(`.tile[data-section="${oldName}"]`);
-        const isHidden = [...sectionTiles].every(tile => tile.style.display === "none");
-    
-        // 🔹 Update the section name & color in the sections object
-        if (newName !== oldName) {
-            sections[newName] = { ...sections[oldName], color: newColor };
-            delete sections[oldName];
-        } else {
-            sections[oldName].color = newColor;
-        }
-    
-        // 🔹 Update the section in the sidebar
-        const li = document.querySelector(`li[data-section-name='${oldName}']`);
-        if (li) {
-            li.dataset.sectionName = sanitizeInput(newName);
-            li.style.backgroundColor = newColor;
-            const sectionNameSpan = li.querySelector('span');
-            sectionNameSpan.textContent = newName;
-        }
-    
-        // 🔹 Update all tiles linked to this section
-        sectionTiles.forEach((tile) => {
-            tile.dataset.section = newName;
+    // 🔹 Create a global object to track section visibility
+const sectionVisibility = {};
+
+function updateSection(oldName, newName, newColor) {
+    if (!sections[oldName]) return; // Ensure the section exists
+
+    // Get the section element in the sidebar
+    const li = document.querySelector(`li[data-section-name='${oldName}']`);
+    if (!li) return;
+
+    // Get all tiles associated with the section
+    const sectionTiles = document.querySelectorAll(`.tile[data-section="${oldName}"]`);
+    const isHidden = [...sectionTiles].every(tile => tile.style.display === "none");
+
+    // 🚨 **Step 1: If no changes were made, exit early**
+    if (newName === oldName && sections[oldName].color === newColor) {
+        showFeedback("No changes detected.", "info");
+        return;
+    }
+
+    // 🚨 **Step 2: Only update the color if the name remains unchanged**
+    if (newName === oldName) {
+        sections[oldName].color = newColor;
+        li.style.backgroundColor = newColor;
+
+        // Update tile colors
+        sectionTiles.forEach(tile => {
             tile.style.backgroundColor = newColor;
-    
-            // ✅ Update the tile's header text
-            const tileHeader = tile.querySelector('.tile-header');
-            if (tileHeader) {
-                tileHeader.textContent = newName;
-            }
-    
-            // 🛠 Ensure tiles stay hidden if they were hidden before
-            tile.style.display = isHidden ? "none" : "";
         });
-    
-        // 🔹 Rebind the event listener to the eye button to keep toggling working
-        const eyeButton = li.querySelector('.eye-button');  
-        if (eyeButton) {
-            eyeButton.onclick = (event) => {
-                event.stopPropagation();
-                toggleSectionVisibility(newName, eyeButton);
-            };
-    
-            // 🛠 If the section was hidden, keep the eye icon gray
-            eyeButton.style.fill = isHidden ? "gray" : "black";
+
+        showFeedback(`Section color updated successfully!`, "success");
+        return; // 🚀 Exit early to avoid unnecessary updates
+    }
+
+    // 🚨 **Step 3: If the section name changed, rename it properly**
+    sections[newName] = { ...sections[oldName], color: newColor };
+    delete sections[oldName];
+
+    // ✅ Update the sidebar section name and attributes
+    li.dataset.sectionName = sanitizeInput(newName);
+    li.style.backgroundColor = newColor;
+    li.querySelector('span').textContent = newName;
+
+    // ✅ Update tiles to reflect new section name
+    sectionTiles.forEach((tile) => {
+        tile.dataset.section = newName;
+        tile.style.backgroundColor = newColor;
+
+        const tileHeader = tile.querySelector('.tile-header');
+        if (tileHeader) {
+            tileHeader.textContent = newName;
         }
+    });
+
+    // 🚨 **Step 4: REMOVE and REASSIGN Eye Button Listener**
+    const eyeButton = li.querySelector('.eye-button');
+    if (eyeButton) {
+        // ✅ First, REMOVE any existing event listener
+        eyeButton.replaceWith(eyeButton.cloneNode(true));
+        const newEyeButton = li.querySelector('.eye-button');
+
+        // ✅ Now, REATTACH the event listener to always reference the correct section name
+        newEyeButton.onclick = (event) => {
+            event.stopPropagation();
+            toggleSectionVisibility(newName, newEyeButton);
+        };
+
+        // ✅ Keep eye icon color consistent with visibility state
+        newEyeButton.style.fill = isHidden ? "gray" : "black";
+    }
+
+    // 🚨 **Step 5: REMOVE and REASSIGN Trash Button Listener**
+    const trashButton = li.querySelector('.delete-button');
+    if (trashButton) {
+        trashButton.replaceWith(trashButton.cloneNode(true));
+        const newTrashButton = li.querySelector('.delete-button');
+
+        newTrashButton.onclick = async (event) => {
+            event.stopPropagation();
+            const confirmed = await showConfirmationDialog(
+                `Are you sure you want to delete the section "${newName}" and all its associated tiles?`,
+                "Yes, Delete Section",
+                "Cancel"
+            );
+            if (confirmed) {
+                deleteSection(newName, li);
+                showFeedback(`Section "${newName}" deleted successfully.`, "success");
+            }
+        };
+    }
+
+    // 🔹 Update dropdowns to reflect the new section name
+    populateSectionDropdown();
+
+    // 🔹 Provide feedback to the user
+    showFeedback(`Section "${newName}" updated successfully!`, "success");
+}
+
+
+  
+    function deleteSection(sectionName, sectionElement) {
+        // 1. Remove the section element from the sidebar
+        sectionList.removeChild(sectionElement);
     
-        // 🔹 Update the dropdown
+        // 2. Remove all tiles associated with this section
+        const sectionTiles = document.querySelectorAll(`.tile[data-section="${sectionName}"]`);
+        sectionTiles.forEach(tile => tile.remove());
+    
+        // 3. Remove section data from the sections object
+        delete sections[sectionName];
+    
+        // 4. Update the dropdown to reflect deletion
         populateSectionDropdown();
     }
-    
-    
-    
-    
+        
     
         
     function editSectionTitle(sectionNameSpan, li) {
@@ -839,23 +908,34 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     async function loadTemplate(templateFile) {
-        const userResponse = await showConfirmationDialog("Do you want to clear the current sheet or merge it with the selected template?");
-        
+        const userResponse = await showConfirmationDialog(
+            "Do you want to clear the current data and load the new template, or merge it with the existing data?",
+            "Clear Existing",
+            "Merge with Current"
+        );
+    
         if (userResponse) {
+            // User chose to clear existing data
             configList.innerHTML = '';
             sectionList.innerHTML = '';
             sections = {};
+            showFeedback("Existing data cleared. Loading template...", "info");
+        } else {
+            showFeedback("Merging template with existing data...", "info");
         }
-
+    
         try {
             const response = await fetch(templateFile);
             const data = await response.arrayBuffer();
             const workbook = XLSX.read(data, { type: 'array' });
             processWorkbook(workbook);
+            showFeedback("Template loaded successfully!", "success");
         } catch (error) {
             console.error('Error loading template:', error);
+            showFeedback("Failed to load template.", "error");
         }
     }
+    
 
     // Function to process the uploaded workbook
     function processWorkbook(workbook) {
@@ -929,8 +1009,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    
-
 
     document.getElementById('load-template-btn').addEventListener('click', () => {
         const templateSelect = document.getElementById('template-select');
@@ -943,45 +1021,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     // Function to show custom confirmation dialog
-    function showConfirmationDialog(message) {
-        return new Promise((resolve) => {
-            const modal = document.getElementById('customModal');
-            const modalMessage = document.getElementById('modalMessage');
-            const confirmBtn = document.getElementById('confirmBtn');
-            const cancelBtn = document.getElementById('cancelBtn');
-            const closeModal = document.getElementById('closeModal');
-    
-            // Set the modal message
-            modalMessage.textContent = message;
-            modal.style.display = "block";
-    
-            // Confirm button
-            confirmBtn.onclick = function() {
+    // ✅ Enhanced Confirmation Dialog with Custom Button Text
+    function showConfirmationDialog(message, confirmText = "Confirm", cancelText = "Cancel") {
+    return new Promise((resolve) => {
+        const modal = document.getElementById('customModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const confirmBtn = document.getElementById('confirmBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const closeModal = document.getElementById('closeModal');
+
+        // Set the modal message and button text
+        modalMessage.textContent = message;
+        confirmBtn.textContent = confirmText;
+        cancelBtn.textContent = cancelText;
+        
+        modal.style.display = "block";
+
+        // Confirm action
+        confirmBtn.onclick = function() {
+            modal.style.display = "none";
+            resolve(true);
+        };
+
+        // Cancel action
+        cancelBtn.onclick = function() {
+            modal.style.display = "none";
+            resolve(false);
+        };
+
+        // Close modal on clicking (x)
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+            resolve(false);
+        };
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            if (event.target === modal) {
                 modal.style.display = "none";
-                resolve(true);  // Resolve with true on confirmation
-            };
-    
-            // Cancel button
-            cancelBtn.onclick = function() {
-                modal.style.display = "none";
-                resolve(false);  // Resolve with false on cancellation
-            };
-    
-            // Close modal on clicking (x)
-            closeModal.onclick = function() {
-                modal.style.display = "none";
-                resolve(false);  // Resolve with false on close
-            };
-    
-            // Close modal on outside click
-            window.onclick = function(event) {
-                if (event.target === modal) {
-                    modal.style.display = "none";
-                    resolve(false);  // Resolve with false on outside click
-                }
-            };
-        });
+                resolve(false);
+            }
+        };
+    });
     }
+
 
     document.getElementById('section-color').addEventListener('input', (event) => {
         // Get the selected color

@@ -2,7 +2,7 @@ body, html {
     font-family: Aeonik;
     background-color: #000000;
     height: 100%;
-    zoom: 0.85;
+    zoom: 0.99;
 }
 
 /* CORE PAGE CSS */
@@ -385,13 +385,13 @@ align-content: center;
 }
 
 /* Initially hide the buttons */
-li .eye-button, li .edit-button {
+li .eye-button, li .edit-button, li .delete-button {
     opacity: 0; 
     transition: opacity 0.3s ease-in-out; /* Smooth transition */
   }
   
   /* Show buttons on hover over the list item */
-  li:hover .eye-button, li:hover .edit-button {
+  li:hover .eye-button, li:hover .edit-button, li:hover .delete-button {
     opacity: 1;
   }
 
@@ -785,18 +785,18 @@ h2{
 
 @media screen and (min-width: 800px) {
     body, html {
-        zoom: 0.96;
+        zoom: 0.99;
     }
 }
 
 @media screen and (min-width: 1280px) {
     body, html {
-        zoom: 0.94;
+        zoom: 0.99;
     }
 }
 
 @media screen and (min-width: 1920px) {
     body, html {
-        zoom: 0.92;
+        zoom: 0.99;
     }
 }
