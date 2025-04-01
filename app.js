@@ -3,8 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const sectionSelect = document.getElementById('section-select');
     const commandInput = document.getElementById('command');
     const descriptionInput = document.getElementById('description');
-    const sectionNameInput = document.getElementById('section-name');
-    const sectionColorInput = document.getElementById('section-color');
     const configList = document.getElementById('config-list');
     const downloadBtn = document.getElementById('download-btn');
     const uploadXlsx = document.getElementById('upload-xlsx');
@@ -179,8 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function createPencilSvg() {
         const pencilSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         pencilSvg.setAttribute("viewBox", "-20 -20 117.16 123.49");
-        pencilSvg.setAttribute("width", "25");
-        pencilSvg.setAttribute("height", "25");
+        pencilSvg.setAttribute("width", "20");
+        pencilSvg.setAttribute("height", "20");
 
         const paths = [
             { class: "cls-1", d: "M1.71,80.23l17.94-3.11c.58-.1.84-.79.47-1.25l-11.31-14.04c-.62-.78-1.85-.58-2.2.36L.45,78.71c-.31.83.4,1.68,1.27,1.53Z" },
@@ -203,8 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function createCopySvg() {
         const copySvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         copySvg.setAttribute("viewBox", "0 0 454 625");
-        copySvg.setAttribute("width", "25");
-        copySvg.setAttribute("height", "25");
+        copySvg.setAttribute("width", "16");
+        copySvg.setAttribute("height", "16");
         
         const paths = [
             { d: "M557.54,146H277.72A55.72,55.72,0,0,0,222,201.72V681.28A56,56,0,0,0,223.46,694h-2.74A55.72,55.72,0,0,1,165,638.28V158.72A55.72,55.72,0,0,1,220.72,103H503.28A55.76,55.76,0,0,1,557.54,146Z", transform: "translate(-165 -103)" }
@@ -238,8 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function createEyeSvg() {
         const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svgIcon.setAttribute("viewBox", "0 0 93 50.77");
-        svgIcon.setAttribute("width", "24");
-        svgIcon.setAttribute("height", "24");
+        svgIcon.setAttribute("width", "18");
+        svgIcon.setAttribute("height", "18");
 
         const paths = [
             { d: "M0,24.88C9.8,9.24,27.81-.28,47.08,0c30.17.44,45.28,24.67,45.92,25.73-.71,1.14-16.08,24.86-45.92,25.03-19.46.11-37.53-9.84-47.08-25.88ZM46.5,9.06c-9.02,0-16.33,7.31-16.33,16.33s7.31,16.33,16.33,16.33,16.33-7.31,16.33-16.33-7.31-16.33-16.33-16.33Z" },
@@ -255,13 +253,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return svgIcon;
     }
 
-
     // 🔥 Function to create the Trash SVG
     function createTrashSvg() {
         const trashSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         trashSvg.setAttribute("viewBox", "-20 -20 117.16 123.49");
-        trashSvg.setAttribute("width", "25");
-        trashSvg.setAttribute("height", "25");
+        trashSvg.setAttribute("width", "24");
+        trashSvg.setAttribute("height", "24");
 
         const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         rect.setAttribute("class", "cls-1");
@@ -314,8 +311,8 @@ document.addEventListener('DOMContentLoaded', () => {
         li.dataset.sectionName = sanitizeInput(sectionName);
         li.draggable = true;
         li.style.display = 'flex';
-        li.style.justifyContent = 'space-between';
         li.style.alignItems = 'center';
+        li.style.justifyContent = 'space-between';
     
         // Create section name span
         const sectionNameSpan = document.createElement('span');
@@ -326,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
         titleContainer.className = 'title-container';
         titleContainer.style.display = 'flex';
         titleContainer.style.alignItems = 'center';
-        titleContainer.style.marginLeft = '18px';
+        titleContainer.style.marginLeft = '12px';
         titleContainer.appendChild(sectionNameSpan);
     
         // Actions container
@@ -376,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         const confirmed = await showConfirmationDialog(
         `Are you sure you want to permanently delete the section "${sectionName}" and all its associated tiles?`, 
-        "Yes, Delete Section", 
+        "Delete", 
         "Cancel"
         );
     
@@ -407,167 +404,184 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
         // Function to create a new tile with pencil and trash can icons
-    function createTile(sectionName, command, description, color) {
-        const tile = document.createElement('div');
-        tile.className = 'tile';
-        tile.dataset.section = sanitizeInput(sectionName);
-        tile.style.backgroundColor = sanitizeInput(color);
-    
-        tile.innerHTML = `
-            <p class="tile-header">${sanitizeInput(sectionName)}</p>
-            <strong>${sanitizeInput(command)}</strong>
-            <p class="description-text">${sanitizeInput(description)}</p>
-        `;
-    
-
-        // Create the copy button
-        const copyButton = document.createElement('button');
-        copyButton.className = 'copy-button';
-        copyButton.style.background = 'none';
-        copyButton.style.border = 'none';
-        copyButton.style.cursor = 'pointer';
-        copyButton.appendChild(createCopySvg());
-        tile.appendChild(copyButton);
-
-        // Add event listener to copy the command to clipboard
-        copyButton.addEventListener('click', () => {
-            navigator.clipboard.writeText(description);
-            showFeedback("Description copied to clipboard!", "success");
-        });
-
-
-        // Create the SVG for the trash can
-        const trashButton = document.createElement('button');
-        trashButton.className = 'delete-button';
-        trashButton.style.background = 'none';
-        trashButton.style.border = 'none';
-        trashButton.style.cursor = 'pointer';
-        trashButton.appendChild(createTrashSvg());
-        tile.appendChild(trashButton);
-    
-        // Create the SVG for the pencil (edit) button
-        const pencilButton = document.createElement('button');
-        pencilButton.className = 'edit-button';
-        pencilButton.style.background = 'none';
-        pencilButton.style.border = 'none';
-        pencilButton.style.cursor = 'pointer';  
-        pencilButton.appendChild(createPencilSvg());
-        tile.appendChild(pencilButton);
-    
-        // Edit functionality remains the same
-        pencilButton.addEventListener('click', () => {
-            currentTile = tile;
-            openEditModal(tile);
-        });
-    
-        // Delete functionality
-        trashButton.addEventListener('click', () => {
-            configList.removeChild(tile);
-            const index = sections[sectionName].entries.findIndex(e => e.command === command);
-            if (index > -1) sections[sectionName].entries.splice(index, 1);
-            showFeedback("Entry deleted successfully!", "error");
-        });
-    
-        configList.appendChild(tile);
+     function createTile(sectionName, command, description, color) {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+            tile.dataset.section = sanitizeInput(sectionName);
+            tile.style.backgroundColor = sanitizeInput(color);
+        
+            // Create a container div for buttons
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'button-container';
+            
+               // Create the edit button
+               const pencilButton = document.createElement('button');
+               pencilButton.className = 'edit-button';
+               pencilButton.style.background = 'none';
+               pencilButton.style.border = 'none';
+               pencilButton.style.cursor = 'pointer';
+               pencilButton.appendChild(createPencilSvg());
+               buttonContainer.appendChild(pencilButton);
+           
+               pencilButton.addEventListener('click', () => {
+                   currentTile = tile;
+                   openEditModal(tile);
+               });
+            
+        
+            // Create the copy button
+            const copyButton = document.createElement('button');
+            copyButton.className = 'copy-button';
+            copyButton.style.background = 'none';
+            copyButton.style.border = 'none';
+            copyButton.style.cursor = 'pointer';
+            copyButton.appendChild(createCopySvg());
+            buttonContainer.appendChild(copyButton);
+        
+            copyButton.addEventListener('click', () => {
+                navigator.clipboard.writeText(description);
+                showFeedback("Description copied to clipboard!", "success");
+            });
+        
+            // Create the delete button
+            const trashButton = document.createElement('button');
+            trashButton.className = 'delete-button';
+            trashButton.style.background = 'none';
+            trashButton.style.border = 'none';
+            trashButton.style.cursor = 'pointer';
+            trashButton.appendChild(createTrashSvg());
+            buttonContainer.appendChild(trashButton);
+        
+            trashButton.addEventListener('click', () => {
+                configList.removeChild(tile);
+                const index = sections[sectionName].entries.findIndex(e => e.command === command);
+                if (index > -1) sections[sectionName].entries.splice(index, 1);
+                showFeedback("Entry deleted successfully!", "error");
+            });
+        
+         
+        
+            // Append the button container first (so it appears at the top)
+            tile.appendChild(buttonContainer);
+        
+            // Now, append the tile content **without using innerHTML**
+            const header = document.createElement('p');
+            header.className = 'tile-header';
+            header.textContent = sanitizeInput(sectionName);
+        
+            const strongText = document.createElement('strong');
+            strongText.textContent = sanitizeInput(command);
+        
+            const descriptionText = document.createElement('p');
+            descriptionText.className = 'description-text';
+            descriptionText.textContent = sanitizeInput(description);
+        
+            tile.appendChild(header);
+            tile.appendChild(strongText);
+            tile.appendChild(descriptionText);
+        
+            configList.appendChild(tile);
     }
+        
+        
     
     // 🔹 Create a global object to track section visibility
-const sectionVisibility = {};
+    const sectionVisibility = {};
 
-function updateSection(oldName, newName, newColor) {
-    if (!sections[oldName]) return; // Ensure the section exists
+    function updateSection(oldName, newName, newColor) {
+        if (!sections[oldName]) return; // Ensure the section exists
 
-    // Get the section element in the sidebar
-    const li = document.querySelector(`li[data-section-name='${oldName}']`);
-    if (!li) return;
+        // Get the section element in the sidebar
+        const li = document.querySelector(`li[data-section-name='${oldName}']`);
+        if (!li) return;
 
-    // Get all tiles associated with the section
-    const sectionTiles = document.querySelectorAll(`.tile[data-section="${oldName}"]`);
-    const isHidden = [...sectionTiles].every(tile => tile.style.display === "none");
+        // Get all tiles associated with the section
+        const sectionTiles = document.querySelectorAll(`.tile[data-section="${oldName}"]`);
+        const isHidden = [...sectionTiles].every(tile => tile.style.display === "none");
 
-    // 🚨 **Step 1: If no changes were made, exit early**
-    if (newName === oldName && sections[oldName].color === newColor) {
-        showFeedback("No changes detected.", "info");
-        return;
-    }
+        // 🚨 **Step 1: If no changes were made, exit early**
+        if (newName === oldName && sections[oldName].color === newColor) {
+            showFeedback("No changes detected.", "info");
+            return;
+        }
 
-    // 🚨 **Step 2: Only update the color if the name remains unchanged**
-    if (newName === oldName) {
-        sections[oldName].color = newColor;
+        // 🚨 **Step 2: Only update the color if the name remains unchanged**
+        if (newName === oldName) {
+            sections[oldName].color = newColor;
+            li.style.backgroundColor = newColor;
+
+            // Update tile colors
+            sectionTiles.forEach(tile => {
+                tile.style.backgroundColor = newColor;
+            });
+
+            showFeedback(`Section color updated successfully!`, "success");
+            return; // 🚀 Exit early to avoid unnecessary updates
+        }
+
+        // 🚨 **Step 3: If the section name changed, rename it properly**
+        sections[newName] = { ...sections[oldName], color: newColor };
+        delete sections[oldName];
+
+        // ✅ Update the sidebar section name and attributes
+        li.dataset.sectionName = sanitizeInput(newName);
         li.style.backgroundColor = newColor;
+        li.querySelector('span').textContent = newName;
 
-        // Update tile colors
-        sectionTiles.forEach(tile => {
+        // ✅ Update tiles to reflect new section name
+        sectionTiles.forEach((tile) => {
+            tile.dataset.section = newName;
             tile.style.backgroundColor = newColor;
+
+            const tileHeader = tile.querySelector('.tile-header');
+            if (tileHeader) {
+                tileHeader.textContent = newName;
+            }
         });
 
-        showFeedback(`Section color updated successfully!`, "success");
-        return; // 🚀 Exit early to avoid unnecessary updates
-    }
+        // 🚨 **Step 4: REMOVE and REASSIGN Eye Button Listener**
+        const eyeButton = li.querySelector('.eye-button');
+        if (eyeButton) {
+            // ✅ First, REMOVE any existing event listener
+            eyeButton.replaceWith(eyeButton.cloneNode(true));
+            const newEyeButton = li.querySelector('.eye-button');
 
-    // 🚨 **Step 3: If the section name changed, rename it properly**
-    sections[newName] = { ...sections[oldName], color: newColor };
-    delete sections[oldName];
+            // ✅ Now, REATTACH the event listener to always reference the correct section name
+            newEyeButton.onclick = (event) => {
+                event.stopPropagation();
+                toggleSectionVisibility(newName, newEyeButton);
+            };
 
-    // ✅ Update the sidebar section name and attributes
-    li.dataset.sectionName = sanitizeInput(newName);
-    li.style.backgroundColor = newColor;
-    li.querySelector('span').textContent = newName;
-
-    // ✅ Update tiles to reflect new section name
-    sectionTiles.forEach((tile) => {
-        tile.dataset.section = newName;
-        tile.style.backgroundColor = newColor;
-
-        const tileHeader = tile.querySelector('.tile-header');
-        if (tileHeader) {
-            tileHeader.textContent = newName;
+            // ✅ Keep eye icon color consistent with visibility state
+            newEyeButton.style.fill = isHidden ? "gray" : "black";
         }
-    });
 
-    // 🚨 **Step 4: REMOVE and REASSIGN Eye Button Listener**
-    const eyeButton = li.querySelector('.eye-button');
-    if (eyeButton) {
-        // ✅ First, REMOVE any existing event listener
-        eyeButton.replaceWith(eyeButton.cloneNode(true));
-        const newEyeButton = li.querySelector('.eye-button');
+        // 🚨 **Step 5: REMOVE and REASSIGN Trash Button Listener**
+        const trashButton = li.querySelector('.delete-button');
+        if (trashButton) {
+            trashButton.replaceWith(trashButton.cloneNode(true));
+            const newTrashButton = li.querySelector('.delete-button');
 
-        // ✅ Now, REATTACH the event listener to always reference the correct section name
-        newEyeButton.onclick = (event) => {
-            event.stopPropagation();
-            toggleSectionVisibility(newName, newEyeButton);
-        };
+            newTrashButton.onclick = async (event) => {
+                event.stopPropagation();
+                const confirmed = await showConfirmationDialog(
+                    `Are you sure you want to delete the section "${newName}" and all its associated tiles?`,
+                    "Yes, Delete Section",
+                    "Cancel"
+                );
+                if (confirmed) {
+                    deleteSection(newName, li);
+                    showFeedback(`Section "${newName}" deleted successfully.`, "success");
+                }
+            };
+        }
 
-        // ✅ Keep eye icon color consistent with visibility state
-        newEyeButton.style.fill = isHidden ? "gray" : "black";
+        // 🔹 Update dropdowns to reflect the new section name
+        populateSectionDropdown();
+
+        // 🔹 Provide feedback to the user
+        showFeedback(`Section "${newName}" updated successfully!`, "success");
     }
-
-    // 🚨 **Step 5: REMOVE and REASSIGN Trash Button Listener**
-    const trashButton = li.querySelector('.delete-button');
-    if (trashButton) {
-        trashButton.replaceWith(trashButton.cloneNode(true));
-        const newTrashButton = li.querySelector('.delete-button');
-
-        newTrashButton.onclick = async (event) => {
-            event.stopPropagation();
-            const confirmed = await showConfirmationDialog(
-                `Are you sure you want to delete the section "${newName}" and all its associated tiles?`,
-                "Yes, Delete Section",
-                "Cancel"
-            );
-            if (confirmed) {
-                deleteSection(newName, li);
-                showFeedback(`Section "${newName}" deleted successfully.`, "success");
-            }
-        };
-    }
-
-    // 🔹 Update dropdowns to reflect the new section name
-    populateSectionDropdown();
-
-    // 🔹 Provide feedback to the user
-    showFeedback(`Section "${newName}" updated successfully!`, "success");
-}
 
 
   
@@ -752,6 +766,7 @@ function updateSection(oldName, newName, newColor) {
     // Function to toggle the sidebar visibility
     function toggleSidebar() {
         sidebar.classList.toggle('collapsed');
+        configList.classList.toggle('closed');
         configList.classList.toggle('open');
     }
 
@@ -831,7 +846,6 @@ function updateSection(oldName, newName, newColor) {
         otherTiles.forEach(tile => configList.appendChild(tile));
     }
 
-    // Function to create a new tile
 
     
     // Function to download XLSX
@@ -846,7 +860,7 @@ function updateSection(oldName, newName, newColor) {
             });
         }
 
-        data.unshift(["Section", "Command", "Description", "Color"]);
+        data.unshift(["Catgegory", "Command", "Description", "Category Color (HEX code)"]);
         const worksheet = XLSX.utils.aoa_to_sheet(data);
         XLSX.utils.book_append_sheet(workbook, worksheet, "Cheatsheet");
         XLSX.writeFile(workbook, "cheatsheet.xlsx");
@@ -870,7 +884,9 @@ function updateSection(oldName, newName, newColor) {
         }
     
         // Show confirmation dialog to user
-        const userResponse = await showConfirmationDialog("Do you want to clear the current list or merge it with the uploaded file?");
+        const userResponse = await showConfirmationDialog("Do you want to clear the current list or merge it with the uploaded file?",
+            "Clear", "Merge"
+        );
         
         if (userResponse) {
             // Clear existing list if user confirms
@@ -910,8 +926,8 @@ function updateSection(oldName, newName, newColor) {
     async function loadTemplate(templateFile) {
         const userResponse = await showConfirmationDialog(
             "Do you want to clear the current data and load the new template, or merge it with the existing data?",
-            "Clear Existing",
-            "Merge with Current"
+            "Clear",
+            "Merge"
         );
     
         if (userResponse) {

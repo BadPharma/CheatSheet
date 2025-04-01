@@ -1,9 +1,8 @@
 body, html {
     font-family: Aeonik;
-    background-color: #000000;
-    height: 100%;
-    zoom: 0.99;
-}
+    background-color: #000000;   
+   
+} 
 
 /* CORE PAGE CSS */
 /* FONTS +S CROLL BAR */
@@ -43,22 +42,63 @@ body, html {
     font-style: normal;
   }
 
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  body::-webkit-scrollbar:hover {
+    width: 8px;
+  }
+  
+  
+  body::-webkit-scrollbar-track {
+    width: 50px;
+    background-color: rgb(35, 34, 32);
+    
+  }
+  body::-webkit-scrollbar-track:hover {
+    width: 5px;
+    
+    
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: rgb(102, 101, 99);
+    border-radius: 25px;
+  }
+  
+  body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .sidebar::-webkit-scrollbar {
     width: 3px;
   }
-  
-  ::-webkit-scrollbar-track {
-    background-color: antiquewhite;
-    transition: background-color 2s ease-in-out;
+
+  .sidebar::-webkit-scrollbar:hover {
+    width: 8px;
   }
   
-  ::-webkit-scrollbar-thumb {
+  
+  .sidebar::-webkit-scrollbar-track {
+    width: 3px;
+    background-color: rgb(35, 34, 32);
+    transition: background-color 2s ease-in-out;
+  }
+ .sidebar::-webkit-scrollbar-track:hover {
+    width: 8px;
+    background-color: antiquewhite;
+    transition: background-color 2s ease-in;
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb {
     background: rgb(102, 101, 99);
   }
   
-  ::-webkit-scrollbar-thumb:hover {
+  .sidebar::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+
 
 .left {
     display: block;
@@ -105,27 +145,36 @@ body, html {
 .tile {
     background-color: #f1f1f1;
     padding: 15px;
-    margin: 10px;
+    
     border-radius: 8px;
     display: inline-block;
-    width: 200px; 
+    width: 190px;
+    max-width: 190px; 
     max-height: fit-content;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
     position: relative;
     
 }
 
+.tile-header {
+    letter-spacing: 2px;
+    font-size: 0.75em;
+    margin: 5px 0;
+    transition: transform 0.8s ease, margin 0.4s ease-in; 
+    letter-spacing: 1px;
+}
+
+
+
+
+
+
 .tile strong {
-    font-size: 16px;
-    display: block;
+    font-size: 0.98em;
+    display: flex;
     margin-bottom: 5px;
 }
 
-.tile p {
-    font-size: 14px;
-    margin: 5px 0;
-    transition: transform 0.2s ease, margin 0.4s ease-in; 
-}
 
 .description-text {
     word-wrap: break-word;
@@ -133,66 +182,80 @@ body, html {
     white-space: pre-line;
     text-justify: auto;
     text-wrap: break-word;
+    font-size: 0.78em;
+    margin: 8px 0px 0px 0px;
+    transition: transform 0.8s ease, margin 0.4s ease-in; 
+    letter-spacing: 1px;
 }
 
+.button-container{
+    max-height: 0px;
+    align-items: center;
+    display: flex;
+    visibility: hidden;
+    justify-content: end;
+    z-index: 1;
+    opacity: 0;
+    transition: max-height 0.8s ease, visibility 0.8s ease, opacity 0.8s ease;
+}
 
+.tile:hover .button-container {
+    visibility: visible;
+    max-height: 20px;
+    z-index: 1;
+    opacity: 1;
+    /* Smooth transition */
+}
 
 /* Delete button styles */
 .tile .delete-button {
-    position: absolute; /* Absolute positioning */
-    top: 10px; /* Adjusted to be closer to the top */
-    right: 10px; /* Adjusted to be closer to the right */
     background: none;
     border: none;
     cursor: pointer;
     font-size: 13px;
-    z-index: 1; /* Ensure the button is above other elements */
-    
-    
+    z-index: 1; 
+ 
 }
 
 .tile .edit-button {
-    position: absolute; /* Absolute positioning */
-    top: 10px; /* Adjusted to be closer to the top */
-    right: 50px; /* Position it to the left of the delete button */
     background: none;
     border: none;
     cursor: pointer;
     font-size: 13px;
-    z-index: 1; /* Ensure the button is above other elements */
+    z-index: 1; /
   
 }
 
 .tile .copy-button {
-    position: absolute; /* Absolute positioning */
-    top: 10px; /* Adjusted to be closer to the top */
-    right: 85px; /* Position it to the left of the delete button */
+    
     background: none;
     border: none;
     cursor: pointer;
     font-size: 13px;
-    z-index: 1; /* Ensure the button is above other elements */
-  
+    z-index: 1; 
 }
 
 /* Hide the buttons by default */
+
 .tile .delete-button,
 .tile .edit-button, .tile .copy-button {
-    visibility: hidden; /* Hide buttons */
-    opacity: 0; /* Optional: Make them fully transparent */
-    transition: visibility 0.9s, opacity 0.7s ease, fill 0.9s ease; /* Smooth transition */
+    visibility: hidden; 
+    opacity: 0; 
+    transition: visibility 0.9s, opacity 0.7s ease, fill 0.9s ease; 
 }
 
 /* Show the buttons when the tile is hovered */
 .tile:hover .delete-button,
 .tile:hover .edit-button, .tile:hover .copy-button {
-    visibility: visible; /* Show buttons */
-    opacity: 1; /* Make them visible */
+    visibility: visible; 
+    opacity: 1; /
+    
+    
 }
 
 
-.tile .delete-button:hover {
-    fill: red;
+.delete-button:hover {
+    fill: rgb(247, 182, 182);
 }
 
 
@@ -208,7 +271,7 @@ body, html {
 }
 
 /* Animation to open the trash can on user hover */
-.tile .delete-button:hover .cls-1, .tile .delete-button:hover .cls-3 {
+.delete-button:hover .cls-1,.delete-button:hover .cls-3  {
     animation: delete 0.6s ease;
    }   
 
@@ -251,24 +314,35 @@ body, html {
     position: fixed; /* Make the sidebar fixed */
     left: 0; /* Align it to the left of the screen */
     top: 0; /* Start from the top */
-    height: 100%; /* Make it fill the height of the screen */
-    width: 250px;
+    height:100%; 
+    width: 220px;
     padding: 20px;
     padding-top: 45px;
+    padding-bottom: 70px;;
     background: antiquewhite;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px; /* Remove any border-radius */
+    border-bottom-right-radius: 25px;
     z-index: 10; /* Ensure it's above other elements */
     transition: transform 0.3s ease; /* Smooth transition for toggling */
-    overflow-x: scroll;
-    margin-bottom: 20px;
+    overflow: scroll;
+    
 }
 
 
+
+.sidebar-content {
+    flex-grow: 1;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 100%; /* Adjusted to fit the screen */
+    padding-bottom: 30px;
+    display: flex;
+}
+
 .sidebar-tab {
     position: fixed;
-    left: 10px;
-    top: 20px;
+    left: 20px;
+    top: 23px;
     cursor: pointer;
     background: #fff;
     border-radius: 50%;
@@ -276,32 +350,65 @@ body, html {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 100;
 }
-
-#hide-all-tiles-btn, #add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn,  .custom-file-upload, #confirmBtn, #cancelBtn, #save-edit-btn, #saveSectionTitleBtn  {
+/* Sidebar toggle button styles */
+#hide-all-tiles-btn, #add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn,  .custom-file-upload  {
     padding: 8px;
     margin-top: 15px;
     margin-bottom: 10px;
     border-radius: 15px;
     border-color: rgba(160, 143, 143, 0.225);
     box-shadow: none;
-    background-color: #329dd3;
+    background-color: #2E86AB;
     font-size: 1em;
     color: antiquewhite;
     font-weight: 700;
     transition: scale 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+
+/* Dialoghue box button styles */
+#confirmBtn, #cancelBtn, #save-edit-btn, #saveSectionTitleBtn  {
+    padding: 8px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border-color: rgba(160, 143, 143, 0.225);
+    box-shadow: none;
+    background-color: #2E86AB;
+    font-size: 1em;
+    color: antiquewhite;
+    font-weight: 700;
+    transition: scale 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    width: 40%;
+    letter-spacing: 1px;
+}
+
+
+
+#add-section {
+    width: 100%;
 }
 
 #clear-sheet-btn {
-    margin-bottom: 40px;
-    background-color: #f03;
+    position: relative;
+    margin-top: 20px;
+    background-color: #CC0033;
     font-size: 1.2em;
-    font-weight: 700;
-    letter-spacing: 3px;
+    font-weight: 900;
+    letter-spacing: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
 }
 
-#hide-all-tiles-btn, #add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn, .custom-file-upload:hover, #confirmBtn:hover, #cancelBtn:hover  {
+#confirmBtn{
+   margin-right: 45px;
+}
+
+#hide-all-tiles-btn:hover, #add-section:hover, #add-entry:hover, #download-btn:hover, #load-template-btn:hover, #clear-sheet-btn:hover, .custom-file-upload:hover, #confirmBtn:hover, #cancelBtn:hover  {
    scale: 1.05;
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -311,16 +418,20 @@ body, html {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 #hide-all-tiles-btn{
-    margin-top: 35px;
+    margin-top: 45px;
+    font-size: 0.8em;
+    font-weight: 900;
+    letter-spacing: 10px;
+    background-color: #947EB0;
 }
 
 
 .sections {
-margin-top: 15px; /* Add margin to separate it from the section list */
+margin-top: 20px; /* Add margin to separate it from the section list */
 display: flex;
 flex-direction: column;
 flex-wrap: nowrap;
@@ -335,15 +446,15 @@ align-content: center;
     margin-left: 10px; /* Space between header and triangle */
     width: 0;
     height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 15px solid #000; /* Color of the triangle */
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 10px solid #000; /* Color of the triangle */
     transition: transform 0.5s ease,border-top 2s ease; /* Smooth rotation */
 }
 
 #toggle-section-button.collapsed,#toggle-add-form-button.collapsed,#toggle-down-up-button.collapsed,#toggle-templates-button.collapsed {
-    transform: rotate(180deg); /* Rotate triangle when collapsed */
-    border-top: 15px solid #f03; /* Color of the triangle */
+    transform: rotate(-90deg); /* Rotate triangle when collapsed */
+    border-top: 10px solid rgb(144, 144, 144); /* Color of the triangle */
 }
 
 
@@ -354,7 +465,8 @@ align-content: center;
     transition: max-height 0.3s ease, padding 0.3s ease, font-size 0.3s ease, box-shadow 0.3s ease; /* Added padding transition */
     overflow: hidden;
     max-width: 250px;
-    border-radius: 5px;
+    
+    
 }
 
 #section-list li {
@@ -362,14 +474,17 @@ align-content: center;
     padding: 10px;;
     margin-bottom: 15px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 15px;
     transition: transform 0.3s ease, background-color 0.3s ease, font-size 0.3s ease, font-weight 0.3s ease;
-    font-size: 13px; /* Default font size */
+    font-size: 0.74em; /* Default font size */
     font-weight: 400;
     letter-spacing: 2px;
     word-wrap: break-word;
-    
+    justify-content: left;
+    align-items: center;
 }
+
+
 
 #section-list  li span {
    color: #1b1b1b;
@@ -377,7 +492,7 @@ align-content: center;
 
 /* Hover effect: Enlarging the section on hover */
 #section-list li:hover {
-    transform: scale(0.9); /* Scale up by 10% */
+    transform: scale(0.96); /* Scale up by 10% */
     background-color: #e0e0e0; /* Change background on hover */
     
     font-size: 14px;
@@ -504,7 +619,7 @@ width: 100%;
 }
 
 .add-entry-section {
-    margin-top: 10px; /* Add margin to separate it from the section list */
+    margin-top: 20px; /* Add margin to separate it from the section list */
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -539,6 +654,7 @@ width: 100%;
     border-radius: 5px; /* Rounded corners */
     font-size: 1em; /* Font size */
     font-family: Aeonik;
+    letter-spacing: 2px;
 }
 
 
@@ -558,7 +674,7 @@ width: 100%;
 
 
 .down-up-section {
-    margin-top: 10px; /* Add margin to separate it from the section list */
+    margin-top: 20px; /* Add margin to separate it from the section list */
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -573,7 +689,16 @@ width: 100%;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
+    width: 100%;
      
+}
+
+
+label{
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+
 }
 
 #down-up-buttons.collapsed{
@@ -590,7 +715,7 @@ width: 100%;
 }
 
 .templates-section{
-    margin-bottom: 20px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -617,7 +742,13 @@ width: 100%;
 }
 
 .open {
-    margin-left: calc(0vw + 270px);
+    margin-left: 260px;
+    
+}
+
+.closed {
+    margin-left: 10px;
+   
 }
 
 
@@ -627,23 +758,20 @@ transform: translateX(-100%);
 
 
 .config-list{
-    display: flex;
-    flex-wrap: wrap;
-    gap:10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    
     align-items: center;
-    justify-content: center;
-    transition: margin-left 0.6s ease; /* Add transition for smooth movement */
-}
-
-.sidebar.open + .config-list {
-    margin-left: 250px; /* Adjust this value to match the sidebar width */
-}
-
-.sidebar.closed + .config-list {
-    margin-left: 0; /* Reset margin when sidebar is closed */
+    justify-content: left;
+    transition: margin-left 0.6s ease; /* Smooth movement */
+    margin-bottom: 20px;
+    margin-right:20px;
+    gap: 25px 30px; 
+    
 }
 
 
+/* Modal styles */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -657,14 +785,12 @@ transform: translateX(-100%);
     background-color: rgba(0, 0, 0, 0.839); /* Black w/ opacity */
 }
 
-
-
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 40%; /* Could be more or less, depending on screen size */
+    width: 30%; /* Could be more or less, depending on screen size */
     text-align: center;
     border-radius: 25px;
 }
@@ -683,16 +809,61 @@ transform: translateX(-100%);
     cursor: pointer;
 }
 
+/* edit section title modal styles`*/
+.edit-section-input-area {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 40%;
+    
+}
+
+
+
+#sectionTitleInput {
+    width: 40%;
+    margin-bottom: 2%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 2%;
+    border: 1px solid #ccc;
+    font-size: 1em; /* Font size */
+    letter-spacing: 2px;
+}
+
+
+/* Edit tile modal styles */
+
+.modal-entry-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fefefe;
+    text-align: center;
+    border-radius: 25px;
+}
+
 #editModal input,
-#editModal textarea,
 #editModal select {
-    width: calc(100% - 20px);
+    width: 80%;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    
+    
+}
+
+#editModal textarea {
+    height: 150px;
+    width: 100%;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    max-height: 150px;
-    
 }
 
 #edit-description {
@@ -711,21 +882,10 @@ transform: translateX(-100%);
     margin-top: 20px;
 }
 
-.feedback-popup {
-    display: none; /* Hidden by default */
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #4caf50; /* Green for success */
-    color: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    opacity: 0; /* Invisible by default */
-    transition: opacity 0.3s ease;
-}
+
+/* Feedback popup styles */
+
+
 
 
 .feedback-popup {
@@ -763,8 +923,15 @@ transform: translateX(-100%);
 
 /* Text styles */
 
-h1{
+.header h1{
 font-weight: 900;
+font-size: 1.8em;
+}
+
+.sections h2, .add-entry-section h2,.down-up-section h2, .templates-section h2{
+    font-weight: 400;
+    font-size: 1.1em;
+    letter-spacing: 3px;
 }
 
 h2{
@@ -774,34 +941,98 @@ h2{
 }
 
 .tile:hover .tile-header{
-    margin-top: 18px !important;
+    margin-top: 5px !important;
 }
+
+
+/* 
+@media screen and (max-height: 768px) {
+  body {
+    zoom: 0.56;
+  }
+}
+
+@media screen and (max-height: 900px) {
+    body {
+      zoom: 0.66;
+    }
+  }
+
+  @media screen and (min-height: 1080px) {
+    body {
+      zoom: 0.79;
+    }
+  }
+
+  @media screen and (min-height: 1330px) {
+    body {
+      zoom: 0.98;
+    }
+  }
+
+/*c
 
 @media screen and (max-width:800px) {
     .open {
         margin-left: calc(0vw + 270px);
     }
 
-    body, html {
-        zoom: 0.85;
+    body {
+        zoom: 0.96;
     }
-}
+
 }
 
+
 @media screen and (min-width: 800px) {
-    body, html {
-        zoom: 0.86;
+    body {
+        zoom: 0.93;
+    }
+}
+
+@media screen and (min-width: 1080px) {
+    body {
+        zoom: 0.93;
     }
 }
 
 @media screen and (min-width: 1280px) {
-    body, html {
-        zoom: 0.99;
+    body {
+        zoom: 0.93;
+    }
+ 
+}
+
+@media screen and (min-width: 1366px) and (min-height: 768px) {
+    body {
+        zoom: 0.56;
     }
 }
 
-@media screen and (min-width: 1920px) {
-    body, html {
-        zoom: 0.91;
+@media screen and (min-width: 1440px), (min-height: 900px) {
+    body {
+        zoom: 0.66;
+    }
+}
+
+@media screen and (min-width: 1920px), (min-height: 1080px) {
+    body {
+        zoom: 0.79;
+    }
+}
+
+@media screen and (min-width: 3386px), (min-height: 1289px) {
+    body {
+        zoom: 100%;
+    }
+}
+
+@media screen and (min-width: 3840px), (min-height: 2160px) {
+    body {
+        zoom: 1.59;
+    }
+
+    #section-select, #template-select {
+    zoom: 1;
     }
 }

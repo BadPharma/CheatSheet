@@ -15,12 +15,14 @@
     
         
     <div id="sidebar" class="sidebar" data-step="1" data-intro="">
+       
+         
         <div class ="header" data-step="2" data-intro="Welcome to the CheatSheet! A tool to make learning new program shortcuts easier!">
             <h1>CheatSheet</h1>
             <strong>A BadPharma Project</strong>
         </div>
     
-        <button id="hide-all-tiles-btn" data-step="3" data-intro="Click here to hide all tiles.">Hide All Tiles</button>
+        <button id="hide-all-tiles-btn" data-step="3" data-intro="Click here to hide all tiles.">Hide All</button>
     
         <div class="sections" data-step="4" data-intro="Here you can manage your categories.">
             <h2 id="section-header">Categories<span id="toggle-section-button" class="triangle-down"></span> </h2>
@@ -34,6 +36,8 @@
                 <button id="add-section" data-step="6" data-intro="Add your new section with this button. Make sure you've selected a colour">Add Section</button>
             </div>
         </div>
+
+        
     
         <div class="add-entry-section" data-step="7" data-intro="Add entries to your sheet here.">
             <h2 id="add-entry-header">Entries<span id="toggle-add-form-button" class="triangle-down"></span> </h2>
@@ -62,12 +66,14 @@
             </div>
         </div>
     
-        <button id="clear-sheet-btn" data-step="13" data-intro="Reset your sheet to start fresh.">RESET SHEET</button>
+        <button id="clear-sheet-btn" data-step="13" data-intro="Reset your sheet to start fresh.">RESET</button>
+       
     </div>
     
       
-    <div id="config-list" class="config-list open"></div>
+    <div id="config-list" class="config-list open" class="config-list closed"></div>
     
+
 
 </div>
   
@@ -83,13 +89,13 @@
     </div>
 </div>
 
+<!-- Edit Section Modal -->
 <div id="editSectionModal" class="modal">
     <div class="modal-content">
         <span id="closeEditSectionModal" class="close">&times;</span>
         <h2>Edit Category Title</h2>
-        
+        <div class="edit-section-input-area">
         <!-- Section Title Input -->
-        <label for="sectionTitleInput">Category Title:</label>
         <input type="text" id="sectionTitleInput" maxlength="30">
         
         <!-- Section Color Input -->
@@ -97,19 +103,22 @@
         <input type="color" id="editSectionColorInput"/>
         <span class="color-display" id="editColorDisplay"></span>
     </label>
+        </div>
         <!-- Save Button -->
         <button id="saveSectionTitleBtn">Save</button>
     </div>
 </div>
 
-<!-- Edit Modal -->
+<!-- Edit tile Modal -->
 <div id="editModal" class="modal">
     <div class="modal-content">
         <span id="closeEditModal" class="close">&times;</span>
         <h2>Edit Tile</h2>
+        <div class="modal-entry-area">
         <select id="edit-section-select"></select>
         <input type="text" id="edit-command" placeholder="Command" maxlength="100">
         <textarea id="edit-description" placeholder="Description" maxlength="150"></textarea>
+        </div>
         <button id="save-edit-btn">Save Changes</button>
     </div>
 </div>
