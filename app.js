@@ -923,34 +923,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
 
-    async function loadTemplate(templateFile) {
-        const userResponse = await showConfirmationDialog(
-            "Do you want to clear the current data and load the new template, or merge it with the existing data?",
-            "Clear",
-            "Merge"
-        );
+   async function loadTemplate(templateFile) {
+    // Show confirmation dialog and store user response
+    const userResponse = await showConfirmationDialog(
+        "Do you want to clear the current data and load the new template, or merge it with the existing data?",
+        "Clear",
+        "Merge"
+    );
     
-        if (userResponse) {
-            // User chose to clear existing data
-            configList.innerHTML = '';
-            sectionList.innerHTML = '';
-            sections = {};
-            showFeedback("Existing data cleared. Loading template...", "info");
-        } else {
-            showFeedback("Merging template with existing data...", "info");
-        }
-    
-        try {
-            const response = await fetch(templateFile);
-            const data = await response.arrayBuffer();
-            const workbook = XLSX.read(data, { type: 'array' });
-            processWorkbook(workbook);
-            showFeedback("Template loaded successfully!", "success");
-        } catch (error) {
-            console.error('Error loading template:', error);
-            showFeedback("Failed to load template.", "error");
-        }
+    // Check if the user clicked off (null or undefined response means they closed the dialog)
+    if (userResponse === null || userResponse === undefined) {
+        showFeedback("Template load operation cancelled.", "info");
+        return; // Exit the function early if the dialog was cancelled
     }
+
+    if (userResponse) {
+        // User chose to clear existing data
+        configList.innerHTML = '';
+        sectionList.innerHTML = '';
+        sections = {};
+        showFeedback("Existing data cleared. Loading template...", "info");
+    } else {
+        showFeedback("Merging template with existing data...", "info");
+    }
+
+    try {
+        const response = await fetch(templateFile);
+        const data = await response.arrayBuffer();
+        const workbook = XLSX.read(data, { type: 'array' });
+        processWorkbook(workbook);
+        showFeedback("Template loaded successfully!", "success");
+    } catch (error) {
+        console.error('Error loading template:', error);
+        showFeedback("Failed to load template.", "error");
+    }
+}
+
     
 
     // Function to process the uploaded workbook
@@ -1075,7 +1083,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.onclick = function(event) {
             if (event.target === modal) {
                 modal.style.display = "none";
-                resolve(false);
+                resolve(null);
             }
         };
     });
