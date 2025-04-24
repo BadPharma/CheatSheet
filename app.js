@@ -1240,6 +1240,21 @@ document.addEventListener('DOMContentLoaded', () => {
         isWarningModalVisible = false; // Reset the flag
     };
 
+    document.getElementById("settings-btn").addEventListener("click", () => {
+        document.getElementById("settingsModal").style.display = "block";
+    });
+    
+    document.getElementById("closeSettingsModal").addEventListener("click", () => {
+        document.getElementById("settingsModal").style.display = "none";
+    });
+    
+    window.addEventListener("click", (event) => {
+        if (event.target === document.getElementById("settingsModal")) {
+            document.getElementById("settingsModal").style.display = "none";
+        }
+    });
+    
+
     // Prevent the default reload behavior
     window.addEventListener('beforeunload', (event) => {
         if (!isWarningModalVisible) {

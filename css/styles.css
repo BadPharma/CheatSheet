@@ -415,22 +415,41 @@ body::-webkit-scrollbar {
     z-index: 100;
 }
 /* Sidebar toggle button styles */
-#hide-all-tiles-btn, #add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn,  .custom-file-upload  {
-    padding: 8px;
+#hide-all-tiles-btn, #settings-btn, #add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn,  .custom-file-upload  {
+    width: 100%;
+    padding: 10px 16px;
     margin-top: 15px;
     margin-bottom: 10px;
-    border-radius: 15px;
-    border-color: rgba(160, 143, 143, 0.225);
-    box-shadow: none;
+    border: none;
+    border-radius: 12px;
     background-color: #2E86AB;
-    font-size: 1em;
     color: antiquewhite;
-    font-weight: 700;
-    transition: scale 0.2s ease, box-shadow 0.2s ease;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
-    width: 100%;
-    letter-spacing: 1px;
+    transform: skew(-10deg,0deg);
 }
+
+button::before {    
+transform:skew(40deg,0deg);
+}
+
+.btn-label {
+   display: inline-block;
+    font-weight: 700;
+    transform: skew(10deg,0deg);
+    transition: transform 0.2s ease, box-shadow 0.2s ease,scale 0.2s ease-in;
+}
+
+button:hover .btn-label {
+    transform: skew(-20deg,0deg)
+}
+
+
+
 
 
 /* Dialoghue box button styles */
@@ -472,10 +491,12 @@ body::-webkit-scrollbar {
    margin-right: 45px;
 }
 
-#hide-all-tiles-btn:hover, #add-section:hover, #add-entry:hover, #download-btn:hover, #load-template-btn:hover, #clear-sheet-btn:hover, .custom-file-upload:hover, #confirmBtn:hover, #cancelBtn:hover  {
+#hide-all-tiles-btn:hover, #add-section:hover, #add-entry:hover, #download-btn:hover, #load-template-btn:hover, #clear-sheet-btn:hover, .custom-file-upload:hover, #confirmBtn:hover, #cancelBtn:hover, .btn-label:hover  {
    scale: 1.05;
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+
 
 .header {
     display: block;
@@ -486,7 +507,7 @@ body::-webkit-scrollbar {
 }
 
 #hide-all-tiles-btn{
-    margin-top: 45px;
+    
     font-size: 0.8em;
     font-weight: 900;
     letter-spacing: 10px;
@@ -755,7 +776,7 @@ width: 100%;
 }
 
 #down-up-buttons {
-    display: flex;
+    display: block;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;

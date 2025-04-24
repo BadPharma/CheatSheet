@@ -23,6 +23,9 @@
             <h1>CheatSheet</h1>
             <strong>A BadPharma Project</strong>
         </div>
+
+        <button id="settings-btn" data-step="2.5" data-intro="Open your settings panel."><span class="btn-label">⚙️ Settings</span></button>
+
     
         <button id="hide-all-tiles-btn" data-step="3" data-intro="Click here to hide all tiles.">Hide All</button>
     
@@ -35,7 +38,7 @@
                     <input type="color" id="section-color" />
                     <span class="color-display"></span>
                 </label>
-                <button id="add-section" data-step="6" data-intro="Add your new section with this button. Make sure you've selected a colour">Add Section</button>
+                <button id="add-section" data-step="6" data-intro="Add your new section with this button. Make sure you've selected a colour"><span class="btn-label">Add Section</span></button>
             </div>
         </div>
 
@@ -48,14 +51,14 @@
                 <input type="text" id="command" placeholder="Shortcut / Title" maxlength="100" data-step="8" data-intro="Enter the command here.">
                 <textarea id="description" placeholder="Description" required rows="2" maxlength="500" data-step="9" data-intro="Enter a description for the command."></textarea>
             </div>
-            <button id="add-entry" data-step="10" data-intro="Click here to add your entry. and display it within your CheatSheet">Add Cheat</button>
+            <button id="add-entry" data-step="10" data-intro="Click here to add your entry. and display it within your CheatSheet"><span class="btn-label">Add Cheat</span></button>
         </div>
     
         <div class="down-up-section" data-step="11" data-intro="Save or upload your entries here.">
             <h2 id="down-up-header"> Save / Upload <span id="toggle-down-up-button" class="triangle-down"></span> </h2>
             <div id="down-up-buttons">
-                <button id="download-btn">Download XLSX</button>
-                <label for="upload-xlsx" class="custom-file-upload">Upload XLSX</label>
+                <button id="download-btn"><span class="btn-label">Download XLSX</span></button>
+                <label for="upload-xlsx" class="custom-file-upload"><span class="btn-label">Upload XLSX</span></label>
                 <input type="file" id="upload-xlsx" accept=".xlsx"/>
             </div>
         </div>
@@ -64,11 +67,11 @@
             <h2 id="templates-header"> Templates <span id="toggle-templates-button" class="triangle-down"></span> </h2>
             <div id="template-form">
                 <select id="template-select" name="template"></select>
-                <button id="load-template-btn">Load Template</button>
+                <button id="load-template-btn"><span class="btn-label">Load Template</span></button>
             </div>
         </div>
     
-        <button id="clear-sheet-btn" data-step="13" data-intro="Reset your sheet to start fresh.">RESET</button>
+        <button id="clear-sheet-btn" data-step="13" data-intro="Reset your sheet to start fresh."><span class="btn-label">RESET</span></button>
        
     </div>
     
@@ -140,6 +143,28 @@
 <div id="feedback-popup" class="feedback-popup">
     <p id="feedback-message"></p>
 </div>
+
+<!-- Settings Modal -->
+<div id="settingsModal" class="modal">
+    <div class="modal-content">
+        <span id="closeSettingsModal" class="close">&times;</span>
+        <h2>Settings</h2>
+        <div class="settings-content">
+            <!-- Add any settings options here -->
+            <label>
+                <input type="checkbox" id="dark-mode-toggle">
+                Enable Dark Mode
+            </label>
+            <br />
+            <label>
+                <input type="checkbox" id="show-tips-toggle" checked>
+                Show Intro Tooltips
+            </label>
+        </div>
+        <button id="saveSettingsBtn">Save Settings</button>
+    </div>
+</div>
+
 
 
 </body>
