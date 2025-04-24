@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const templatesHeader = document.getElementById('templates-header');
     const templatesButton = document.getElementById('toggle-templates-button');
     const templateForm = document.getElementById('template-form');
-    
+ 
     
 
 
@@ -317,6 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create section name span
         const sectionNameSpan = document.createElement('span');
         sectionNameSpan.textContent = sanitizeInput(sectionName);
+        
     
         // Title container
         const titleContainer = document.createElement('div');
@@ -363,6 +364,10 @@ document.addEventListener('DOMContentLoaded', () => {
         li.appendChild(titleContainer);
         li.appendChild(actionsContainer);
         sectionList.appendChild(li);
+
+        li.addEventListener("dragstart", handleSectionDragStart);
+        li.addEventListener("dragover", handleSectionDragOver);
+        li.addEventListener("drop", handleSectionDrop);
     
         // Store the section data
         sections[sanitizeInput(sectionName)] = { color: color, entries: [] };
@@ -372,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
         event.stopPropagation();
     
         const confirmed = await showConfirmationDialog(
-        `Are you sure you want to permanently delete the section "${sectionName}" and all its associated tiles?`, 
+        `Are you sure you want to permanently delete the section "${sectionName}" and all of its associated tiles?`, 
         "Delete", 
         "Cancel"
         );
@@ -770,15 +775,12 @@ document.addEventListener('DOMContentLoaded', () => {
         configList.classList.toggle('open');
     }
 
-
-    
-    
-    
-   
-   
-
     function handleSectionDragStart(event) {
-    draggedSectionName = event.target.dataset.sectionName; // Store the name of the dragged section
+        const li = event.target.closest("li[data-section-name]");
+        if (!li) return;
+        
+        draggedSectionName = li.dataset.sectionName;
+        // Store the name of the dragged section
     }
 
     function handleSectionDragOver(event) {
@@ -787,8 +789,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleSectionDrop(event) {
     event.preventDefault(); // Prevent default behavior
-
-    const targetSectionName = event.target.dataset.sectionName; // Get the target section name
+    const targetLi = event.target.closest("li[data-section-name]");
+    if (!targetLi) return;
+    
+    const targetSectionName = targetLi.dataset.sectionName;
     if (draggedSectionName && targetSectionName && draggedSectionName !== targetSectionName) {
         // Swap the section data in the sections object
         const draggedSectionData = sections[draggedSectionName];
@@ -813,7 +817,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
     function toggleSectionVisibility(sectionName, eyeIcon) {
         const tiles = document.querySelectorAll(`.tile[data-section="${sectionName}"]`);
         let allHidden = [...tiles].every(tile => tile.style.display === "none");
@@ -826,7 +829,6 @@ document.addEventListener('DOMContentLoaded', () => {
         eyeIcon.style.fill = allHidden ? "black" : "gray";
     }
     
-    
 
     // Function to add an entry to a section
     function addEntryToSection(sectionName, command, description) {
@@ -834,6 +836,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sections[sectionName].entries.push({ command, description });
             createTile(sectionName, command, description, sections[sectionName].color);
         }
+        enhanceSectionDropdown(); 
     }
 
     // Function to bring all tiles of a section to the top
@@ -845,9 +848,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionTiles.forEach(tile => configList.appendChild(tile));
         otherTiles.forEach(tile => configList.appendChild(tile));
     }
-
-
-    
+   
     // Function to download XLSX
     function downloadXLSX() {
         const workbook = XLSX.utils.book_new();
@@ -959,7 +960,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 }
 
-    
+  
 
     // Function to process the uploaded workbook
     function processWorkbook(workbook) {
@@ -992,13 +993,13 @@ document.addEventListener('DOMContentLoaded', () => {
         defaultOption.textContent = 'Select a Template';
         templateSelect.appendChild(defaultOption);
     
-        // Helper function to add subcategory optgroup
+        // Helper function to add subcategory optgroup                         
         function createOptgroupWithSubcategory(templates, label) {
             const optgroup = document.createElement('optgroup');
             optgroup.label = label; // Set the label as the subcategory (Mac/Windows)
             
             templates.forEach(template => {
-                const option = document.createElement('option');
+                const option = document.createElement('option'); 
                 option.value = template.file;
                 option.textContent = template.name;
                 optgroup.appendChild(option);
@@ -1031,8 +1032,51 @@ document.addEventListener('DOMContentLoaded', () => {
                 templateSelect.appendChild(otherOptgroup);
             }
         });
+
+       
+
     }
     
+    let templateDropdown;
+
+    function enhanceTemplateDropdown() {
+        const element = document.getElementById('template-select');
+
+        if (templateDropdown) {
+            templateDropdown.destroy();
+        }
+    
+        templateDropdown = new Choices(element, {
+            searchEnabled: true,
+            itemSelectText: '',
+            shouldSort: true,
+            allowHTML: false,
+           
+            
+        });
+    }
+
+    let sectionDropdown;
+
+    function enhanceSectionDropdown() {
+        const element2 = document.getElementById('section-select');
+        if (sectionDropdown) {
+        sectionDropdown.destroy();
+        }
+    
+        sectionDropdown = new Choices(element2, {
+            searchEnabled: false,
+            itemSelectText: '',
+            shouldSort: true,
+            allowHTML: false,
+           
+            
+        });
+    }
+    
+    
+
+   
 
     document.getElementById('load-template-btn').addEventListener('click', () => {
         const templateSelect = document.getElementById('template-select');
@@ -1215,6 +1259,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Scroll to top on space bar
+    document.addEventListener('keydown', function(event) {
+        const activeElement = document.activeElement;
+        const isTyping = activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA' || activeElement.isContentEditable;
+
+        if (!isTyping && event.code === 'Space') {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    });
+
+
     // Event listeners for toggling sidebar and sections
     toggleButton.addEventListener('click', toggleSectionList);
     sectionHeader.addEventListener('click', toggleSectionList);
@@ -1234,6 +1293,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Populate the template dropdown on page load
     populateTemplateDropdown(templates);
+    enhanceTemplateDropdown();
+    // Initialize the section dropdown with Choices.js
+    
 
     
 });

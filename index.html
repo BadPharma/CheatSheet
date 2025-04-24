@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.6">
-    <link rel="stylesheet" href="css/styles.css"> <!-- Your CSS file -->
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
     <title>CheatSheet</title>
 </head>
 <body>
@@ -61,7 +63,7 @@
         <div class="templates-section" data-step="12" data-intro="Load one of our templates from our database">
             <h2 id="templates-header"> Templates <span id="toggle-templates-button" class="triangle-down"></span> </h2>
             <div id="template-form">
-                <select id="template-select"></select>
+                <select id="template-select" name="template"></select>
                 <button id="load-template-btn">Load Template</button>
             </div>
         </div>

@@ -1,7 +1,7 @@
 body, html {
     font-family: Aeonik;
     background-color: #000000;   
-   
+    height: 100%;
 } 
 
 /* CORE PAGE CSS */
@@ -206,6 +206,70 @@ body::-webkit-scrollbar {
     opacity: 1;
     /* Smooth transition */
 }
+
+.choices {
+   width: 100%;
+    max-width: 100%;
+    height:fit-content;
+    min-height: 10px;
+    display: flex;
+    align-items: center !important;
+    letter-spacing: 2px;
+    
+}
+
+.choices__inner {
+    min-height: 0px;
+    max-width: 100%;
+    font-size: 0.74em;
+
+    
+}
+
+.choices.is-open {
+    
+    max-width: 100%;
+}
+
+.choices__list--dropdown {
+ font-size: 0.74em;
+}
+
+.choices__list.choices__list--dropdown.is-active{
+
+    letter-spacing: 00px;
+}
+
+#template-select + .choices .choices__inner {
+    min-height: 40px;
+    max-height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 0.95rem;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+#template-select + .choices .choices__list--dropdown {
+    max-height: 250px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.choices__item--disabled {
+    font-weight: bold;
+    background: #f3f3f3;
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    color: #444;
+}
+
+
 
 /* Delete button styles */
 .tile .delete-button {
@@ -485,6 +549,13 @@ align-content: center;
 }
 
 
+u
+#section-list li.dragging {
+    opacity: 0.5;
+  }
+  
+
+
 
 #section-list  li span {
    color: #1b1b1b;
@@ -725,12 +796,14 @@ label{
 }
 
 #template-form {
-    display:flex;
+    display:block;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     align-content: center;
+    width: 100%;
+    
 }
 
 #template-form.collapsed {
@@ -747,7 +820,7 @@ label{
 }
 
 .closed {
-    margin-left: 10px;
+    margin-left: 70px;
    
 }
 
@@ -945,6 +1018,11 @@ h2{
     margin-top: 5px !important;
 }
 
+@media screen and (max-height: 1080px) {
+    body {
+      zoom: 0.86;
+    }
+  }
 
 /* 
 @media screen and (max-height: 768px) {
@@ -953,7 +1031,7 @@ h2{
   }
 }
 
-@media screen and (max-height: 900px) {
+@media screen and (min-height: 900px) {
     body {
       zoom: 0.66;
     }
@@ -965,13 +1043,13 @@ h2{
     }
   }
 
-  @media screen and (min-height: 1330px) {
+  @media screen and (min-height: 1300px) {
     body {
       zoom: 0.98;
     }
   }
 
-/*c
+/*
 
 @media screen and (max-width:800px) {
     .open {
