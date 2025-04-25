@@ -447,9 +447,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // Store the section data
         sections[sanitizeInput(sectionName)] = { color: color, entries: [] };
-
         populateSectionDropdown();
-        enhanceSectionDropdown(); // <-- Add this to refresh the Choices dropdown
+        
 
         // 🗑️ Trash Button: Delete section with custom confirmation dialog
         trashButton.addEventListener('click', async (event) => {
@@ -485,6 +484,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // Update dropdown menu
         populateSectionDropdown();
+        enhanceSectionDropdown(); // <-- Add this to refresh the Choices dropdown
     }
     
         // Function to create a new tile with pencil and trash can icons
@@ -662,6 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 🔹 Update dropdowns to reflect the new section name
         populateSectionDropdown();
+        enhanceSectionDropdown(); // <-- Add this to refresh the Choices dropdown  
 
         // 🔹 Provide feedback to the user
         showFeedback(`Section "${newName}" updated successfully!`, "success");
@@ -728,7 +729,7 @@ document.addEventListener('DOMContentLoaded', () => {
             saveButton.onclick = function () {
                 const newName = sanitizeInput(sectionTitleInput.value.trim());
                 const newColor = editSectionColorInput.value;
-        
+                
                 if (!newName) {
                     showFeedback("Category title cannot be empty!", "error");
                     return;
@@ -737,13 +738,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (newName !== currentName || newColor !== initialColor) {
                     // If the name is changed, update the name and associated tiles
                     updateSection(currentName, newName, newColor);
-                    
+                    li.addEventListener('click', () => bringTilesToTop(newName));
+                    populateSectionDropdown(); // Update dropdowns to reflect the new section name
+                    enhanceSectionDropdown(); // <-- Add this to refresh the Choices dropdown
                     // Provide feedback
                     showFeedback("Category updated successfully!", "success");
                 }
         
                 modal.style.display = 'none'; // Close the modal
             };
+
+            
     }
         
     function openEditModal(tile) {
@@ -824,8 +829,6 @@ document.addEventListener('DOMContentLoaded', () => {
         templatesButton.classList.toggle('collapsed');
     }
 
-    
-  
 
     // Close the modal when the user clicks the 'x'
     document.getElementById('closeEditModal').onclick = function () {
@@ -929,6 +932,8 @@ document.addEventListener('DOMContentLoaded', () => {
         otherTiles.forEach(tile => configList.appendChild(tile));
     }
    
+  
+    
     // Function to download XLSX
     function downloadXLSX() {
         const workbook = XLSX.utils.book_new();
