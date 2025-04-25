@@ -393,8 +393,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create section name span
         const sectionNameSpan = document.createElement('span');
         sectionNameSpan.textContent = sanitizeInput(sectionName);
-        
-    
+        sectionList.style.display = 'block'; 
+ 
         // Title container
         const titleContainer = document.createElement('div');
         titleContainer.className = 'title-container';
@@ -447,7 +447,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // Store the section data
         sections[sanitizeInput(sectionName)] = { color: color, entries: [] };
-    
+
+        populateSectionDropdown();
+        enhanceSectionDropdown(); // <-- Add this to refresh the Choices dropdown
+
         // 🗑️ Trash Button: Delete section with custom confirmation dialog
         trashButton.addEventListener('click', async (event) => {
         event.stopPropagation();
@@ -1018,6 +1021,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // User chose to clear existing data
         configList.innerHTML = '';
         sectionList.innerHTML = '';
+        sectionList.style.display = 'block'; // Hide the section list
         sections = {};
         showFeedback("Existing data cleared. Loading template...", "info");
     } else {
@@ -1108,6 +1112,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 templateSelect.appendChild(otherOptgroup);
             }
         });
+
+        populateSectionDropdown();
+        enhanceSectionDropdown(); // <-- Add this to refresh the Choices dropdown
 
        
 

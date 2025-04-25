@@ -598,7 +598,7 @@ body::-webkit-scrollbar {
   
 
 .sections {
-margin-top: 10px; /* Add margin to separate it from the section list */
+margin-top: 0px; /* Add margin to separate it from the section list */
 display: flex;
 flex-direction: column;
 flex-wrap: nowrap;
@@ -626,6 +626,7 @@ align-content: center;
 
 
 #section-list {
+    display: none;
     list-style: none;
     width: calc(100% - 10px);
     padding: 0;
