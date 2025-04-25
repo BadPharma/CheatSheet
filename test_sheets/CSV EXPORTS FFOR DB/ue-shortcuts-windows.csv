@@ -1,0 +1,176 @@
+section,command,description,colouur
+General,Ctrl + S,Save the current level or asset.,#E0F7FA
+General,Ctrl + Shift + S,Save all assets in the project.,#E0F7FA
+General,Ctrl + O,Open a project or level.,#E0F7FA
+General,Ctrl + N,Create a new project or level.,#E0F7FA
+General,Ctrl + Q,Quit Unreal Engine.,#E0F7FA
+Viewport,Alt + LMB (Left Mouse Button),Orbit the camera around an object.,#FFEBEE
+Viewport,Alt + RMB (Right Mouse Button),Zoom the camera in/out.,#FFEBEE
+Viewport,Alt + MMB (Middle Mouse Button),Pan the camera.,#FFEBEE
+Viewport,F,Focus on the selected object.,#FFEBEE
+Editing,Ctrl + C,Copy selected object(s).,#FFF3E0
+Editing,Ctrl + X,Cut selected object(s).,#FFF3E0
+Editing,Ctrl + V,Paste copied object(s).,#FFF3E0
+Editing,Ctrl + D,Duplicate selected object(s).,#FFF3E0
+Editing,Ctrl + Z,Undo the last action.,#FFF3E0
+Editing,Ctrl + Y,Redo the last action.,#FFF3E0
+Editing,Ctrl + W,Duplicate selected actor(s) or object(s).,#FFF3E0
+Object Movement,W,Activate the Move tool.,#F3E5F5
+Object Movement,E,Activate the Rotate tool.,#F3E5F5
+Object Movement,R,Activate the Scale tool.,#F3E5F5
+Object Movement,Ctrl + End,Snap object to the floor.,#F3E5F5
+Object Movement,Spacebar,"Cycle between movement tools (Move, Rotate, Scale).",#F3E5F5
+Play Mode,Alt + P,Start Play mode in the selected viewport.,#E8F5E9
+Play Mode,Shift + F1,Toggle Mouse Cursor in Play mode.,#E8F5E9
+Play Mode,Ctrl + Shift + F1,Eject from the player while in Play mode.,#E8F5E9
+Play Mode,F11,Enter/exit fullscreen Play mode.,#E8F5E9
+Content Browser,Ctrl + F,Search for assets in the Content Browser.,#E1F5FE
+Content Browser,Ctrl + Shift + A,Create a new asset in the Content Browser.,#E1F5FE
+Content Browser,Ctrl + B,Browse to the selected asset in the Content Browser.,#E1F5FE
+Blueprints,Ctrl + B,Open the Blueprint Editor for the selected actor.,#FFEBEE
+Blueprints,Ctrl + Shift + B,Compile the Blueprint.,#FFEBEE
+Blueprints,Ctrl + Shift + N,Create a new Blueprint class.,#FFEBEE
+Materials,M + LMB (Left Mouse Button),Apply material to the selected object.,#FFEBEE
+Materials,Ctrl + Shift + M,Open Material Editor for selected material.,#FFEBEE
+Lighting,Ctrl + L,Rotate directional light (in Viewport).,#FFF3E0
+Lighting,Ctrl + Shift + L,Build lighting for the current level.,#FFF3E0
+Actor Management,F2,Rename the selected actor.,#F3E5F5
+Actor Management,Ctrl + G,Group selected actors.,#F3E5F5
+Actor Management,Ctrl + Shift + G,Ungroup selected actors.,#F3E5F5
+Camera,Shift + 1,Create a new camera actor.,#E8F5E9
+Camera,Ctrl + Shift + C,Jump to selected camera's perspective.,#E8F5E9
+Sequencer,Ctrl + Shift + N,Create a new sequence.,#E1F5FE
+Sequencer,Spacebar,Play/Stop the current sequence.,#E1F5FE
+Sequencer,Ctrl + Alt + T,Add a keyframe for selected properties.,#E1F5FE
+Sequencer,S,Add a new shot track to the sequence.,#E1F5FE
+General,Ctrl + Alt + Q,Open project settings.,#E0F7FA
+General,Ctrl + Alt + P,Open editor preferences.,#E0F7FA
+Viewport,G,Toggle Game View (hides editor elements).,#FFEBEE
+Viewport,L,Toggle lighting only mode in viewport.,#FFEBEE
+Viewport,Shift + 2,Enter geometry editing mode.,#FFEBEE
+Editing,Ctrl + Alt + LMB,Select multiple objects.,#FFF3E0
+Editing,Ctrl + Shift + Alt + V,Paste at original location.,#FFF3E0
+Editing,Shift + D,Duplicate object and transform simultaneously.,#FFF3E0
+Object Movement,Ctrl + 1,Enable snapping to grid.,#F3E5F5
+Object Movement,Ctrl + 2,Enable snapping to rotation.,#F3E5F5
+Object Movement,Ctrl + 3,Enable snapping to scale.,#F3E5F5
+Object Movement,Shift + F,Frame all objects in the viewport.,#F3E5F5
+Play Mode,Shift + F11,Toggle immersive play mode.,#E8F5E9
+Play Mode,Ctrl + Alt + P,Play selected level in a new window.,#E8F5E9
+Play Mode,Shift + 8,Open the level sequencer window.,#E8F5E9
+Materials,Ctrl + Shift + P,Open the material instance editor.,#FFEBEE
+Materials,Shift + LMB,Apply multiple materials to selected objects.,#FFEBEE
+Lighting,Ctrl + Shift + F,Snap light to selected object.,#FFF3E0
+Lighting,Ctrl + B,Build all lighting for the level.,#FFF3E0
+Actor Management,Ctrl + Alt + G,Group selected actors and move as one.,#F3E5F5
+Actor Management,Alt + LMB,Select and move actors along the X/Y axis.,#F3E5F5
+Sequencer,Ctrl + Shift + E,Export sequence as a movie file.,#E1F5FE
+Sequencer,Ctrl + Shift + M,Mute selected track in the sequencer.,#E1F5FE
+Sequencer,Shift + S,Add a new camera cut track to the sequencer.,#E1F5FE
+Animation,Ctrl + Shift + A,Open the animation blueprint editor.,#FFFDE7
+Animation,Shift + Enter,Play the current animation.,#FFFDE7
+Animation,Ctrl + Alt + F,Jump to the next animation keyframe.,#FFFDE7
+Animation,Shift + K,Add a new animation key.,#FFFDE7
+Animation,Ctrl + Shift + Alt + C,Copy keyframe properties.,#FFFDE7
+Animation,Ctrl + Shift + Alt + V,Paste keyframe properties.,#FFFDE7
+Animation,Ctrl + M,Open the animation montage editor.,#FFFDE7
+Landscape,Shift + 3,Enter landscape mode.,#C8E6C9
+Landscape,Ctrl + Shift + L,Add a new landscape layer.,#C8E6C9
+Landscape,Shift + R,Sculpt selected terrain.,#C8E6C9
+Landscape,Shift + S,Smooth selected terrain.,#C8E6C9
+Landscape,Shift + 9,Paint texture onto landscape.,#C8E6C9
+Physics,P,Toggle physics simulation on/off.,#FFE0B2
+Physics,Shift + R,Reset physics simulation.,#FFE0B2
+Physics,Ctrl + Shift + C,Toggle collision visibility in viewport.,#FFE0B2
+Physics,Ctrl + Alt + P,Pause physics simulation.,#FFE0B2
+Physics,Ctrl + Shift + X,Apply physics impulse to selected object.,#FFE0B2
+Debugging,Ctrl + Alt + Shift + M,Open message log window.,#FFCCBC
+Debugging,Shift + F5,Break into debugger.,#FFCCBC
+Debugging,Ctrl + Alt + Shift + B,Toggle blueprint breakpoint.,#FFCCBC
+Debugging,Ctrl + Shift + T,Start/Stop profiling session.,#FFCCBC
+Debugging,Ctrl + Shift + F10,Step into function while debugging.,#FFCCBC
+Debugging,Ctrl + F10,Step over function while debugging.,#FFCCBC
+General,Ctrl + Shift + N,Create a new level.,#E0F7FA
+General,Ctrl + Shift + O,Open a recent project.,#E0F7FA
+General,Ctrl + Shift + F11,Toggle full screen mode.,#E0F7FA
+General,Ctrl + F12,Capture a screenshot.,#E0F7FA
+Navigation,Alt + Mouse Scroll,Zoom in/out in the viewport.,#FFEBEE
+Navigation,Shift + Right Click,Rotate view in the viewport.,#FFEBEE
+Navigation,Shift + Middle Mouse Button,Pan the view in the viewport.,#FFEBEE
+Blueprint Editing,F2,Rename selected node in the blueprint.,#FFF3E0
+Blueprint Editing,Ctrl + B,Compile the blueprint.,#FFF3E0
+Blueprint Editing,Ctrl + Shift + R,Reset node connections in the blueprint.,#FFF3E0
+Animation,Shift + Ctrl + P,Preview animation.,#FFFDE7
+Animation,Ctrl + Shift + C,Create animation montage.,#FFFDE7
+Animation,Ctrl + Shift + S,Save all animation assets.,#FFFDE7
+Materials,Ctrl + Shift + M,Create a new material.,#FFEBEE
+Materials,Ctrl + Shift + A,Add new node in material editor.,#FFEBEE
+Materials,Shift + Alt + P,Preview material in viewport.,#FFEBEE
+Level Design,Ctrl + K,Toggle snapping in viewport.,#C8E6C9
+Level Design,Ctrl + Shift + G,Group selected actors.,#C8E6C9
+Level Design,Ctrl + Alt + H,Hide selected actors in viewport.,#C8E6C9
+Level Design,Shift + F10,Play in editor mode.,#C8E6C9
+Sequencer,Ctrl + Alt + S,Save current sequence.,#E1F5FE
+Sequencer,Ctrl + Alt + N,Create new sequence.,#E1F5FE
+Sequencer,Ctrl + Shift + T,Add a new track to the sequencer.,#E1F5FE
+Gameplay Scripting,F5,Compile and run scripts.,#E1F5FE
+Gameplay Scripting,Ctrl + F5,Debug gameplay scripts.,#E1F5FE
+Gameplay Scripting,Ctrl + Alt + T,Toggle time dilation in the editor.,#E1F5FE
+Lighting,Shift + P,Preview lighting build in viewport.,#FFF3E0
+Lighting,Ctrl + Shift + F,Focus light on selected object.,#FFF3E0
+Lighting,Ctrl + Shift + B,Build lighting for the level.,#FFF3E0
+Physics,Ctrl + Shift + Y,Toggle physics simulation for selected objects.,#FFE0B2
+Physics,Shift + P,Play physics simulation in editor.,#FFE0B2
+Physics,Shift + F1,Pause physics simulation.,#FFE0B2
+UI & HUD,Ctrl + Shift + I,Open the UI Designer.,#FFCCBC
+UI & HUD,Ctrl + Alt + R,Reset UI layout to default.,#FFCCBC
+UI & HUD,Shift + Alt + L,Toggle UI layout lock.,#FFCCBC
+Asset Management,Ctrl + Shift + D,Duplicate selected asset.,#E0F7FA
+Asset Management,Shift + Delete,Delete selected asset.,#E0F7FA
+Asset Management,Ctrl + F,Find assets in the Content Browser.,#E0F7FA
+Debugging,Ctrl + Alt + Shift + D,Open debug window.,#FFCCBC
+Debugging,Ctrl + Alt + Shift + R,Reload all assets in the project.,#FFCCBC
+Debugging,Shift + F7,Start debug session.,#FFCCBC
+General,Ctrl + Shift + H,Toggle visibility of the content browser.,#E0F7FA
+General,Ctrl + R,Refresh the content browser.,#E0F7FA
+General,Ctrl + Shift + P,Open project settings.,#E0F7FA
+General,Ctrl + Shift + W,Open the Output Log.,#E0F7FA
+Navigation,F11,Toggle fullscreen mode for the viewport.,#FFEBEE
+Navigation,Ctrl + Shift + Up/Down,Move selected actor(s) vertically.,#FFEBEE
+Navigation,Ctrl + Shift + Left/Right,Move selected actor(s) horizontally.,#FFEBEE
+Actor Manipulation,Alt + Shift + M,Merge selected actors.,#FFF3E0
+Actor Manipulation,Ctrl + Shift + L,Lock/unlock selected actor.,#FFF3E0
+Actor Manipulation,Ctrl + H,Hide selected actor(s) in the viewport.,#FFF3E0
+Blueprint Editing,F3,Add comment box in blueprint editor.,#FFF3E0
+Blueprint Editing,Ctrl + Shift + D,Duplicate selected node in blueprint.,#FFF3E0
+Blueprint Editing,Ctrl + Shift + N,Create new blueprint class.,#FFF3E0
+Animation,Ctrl + Shift + E,Edit the selected animation asset.,#FFFDE7
+Animation,Ctrl + Shift + P,Play selected animation asset.,#FFFDE7
+Animation,Shift + F5,Stop playing animation preview.,#FFFDE7
+Materials,Ctrl + Shift + L,Create a new material instance.,#FFEBEE
+Materials,Ctrl + Shift + U,Update material instance.,#FFEBEE
+Materials,Ctrl + Shift + R,Reimport texture/material.,#FFEBEE
+Level Design,Ctrl + Shift + F,Focus viewport on selected actor.,#C8E6C9
+Level Design,Ctrl + Alt + H,Hide all actors except selected ones.,#C8E6C9
+Level Design,Shift + Ctrl + P,Play in standalone mode.,#C8E6C9
+Sequencer,Ctrl + Shift + S,Save current sequencer state.,#E1F5FE
+Sequencer,Ctrl + Alt + S,Save all sequences in the project.,#E1F5FE
+Sequencer,Shift + Alt + T,Toggle visibility of selected track.,#E1F5FE
+Gameplay Scripting,Shift + F6,Pause game simulation in the editor.,#E1F5FE
+Gameplay Scripting,Ctrl + Shift + F6,Unpause game simulation.,#E1F5FE
+Gameplay Scripting,Ctrl + Shift + A,Toggle the actor's AI mode.,#E1F5FE
+Lighting,Ctrl + Shift + B,Build lighting for the entire level.,#FFF3E0
+Lighting,Ctrl + Alt + B,Build lighting for selected actors only.,#FFF3E0
+Lighting,Ctrl + Shift + I,Insert a new light source.,#FFF3E0
+Physics,Ctrl + Shift + Y,Open physics settings for selected actor.,#FFE0B2
+Physics,Alt + Shift + T,Toggle simulate physics for selected actor.,#FFE0B2
+Physics,Ctrl + Alt + T,Toggle physics debug view.,#FFE0B2
+UI & HUD,Ctrl + Shift + U,Update UI elements.,#FFCCBC
+UI & HUD,Ctrl + Shift + H,Hide UI elements in the viewport.,#FFCCBC
+UI & HUD,Shift + F1,Reset UI layout to default.,#FFCCBC
+Asset Management,Ctrl + Shift + N,Create new folder in the content browser.,#E0F7FA
+Asset Management,Ctrl + Shift + X,Export selected asset.,#E0F7FA
+Asset Management,Alt + Shift + R,Refresh selected asset in the content browser.,#E0F7FA
+Debugging,Ctrl + Shift + F9,Open debugging options.,#FFCCBC
+Debugging,Ctrl + F1,Open editor documentation.,#FFCCBC
+Debugging,Shift + F2,Show/hide debug windows.,#FFCCBC

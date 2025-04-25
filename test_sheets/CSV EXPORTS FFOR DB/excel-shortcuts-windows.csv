@@ -1,0 +1,100 @@
+General Shortcuts,Ctrl + N,Create a new workbook.,#A8D8E0
+General Shortcuts,Ctrl + O,Open an existing workbook.,#A8D8E0
+General Shortcuts,Ctrl + S,Save the current workbook.,#A8D8E0
+General Shortcuts,Ctrl + P,Print the current workbook.,#A8D8E0
+General Shortcuts,Ctrl + Z,Undo the last action.,#A8D8E0
+General Shortcuts,Ctrl + Y,Redo the last action.,#A8D8E0
+General Shortcuts,Ctrl + F,Open the Find dialog.,#A8D8E0
+General Shortcuts,Ctrl + H,Open the Replace dialog.,#A8D8E0
+Navigation Shortcuts,Arrow Keys,Move one cell in a direction.,#6DAF6D
+Navigation Shortcuts,Ctrl + Arrow Keys,Move to the edge of data region.,#6DAF6D
+Navigation Shortcuts,Page Up/Page Down,Move one screen up or down.,#6DAF6D
+Navigation Shortcuts,Alt + Page Up/Page Down,Move one screen left or right.,#6DAF6D
+Selection Shortcuts,Ctrl + A,Select the entire worksheet.,#FFDAB3
+Selection Shortcuts,Shift + Arrow Keys,Extend the selection by one cell.,#FFDAB3
+Selection Shortcuts,Ctrl + Shift + Arrow Keys,Extend the selection to the last non-empty cell.,#FFDAB3
+Selection Shortcuts,Ctrl + Space,Select the entire column.,#FFDAB3
+Selection Shortcuts,Shift + Space,Select the entire row.,#FFDAB3
+Editing Shortcuts,F2,Edit the active cell.,#F1C6B8
+Editing Shortcuts,Ctrl + C,Copy selected cells.,#F1C6B8
+Editing Shortcuts,Ctrl + X,Cut selected cells.,#F1C6B8
+Editing Shortcuts,Ctrl + V,Paste copied/cut cells.,#F1C6B8
+Editing Shortcuts,Ctrl + D,Fill down.,#F1C6B8
+Editing Shortcuts,Ctrl + R,Fill right.,#F1C6B8
+Formatting Shortcuts,Ctrl + 1,Open the Format Cells dialog.,#F0B3B3
+Formatting Shortcuts,Ctrl + B,Apply or remove bold formatting.,#F0B3B3
+Formatting Shortcuts,Ctrl + I,Apply or remove italic formatting.,#F0B3B3
+Formatting Shortcuts,Ctrl + U,Apply or remove underline formatting.,#F0B3B3
+Data Shortcuts,"Alt + E, S, V",Paste special.,#A0B3D6
+Data Shortcuts,Ctrl + T,Create a table from selected data.,#A0B3D6
+Data Shortcuts,F7,Spell check the worksheet.,#A0B3D6
+Formula Shortcuts,=,Start a formula.,#FFB3B3
+Formula Shortcuts,Alt + =,AutoSum selected cells.,#FFB3B3
+Formula Shortcuts,Ctrl + ' (apostrophe),Copy the formula from the cell above.,#FFB3B3
+Formula Shortcuts,F4,Repeat the last action or cycle through absolute/relative references.,#FFB3B3
+Miscellaneous Shortcuts,Ctrl + K,Insert a hyperlink.,#F1E5B8
+Miscellaneous Shortcuts,Ctrl + N,Create a new workbook.,#F1E5B8
+Miscellaneous Shortcuts,Alt + F8,Open the Macro dialog.,#F1E5B8
+Miscellaneous Shortcuts,Ctrl + Q,Quick Analysis options.,#F1E5B8
+File Management,Ctrl + Shift + N,Create a new folder in the Save As dialog.,#D4E4E1
+File Management,F12,Open the Save As dialog.,#D4E4E1
+File Management,Ctrl + W,Close the current workbook window.,#D4E4E1
+File Management,Ctrl + Shift + T,Reopen the last closed workbook.,#D4E4E1
+Navigation Shortcuts,Home,Move to the beginning of the row.,#B9E7D9
+Navigation Shortcuts,Ctrl + Home,Move to the beginning of the worksheet.,#B9E7D9
+Navigation Shortcuts,Ctrl + End,Move to the last cell with content.,#B9E7D9
+Navigation Shortcuts,F5,Open the Go To dialog.,#B9E7D9
+Selection Shortcuts,Ctrl + Shift + Space,Select the entire worksheet.,#FFE4B3
+Selection Shortcuts,Ctrl + Shift + L,Add or remove filters.,#FFE4B3
+Selection Shortcuts,Ctrl + Shift + +,"Insert new cells, rows, or columns.",#FFE4B3
+Selection Shortcuts,Ctrl + -,"Delete selected cells, rows, or columns.",#FFE4B3
+Editing Shortcuts,Ctrl + K,Insert a hyperlink.,#F1E6D3
+Editing Shortcuts,Shift + F2,Add or edit a cell comment.,#F1E6D3
+Editing Shortcuts,Ctrl + ;,Insert the current date.,#F1E6D3
+Editing Shortcuts,Ctrl + Shift + :,Insert the current time.,#F1E6D3
+Editing Shortcuts,Ctrl + Z,Undo the last action.,#F1E6D3
+Editing Shortcuts,Ctrl + Y,Redo the last action.,#F1E6D3
+Formatting Shortcuts,Ctrl + Shift + $,Apply currency format.,#E2B2D1
+Formatting Shortcuts,Ctrl + Shift + %,Apply percentage format.,#E2B2D1
+Formatting Shortcuts,Ctrl + Shift + #,Apply date format.,#E2B2D1
+Formatting Shortcuts,Ctrl + Shift + @,Apply time format.,#E2B2D1
+Formula Shortcuts,Ctrl + Shift + Enter,Create an array formula.,#D2C1E0
+Formula Shortcuts,Ctrl + A,Open the Function Arguments dialog.,#D2C1E0
+Formula Shortcuts,Shift + F3,Open the Insert Function dialog.,#D2C1E0
+Data Shortcuts,"Alt + A, T",Open the Filter menu.,#E3C8D2
+Data Shortcuts,Ctrl + Shift + F,Open the Format Cells dialog and switch to the Font tab.,#E3C8D2
+Miscellaneous Shortcuts,Alt + F11,Open the Visual Basic for Applications editor.,#D1E5C1
+Miscellaneous Shortcuts,Alt + Q,Activate the Tell Me tool.,#D1E5C1
+Miscellaneous Shortcuts,Ctrl + T,Create a table from the selected data.,#D1E5C1
+Miscellaneous Shortcuts,Ctrl + Shift + 5,Apply percentage formatting.,#D1E5C1
+Miscellaneous Shortcuts,Ctrl + Shift + 8,Show or hide the outline symbols.,#D1E5C1
+Miscellaneous Shortcuts,Ctrl + F3,Define a name for a cell or range.,#D1E5C
+Cell Formatting,Ctrl + 1,Open the Format Cells dialog.,#E6B3D6
+Cell Formatting,Ctrl + B,Apply or remove bold formatting.,#E6B3D6
+Cell Formatting,Ctrl + I,Apply or remove italic formatting.,#E6B3D6
+Cell Formatting,Ctrl + U,Apply or remove underline formatting.,#E6B3D6
+Cell Navigation,Alt + Arrow Down,Open the drop-down list for the selected cell.,#D6E6B3
+Cell Navigation,Ctrl + Arrow Key,Move to the edge of the current data region.,#D6E6B3
+Cell Navigation,Shift + Arrow Key,Extend the selection by one cell.,#D6E6B3
+Cell Navigation,Page Up,Move up one screen.,#D6E6B3
+Cell Navigation,Page Down,Move down one screen.,#D6E6B3
+Cell Editing,F2,Edit the active cell.,#D3E6D3
+Cell Editing,Ctrl + D,Fill down the contents of the selected cell(s).,#D3E6D3
+Cell Editing,Ctrl + R,Fill right the contents of the selected cell(s).,#D3E6D3
+Data Management,"Alt + E, S, V",Paste special values.,#B3D6E6
+Data Management,"Ctrl + Shift + ""+""",Insert new cells.,#B3D6E6
+Data Management,"Ctrl + Shift + ""-""",Delete selected cells.,#B3D6E6
+Data Management,"Alt + H, O, I",Auto resize the column width.,#B3D6E6
+Data Management,"Alt + H, D, D",Delete the selected worksheet.,#B3D6E6
+View Management,Ctrl + F,Open the Find and Replace dialog.,#F3D3D3
+View Management,Ctrl + H,Open the Find and Replace dialog with the Replace tab active.,#F3D3D3
+View Management,Ctrl + P,Open the Print dialog.,#F3D3D3
+View Management,Ctrl + F9,Minimize or maximize the window.,#F3D3D3
+Chart Management,Alt + F1,Create a chart of the selected data.,#F3B3D6
+Chart Management,F11,Create a chart in a separate chart sheet.,#F3B3D6
+Comment Management,Shift + F2,Add or edit a comment in the selected cell.,#E3D6B3
+Comment Management,Ctrl + Shift + O,Select all cells with comments.,#E3D6B3
+File Management,Alt + F,Open the File menu.,#D6B3E6
+File Management,Ctrl + S,Save the workbook.,#D6B3E6
+File Management,Ctrl + N,Create a new workbook.,#D6B3E6
+File Management,Ctrl + O,Open an existing workbook.,#D6B3E6

@@ -1,0 +1,29 @@
+section,command,description,command.1
+Math & Trig,'SUM(A1:A10),Returns the sum of a range of cells.,#FFDDC1
+Math & Trig,'AVERAGE(A1:A10),Calculates the average of a group of numbers.,#FFDDC1
+Math & Trig,'MIN(A1:A10),Returns the smallest number in a set of values.,#FFDDC1
+Math & Trig,'MAX(A1:A10),Returns the largest number in a set of values.,#FFDDC1
+Math & Trig,'COUNT(A1:A10),Counts the number of cells that contain numbers.,#FFDDC1
+Math & Trig,'COUNTA(A1:A10),Counts the number of non-empty cells in a range.,#FFDDC1
+Math & Trig,"'ROUND(A1, 2)",Rounds a number to a specified number of digits.,#FFDDC1
+Math & Trig,"'RANDBETWEEN(1, 100)",Returns a random number between the numbers you specify.,#FFDDC1
+Text,"'CONCATENATE(A1, B1)",Joins several text strings into one string.,#D1E7DD
+Text,"'LEFT(A1, 3)",Returns the first character(s) in a text string based on the number specified.,#D1E7DD
+Text,"'RIGHT(A1, 3)",Returns the last character(s) in a text string based on the number specified.,#D1E7DD
+Text,"'MID(A1, 2, 3)","Returns a specific number of characters from a text string, starting at the position you specify.",#D1E7DD
+Text,'UPPER(A1),Converts a text string to uppercase.,#D1E7DD
+Text,'LOWER(A1),Converts a text string to lowercase.,#D1E7DD
+Lookup & Reference,"'VLOOKUP(A1, B1:C10, 2, FALSE)",Looks for a value in the first column of a range and returns a value in the same row from another column.,#FFE6CC
+Lookup & Reference,"'HLOOKUP(A1, A1:D10, 2, FALSE)",Looks for a value in the top row of a range and returns a value in the same column from another row.,#FFE6CC
+Lookup & Reference,"'INDEX(A1:C10, 2, 3)",Returns a value from a table or range based on row and column numbers.,#FFE6CC
+Lookup & Reference,"'MATCH(A1, B1:B10, 0)",Returns the relative position of an item in an array that matches a specified value.,#FFE6CC
+Logical,"'IF(A1 > 10, ""Yes"", ""No"")",Returns one value if a condition is true and another value if it's false.,#CFE2F3
+Logical,"'AND(A1 > 0, B1 < 5)","Returns TRUE if all arguments are TRUE; otherwise, returns FALSE.",#CFE2F3
+Logical,"'OR(A1 > 0, B1 < 5)","Returns TRUE if any argument is TRUE; otherwise, returns FALSE.",#CFE2F3
+Logical,'NOT(A1 > 10),Reverses the value of its argument.,#CFE2F3
+Date & Time,'TODAY(),Returns the current date.,#F9CB9C
+Date & Time,'NOW(),Returns the current date and time.,#F9CB9C
+Date & Time,"'DATE(2023, 1, 1)",Returns the serial number of a particular date.,#F9CB9C
+Date & Time,'YEAR(A1),Returns the year corresponding to a date.,#F9CB9C
+Date & Time,'MONTH(A1),Returns the month corresponding to a date.,#F9CB9C
+Date & Time,'DAY(A1),Returns the day of the month corresponding to a date.,#F9CB9C

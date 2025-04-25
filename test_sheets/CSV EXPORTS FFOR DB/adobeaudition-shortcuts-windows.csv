@@ -1,0 +1,73 @@
+section,command,description,colour
+Navigation,Home,Move playhead to the beginning,#DFF0D8
+Navigation,End,Move playhead to the end,#DFF0D8
+Navigation,Shift + Left Arrow,Move playhead left by one frame,#DFF0D8
+Navigation,Shift + Right Arrow,Move playhead right by one frame,#DFF0D8
+Navigation,Spacebar,Play/Pause,#DFF0D8
+Navigation,Shift + Spacebar,Play in reverse,#DFF0D8
+Navigation,Ctrl + Shift + Right Arrow,Jump 1 second forward,#DFF0D8
+Navigation,Ctrl + Shift + Left Arrow,Jump 1 second backward,#DFF0D8
+Navigation,Alt + Left Arrow,Move to previous marker,#DFF0D8
+Navigation,Alt + Right Arrow,Move to next marker,#DFF0D8
+Playback & Record,Ctrl + Spacebar,Start/Stop recording,#D9EDF7
+Playback & Record,F12,Toggle recording on/off,#D9EDF7
+Playback & Record,Shift + F12,Stop recording,#D9EDF7
+Playback & Record,Shift + Spacebar,Play from current position,#D9EDF7
+Playback & Record,Ctrl + R,Start/Stop recording (loop),#D9EDF7
+Playback & Record,Shift + Alt + R,Loop record,#D9EDF7
+Playback & Record,Ctrl + Shift + F12,Set recording start time,#D9EDF7
+Editing,Ctrl + Z,Undo,#FCF8E3
+Editing,Ctrl + Shift + Z,Redo,#FCF8E3
+Editing,Ctrl + X,Cut,#FCF8E3
+Editing,Ctrl + C,Copy,#FCF8E3
+Editing,Ctrl + V,Paste,#FCF8E3
+Editing,Ctrl + D,Duplicate selected region,#FCF8E3
+Editing,Ctrl + T,Trim region,#FCF8E3
+Editing,Delete,Delete selected region or track,#FCF8E3
+Editing,Ctrl + Shift + D,Fade in/out,#FCF8E3
+Editing,Ctrl + Shift + F,Normalize selection,#FCF8E3
+Editing,Ctrl + L,Convert to stereo/mono,#FCF8E3
+Tools,Ctrl + 1,Selection tool,#F2DEDE
+Tools,Ctrl + 2,Move tool,#F2DEDE
+Tools,Ctrl + 3,Razor tool,#F2DEDE
+Tools,Ctrl + 4,Time selection tool,#F2DEDE
+Tools,Ctrl + 5,Envelope tool,#F2DEDE
+Tools,Ctrl + 6,Spectral frequency display tool,#F2DEDE
+Tools,Ctrl + 7,Clip gain tool,#F2DEDE
+Tools,Ctrl + 8,Noise reduction tool,#F2DEDE
+Tools,Shift + I,Insertion point at playhead position,#F2DEDE
+Tools,Shift + O,Outsertion point at playhead position,#F2DEDE
+Tools,Alt + Shift + I,Insertion point at selected position,#F2DEDE
+Tools,Alt + Shift + O,Outsertion point at selected position,#F2DEDE
+Tracks,Ctrl + Shift + N,New track,#D0E9C6
+Tracks,Ctrl + ↑ / ↓,Select next/previous track,#D0E9C6
+Tracks,Ctrl + Alt + ↑ / ↓,Move track up/down,#D0E9C6
+Tracks,Ctrl + Shift + M,Mute track,#D0E9C6
+Tracks,Ctrl + Shift + S,Solo track,#D0E9C6
+Tracks,Ctrl + E,Expand/collapse track view,#D0E9C6
+Tracks,Ctrl + Shift + T,Duplicate track,#D0E9C6
+Tracks,Ctrl + Shift + L,Lock/unlock track,#D0E9C6
+Mixing,Shift + M,Toggle mixer,#FBEEC1
+Mixing,Shift + F,Show/hide effects rack,#FBEEC1
+Mixing,Ctrl + ↑ / ↓,Increase/decrease volume,#FBEEC1
+Mixing,Ctrl + Shift + ↑ / ↓,Move fader up/down,#FBEEC1
+Mixing,Ctrl + Alt + M,Mute track in mixer,#FBEEC1
+Mixing,Ctrl + Alt + S,Solo track in mixer,#FBEEC1
+Mixing,Ctrl + E,Expand mixer view,#FBEEC1
+Mixing,Ctrl + Shift + F,Show/hide effects and sends panel,#FBEEC1
+MIDI,Ctrl + 1,Open MIDI editor,#E2D6F3
+MIDI,Ctrl + 2,Open MIDI drum editor,#E2D6F3
+MIDI,Ctrl + 3,Open MIDI pitch editor,#E2D6F3
+MIDI,Shift + Left/Right Arrow,Move note left/right,#E2D6F3
+MIDI,Shift + Up/Down Arrow,Change pitch of note,#E2D6F3
+MIDI,Ctrl + Shift + Up/Down Arrow,Increase/decrease velocity of note,#E2D6F3
+File,Ctrl + N,New project,#F5F5F5
+File,Ctrl + O,Open project,#F5F5F5
+File,Ctrl + S,Save project,#F5F5F5
+File,Ctrl + Shift + S,Save As,#F5F5F5
+File,Ctrl + P,Print,#F5F5F5
+File,Ctrl + Q,Quit Audition,#F5F5F5
+Help & Tips,Ctrl + /,Show shortcut help,#EAD1DC
+Help & Tips,F1,Open Adobe Audition Help,#EAD1DC
+Help & Tips,Ctrl + Shift + H,Open help window,#EAD1DC
+Help & Tips,Ctrl + Alt + /,Access quick tips,#EAD1DC

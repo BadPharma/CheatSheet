@@ -1,0 +1,72 @@
+section,command,description,colour
+Navigation,⌘ + ↑,Move to beginning of document,#DFF0D8
+Navigation,⌘ + ↓,Move to end of document,#DFF0D8
+Navigation,Option + ↑ / ↓,Jump paragraph up/down,#DFF0D8
+Navigation,⌘ + ← / →,Jump to beginning/end of line,#DFF0D8
+Navigation,Option + ← / →,Jump word by word,#DFF0D8
+Navigation,⌘ + F,Find,#DFF0D8
+Navigation,⌘ + G,Find next,#DFF0D8
+Editing,⌘ + C,Copy,#D9EDF7
+Editing,⌘ + X,Cut,#D9EDF7
+Editing,⌘ + V,Paste,#D9EDF7
+Editing,⌘ + Z,Undo,#D9EDF7
+Editing,⌘ + Shift + Z,Redo,#D9EDF7
+Editing,⌘ + A,Select all,#D9EDF7
+Editing,Delete,Delete selected,#D9EDF7
+Editing,⌘ + D,Duplicate,#D9EDF7
+Editing,⌘ + Shift + V,Paste and match style,#D9EDF7
+Text Formatting,⌘ + B,Bold,#FCF8E3
+Text Formatting,⌘ + I,Italic,#FCF8E3
+Text Formatting,⌘ + U,Underline,#FCF8E3
+Text Formatting,⌘ + T,Show Fonts panel,#FCF8E3
+Text Formatting,⌘ + Option + C,Copy style,#FCF8E3
+Text Formatting,⌘ + Option + V,Paste style,#FCF8E3
+Text Formatting,⌘ + Control + Space,Change font,#FCF8E3
+Text Formatting,⌘ + Shift + L,Align left,#FCF8E3
+Text Formatting,⌘ + Shift + E,Center align,#FCF8E3
+Text Formatting,⌘ + Shift + R,Align right,#FCF8E3
+Layout,⌘ + Shift + M,Add margin,#F2DEDE
+Layout,⌘ + Shift + T,Show/Hide Ruler,#F2DEDE
+Layout,⌘ + Option + P,Show Page Thumbnails,#F2DEDE
+Layout,⌘ + Shift + H,Show/Hide Header,#F2DEDE
+Layout,⌘ + Option + Shift + F,Show/Hide Footer,#F2DEDE
+Layout,⌘ + Shift + C,Center object,#F2DEDE
+Layout,⌘ + Shift + L,Align left object,#F2DEDE
+Layout,⌘ + Shift + R,Align right object,#F2DEDE
+Layout,⌘ + Option + G,Group objects,#F2DEDE
+Layout,⌘ + Option + Shift + G,Ungroup objects,#F2DEDE
+Styles,⌘ + Option + S,Show Styles sidebar,#D0E9C6
+Styles,⌘ + Option + N,Create new paragraph style,#D0E9C6
+Styles,⌘ + Shift + K,Apply Title style,#D0E9C6
+Styles,⌘ + Shift + J,Apply Heading style,#D0E9C6
+Styles,⌘ + Shift + U,Update style to match,#D0E9C6
+Styles,⌘ + Option + A,Apply Body style,#D0E9C6
+Lists,⌘ + Shift + 7,Bullet list,#FBEEC1
+Lists,⌘ + Shift + 8,Numbered list,#FBEEC1
+Lists,Tab,Indent list item,#FBEEC1
+Lists,Shift + Tab,Outdent list item,#FBEEC1
+Lists,⌘ + Option + T,Toggle list style,#FBEEC1
+Lists,⌘ + Option + Shift + L,Define new list style,#FBEEC1
+Objects & Media,⌘ + K,Insert hyperlink,#E2D6F3
+Objects & Media,⌘ + Shift + V,Paste media,#E2D6F3
+Objects & Media,⌘ + Option + M,Insert movie,#E2D6F3
+Objects & Media,⌘ + Option + I,Insert image,#E2D6F3
+Objects & Media,⌘ + Option + T,Insert text box,#E2D6F3
+Objects & Media,Control + Click,Context menu for media,#E2D6F3
+Collaboration,⌘ + Option + Shift + A,Add comment,#F5D0A9
+Collaboration,⌘ + Option + Shift + N,Next comment,#F5D0A9
+Collaboration,⌘ + Option + Shift + P,Previous comment,#F5D0A9
+Collaboration,⌘ + Option + Shift + D,Delete comment,#F5D0A9
+Collaboration,⌘ + Shift + K,Start collaboration,#F5D0A9
+File,⌘ + N,New document,#F5F5F5
+File,⌘ + O,Open document,#F5F5F5
+File,⌘ + S,Save document,#F5F5F5
+File,⌘ + Shift + S,Save As,#F5F5F5
+File,⌘ + P,Print,#F5F5F5
+File,⌘ + W,Close document,#F5F5F5
+File,⌘ + Q,Quit Pages,#F5F5F5
+Help & Tips,⌘ + ?,Help,#EAD1DC
+Help & Tips,⌘ + /,Show keyboard shortcuts,#EAD1DC
+Help & Tips,⌘ + Option + /,Search features,#EAD1DC
+Help & Tips,Control + ⌘ + Space,Emoji picker,#EAD1DC
+Help & Tips,"⌘ + Option + ,",Open Preferences,#EAD1DC

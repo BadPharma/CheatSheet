@@ -1,0 +1,112 @@
+Section,cmd,desc,clr
+Selection,V,Selection Tool.,#FFCCBC
+Selection,A,Direct Selection Tool.,#FFCCBC
+Selection,Shift + Cmd + A,Deselect all.,#FFCCBC
+Selection,Cmd + 2,Lock selected objects.,#FFCCBC
+Selection,Cmd + Option + 2,Unlock all objects.,#FFCCBC
+Selection,Shift + Option + Cmd + 2,Lock others.,#FFCCBC
+Drawing,P,Pen Tool.,#FFECB3
+Drawing,Shift + P,Add Anchor Point Tool.,#FFECB3
+Drawing,Cmd + J,Join selected points.,#FFECB3
+Drawing,L,Ellipse Tool.,#FFECB3
+Drawing,Shift + Cmd + L,Align Left.,#FFECB3
+Drawing,Shift + Cmd + C,Align Center.,#FFECB3
+Drawing,Shift + Cmd + R,Align Right.,#FFECB3
+Drawing,Shift + X,Swap fill and stroke color.,#FFECB3
+Transform,E,Free Transform Tool.,#C8E6C9
+Transform,Cmd + Shift + M,Move dialog.,#C8E6C9
+Transform,Cmd + T,Transform pattern without transforming object.,#C8E6C9
+Transform,Cmd + Option + Shift + D,Transform each.,#C8E6C9
+Transform,R,Rotate Tool.,#C8E6C9
+Transform,S,Scale Tool.,#C8E6C9
+Layers,Cmd + L,New Layer.,#B3E5FC
+Layers,Cmd + Option + Shift + L,Move selected objects to Layer.,#B3E5FC
+Layers,Cmd + Option + Left Bracket,Send to Back.,#B3E5FC
+Layers,Cmd + Left Bracket,Send Backward.,#B3E5FC
+Layers,Cmd + Right Bracket,Bring Forward.,#B3E5FC
+Layers,Cmd + Option + Right Bracket,Bring to Front.,#B3E5FC
+Text,T,Type Tool.,#FFCDD2
+Text,Cmd + Shift + T,Tab Ruler.,#FFCDD2
+Text,Cmd + Shift + K,Convert text to outlines.,#FFCDD2
+Text,Cmd + Option + Shift + E,Vertical Scale text.,#FFCDD2
+Text,Shift + Cmd + L,Align text left.,#FFCDD2
+Text,Shift + Cmd + R,Align text right.,#FFCDD2
+Pathfinder,Shift + Cmd + F9,Open Pathfinder panel.,#D1C4E9
+Pathfinder,Option + Cmd + 0,Unite (Pathfinder action).,#D1C4E9
+Pathfinder,Option + Cmd + 2,Minus Front (Pathfinder action).,#D1C4E9
+Pathfinder,Option + Cmd + 4,Intersect (Pathfinder action).,#D1C4E9
+Pathfinder,Option + Cmd + 8,Exclude (Pathfinder action).,#D1C4E9
+Guides & Grids,Cmd + ;,Show or hide guides.,#FFCC80
+Guides & Grids,Cmd + Option + ;,Lock guides.,#FFCC80
+Guides & Grids,Cmd + ',Show or hide grid.,#FFCC80
+Guides & Grids,Shift + Cmd + ',Snap to grid.,#FFCC80
+Guides & Grids,Shift + Cmd + ;,Snap to guides.,#FFCC80
+Guides & Grids,Shift + Cmd + Option + ;,Release Guides.,#FFCC80
+Artboard,Shift + O,Artboard Tool.,#DCE775
+Artboard,Cmd + Option + Shift + N,New artboard.,#DCE775
+Artboard,Cmd + Option + Shift + P,Duplicate artboard.,#DCE775
+Artboard,Cmd + Shift + D,Show or hide artboard rulers.,#DCE775
+Artboard,Option + Shift + Cmd + 0,Fit Artboard in Window.,#DCE775
+Navigation,Spacebar + Drag,Move around canvas.,#FFD54F
+Navigation,Z,Zoom Tool.,#FFD54F
+Navigation,Cmd + +,Zoom In.,#FFD54F
+Navigation,Cmd + -,Zoom Out.,#FFD54F
+Navigation,Cmd + 1,100% Zoom.,#FFD54F
+Navigation,Cmd + 0,Fit to Screen.,#FFD54F
+Selection,Cmd + Option + Shift + V,Paste in Place.,#A5D6A7
+Selection,Cmd + D,Repeat last action.,#A5D6A7
+Selection,Cmd + Option + Shift + A,Select all on active artboard.,#A5D6A7
+Drawing,Option + Shift + Cmd + X,Create a compound path.,#FFE082
+Drawing,Cmd + 5,Make Guides.,#FFE082
+Drawing,Cmd + Option + 5,Release Guides.,#FFE082
+Drawing,Cmd + F,Paste in Front.,#FFE082
+Text,Shift + Cmd + O,Create outlines from text.,#FFAB91
+Text,Cmd + B,Toggle bold text.,#FFAB91
+Text,Cmd + I,Toggle italic text.,#FFAB91
+Text,Option + Left Arrow,Decrease kerning/tracking.,#FFAB91
+Text,Option + Right Arrow,Increase kerning/tracking.,#FFAB91
+Text,Cmd + Option + Shift + C,Align text center vertically.,#FFAB91
+Layers,Cmd + Option + [,Send backward by one layer.,#90CAF9
+Layers,Cmd + Option + ],Bring forward by one layer.,#90CAF9
+Layers,Option + Shift + Click on Layer,Lock or unlock layer.,#90CAF9
+Layers,Option + Cmd + Shift + K,Collect for export as a single asset.,#90CAF9
+Pathfinder,Shift + Cmd + F10,Open Attributes panel.,#B39DDB
+Pathfinder,Shift + M,Shape Builder Tool.,#B39DDB
+Pathfinder,Shift + Cmd + F8,Open Transform panel.,#B39DDB
+Guides & Grids,Cmd + Option + Shift + G,Hide guides and grids.,#FFCC80
+Guides & Grids,Cmd + Option + U,Toggle smart guides.,#FFCC80
+Guides & Grids,Cmd + Option + Shift + I,Snap to grid.,#FFCC80
+Artboard,Cmd + Shift + D,Toggle transparency grid.,#FFF176
+Artboard,Shift + Cmd + H,Show or hide edges.,#FFF176
+Artboard,Shift + Cmd + F,Toggle full-screen mode.,#FFF176
+Artboard,Cmd + Option + P,Duplicate artboard with content.,#FFF176
+Navigation,Spacebar + Cmd + Click,Zoom in using marquee.,#FFB74D
+Navigation,Cmd + Option + Shift + C,Fit artboard to window.,#FFB74D
+Navigation,Option + Cmd + Z,Zoom out.,#FFB74D
+Navigation,Cmd + Option + Shift + 1,View in outline mode.,#FFB74D
+Navigation,Cmd + Option + /,Switch between tools.,#FFB74D
+Miscellaneous,Cmd + Option + Y,Preview overprint.,#AED581
+Miscellaneous,Cmd + Option + Shift + Y,Pixel preview mode.,#AED581
+Miscellaneous,Cmd + Option + Shift + S,Save for web.,#AED581
+Miscellaneous,Cmd + K,Preferences.,#AED581
+Miscellaneous,Cmd + Option + Shift + P,Print with preview.,#AED581
+Selection,Cmd + H,Hide selected objects.,#FF8A65
+Selection,Shift + Cmd + B,Show bounding box.,#FF8A65
+Selection,Shift + Cmd + 3,Group selected objects.,#FF8A65
+Selection,Shift + Cmd + G,Ungroup selected objects.,#FF8A65
+Drawing,Option + Cmd + J,Average points.,#81D4FA
+Drawing,Cmd + Option + Shift + K,Outline stroke.,#81D4FA
+Drawing,Shift + Cmd + B,Toggle brushes panel.,#81D4FA
+Drawing,Option + Shift + Cmd + S,Save selected slice.,#81D4FA
+Transform,Option + Cmd + Shift + I,Reflect objects.,#FFAB40
+Transform,Shift + Cmd + R,Rotate canvas.,#FFAB40
+Transform,Shift + Cmd + T,Transform each object separately.,#FFAB40
+Layers,Shift + Cmd + C,Copy selected art to new layer.,#BA68C8
+Layers,Cmd + Option + Shift + 9,Toggle layer visibility.,#BA68C8
+Text,Cmd + Shift + B,Break link to text style.,#FF8A80
+Text,Option + Shift + Cmd + F,Toggle character styles.,#FF8A80
+Navigation,Cmd + Y,Switch to outline mode.,#FFCC80
+Navigation,Cmd + Option + Y,Toggle overprint preview.,#FFCC80
+Miscellaneous,Shift + Cmd + K,Toggle keyboard increment preferences.,#4CAF50
+Miscellaneous,Cmd + Shift + H,Toggle artboard rulers.,#4CAF50
+Miscellaneous,Cmd + Option + Shift + A,Select all objects on artboard.,#4CAF50

@@ -1,0 +1,104 @@
+section,command,description,colour
+File Management,Ctrl + N,Create a new document.,#FFB3B3
+File Management,Ctrl + O,Open an existing document.,#FFB3B3
+File Management,Ctrl + S,Save the current document.,#FFB3B3
+File Management,Ctrl + Shift + S,Save As a new document.,#FFB3B3
+File Management,Ctrl + W,Close the current document.,#FFB3B3
+File Management,Ctrl + Shift + P,Print the current document.,#FFB3B3
+Editing,Ctrl + Z,Undo the last action.,#B3FFD6
+Editing,Ctrl + Shift + Z,Redo the last undone action.,#B3FFD6
+Editing,Ctrl + X,Cut the selected area.,#B3FFD6
+Editing,Ctrl + C,Copy the selected area.,#B3FFD6
+Editing,Ctrl + V,Paste the copied or cut content.,#B3FFD6
+Selection,Ctrl + A,Select all contents of the current layer.,#FFD6B3
+Selection,Ctrl + D,Deselect the current selection.,#FFD6B3
+Selection,Ctrl + Shift + D,Reselect the last selection.,#FFD6B3
+Selection,M,Rectangular Marquee Tool.,#FFD6B3
+Selection,L,Lasso Tool.,#FFD6B3
+Layers,Ctrl + J,Duplicate the selected layer.,#B3D6FF
+Layers,Ctrl + Shift + J,Cut and move the selected area to a new layer.,#B3D6FF
+Layers,Ctrl + E,Merge the selected layers.,#B3D6FF
+Layers,Ctrl + Shift + E,Merge all visible layers.,#B3D6FF
+Layers,Ctrl + G,Group the selected layers.,#B3D6FF
+Layers,Ctrl + Shift + G,Ungroup layers.,#B3D6FF
+Brush Tool,B,Activate Brush Tool.,#D6B3FF
+Brush Tool,[,Decrease brush size.,#D6B3FF
+Brush Tool,],Increase brush size.,#D6B3FF
+Brush Tool,Shift + [,Soften brush edge.,#D6B3FF
+Brush Tool,Shift + ],Sharpen brush edge.,#D6B3FF
+View Management,Ctrl + + (plus),Zoom in.,#E6D3B3
+View Management,Ctrl + - (minus),Zoom out.,#E6D3B3
+View Management,Ctrl + 0,Fit the image to the screen.,#E6D3B3
+View Management,Spacebar,Temporarily activate Hand Tool to move around the image.,#E6D3B3
+View Management,Tab,Hide/show all tool panels.,#E6D3B3
+View Management,F,Cycle through screen modes.,#E6D3B3
+Color Management,D,Reset foreground and background colors to black and white.,#D3FFB3
+Color Management,X,Switch between foreground and background colors.,#D3FFB3
+Color Management,Ctrl + U,Open the Hue/Saturation dialog.,#D3FFB3
+Color Management,Ctrl + Shift + I,Invert the current selection.,#D3FFB3
+History,Ctrl + Alt + Z,Step backward in history.,#FFB3D6
+History,Ctrl + Y,Step forward in history.,#FFB3D6
+History,F12,Revert the document to its last saved state.,#FFB3D6
+Transformations,Ctrl + T,Free Transform mode.,#FFD3A3
+Transformations,Shift + Ctrl + T,Repeat the last transformation.,#FFD3A3
+Transformations,Ctrl + Shift + Alt + T,Duplicate and transform.,#FFD3A3
+Transformations,Ctrl + Alt + T,Create a copy of the selection and transform.,#FFD3A3
+Shape Tools,U,"Cycle through Shape tools (Rectangle, Ellipse, etc.).",#B3A3FF
+Shape Tools,Shift + U,Toggle between the available Shape tools.,#B3A3FF
+Shape Tools,Alt + Shift + Drag,Draw a shape from its center.,#B3A3FF
+Shape Tools,Shift + Drag,Maintain the aspect ratio of a shape.,#B3A3FF
+Pen Tool,P,Activate the Pen tool.,#A3FFD3
+Pen Tool,Alt + Click,Convert anchor point.,#A3FFD3
+Pen Tool,Ctrl + Click,Move the entire path.,#A3FFD3
+Pen Tool,Shift + P,Toggle between the Pen and Freeform Pen tools.,#A3FFD3
+Pen Tool,Ctrl + Alt + Z,Undo multiple steps of a path or point.,#A3FFD3
+Text Tool,T,Activate the Text tool.,#FFA3B3
+Text Tool,Ctrl + Shift + L,Align text left.,#FFA3B3
+Text Tool,Ctrl + Shift + R,Align text right.,#FFA3B3
+Text Tool,Ctrl + Shift + C,Center text.,#FFA3B3
+Text Tool,Ctrl + Enter,Commit the current text entry.,#FFA3B3
+Text Tool,Ctrl + Shift + >,Increase font size.,#FFA3B3
+Text Tool,Ctrl + Shift + <,Decrease font size.,#FFA3B3
+Ruler & Guides,Ctrl + R,Show or hide rulers.,#D3FFA3
+Ruler & Guides,Ctrl + ;``,Show or hide guides.,#D3FFA3
+Ruler & Guides,Ctrl + Alt + ;,Lock guides.,#D3FFA3
+Ruler & Guides,`Ctrl + ```,Show or hide the grid.,#D3FFA3
+Ruler & Guides,Shift + Drag,Snap to guides or grid.,#D3FFA3
+Layer Mask,Ctrl + I,Invert the layer mask.,#A3FFFA
+Layer Mask,Alt + Click,Toggle between viewing the layer mask and layer.,#A3FFFA
+Layer Mask,Shift + Click,Disable/enable the layer mask.,#A3FFFA
+Layer Mask,Ctrl + Alt + G,Create a clipping mask.,#A3FFFA
+Layer Mask,Alt + Backspace,Fill the mask with the foreground color.,#A3FFFA
+Blending,Shift + Alt + M,Change blending mode to Multiply.,#D3A3FF
+Blending,Shift + Alt + N,Change blending mode to Normal.,#D3A3FF
+Blending,Shift + Alt + O,Change blending mode to Overlay.,#D3A3FF
+Blending,Shift + Alt + S,Change blending mode to Screen.,#D3A3FF
+Blending,Shift + Alt + L,Change blending mode to Luminosity.,#D3A3FF
+Transformations,Alt + Shift + T,Repeat multiple transformations.,#FFD3A3
+Transformations,Ctrl + Shift + R,Flip horizontally.,#FFD3A3
+Transformations,Ctrl + Shift + E,Merge all visible layers.,#FFD3A3
+Transformations,Ctrl + Alt + Z,Step backward through multiple undos.,#FFD3A3
+Shape Tools,Shift + Click (on shape),Add a shape to the current selection.,#B3A3FF
+Shape Tools,Ctrl + Drag,Resize shape while maintaining proportions.,#B3A3FF
+Shape Tools,Ctrl + Alt + Shift + Drag,Scale the shape uniformly from center.,#B3A3FF
+Shape Tools,Shift + Arrow keys,Nudge shapes in increments.,#B3A3FF
+Pen Tool,Alt + Drag (on point),Modify a handle of a point without affecting the other handle.,#A3FFD3
+Pen Tool,Ctrl + Click (on path),Select the entire path.,#A3FFD3
+Pen Tool,Ctrl + Shift + Click (on anchor),Select multiple anchor points.,#A3FFD3
+Pen Tool,Alt + Shift + Drag (on curve),Adjust curve segments symmetrically.,#A3FFD3
+Text Tool,Ctrl + Alt + L,Justify text.,#FFA3B3
+Text Tool,Ctrl + Alt + J,Insert a line break without starting a new paragraph.,#FFA3B3
+Text Tool,Ctrl + A,Select all text in the layer.,#FFA3B3
+Text Tool,Alt + Left/Right Arrow,Kern between individual letters.,#FFA3B3
+Ruler & Guides,Alt + Drag (guide),Move a guide without snapping.,#D3FFA3
+Ruler & Guides,Ctrl + Alt + Shift + R,Clear all guides.,#D3FFA3
+Ruler & Guides,"Ctrl + ,``",Snap document elements to the grid.,#D3FFA3
+Ruler & Guides,Alt + Click (guide),Move both the horizontal and vertical guides at once.,#D3FFA3
+Layer Mask,Shift + Alt + M,Toggle between normal and quick mask modes.,#A3FFFA
+Layer Mask,Ctrl + Shift + I,Invert the layer mask selection.,#A3FFFA
+Layer Mask,Alt + Shift + Click (mask),Disable/enable mask temporarily.,#A3FFFA
+Layer Mask,Ctrl + Shift + G,Remove a clipping mask.,#A3FFFA
+Blending,Shift + Alt + V,Change blending mode to Vivid Light.,#D3A3FF
+Blending,Shift + Alt + H,Change blending mode to Hard Mix.,#D3A3FF
+Blending,Shift + Alt + G,Change blending mode to Color Dodge.,#D3A3FF
+Blending,Shift + Alt + F,Change blending mode to Soft Light.,#D3A3FF

@@ -1,0 +1,75 @@
+section,command,description,colour
+User Configuration,"git config --global user.name ""Your Name""",Set the global Git username.,#FF5733
+User Configuration,"git config --global user.email ""you@example.com""",Set the global Git email.,#FF5733
+User Configuration,"git config --global core.editor ""editor""",Set the default text editor for Git.,#FF5733
+User Configuration,git config --global color.ui auto,Enable colored output in Git commands.,#FF5733
+Repository Management,git init,Initialize a new Git repository.,#FF5733
+Repository Management,git clone <repository>,Clone a remote repository.,#FF5733
+Staging Changes,git status,Show the working directory status.,#33FF57
+Staging Changes,git add <file>,Add a file to the staging area.,#33FF57
+Staging Changes,git add .,Add all changes in the current directory to the staging area.,#33FF57
+Committing Changes,"git commit -m ""message""",Commit changes with a message.,#33AFFF
+Committing Changes,git commit --amend,Amend the last commit with new changes.,#33AFFF
+Branching,git branch,List all branches.,#F0E68C
+Branching,git branch <branch_name>,Create a new branch.,#F0E68C
+Branching,git checkout <branch_name>,Switch to a branch.,#F0E68C
+Branching,git checkout -b <new_branch>,Create and switch to a new branch.,#F0E68C
+Branching,git merge <branch_name>,Merge another branch into the current branch.,#F0E68C
+Remote Repositories,git remote add origin <url>,Add a remote repository.,#C70039
+Remote Repositories,git remote -v,Show the remote repositories linked to your project.,#C70039
+Pushing Changes,git push origin <branch_name>,Push changes to a remote repository.,#C70039
+Pulling Changes,git pull,Pull changes from a remote repository.,#C70039
+Undoing Changes,git reset <file>,Unstage a file.,#900C3F
+Undoing Changes,git reset --hard,"Reset the working directory to the last commit, discarding all changes.",#900C3F
+Undoing Changes,git checkout -- <file>,Discard changes in a file.,#900C3F
+Tagging,git tag <tag_name>,Create a tag for a specific commit.,#FF33CC
+Tagging,git push origin <tag_name>,Push a tag to the remote repository.,#FF33CC
+Viewing Logs,git log,View the commit history.,#33FFC1
+Viewing Logs,git log --oneline,View a simplified commit history.,#33FFC1
+Viewing Logs,git log --graph --decorate --oneline,Visualize commit history with branches.,#33FFC1
+Reverting Changes,git revert <commit_hash>,Create a new commit that undoes changes from a previous commit.,#FFD700
+Stashing Changes,git stash,Temporarily save changes without committing.,#FF6347
+Stashing Changes,git stash apply,Apply stashed changes back to the working directory.,#FF6347
+Fetching Changes,git fetch,Retrieve changes from a remote repository without merging.,#4B0082
+Merging,git merge upstream/main,Merge upstream changes into your branch.,#4B0082
+Collaboration,git pull-request,Submit a pull request on GitHub (via CLI).,#800080
+Working with Remotes,git fetch origin,Fetch changes from the remote repository.,#C70039
+Working with Remotes,git push,Push the current branch to the remote repository.,#C70039
+Working with Remotes,git remote rm <remote_name>,Remove a remote repository from the configuration.,#C70039
+Checking Differences,git diff,"Show changes between commits, commit and working tree, etc.",#FFC300
+Checking Differences,git diff --cached,Show changes staged for the next commit.,#FFC300
+Comparing Branches,git diff <branch1> <branch2>,Compare changes between two branches.,#FFC300
+Cherry Picking,git cherry-pick <commit_hash>,Apply changes from a specific commit to the current branch.,#C70039
+Configuring Aliases,git config --global alias.st status,"Create a shortcut for commands (e.g., st for status).",#FF5733
+Rebasing,git rebase <branch_name>,Reapply commits on top of another base tip.,#FF5733
+Rebasing,git rebase -i <commit_hash>,Start an interactive rebase from a specific commit.,#FF5733
+Interactive Rebase,git rebase --continue,Continue after resolving conflicts during a rebase.,#FF5733
+Reflog,git reflog,Show the reference logs of all operations.,#33AFFF
+Bisecting,git bisect start,Start the bisect process to find a specific commit.,#33AFFF
+Bisecting,git bisect bad <commit_hash>,Mark a commit as bad during the bisect process.,#33AFFF
+Bisecting,git bisect good <commit_hash>,Mark a commit as good during the bisect process.,#33AFFF
+Resetting,git reset <commit_hash>,Reset the current branch to a specific commit.,#900C3F
+Cleaning,git clean -f,Remove untracked files from the working directory.,#900C3F
+Cleaning,git clean -fd,Remove untracked files and directories.,#900C3F
+Configuring Hooks,git config core.hooksPath <path>,Set a custom directory for Git hooks.,#FF6347
+Graphical Representation,git log --graph,Display a graphical representation of the commit history.,#33FFC1
+Checking Configuration,git config --list,List all Git configuration settings.,#FF5733
+Obtaining Help,git help <command>,Get help on a specific Git command.,#FF5733
+GitHub CLI,gh repo create <name>,Create a new repository on GitHub using the GitHub CLI.,#C70039
+Viewing Branches,git branch -a,List all local and remote branches.,#F0E68C
+Checking Commit History,git show <commit_hash>,Show details about a specific commit.,#33FFC1
+Tagging,git tag -d <tag_name>,Delete a tag.,#FF33CC
+Listing Tags,git tag,List all tags in the repository.,#FF33CC
+Changing Branch,git switch <branch_name>,Switch to another branch (alternative to checkout).,#33FFC1
+Creating Branch,git switch -b <new_branch>,Create a new branch and switch to it.,#33FFC1
+Rebasing Interactive,git rebase -i HEAD~<number>,Start an interactive rebase for the last <number> of commits.,#33FFC1
+Pushing Tags,git push origin --tags,Push all tags to the remote repository.,#C70039
+Squashing Commits,git rebase -i HEAD~<number>,Squash the last <number> of commits into one.,#33AFFF
+Creating a Patch,git format-patch <commit_hash>,Create a patch file for a specific commit.,#FFC300
+Applying a Patch,git apply <patch_file>,Apply changes from a patch file.,#FFC300
+View Configuration,git config --global --edit,Open the global Git configuration file in the default text editor.,#FF5733
+Adding a Remote,git remote add upstream <url>,Add a remote repository for collaboration.,#C70039
+Fetching Changes,git fetch upstream,Fetch changes from the upstream repository.,#C70039
+Pulling from Upstream,git pull upstream <branch>,Pull changes from the upstream branch into your local branch.,#C70039
+Recovering Lost Commits,git reflog expire --expire=now --all,Remove old reflog entries.,#33AFFF
+Recovering Lost Commits,git reflog delete,Delete reflog entries.,#33AFFF

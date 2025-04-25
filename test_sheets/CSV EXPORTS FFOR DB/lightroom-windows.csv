@@ -1,0 +1,61 @@
+Section,Command,Description,Color
+General,"Ctrl + ,",Open Preferences.,#E3F2FD
+General,Ctrl + Z,Undo last action.,#E3F2FD
+General,Ctrl + Shift + Z,Redo last undo.,#E3F2FD
+General,Ctrl + Q,Quit Lightroom.,#E3F2FD
+Library Module,G,Switch to Grid view.,#FFEBEE
+Library Module,E,Switch to Loupe view.,#FFEBEE
+Library Module,D,Switch to Develop module.,#FFEBEE
+Library Module,F,Full-screen preview.,#FFEBEE
+Library Module,Ctrl + Shift + I,Import photos to Library.,#FFEBEE
+Library Module,Ctrl + Shift + E,Export selected photos.,#FFEBEE
+Develop Module,R,Open Crop & Straighten tool.,#E8F5E9
+Develop Module,K,Select Adjustment Brush tool.,#E8F5E9
+Develop Module,M,Open Graduated Filter tool.,#E8F5E9
+Develop Module,Q,Open Spot Removal tool.,#E8F5E9
+Develop Module,Ctrl + Alt + V,Paste develop settings from a copied photo.,#E8F5E9
+Develop Module,Shift + Ctrl + C,Copy settings from the current photo.,#E8F5E9
+Develop Module,Ctrl + R,Reset all settings for a photo.,#E8F5E9
+Editing,L,Lights dim mode (press multiple times).,#FFF3E0
+Editing,Ctrl + Alt + G,Group selected photos into a stack.,#FFF3E0
+Editing,Ctrl + ],Rotate photo clockwise.,#FFF3E0
+Editing,Ctrl + [,Rotate photo counterclockwise.,#FFF3E0
+Editing,Shift + Ctrl + T,Toggle Target Collection for selected photos.,#FFF3E0
+Editing,Ctrl + E,Edit in Photoshop.,#FFF3E0
+Editing,Ctrl + U,Auto tone photo.,#FFF3E0
+Shortcuts & Workflow,Ctrl + Shift + F,Full-screen mode.,#E1F5FE
+Shortcuts & Workflow,Ctrl + Shift + N,Create a new Collection.,#E1F5FE
+Shortcuts & Workflow,Ctrl + Shift + K,Sync metadata between photos.,#E1F5FE
+Shortcuts & Workflow,Ctrl + L,Lock the rating of a photo.,#E1F5FE
+Shortcuts & Workflow,Ctrl + Shift + H,Show/hide Histogram.,#E1F5FE
+Shortcuts & Workflow,Ctrl + Shift + G,Toggle Filter Bar.,#E1F5FE
+General,Ctrl + N,Create a new catalog.,#E3F2FD
+General,Ctrl + S,Save metadata to file.,#E3F2FD
+General,Ctrl + Shift + S,Save a copy of the catalog.,#E3F2FD
+General,Ctrl + Alt + F,Show or hide the filter bar.,#E3F2FD
+General,"Ctrl + Shift + ,",Switch between lights out modes.,#E3F2FD
+Library Module,Ctrl + Alt + 1,Show the left-hand panel.,#FFEBEE
+Library Module,Ctrl + Alt + 2,Show the right-hand panel.,#FFEBEE
+Library Module,Ctrl + Shift + U,Auto-import photos from a monitored folder.,#FFEBEE
+Library Module,Ctrl + Shift + G,Show/hide the Grid panel.,#FFEBEE
+Develop Module,Ctrl + Alt + C,Copy current develop settings.,#E8F5E9
+Develop Module,Ctrl + Alt + V,Paste develop settings to selected photos.,#E8F5E9
+Develop Module,Y,View before/after changes (side by side).,#E8F5E9
+Develop Module,Ctrl + Shift + R,Auto-reset develop settings.,#E8F5E9
+Develop Module,Shift + Tab,Hide all panels.,#E8F5E9
+Editing,Ctrl + T,Toggle tool overlays.,#FFF3E0
+Editing,Ctrl + Alt + Shift + R,Remove history from selected photo.,#FFF3E0
+Shortcuts & Workflow,Ctrl + Shift + T,Toggle tool overlays on/off.,#E1F5FE
+Shortcuts & Workflow,Ctrl + G,Group selected photos into a stack.,#E1F5FE
+Shortcuts & Workflow,Ctrl + Shift + P,Toggle Painter tool.,#E1F5FE
+Metadata,Ctrl + I,Show photo information overlay.,#F1F8E9
+Metadata,Ctrl + Shift + U,"Mark selected photos as ""Unflagged.""",#F1F8E9
+Metadata,Ctrl + Shift + G,"Mark selected photos as ""Rejected.""",#F1F8E9
+Metadata,Ctrl + Shift + P,"Mark selected photos as ""Picked.""",#F1F8E9
+Metadata,Ctrl + Alt + C,Copy metadata from selected photo.,#F1F8E9
+Metadata,Ctrl + Shift + M,Sync metadata across selected photos.,#F1F8E9
+Zoom,Z,Toggle zoom between 100% and fit view.,#E0F7FA
+Zoom,Ctrl + =,Zoom in.,#E0F7FA
+Zoom,Ctrl + -,Zoom out.,#E0F7FA
+Zoom,Ctrl + Alt + =,Zoom to 1:1 view.,#E0F7FA
+Zoom,Ctrl + Alt + Z,Fit the photo to screen.,#E0F7FA

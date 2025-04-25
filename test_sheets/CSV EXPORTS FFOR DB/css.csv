@@ -1,0 +1,165 @@
+section,command,description,colour
+Selectors,*,Selects all elements.,#FFE0B2
+Selectors,#id,Selects an element by ID.,#F3E5F5
+Selectors,.class,Selects all elements with a specific class.,#FFCDD2
+Selectors,element,Selects all instances of a specified element.,#D1C4E9
+Selectors,"element, element",Selects multiple elements.,#C8E6C9
+Selectors,element > element,Selects direct child elements.,#FFCC80
+Selectors,element + element,Selects the next sibling element.,#BBDEFB
+Selectors,element ~ element,Selects all siblings of an element.,#B2EBF2
+Selectors,:hover,Selects an element when hovered over.,#FFAB91
+Selectors,:nth-child(n),Selects the nth child element.,#D7CCC8
+Selectors,:first-child,Selects the first child of an element.,#F8BBD0
+Selectors,:last-child,Selects the last child of an element.,#E6EE9C
+Selectors,::before,Adds content before an element.,#FFE082
+Selectors,::after,Adds content after an element.,#B39DDB
+Box Model,margin,Sets the margin (outside space) of an element.,#FF7043
+Box Model,padding,Sets the padding (inside space) of an element.,#9FA8DA
+Box Model,border,Sets the border of an element.,#CE93D8
+Box Model,width,Sets the width of an element.,#C5E1A5
+Box Model,height,Sets the height of an element.,#FFCC80
+Box Model,box-sizing,Defines how the width and height of elements are calculated (default or including padding and border).,#4FC3F7
+Display & Positioning,display,"Specifies the display behavior of an element (block, inline, none).",#FFF59D
+Display & Positioning,position,"Specifies the positioning method (absolute, relative, fixed, sticky).",#80CBC4
+Display & Positioning,top,Specifies the top position of an element.,#EF9A9A
+Display & Positioning,bottom,Specifies the bottom position of an element.,#FF8A65
+Display & Positioning,left,Specifies the left position of an element.,#80DEEA
+Display & Positioning,right,Specifies the right position of an element.,#FFCCBC
+Display & Positioning,float,"Specifies whether to float an element (left, right).",#AED581
+Display & Positioning,clear,Specifies whether an element can float next to other floated elements.,#FFCA28
+Typography,font-family,Defines the font family of text.,#81D4FA
+Typography,font-size,Defines the size of the font.,#FFD54F
+Typography,font-weight,Sets the weight (boldness) of text.,#FFAB91
+Typography,line-height,Sets the line height of text.,#DCE775
+Typography,text-align,"Aligns text (left, center, right, justify).",#FFF9C4
+Typography,text-decoration,"Adds decoration to text (underline, overline, etc.).",#80CBC4
+Typography,text-transform,Controls the capitalization of text.,#B39DDB
+Typography,letter-spacing,Sets the spacing between characters.,#FFECB3
+Colors & Backgrounds,color,Defines the color of text.,#FFCC80
+Colors & Backgrounds,background-color,Sets the background color of an element.,#D1C4E9
+Colors & Backgrounds,background-image,Sets a background image for an element.,#4DD0E1
+Colors & Backgrounds,background-repeat,Defines if/how a background image repeats.,#AED581
+Colors & Backgrounds,background-position,Defines the starting position of a background image.,#FFECB3
+Colors & Backgrounds,background-size,Specifies the size of a background image.,#CE93D8
+Flexbox,display: flex,Defines a flex container.,#FFAB91
+Flexbox,flex-direction,Specifies the direction of the flex items.,#FFE082
+Flexbox,justify-content,"Aligns flex items horizontally (flex-start, flex-end, center, space-between, space-around).",#BBDEFB
+Flexbox,align-items,"Aligns flex items vertically (stretch, center, baseline).",#80CBC4
+Flexbox,flex-wrap,Specifies whether flex items should wrap or not.,#FFECB3
+Grid Layout,display: grid,Defines a grid container.,#FFAB91
+Grid Layout,grid-template-columns,Defines the columns of the grid.,#B2EBF2
+Grid Layout,grid-template-rows,Defines the rows of the grid.,#FFCC80
+Grid Layout,grid-gap,Specifies the gap between grid items.,#E6EE9C
+Grid Layout,grid-column,Specifies the starting and ending column for a grid item.,#FF7043
+Grid Layout,grid-row,Specifies the starting and ending row for a grid item.,#9FA8DA
+Grid Layout,align-self,Aligns a grid item within its grid area.,#FFCCBC
+Transforms,transform,"Applies a 2D or 3D transformation to an element (rotate, scale, translate).",#FFE082
+Transitions,transition,Defines the transition between two states of an element.,#4FC3F7
+Animations,@keyframes,Defines the keyframes for an animation.,#FFAB91
+Animations,animation,"Defines the animation (name, duration, timing-function, etc.).",#B39DDB
+Advanced Selectors,:not(selector),Selects all elements that do not match the selector.,#FFE0B2
+Advanced Selectors,:nth-of-type(n),Selects the nth element of a specific type.,#E1BEE7
+Advanced Selectors,:only-child,Selects an element that is the only child of its parent.,#B2EBF2
+Advanced Selectors,:empty,Selects elements with no children (including text nodes).,#FFCC80
+Advanced Selectors,:focus-within,Selects an element if any descendant has focus.,#E6EE9C
+Advanced Selectors,[attribute],Selects elements with a specified attribute.,#FFECB3
+Advanced Selectors,"[attribute^=""value""]","Selects elements whose attribute value starts with ""value"".",#C5E1A5
+Advanced Selectors,"[attribute$=""value""]","Selects elements whose attribute value ends with ""value"".",#FFAB91
+Advanced Selectors,"[attribute*=""value""]","Selects elements whose attribute value contains ""value"".",#B39DDB
+Advanced Selectors,:focus-visible,Selects an element with focus that is keyboard-triggered.,#9FA8DA
+Transitions & Animations,transition-delay,Specifies when the transition will start.,#FF7043
+Transitions & Animations,transition-timing-function,"Specifies the speed curve of the transition (ease, linear, etc.).",#BBDEFB
+Transitions & Animations,animation-delay,Specifies the delay before an animation starts.,#FFCCBC
+Transitions & Animations,animation-iteration-count,Specifies the number of times the animation should run.,#80DEEA
+Transitions & Animations,animation-direction,Specifies whether the animation should reverse on alternate cycles.,#D1C4E9
+Transitions & Animations,animation-fill-mode,Specifies how a CSS animation applies styles before or after execution.,#4FC3F7
+Transitions & Animations,animation-play-state,Specifies whether the animation is running or paused.,#FFECB3
+Flexbox,flex-grow,Defines how a flex item grows relative to the rest.,#F8BBD0
+Flexbox,flex-shrink,Defines how a flex item shrinks relative to the rest.,#CE93D8
+Flexbox,flex-basis,Specifies the initial size of a flex item.,#FFCA28
+Flexbox,order,Specifies the order of a flex item.,#B39DDB
+Flexbox,align-content,"Aligns a flex container's lines within when there is extra space (stretch, flex-start).",#C5E1A5
+Grid Layout,grid-area,"Shorthand for setting grid-row-start, grid-column-start, grid-row-end, and grid-column-end.",#81D4FA
+Grid Layout,grid-template-areas,Defines named grid areas.,#D7CCC8
+Grid Layout,grid-auto-flow,Controls how auto-placed items are inserted in the grid.,#E6EE9C
+Grid Layout,justify-items,Aligns grid items along the row axis.,#FFECB3
+Grid Layout,align-self,Aligns a grid item along the column axis.,#9FA8DA
+Filters,filter: blur(px),Applies a blur effect to an element.,#FFE082
+Filters,filter: brightness(%),Adjusts the brightness of an element.,#B2EBF2
+Filters,filter: contrast(%),Adjusts the contrast of an element.,#D1C4E9
+Filters,filter: grayscale(%),Converts an element to grayscale.,#FF8A65
+Filters,filter: hue-rotate(deg),Rotates the hue of an element's colors.,#80CBC4
+Filters,filter: invert(%),Inverts the colors of an element.,#FFCC80
+Filters,filter: opacity(%),Adjusts the transparency of an element.,#CE93D8
+Filters,filter: saturate(%),Adjusts the color saturation of an element.,#E6EE9C
+Filters,filter: sepia(%),Applies a sepia tone to an element.,#F8BBD0
+Media Queries,@media screen and (min-width: px),Applies styles to screens above a specific width.,#FF7043
+Media Queries,@media screen and (max-width: px),Applies styles to screens below a specific width.,#C8E6C9
+Media Queries,@media print,Applies styles when printing a document.,#FFCCBC
+Media Queries,@media (orientation: landscape),Applies styles when in landscape orientation.,#9FA8DA
+Media Queries,@media (orientation: portrait),Applies styles when in portrait orientation.,#FFECB3
+Responsive Design,max-width,Specifies the maximum width of an element.,#BBDEFB
+Responsive Design,min-width,Specifies the minimum width of an element.,#80DEEA
+Responsive Design,max-height,Specifies the maximum height of an element.,#FFAB91
+Responsive Design,min-height,Specifies the minimum height of an element.,#E1BEE7
+Overflow,overflow: auto,Adds scrollbars if needed.,#80CBC4
+Overflow,overflow: hidden,Hides overflow content.,#E6EE9C
+Overflow,overflow-x,Controls the horizontal overflow.,#C5E1A5
+Overflow,overflow-y,Controls the vertical overflow.,#FFCC80
+Shapes,clip-path: circle(),Clips an element to a circular shape.,#CE93D8
+Shapes,clip-path: ellipse(),Clips an element to an elliptical shape.,#4DD0E1
+Shapes,clip-path: polygon(),Clips an element to a polygonal shape.,#FFD54F
+Z-Index & Stacking,z-index,Controls the vertical stacking order of elements.,#FFCA28
+Z-Index & Stacking,opacity,Defines the transparency of an element.,#FF7043
+Typography,font-smoothing,"Adjusts the anti-aliasing of fonts (auto, none).",#FFCC80
+Typography,text-overflow,"Specifies how overflowed text is signaled (ellipsis, clip).",#E1BEE7
+Typography,letter-spacing,Adjusts space between letters.,#B3E5FC
+Typography,word-spacing,Adjusts space between words.,#FFE082
+Typography,hyphens,"Controls how words can be hyphenated (auto, manual).",#FFCC80
+Typography,text-transform,"Controls text capitalization (uppercase, capitalize).",#C5CAE9
+Typography,line-height,Adjusts the height of lines within a text block.,#FFCCBC
+Transitions & Animations,transition-property,"Specifies which properties should transition (all, specific).",#FF7043
+Transitions & Animations,@keyframes,Defines keyframes for an animation sequence.,#C5E1A5
+Transitions & Animations,animation-name,Specifies the name of the keyframe animation.,#FFAB91
+Transitions & Animations,animation-duration,Specifies how long an animation takes to complete one cycle.,#81D4FA
+Borders,border-image,Allows an image to be used for the border of an element.,#80DEEA
+Borders,border-radius,Defines the rounded corners of an element.,#FF7043
+Borders,border-collapse,Specifies whether table borders are collapsed or separated.,#FFECB3
+Borders,outline-offset,Defines space between an outline and the border edge.,#C8E6C9
+Shapes,shape-outside,Allows content to flow around a custom shape.,#FFCC80
+Shapes,shape-margin,Defines the margin around a shape.,#E6EE9C
+Shapes,shape-image-threshold,Defines how much of the image is visible within the shape.,#FFAB91
+CSS Variables,var(--variable),References a custom property (CSS variable).,#B39DDB
+CSS Variables,--variable-name: value;,Declares a custom property (CSS variable).,#C5CAE9
+CSS Grid,grid-auto-columns,Specifies the size of implicit grid columns.,#FF8A65
+CSS Grid,grid-auto-rows,Specifies the size of implicit grid rows.,#F8BBD0
+CSS Grid,grid-column,Specifies the start and end of a column.,#B2DFDB
+CSS Grid,grid-row,Specifies the start and end of a row.,#FFEB3B
+CSS Grid,grid-template-rows,Defines the row layout of a grid.,#81D4FA
+CSS Grid,grid-template-columns,Defines the column layout of a grid.,#FF7043
+Flexbox,flex-wrap: nowrap,Specifies that flex items should not wrap.,#C5CAE9
+Flexbox,flex-wrap: wrap-reverse,Reverses the direction of wrapping flex items.,#FFE082
+Flexbox,align-items,Aligns flex items along the cross axis.,#FF8A65
+Flexbox,align-content: center,Aligns flex items in the center of the flex container.,#80CBC4
+CSS Functions,calc(),Allows mathematical expressions within CSS properties.,#D1C4E9
+CSS Functions,"clamp(min, val, max)",Sets a value within a defined range.,#9FA8DA
+CSS Functions,min(),Returns the smallest value from a set of expressions.,#C8E6C9
+CSS Functions,max(),Returns the largest value from a set of expressions.,#FFCCBC
+CSS Functions,url(image.jpg),Specifies the URL of an image or resource to be loaded.,#81D4FA
+CSS Functions,attr(attribute),Returns the value of an HTML attribute.,#FFEB3B
+Pseudo-Elements,::before,Inserts content before an element’s actual content.,#E1BEE7
+Pseudo-Elements,::after,Inserts content after an element’s actual content.,#80DEEA
+Pseudo-Elements,::first-line,Applies styles to the first line of a block-level element.,#FFCA28
+Pseudo-Elements,::first-letter,Applies styles to the first letter of a block-level element.,#D7CCC8
+Transitions & Animations,"cubic-bezier(n,n,n,n)",Specifies a custom timing function for animations.,#CE93D8
+Z-Index & Stacking,z-index: auto,Automatically determines the stacking order.,#FF7043
+Z-Index & Stacking,stacking context,The 3D layering context of positioned elements.,#FFE082
+Filters,backdrop-filter: blur(),Applies filters to the area behind an element.,#FF8A65
+Clipping,clip: rect(),Defines the visible portion of an element.,#B39DDB
+Perspective,perspective(n),Sets the perspective from which 3D elements are viewed.,#C5CAE9
+Perspective,perspective-origin,Defines the origin for the perspective property.,#FFECB3
+Backgrounds,background-size: cover,Scales the background image to cover the element entirely.,#80CBC4
+Backgrounds,background-attachment: fixed,Sets the background image to stay fixed during scroll.,#FFCA28
+Cursors,cursor: pointer,Changes the cursor to a pointer (usually for links).,#E1BEE7
+Cursors,cursor: wait,Changes the cursor to a wait symbol.,#FF8A65
+Cursors,cursor: none,Hides the cursor.,#FFEB3B

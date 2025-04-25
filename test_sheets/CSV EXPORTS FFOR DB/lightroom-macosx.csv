@@ -1,0 +1,140 @@
+Section,Command,Desc,Clr
+General,"Cmd + ,",Open Preferences.,#E3F2FD
+General,Cmd + Z,Undo last action.,#E3F2FD
+General,Cmd + Shift + Z,Redo last undo.,#E3F2FD
+General,Cmd + Q,Quit Lightroom.,#E3F2FD
+Library Module,G,Switch to Grid view.,#FFEBEE
+Library Module,E,Switch to Loupe view.,#FFEBEE
+Library Module,D,Switch to Develop module.,#FFEBEE
+Library Module,F,Full-screen preview.,#FFEBEE
+Library Module,Cmd + Shift + I,Import photos to Library.,#FFEBEE
+Library Module,Cmd + Shift + E,Export selected photos.,#FFEBEE
+Develop Module,R,Open Crop & Straighten tool.,#E8F5E9
+Develop Module,K,Select Adjustment Brush tool.,#E8F5E9
+Develop Module,M,Open Graduated Filter tool.,#E8F5E9
+Develop Module,Q,Open Spot Removal tool.,#E8F5E9
+Develop Module,Cmd + Option + V,Paste develop settings from a copied photo.,#E8F5E9
+Develop Module,Shift + Cmd + C,Copy settings from the current photo.,#E8F5E9
+Develop Module,Cmd + R,Reset all settings for a photo.,#E8F5E9
+Editing,L,Lights dim mode (press multiple times for effect).,#FFF3E0
+Editing,Cmd + Option + G,Group selected photos into a stack.,#FFF3E0
+Editing,Cmd + ],Rotate photo clockwise.,#FFF3E0
+Editing,Cmd + [,Rotate photo counterclockwise.,#FFF3E0
+Editing,Shift + Cmd + T,Toggle Target Collection for selected photos.,#FFF3E0
+Editing,Cmd + E,Edit in Photoshop.,#FFF3E0
+Editing,Cmd + U,Auto tone photo.,#FFF3E0
+Shortcuts & Workflow,Cmd + Shift + F,Full-screen mode.,#E1F5FE
+Shortcuts & Workflow,Cmd + Shift + N,Create a new Collection.,#E1F5FE
+Shortcuts & Workflow,Cmd + Shift + K,Sync metadata between photos.,#E1F5FE
+Shortcuts & Workflow,Cmd + L,Lock the rating of a photo.,#E1F5FE
+Shortcuts & Workflow,Cmd + Shift + H,Show/hide Histogram.,#E1F5FE
+Shortcuts & Workflow,Cmd + Shift + G,Toggle Filter Bar.,#E1F5FE
+General,Cmd + N,Create a new catalog.,#E3F2FD
+General,Cmd + S,Save metadata to file.,#E3F2FD
+General,Cmd + Q,Quit Lightroom.,#E3F2FD
+General,Cmd + Shift + S,Save a copy of the catalog.,#E3F2FD
+General,Cmd + Option + F,Show or hide the filter bar.,#E3F2FD
+General,"Cmd + Shift + ,",Switch between lights out modes.,#E3F2FD
+Library Module,G,Go to Grid view.,#FFEBEE
+Library Module,E,Go to Loupe view.,#FFEBEE
+Library Module,Cmd + Option + 1,Show the left-hand panel.,#FFEBEE
+Library Module,Cmd + Option + 2,Show the right-hand panel.,#FFEBEE
+Library Module,Cmd + Shift + I,Import photos to Library.,#FFEBEE
+Library Module,Cmd + Shift + E,Export selected photos.,#FFEBEE
+Library Module,Cmd + Option + H,Hide/show the Histogram panel.,#FFEBEE
+Library Module,Cmd + Shift + U,Auto-import photos from a monitored folder.,#FFEBEE
+Library Module,Cmd + Shift + G,Show/hide the Grid panel.,#FFEBEE
+Develop Module,R,Open Crop & Straighten tool.,#E8F5E9
+Develop Module,Cmd + Option + C,Copy current develop settings.,#E8F5E9
+Develop Module,Cmd + Option + V,Paste develop settings to selected photos.,#E8F5E9
+Develop Module,K,Select Adjustment Brush tool.,#E8F5E9
+Develop Module,M,Select Graduated Filter tool.,#E8F5E9
+Develop Module,Q,Select Spot Removal tool.,#E8F5E9
+Develop Module,Y,View before/after changes (side by side).,#E8F5E9
+Develop Module,Cmd + R,Reset current photo to original settings.,#E8F5E9
+Develop Module,Cmd + Shift + R,Auto-reset develop settings.,#E8F5E9
+Develop Module,Cmd + Shift + T,Target collection for adjustments.,#E8F5E9
+Editing,Cmd + ],Rotate photo clockwise.,#FFF3E0
+Editing,Cmd + [,Rotate photo counterclockwise.,#FFF3E0
+Editing,Cmd + Option + G,Group selected photos into a stack.,#FFF3E0
+Editing,Cmd + U,Auto-tone the selected photo.,#FFF3E0
+Editing,Cmd + E,Edit in Photoshop.,#FFF3E0
+Editing,Cmd + T,Toggle tool overlays.,#FFF3E0
+Editing,L,Cycle through Lights Dim modes.,#FFF3E0
+Editing,Cmd + Option + Shift + R,Remove history from selected photo.,#FFF3E0
+Shortcuts & Workflow,Cmd + Shift + F,Enter/exit Full-screen mode.,#E1F5FE
+Shortcuts & Workflow,Cmd + Shift + N,Create a new Collection.,#E1F5FE
+Shortcuts & Workflow,Cmd + G,Group selected photos into a stack.,#E1F5FE
+Shortcuts & Workflow,Cmd + Shift + P,Toggle Painter tool.,#E1F5FE
+Shortcuts & Workflow,Cmd + L,Lock the rating of a photo.,#E1F5FE
+Shortcuts & Workflow,Cmd + Shift + R,Reset all develop settings for selected photos.,#E1F5FE
+Shortcuts & Workflow,Cmd + Shift + T,Toggle tool overlays on/off.,#E1F5FE
+Navigation,Cmd + Option + 1,Show/hide Navigator panel.,#FCE4EC
+Navigation,Cmd + Option + 2,Show/hide Histogram panel.,#FCE4EC
+Navigation,Cmd + 1,Switch to Library module.,#FCE4EC
+Navigation,Cmd + 2,Switch to Develop module.,#FCE4EC
+Navigation,Cmd + 3,Switch to Map module.,#FCE4EC
+Navigation,Cmd + 4,Switch to Book module.,#FCE4EC
+Navigation,Cmd + 5,Switch to Slideshow module.,#FCE4EC
+Navigation,Cmd + 6,Switch to Print module.,#FCE4EC
+Navigation,Cmd + 7,Switch to Web module.,#FCE4EC
+Metadata,Cmd + I,Show photo information overlay.,#F1F8E9
+Metadata,Cmd + Shift + U,"Mark selected photos as ""Unflagged.""",#F1F8E9
+Metadata,Cmd + Shift + G,"Mark selected photos as ""Rejected.""",#F1F8E9
+Metadata,Cmd + Shift + P,"Mark selected photos as ""Picked.""",#F1F8E9
+Metadata,Cmd + Option + C,Copy metadata from selected photo.,#F1F8E9
+Metadata,Cmd + Option + V,Paste metadata to selected photo.,#F1F8E9
+Metadata,Cmd + Shift + M,Sync metadata across selected photos.,#F1F8E9
+Metadata,Cmd + Shift + B,Batch rename selected photos.,#F1F8E9
+Metadata,Cmd + Option + Shift + I,Sync metadata from the original source file.,#F1F8E9
+Zoom,Z,Toggle zoom between 100% and fit view.,#E0F7FA
+Zoom,Cmd + =,Zoom in.,#E0F7FA
+Zoom,Cmd + -,Zoom out.,#E0F7FA
+Zoom,Cmd + Option + =,Zoom to 1:1 view.,#E0F7FA
+Zoom,Cmd + Option + Shift + Z,Fit the photo to screen.,#E0F7FA
+General,Cmd + Option + Shift + E,Export with previous settings.,#E3F2FD
+General,Cmd + Option + Shift + I,Open Import dialog.,#E3F2FD
+General,Cmd + Option + Shift + R,Show Photo Info.,#E3F2FD
+General,Cmd + Shift + A,Deselect all photos.,#E3F2FD
+Library Module,Cmd + R,Render previews for selected photos.,#FFEBEE
+Library Module,Cmd + Shift + R,Synchronize folder with file system.,#FFEBEE
+Library Module,P,Pick the selected photo.,#FFEBEE
+Library Module,U,Unpick the selected photo.,#FFEBEE
+Library Module,X,Reject the selected photo.,#FFEBEE
+Library Module,Cmd + Option + Shift + S,Save metadata to file for selected photos.,#FFEBEE
+Library Module,Cmd + Option + Shift + I,Import photos from a watched folder.,#FFEBEE
+Library Module,Cmd + Shift + U,Show or hide Toolbar.,#FFEBEE
+Develop Module,Cmd + Shift + 7,Show or hide clipping warnings.,#E8F5E9
+Develop Module,O,Show selected mask overlay (for Local Adjustments).,#E8F5E9
+Develop Module,Shift + O,Cycle through mask overlay colors.,#E8F5E9
+Develop Module,Cmd + Option + Shift + D,Reset photo to default develop settings.,#E8F5E9
+Develop Module,Cmd + Shift + Z,Undo last develop action.,#E8F5E9
+Develop Module,Cmd + Shift + Y,Redo last undo.,#E8F5E9
+Develop Module,Shift + Tab,Hide all panels.,#E8F5E9
+Develop Module,Option + Drag,Adjust Feather or Flow for Brush tool.,#E8F5E9
+Editing,Shift + Cmd + E,"Open selected photo in External Editor (e.g., Photoshop).",#FFF3E0
+Editing,Cmd + Shift + Option + M,Merge selected photos into HDR.,#FFF3E0
+Editing,Cmd + Shift + Option + P,Merge selected photos into Panorama.,#FFF3E0
+Editing,Cmd + Shift + Option + H,Edit a virtual copy.,#FFF3E0
+Editing,Cmd + Option + F,Flag the selected photo.,#FFF3E0
+Editing,Cmd + Option + Shift + G,Apply Previous Edit Settings.,#FFF3E0
+Shortcuts & Workflow,Cmd + L,Enable or disable Auto-Import.,#E1F5FE
+Shortcuts & Workflow,Cmd + Shift + H,Hide or show the Grid view options.,#E1F5FE
+Shortcuts & Workflow,Cmd + Option + Shift + K,Create a new Smart Collection.,#E1F5FE
+Shortcuts & Workflow,Cmd + Option + Shift + N,Create a new Collection Set.,#E1F5FE
+Navigation,Cmd + Option + Shift + H,Go to Previous Folder.,#FCE4EC
+Navigation,Cmd + Option + Shift + J,Go to Next Folder.,#FCE4EC
+Navigation,Cmd + Shift + Option + 1,Jump to Library module.,#FCE4EC
+Navigation,Cmd + Shift + Option + 2,Jump to Develop module.,#FCE4EC
+Navigation,Cmd + Shift + Option + 3,Jump to Slideshow module.,#FCE4EC
+Navigation,Cmd + Shift + Option + 4,Jump to Print module.,#FCE4EC
+Navigation,Cmd + Shift + Option + 5,Jump to Web module.,#FCE4EC
+Metadata,Cmd + Shift + Option + T,Add a custom tag to selected photos.,#F1F8E9
+Metadata,Cmd + Shift + Option + M,Sync metadata between selected photos.,#F1F8E9
+Metadata,Cmd + Shift + Option + G,Apply GPS metadata to selected photos.,#F1F8E9
+Metadata,Cmd + Shift + Option + P,Apply a preset to selected photos.,#F1F8E9
+Zoom,Cmd + Option + Shift + R,Zoom to fill screen.,#E0F7FA
+Zoom,Cmd + Option + Shift + T,Zoom to 100%.,#E0F7FA
+Zoom,Cmd + Option + Shift + U,Zoom to actual size.,#E0F7FA
+Zoom,Cmd + Option + Shift + W,Zoom to fit.,#E0F7FA
+Zoom,Cmd + Option + Shift + Z,Zoom to previous view.,#E0F7FA

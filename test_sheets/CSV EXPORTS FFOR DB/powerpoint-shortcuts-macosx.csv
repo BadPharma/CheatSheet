@@ -1,0 +1,74 @@
+section,command,description,colour
+Navigation,⌘ + ↑,Go to first slide,#DFF0D8
+Navigation,⌘ + ↓,Go to last slide,#DFF0D8
+Navigation,↑ / ↓,Move up/down slides,#DFF0D8
+Navigation,Page Up / Page Down,Navigate between slides,#DFF0D8
+Navigation,⌘ + Tab,Switch between apps,#DFF0D8
+Navigation,Ctrl + Tab,Switch between open PowerPoint files,#DFF0D8
+Navigation,⌘ + Shift + ← / →,Navigate to previous/next slide,#DFF0D8
+Editing,⌘ + C,Copy,#D9EDF7
+Editing,⌘ + X,Cut,#D9EDF7
+Editing,⌘ + V,Paste,#D9EDF7
+Editing,⌘ + Z,Undo,#D9EDF7
+Editing,⌘ + Y,Redo,#D9EDF7
+Editing,⌘ + A,Select all,#D9EDF7
+Editing,Delete,Delete selected object,#D9EDF7
+Editing,⌘ + D,Duplicate selection,#D9EDF7
+Editing,⌘ + Shift + C,Copy formatting,#D9EDF7
+Editing,⌘ + Shift + V,Paste formatting,#D9EDF7
+Slides,⌘ + M,Insert new slide,#FCF8E3
+Slides,⌘ + Shift + D,Duplicate current slide,#FCF8E3
+Slides,⌘ + Shift + ↑ / ↓,Move slide up/down,#FCF8E3
+Slides,⌘ + Shift + G,Group selected objects,#FCF8E3
+Slides,⌘ + Option + Shift + G,Ungroup selected objects,#FCF8E3
+Slides,⌘ + Option + T,Insert table,#FCF8E3
+Slides,⌘ + Shift + H,Hide slide,#FCF8E3
+Slides,⌘ + Option + B,Bring to back,#FCF8E3
+Formatting,⌘ + B,Bold,#F2DEDE
+Formatting,⌘ + I,Italic,#F2DEDE
+Formatting,⌘ + U,Underline,#F2DEDE
+Formatting,⌘ + E,Center text,#F2DEDE
+Formatting,⌘ + L,Left align,#F2DEDE
+Formatting,⌘ + R,Right align,#F2DEDE
+Formatting,⌘ + Shift + >,Increase font size,#F2DEDE
+Formatting,⌘ + Shift + <,Decrease font size,#F2DEDE
+Formatting,⌘ + T,Open Font dialog,#F2DEDE
+View,⌘ + Option + Return,Start slideshow from beginning,#D0E9C6
+View,Shift + ⌘ + Return,Start slideshow from current slide,#D0E9C6
+View,Esc,Exit slideshow,#D0E9C6
+View,⌘ + /,Show formatting guides,#D0E9C6
+View,⌘ + 1,Normal view,#D0E9C6
+View,⌘ + 2,Slide sorter view,#D0E9C6
+View,⌘ + 3,Notes page view,#D0E9C6
+View,⌘ + Option + P,Print preview,#D0E9C6
+Shapes & Objects,⌘ + K,Insert hyperlink,#FBEEC1
+Shapes & Objects,⌘ + Option + P,Insert picture,#FBEEC1
+Shapes & Objects,⌘ + Shift + X,Insert text box,#FBEEC1
+Shapes & Objects,⌘ + Option + Shift + B,Bring to front,#FBEEC1
+Shapes & Objects,⌘ + Click,Multi-select objects,#FBEEC1
+Shapes & Objects,Arrow keys,Nudge selected object,#FBEEC1
+Shapes & Objects,Shift + arrow keys,Resize or move quickly,#FBEEC1
+Shapes & Objects,⌘ + Shift + G,Group objects,#FBEEC1
+Media,Insert > Video > Movie from File,Insert video from file,#E2D6F3
+Media,Insert > Audio > Audio from File,Insert audio from file,#E2D6F3
+Media,⌘ + Option + M,Format media options,#E2D6F3
+Media,Control + Click media,Context menu for media,#E2D6F3
+Media,Playback tab,Adjust playback settings,#E2D6F3
+Review,⌘ + Option + A,Accept all changes,#F5D0A9
+Review,⌘ + Option + R,Reject all changes,#F5D0A9
+Review,⌘ + Option + M,Add comment,#F5D0A9
+Review,⌘ + Option + Shift + M,Edit comment,#F5D0A9
+Review,⌘ + Option + N,Go to next comment,#F5D0A9
+Review,⌘ + Option + Shift + C,Compare documents,#F5D0A9
+File,⌘ + N,New presentation,#F5F5F5
+File,⌘ + O,Open presentation,#F5F5F5
+File,⌘ + S,Save presentation,#F5F5F5
+File,⌘ + Shift + S,Save As,#F5F5F5
+File,⌘ + P,Print presentation,#F5F5F5
+File,⌘ + Q,Quit PowerPoint,#F5F5F5
+File,⌘ + W,Close window,#F5F5F5
+Help & Tips,F1,Open Help,#EAD1DC
+Help & Tips,⌘ + /,List keyboard shortcuts,#EAD1DC
+Help & Tips,⌘ + Shift + ?,Microsoft Office Help,#EAD1DC
+Help & Tips,⌘ + Option + /,Search features,#EAD1DC
+Help & Tips,⌘ + Option + T,Preferences,#EAD1DC

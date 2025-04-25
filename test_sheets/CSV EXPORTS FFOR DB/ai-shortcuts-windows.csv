@@ -1,0 +1,136 @@
+Section,Shortcut,Description,Color
+Selection,Ctrl + A,Select all objects in the document.,#FFCCCB
+Selection,Ctrl + D,Duplicate the selected object.,#FFCCCB
+Selection,Shift + Ctrl + A,Deselect all objects.,#FFCCCB
+Selection,Ctrl + Click (object),Select an object behind another object.,#FFCCCB
+Selection,Ctrl + 2,Lock selected objects.,#FFCCCB
+Selection,Ctrl + Alt + 2,Unlock all objects.,#FFCCCB
+Selection,Ctrl + 3,Hide selected objects.,#FFCCCB
+Selection,Ctrl + Alt + 3,Show all hidden objects.,#FFCCCB
+Drawing Tools,P,Select the Pen Tool.,#FFABAB
+Drawing Tools,M,Select the Rectangle Tool.,#FFABAB
+Drawing Tools,L,Select the Ellipse Tool.,#FFABAB
+Drawing Tools,T,Select the Type Tool.,#FFABAB
+Drawing Tools,B,Select the Brush Tool.,#FFABAB
+Drawing Tools,N,Select the Pencil Tool.,#FFABAB
+Drawing Tools,Shift + B,Select the Blob Brush Tool.,#FFABAB
+Drawing Tools,Shift + C,Select the Scissors Tool.,#FFABAB
+Transform,Ctrl + T,Open the Transform panel.,#FFD3B3
+Transform,Ctrl + Shift + M,Move an object to a specific position.,#FFD3B3
+Transform,Alt + Drag,Duplicate an object while moving it.,#FFD3B3
+Transform,Ctrl + R,Show/Hide Rulers.,#FFD3B3
+Transform,Shift + Ctrl + D,Transform each object individually.,#FFD3B3
+Transform,Ctrl + Shift + H,Hide/show guides.,#FFD3B3
+Type,Ctrl + Shift + O,Create outlines from the selected text.,#D1E7FF
+Type,Ctrl + K,Open the Preferences dialog.,#D1E7FF
+Type,Ctrl + Enter,Insert a new line in text.,#D1E7FF
+Type,Ctrl + Shift + C,Center align selected text.,#D1E7FF
+Type,Alt + Click (text),Edit the text with the Type Tool.,#D1E7FF
+Type,Ctrl + Shift + >,Increase font size.,#D1E7FF
+Type,Ctrl + Shift + <,Decrease font size.,#D1E7FF
+View,Ctrl + +,Zoom in.,#CFE2F3
+View,Ctrl + -,Zoom out.,#CFE2F3
+View,Ctrl + 0,Fit the artboard in the window.,#CFE2F3
+View,Ctrl + 1,Actual size (100%).,#CFE2F3
+View,Ctrl + Alt + I,Open the Info panel.,#CFE2F3
+View,Ctrl + H,Hide/show the selection.,#CFE2F3
+View,Ctrl + Y,Toggle between Outline and Preview modes.,#CFE2F3
+Window,F4,Open/close the Layers panel.,#F9CB9C
+Window,F5,Open/close the Color panel.,#F9CB9C
+Window,F6,Open/close the Swatches panel.,#F9CB9C
+Window,F7,Open/close the Appearance panel.,#F9CB9C
+Window,F8,Open/close the Brushes panel.,#F9CB9C
+Window,F9,Open/close the Symbols panel.,#F9CB9C
+File,Ctrl + N,Create a new document.,#FFDDC1
+File,Ctrl + S,Save the document.,#FFDDC1
+File,Ctrl + P,Print the document.,#FFDDC1
+File,Ctrl + Shift + S,Save As.,#FFDDC1
+File,Ctrl + O,Open an existing document.,#FFDDC1
+File,Ctrl + W,Close the document.,#FFDDC1
+File,Ctrl + Q,Quit Adobe Illustrator.,#FFDDC1
+File,Ctrl + Shift + E,Export selection as a PNG.,#FFDDC1
+Layer,Ctrl + G,Group selected objects.,#EAD1FF
+Layer,Ctrl + Shift + G,Ungroup selected objects.,#EAD1FF
+Layer,Ctrl + J,Join selected paths.,#EAD1FF
+Layer,Ctrl + [,Send the selected object backward.,#EAD1FF
+Layer,Ctrl + ],Bring the selected object forward.,#EAD1FF
+Selection,Ctrl + 4,Show/hide the selected object's bounding box.,#FFCCCB
+Selection,Ctrl + 5,Show/hide all artboards.,#FFCCCB
+Selection,Alt + Click (object),Select all similar objects.,#FFCCCB
+Selection,Shift + Ctrl + G,Expand selected objects.,#FFCCCB
+Selection,Ctrl + Shift + E,Open the Transform Each dialog.,#FFCCCB
+Selection,Alt + Ctrl + 2,Unlock all objects in the document.,#FFCCCB
+Selection,Ctrl + Alt + 3,Show all hidden objects in the document.,#FFCCCB
+Selection,Ctrl + 1,Select the object that was last selected.,#FFCCCB
+Drawing Tools,Shift + P,Select the Polar Grid Tool.,#FFABAB
+Drawing Tools,Shift + R,Select the Rectangle Grid Tool.,#FFABAB
+Drawing Tools,Q,Select the Live Paint Bucket Tool.,#FFABAB
+Drawing Tools,Shift + Y,Select the Artboard Tool.,#FFABAB
+Drawing Tools,Ctrl + Shift + F,Open the File Info dialog.,#FFABAB
+Drawing Tools,Ctrl + B,Send an object to the back.,#FFABAB
+Drawing Tools,Ctrl + F,Paste an object in front.,#FFABAB
+Transform,Ctrl + Shift + C,Copy the selected object in place.,#FFD3B3
+Transform,Shift + Ctrl + L,Reflect selected objects.,#FFD3B3
+Transform,Shift + Ctrl + R,Rotate the selected object by 90°.,#FFD3B3
+Transform,Ctrl + 8,Create a mask.,#FFD3B3
+Transform,Ctrl + 9,Release a mask.,#FFD3B3
+Transform,Alt + Shift + Drag,Scale objects proportionally.,#FFD3B3
+Transform,Ctrl + Shift + E,Open the Transform dialog box.,#FFD3B3
+Type,Ctrl + Shift + M,Create a new text frame.,#D1E7FF
+Type,Shift + Ctrl + P,Open the Paragraph panel.,#D1E7FF
+Type,Shift + Alt + >,Increase tracking (space between characters).,#D1E7FF
+Type,Shift + Alt + <,Decrease tracking (space between characters).,#D1E7FF
+Type,Ctrl + Shift + F,Open the Character panel.,#D1E7FF
+Type,Ctrl + Alt + Shift + >,Increase leading (space between lines).,#D1E7FF
+Type,Ctrl + Alt + Shift + <,Decrease leading (space between lines).,#D1E7FF
+View,Ctrl + Shift + I,Open the Isolation Mode.,#CFE2F3
+View,Ctrl + Shift + D,Open the Document Setup dialog.,#CFE2F3
+View,Shift + Ctrl + L,Open the Layers panel.,#CFE2F3
+View,Alt + Ctrl + V,Paste in Place.,#CFE2F3
+Window,F10,Open/close the Gradient panel.,#F9CB9C
+Window,F11,Open/close the Control panel.,#F9CB9C
+Window,Ctrl + F9,Open the Actions panel.,#F9CB9C
+Window,Ctrl + F10,Open the Appearance panel.,#F9CB9C
+File,Ctrl + Shift + P,Place a file.,#FFDDC1
+File,Ctrl + Alt + P,Embed an image.,#FFDDC1
+File,Ctrl + Alt + S,Save a copy of the document.,#FFDDC1
+File,Alt + Ctrl + S,Save as PDF.,#FFDDC1
+Layer,Ctrl + Shift + [,Send the selected object to the back of the layer stack.,#EAD1FF
+Layer,Ctrl + Shift + ],Bring the selected object to the front of the layer stack.,#EAD1FF
+Layer,Alt + Click (Layer),Select all objects on the same layer.,#EAD1FF
+Layer,Alt + Ctrl + G,Group selected layers.,#EAD1FF
+Layer,Ctrl + Shift + D,Open the Layer Options dialog.,#EAD1FF
+Selection Tools,V,Select the Selection Tool.,#FFCCCB
+Selection Tools,A,Select the Direct Selection Tool.,#FFCCCB
+Selection Tools,Shift + V,Select the Lasso Tool.,#FFCCCB
+Selection Tools,Shift + A,Select the Group Selection Tool.,#FFCCCB
+Selection Tools,Ctrl + Y,Switch between Outline and Preview modes.,#FFCCCB
+Drawing Tools,Shift + M,Select the Shape Builder Tool.,#FFABAB
+Drawing Tools,K,Select the Knife Tool.,#FFABAB
+Drawing Tools,Shift + W,Select the Width Tool.,#FFABAB
+Drawing Tools,Shift + S,Select the Spiral Tool.,#FFABAB
+Drawing Tools,X,Switch between Fill and Stroke colors.,#FFABAB
+Painting Tools,J,Select the Live Paint Selection Tool.,#FFABAB
+Painting Tools,Shift + J,Select the Live Paint Bucket Tool.,#FFABAB
+Transform Tools,Ctrl + Shift + S,Scale selected objects proportionally.,#FFD3B3
+Transform Tools,Alt + Shift + R,Rotate selected objects around a point.,#FFD3B3
+Transform Tools,Shift + Ctrl + H,Hide/show bounding box.,#FFD3B3
+Text Tools,Shift + Ctrl + T,Open/close the Character Styles panel.,#D1E7FF
+Text Tools,Ctrl + Alt + T,Open the Glyphs panel.,#D1E7FF
+Text Tools,Shift + Ctrl + U,Open/close the Paragraph Styles panel.,#D1E7FF
+View Tools,Alt + Ctrl + I,Open/close the Info panel.,#CFE2F3
+View Tools,Shift + F,Cycle through presentation modes.,#CFE2F3
+Window Tools,Ctrl + 7,Open/close the Transparency panel.,#F9CB9C
+Window Tools,Ctrl + 8,Open/close the Layers panel.,#F9CB9C
+Window Tools,F12,Open/close the Align panel.,#F9CB9C
+Layer Tools,Ctrl + Shift + [,Bring the selected object to the back of the layer stack.,#EAD1FF
+Layer Tools,Ctrl + Shift + ],Bring the selected object to the front of the layer stack.,#EAD1FF
+Layer Tools,Alt + Ctrl + [,Send the selected object back one layer.,#EAD1FF
+Layer Tools,Alt + Ctrl + ],Bring the selected object forward one layer.,#EAD1FF
+Artboard Tools,Shift + O,Select the Artboard Tool.,#EAD1FF
+Artboard Tools,Ctrl + Alt + P,Open the Artboard Options dialog.,#EAD1FF
+Miscellaneous Tools,Ctrl + Shift + N,Create a new layer.,#D1E7FF
+Miscellaneous Tools,Ctrl + Shift + C,Copy the selected object’s style.,#D1E7FF
+Miscellaneous Tools,Ctrl + Shift + L,Load a new brush.,#D1E7FF
+Miscellaneous Tools,Ctrl + Shift + K,Open the Keyboard Shortcuts dialog.,#FFD3B3
+Miscellaneous Tools,Ctrl + Shift + F9,Show/hide the Dock.,#FFD3B3

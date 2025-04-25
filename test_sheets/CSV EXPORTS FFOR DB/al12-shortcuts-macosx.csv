@@ -1,0 +1,84 @@
+Section,Cmd,Desc,clr
+General,Cmd + S,Save the current project.,#E0F7FA
+General,Cmd + Shift + S,Save the project as a new file.,#E0F7FA
+General,Cmd + O,Open an existing project.,#E0F7FA
+General,Cmd + N,Create a new project.,#E0F7FA
+General,Cmd + Q,Quit Ableton Live.,#E0F7FA
+Editing,Cmd + C,Copy selected clip(s) or section(s).,#FFEBEE
+Editing,Cmd + X,Cut selected clip(s) or section(s).,#FFEBEE
+Editing,Cmd + V,Paste copied clip(s) or section(s).,#FFEBEE
+Editing,Cmd + Z,Undo the last action.,#FFEBEE
+Editing,Cmd + Shift + Z,Redo the last action.,#FFEBEE
+Editing,Cmd + E,Split a clip at the playhead.,#FFEBEE
+Editing,Cmd + J,Consolidate selected clips into one.,#FFEBEE
+Editing,Cmd + D,Duplicate the selected clip(s) or section(s).,#FFEBEE
+Playback,Space,Start/stop playback.,#FFF3E0
+Playback,Cmd + L,Toggle loop on/off.,#FFF3E0
+Playback,Cmd + F,Jump to the next locator.,#FFF3E0
+Playback,Shift + Cmd + F,Jump to the previous locator.,#FFF3E0
+Playback,Cmd + 1,Set grid to narrow.,#FFF3E0
+Playback,Cmd + 2,Set grid to wide.,#FFF3E0
+Playback,Cmd + 3,Turn off the grid snap.,#FFF3E0
+Playback,Cmd + 4,Turn on the grid snap.,#FFF3E0
+Clip View,Cmd + U,Quantize selected clip(s).,#F3E5F5
+Clip View,Cmd + Shift + U,Open the quantize settings dialog.,#F3E5F5
+Clip View,Cmd + R,Rename the selected clip(s).,#F3E5F5
+Clip View,Cmd + Shift + T,Create a new MIDI track.,#F3E5F5
+Clip View,Cmd + T,Create a new audio track.,#F3E5F5
+Clip View,Cmd + G,Group selected tracks.,#F3E5F5
+Arrangement View,Tab,Toggle between session and arrangement view.,#E8F5E9
+Arrangement View,Cmd + Shift + I,Insert a new locator.,#E8F5E9
+Arrangement View,Cmd + Shift + D,Duplicate time in arrangement view.,#E8F5E9
+Arrangement View,Cmd + Alt + F,Activate/deactivate automation.,#E8F5E9
+Automation,A,Toggle automation mode.,#E8F5E9
+Automation,Cmd + Alt + U,Add automation breakpoint.,#E8F5E9
+Automation,Cmd + B,Activate pencil tool for drawing automation.,#E8F5E9
+Automation,Cmd + Shift + Alt + B,Deactivate pencil tool.,#E8F5E9
+Browser,Cmd + Alt + B,Toggle browser panel visibility.,#E1F5FE
+Browser,Cmd + Shift + P,Show/hide the plugin device browser.,#E1F5FE
+Browser,Cmd + Shift + I,Show/hide the instrument device browser.,#E1F5FE
+Browser,Cmd + Shift + E,Show/hide the effect device browser.,#E1F5FE
+Browser,Cmd + F,Search the browser.,#E1F5FE
+Session View,Cmd + I,Insert a new scene.,#FFEBEE
+Session View,Cmd + Shift + M,Insert MIDI clip in selected slot.,#FFEBEE
+Session View,Shift + Cmd + I,Insert audio clip in selected slot.,#FFEBEE
+Session View,Cmd + Shift + L,Show/hide the groove pool.,#FFEBEE
+General,"Cmd + ,",Open Preferences.,#E0F7FA
+General,Cmd + Shift + T,Create a new MIDI track.,#E0F7FA
+General,Cmd + T,Create a new audio track.,#E0F7FA
+General,Cmd + Option + F,Toggle Fullscreen mode.,#E0F7FA
+General,Cmd + R,Rename selected track/clip.,#E0F7FA
+Editing,Cmd + Shift + R,Export audio/video.,#FFEBEE
+Editing,Cmd + Shift + Delete,Delete time in Arrangement view.,#FFEBEE
+Editing,Cmd + Option + Drag,Duplicate a clip or selection.,#FFEBEE
+Editing,Shift + Cmd + E,Reverse selected clip(s).,#FFEBEE
+Editing,Cmd + U,Quantize selected clip.,#FFEBEE
+Editing,Cmd + Shift + U,Open quantize settings.,#FFEBEE
+Playback,Cmd + . (period),Stop playback immediately.,#FFF3E0
+Playback,Cmd + Shift + L,Toggle loop brace/region.,#FFF3E0
+Playback,Shift + Cmd + K,Toggle metronome on/off.,#FFF3E0
+Playback,Cmd + J,Jump to the next locator or marker.,#FFF3E0
+Playback,Cmd + K,Jump to the previous locator or marker.,#FFF3E0
+Clip View,Cmd + I,Insert silence at the playhead location.,#F3E5F5
+Clip View,Cmd + L,Toggle clip loop on/off.,#F3E5F5
+Clip View,Cmd + Option + L,Crop clip to loop selection.,#F3E5F5
+Clip View,Cmd + Shift + U,Open quantize settings for selected clip(s).,#F3E5F5
+Clip View,Cmd + Shift + D,Duplicate the selected clip(s) or section(s).,#F3E5F5
+Arrangement View,Cmd + Shift + Option + D,Duplicate time.,#E8F5E9
+Arrangement View,Cmd + Shift + Option + R,Render selected time range to audio.,#E8F5E9
+Arrangement View,Cmd + Option + U,Unfold/fold selected tracks.,#E8F5E9
+Arrangement View,Cmd + Y,Redo last action in Arrangement view.,#E8F5E9
+Automation,Cmd + Option + M,Mute/Unmute automation on selected track.,#E8F5E9
+Automation,Cmd + Option + Click,Reset automation to the default value.,#E8F5E9
+Automation,Cmd + Shift + Click,Delete automation breakpoint.,#E8F5E9
+Automation,Cmd + Option + Shift + A,Arm automation for recording.,#E8F5E9
+Browser,Cmd + Shift + I,Open Instrument Browser.,#E1F5FE
+Browser,Cmd + Shift + E,Open Effect Browser.,#E1F5FE
+Browser,Cmd + Shift + P,Open Plugin Browser.,#E1F5FE
+Browser,Cmd + Shift + S,Open Samples Browser.,#E1F5FE
+Browser,Cmd + Shift + R,Rescan plugins.,#E1F5FE
+Session View,Cmd + L,Toggle loop brace/region visibility.,#FFEBEE
+Session View,Cmd + I,Insert new scene.,#FFEBEE
+Session View,Cmd + Shift + K,Insert capture-and-insert scene.,#FFEBEE
+Session View,Cmd + Shift + F,Focus on selected scene/track.,#FFEBEE
+Session View,Cmd + Shift + M,Insert MIDI clip in selected slot.,#FFEBEE

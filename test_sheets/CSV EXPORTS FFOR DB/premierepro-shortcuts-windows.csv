@@ -1,0 +1,83 @@
+Section,Command,Description,Color
+General,"Ctrl + ,",Open Preferences,#E3F2FD
+General,Ctrl + S,Save project,#E3F2FD
+General,Ctrl + Z,Undo last action,#E3F2FD
+General,Ctrl + Shift + Z,Redo last action,#E3F2FD
+General,Ctrl + Q,Quit Premiere Pro,#E3F2FD
+Timeline,V,Select Tool,#FFEBEE
+Timeline,A,Track Select Tool,#FFEBEE
+Timeline,B,Ripple Edit Tool,#FFEBEE
+Timeline,N,Rolling Edit Tool,#FFEBEE
+Timeline,C,Razor Tool,#FFEBEE
+Editing,Ctrl + K,Add Edit (Cut at Playhead),#FFF3E0
+Editing,Ctrl + D,Apply Default Transition,#FFF3E0
+Editing,Ctrl + L,Link/Unlink selected clips,#FFF3E0
+Editing,Ctrl + R,Speed/Duration,#FFF3E0
+Editing,Ctrl + Shift + G,Group selected clips,#FFF3E0
+Audio,Ctrl + Shift + L,Adjust Audio Levels,#E1F5FE
+Audio,Ctrl + Shift + D,Apply Default Audio Transition,#E1F5FE
+Playback,Spacebar,Start/Stop Playback,#E0F7FA
+Playback,L,Play forward,#E0F7FA
+Playback,J,Play backward,#E0F7FA
+Playback,K,Pause,#E0F7FA
+Effects,Ctrl + M,Export Media,#FCE4EC
+Effects,Shift + 7,Open Effects panel,#FCE4EC
+Effects,Ctrl + Alt + K,Show/Hide Keyframes,#FCE4EC
+Markers,M,Add marker,#F1F8E9
+Markers,Ctrl + M,Export sequence to Media Encoder,#F1F8E9
+Tools,H,Hand Tool,#FFEBEE
+Tools,T,Type Tool,#FFEBEE
+Tools,P,Pen Tool,#FFEBEE
+Tools,Z,Zoom Tool,#FFEBEE
+Shortcuts & Workflow,Ctrl + Shift + N,New Sequence,#E3F2FD
+Shortcuts & Workflow,Ctrl + I,Import Media,#E3F2FD
+Shortcuts & Workflow,Ctrl + E,Export Sequence,#E3F2FD
+Shortcuts & Workflow,Ctrl + Alt + Z,Zoom to Sequence,#E3F2FD
+Shortcuts & Workflow,Ctrl + Shift + A,Deselect All,#E3F2FD
+Navigation,Up Arrow,Jump to previous edit point,#FCE4EC
+Navigation,Down Arrow,Jump to next edit point,#FCE4EC
+Navigation,Left Arrow,Step back one frame,#FCE4EC
+Navigation,Right Arrow,Step forward one frame,#FCE4EC
+Navigation,Shift + Left Arrow,Move playhead 5 frames left,#FCE4EC
+Navigation,Shift + Right Arrow,Move playhead 5 frames right,#FCE4EC
+Metadata,Ctrl + I,Show Clip Properties,#F1F8E9
+Metadata,Ctrl + Shift + P,Edit Metadata,#F1F8E9
+General,Ctrl + Shift + S,Save As…,#E3F2FD
+General,Ctrl + Alt + S,Save a Copy,#E3F2FD
+General,Ctrl + W,Close Project,#E3F2FD
+General,Alt + F4,Close Premiere Pro,#E3F2FD
+Timeline,Shift + Delete,Ripple Delete,#FFEBEE
+Timeline,Ctrl + Shift + D,Add Video Dissolve,#FFEBEE
+Timeline,Ctrl + T,Add Title,#FFEBEE
+Timeline,Ctrl + Shift + N,New Video Track,#FFEBEE
+Editing,Ctrl + Shift + /,Match Frame,#FFF3E0
+Editing,Ctrl + Shift + M,Add Edit to All Tracks,#FFF3E0
+Editing,Ctrl + Shift + V,Paste Insert,#FFF3E0
+Editing,Alt + Shift + R,Replace with Clip from Source Monitor,#FFF3E0
+Editing,Ctrl + Alt + E,Edit Original,#FFF3E0
+Audio,Ctrl + Shift + S,Solo Selected Track,#E1F5FE
+Audio,Ctrl + U,Unlink Audio and Video,#E1F5FE
+Audio,Ctrl + Alt + M,Mute All Other Tracks,#E1F5FE
+Playback,Shift + Spacebar,Play in Reverse,#E0F7FA
+Playback,Shift + K,Play In to Out,#E0F7FA
+Playback,Ctrl + Shift + J,Shuttle Stop,#E0F7FA
+Effects,Ctrl + Alt + F,Toggle Full Screen,#FCE4EC
+Effects,Ctrl + Shift + 8,Open Effect Controls,#FCE4EC
+Effects,Ctrl + Shift + K,Add Keyframe,#FCE4EC
+Effects,Ctrl + Alt + 1,Toggle Lumetri Scopes,#FCE4EC
+Markers,Shift + M,Go to Next Marker,#F1F8E9
+Markers,Ctrl + Alt + M,Go to Previous Marker,#F1F8E9
+Markers,Ctrl + Alt + K,Clear Selected Marker,#F1F8E9
+Tools,Shift + T,Text Tool,#FFEBEE
+Tools,Shift + E,Extract Tool,#FFEBEE
+Tools,Shift + B,Select Backward Tool,#FFEBEE
+Shortcuts & Workflow,Ctrl + Alt + Shift + N,New Project,#E3F2FD
+Shortcuts & Workflow,Ctrl + Shift + F12,Project Settings,#E3F2FD
+Shortcuts & Workflow,Ctrl + Alt + N,New Bin,#E3F2FD
+Navigation,Ctrl + Shift + Up Arrow,Move Layer Up,#FCE4EC
+Navigation,Ctrl + Shift + Down Arrow,Move Layer Down,#FCE4EC
+Navigation,Alt + Left Arrow,Trim Previous Edit to Playhead,#FCE4EC
+Navigation,Alt + Right Arrow,Trim Next Edit to Playhead,#FCE4EC
+Metadata,Ctrl + Shift + C,Copy Metadata,#F1F8E9
+Metadata,Ctrl + Shift + V,Paste Metadata,#F1F8E9
+Metadata,Ctrl + Alt + S,Sync Metadata Across Projects,#F1F8E9

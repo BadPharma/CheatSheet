@@ -1,0 +1,72 @@
+section,command,description,colour
+Navigation,⌘ + ← / →,Move playhead to session start/end,#DFF0D8
+Navigation,Tab,Move playhead to next clip,#DFF0D8
+Navigation,Shift + Tab,Move playhead to previous clip,#DFF0D8
+Navigation,Spacebar,Play/Pause,#DFF0D8
+Navigation,Shift + Spacebar,Play in reverse,#DFF0D8
+Navigation,⌘ + Left Arrow,Move playhead left by one frame,#DFF0D8
+Navigation,⌘ + Right Arrow,Move playhead right by one frame,#DFF0D8
+Navigation,⌘ + Shift + Left Arrow,Move playhead back 1 second,#DFF0D8
+Navigation,⌘ + Shift + Right Arrow,Move playhead forward 1 second,#DFF0D8
+Navigation,Option + Left Arrow,Move to previous marker,#DFF0D8
+Playback & Record,⌘ + Spacebar,Start/Stop recording,#D9EDF7
+Playback & Record,F12,Toggle recording on/off,#D9EDF7
+Playback & Record,Shift + F12,Stop recording,#D9EDF7
+Playback & Record,⌘ + Shift + F12,Set recording start time,#D9EDF7
+Playback & Record,⌘ + Shift + Spacebar,Play from current position,#D9EDF7
+Playback & Record,⌘ + R,Start/Stop recording (loop),#D9EDF7
+Playback & Record,Option + Spacebar,Toggle loop playback,#D9EDF7
+Editing,⌘ + Z,Undo,#FCF8E3
+Editing,⌘ + Shift + Z,Redo,#FCF8E3
+Editing,⌘ + X,Cut,#FCF8E3
+Editing,⌘ + C,Copy,#FCF8E3
+Editing,⌘ + V,Paste,#FCF8E3
+Editing,⌘ + T,Trim selection,#FCF8E3
+Editing,Shift + Delete,Delete selected region or clip,#FCF8E3
+Editing,⌘ + D,Duplicate selected region,#FCF8E3
+Editing,⌘ + Shift + T,Apply fade in/out,#FCF8E3
+Editing,Option + ⌘ + T,Normalize selected audio,#FCF8E3
+Editing,Shift + ⌘ + T,Time stretch,#FCF8E3
+Tools,⌘ + 1,Selection Tool,#F2DEDE
+Tools,⌘ + 2,Move Tool,#F2DEDE
+Tools,⌘ + 3,Razor Tool,#F2DEDE
+Tools,⌘ + 4,Time Selection Tool,#F2DEDE
+Tools,⌘ + 5,Envelope Tool,#F2DEDE
+Tools,⌘ + 6,Spectral Frequency Display Tool,#F2DEDE
+Tools,⌘ + 7,Clip Gain Tool,#F2DEDE
+Tools,⌘ + 8,Noise Reduction Tool,#F2DEDE
+Tools,Option + ⌘ + I,Insert Point at playhead position,#F2DEDE
+Tools,Option + ⌘ + O,Outsertion point at playhead position,#F2DEDE
+Tracks,⌘ + Shift + N,New track,#D0E9C6
+Tracks,⌘ + ↑ / ↓,Select next/previous track,#D0E9C6
+Tracks,⌘ + Option + ↑ / ↓,Move track up/down,#D0E9C6
+Tracks,⌘ + Shift + M,Mute track,#D0E9C6
+Tracks,⌘ + Shift + S,Solo track,#D0E9C6
+Tracks,⌘ + E,Expand/collapse track view,#D0E9C6
+Tracks,⌘ + Shift + T,Duplicate track,#D0E9C6
+Tracks,⌘ + Shift + L,Lock/unlock track,#D0E9C6
+Mixing,Shift + M,Show/hide Mixer,#FBEEC1
+Mixing,Shift + F,Show/hide Effects Rack,#FBEEC1
+Mixing,⌘ + ↑ / ↓,Increase/decrease volume,#FBEEC1
+Mixing,⌘ + Shift + ↑ / ↓,Move fader up/down,#FBEEC1
+Mixing,⌘ + Alt + M,Mute track in Mixer,#FBEEC1
+Mixing,⌘ + Alt + S,Solo track in Mixer,#FBEEC1
+Mixing,⌘ + E,Expand Mixer,#FBEEC1
+Mixing,⌘ + Shift + F,Show/hide Effects and Sends panel,#FBEEC1
+MIDI,⌘ + 1,Open MIDI Editor,#E2D6F3
+MIDI,⌘ + 2,Open MIDI Drum Editor,#E2D6F3
+MIDI,⌘ + 3,Open MIDI Pitch Editor,#E2D6F3
+MIDI,Shift + Left/Right Arrow,Move note left/right,#E2D6F3
+MIDI,Shift + Up/Down Arrow,Change pitch of note,#E2D6F3
+MIDI,⌘ + Shift + Up/Down Arrow,Increase/decrease velocity of note,#E2D6F3
+File,⌘ + N,New project,#F5F5F5
+File,⌘ + O,Open project,#F5F5F5
+File,⌘ + S,Save project,#F5F5F5
+File,⌘ + Shift + S,Save As,#F5F5F5
+File,⌘ + P,Print,#F5F5F5
+File,⌘ + Q,Quit Adobe Audition,#F5F5F5
+Help & Tips,⌘ + /,Show shortcut help,#EAD1DC
+Help & Tips,⌘ + Shift + /,Search for shortcuts,#EAD1DC
+Help & Tips,⌘ + ?,Open Help,#EAD1DC
+Help & Tips,Option + click menu,Access contextual menu,#EAD1DC
+Help & Tips,F1,Open Adobe Audition Help,#EAD1DC

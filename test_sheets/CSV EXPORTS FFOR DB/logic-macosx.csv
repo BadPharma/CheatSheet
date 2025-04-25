@@ -1,0 +1,74 @@
+section,command,description,colour
+Navigation,← / →,Move playhead left/right,#DFF0D8
+Navigation,↑ / ↓,Navigate tracks up/down,#DFF0D8
+Navigation,⌘ + ← / →,Move to beginning/end of region,#DFF0D8
+Navigation,⌘ + ↑ / ↓,Scroll up/down,#DFF0D8
+Navigation,Enter,Return to start,#DFF0D8
+Navigation,Spacebar,Play/Stop,#DFF0D8
+Navigation,Option + Spacebar,Play from selection,#DFF0D8
+Navigation,. (dot key),Go to beginning of project,#DFF0D8
+Navigation,⇥ Tab,Next track,#DFF0D8
+Navigation,⇧ + Tab,Previous track,#DFF0D8
+Playback & Record,R,Record,#D9EDF7
+Playback & Record,⌘ + .,Stop recording and delete,#D9EDF7
+Playback & Record,* (on numeric keypad),Record (alternate),#D9EDF7
+Playback & Record,Control + Spacebar,Play from selection,#D9EDF7
+Playback & Record,⌘ + Return,Cycle mode on/off,#D9EDF7
+Playback & Record,/ (forward slash),Toggle Replace mode,#D9EDF7
+Playback & Record,⌘ + K,Open Musical Typing,#D9EDF7
+Playback & Record,⌘ + Option + K,Open Step Input Keyboard,#D9EDF7
+Editing,⌘ + Z,Undo,#FCF8E3
+Editing,⇧ + ⌘ + Z,Redo,#FCF8E3
+Editing,⌘ + X,Cut,#FCF8E3
+Editing,⌘ + C,Copy,#FCF8E3
+Editing,⌘ + V,Paste,#FCF8E3
+Editing,Delete,Delete selected,#FCF8E3
+Editing,⌘ + D,Duplicate,#FCF8E3
+Editing,Control + ⌘ + Backspace,Delete and close gap,#FCF8E3
+Editing,⌘ + J,Join selected regions,#FCF8E3
+Editing,⌘ + T,Split region at playhead,#FCF8E3
+Editing,⌘ + Shift + T,Split region at selection,#FCF8E3
+Regions,Control + Click,Region options menu,#F2DEDE
+Regions,⌘ + R,Repeat region,#F2DEDE
+Regions,Option + drag,Copy region,#F2DEDE
+Regions,⌘ + Option + drag,Move region without snapping,#F2DEDE
+Regions,Control + ⌘ + drag,Resize region,#F2DEDE
+Regions,M,Mute selected region,#F2DEDE
+Regions,Control + M,Mute track,#F2DEDE
+Tracks,⌘ + ↑ / ↓,Navigate tracks,#D0E9C6
+Tracks,⌘ + Shift + N,New audio track,#D0E9C6
+Tracks,Option + ⌘ + S,New software instrument track,#D0E9C6
+Tracks,Option + ⌘ + X,New external MIDI track,#D0E9C6
+Tracks,⌘ + Option + D,Duplicate selected track,#D0E9C6
+Tracks,⌘ + Delete,Delete selected track,#D0E9C6
+Tracks,Control + ⌘ + S,Solo track,#D0E9C6
+Mixing,X,Toggle Mixer,#FBEEC1
+Mixing,B,Toggle Smart Controls,#FBEEC1
+Mixing,Y,Open Library,#FBEEC1
+Mixing,⌘ + 2,Open Mixer in new window,#FBEEC1
+Mixing,⌘ + Option + M,Toggle track mute,#FBEEC1
+Mixing,⌘ + Option + S,Toggle solo,#FBEEC1
+MIDI Editing,P,Open Piano Roll,#E2D6F3
+MIDI Editing,E,Open Event List,#E2D6F3
+MIDI Editing,D,Open Drummer Editor,#E2D6F3
+MIDI Editing,⌘ + Control + Click,Add note,#E2D6F3
+MIDI Editing,⌘ + Shift + M,Merge MIDI regions,#E2D6F3
+MIDI Editing,Option + ⌘ + P,Quantize selected,#E2D6F3
+Zoom & View,⌘ + ← / →,Horizontal zoom,#F5D0A9
+Zoom & View,⌘ + ↑ / ↓,Vertical zoom,#F5D0A9
+Zoom & View,Z,Zoom to fit selection,#F5D0A9
+Zoom & View,⌘ + Shift + F,Zoom to fit project,#F5D0A9
+Zoom & View,Control + Option + drag,Zoom tool,#F5D0A9
+Zoom & View,Control + Shift + Z,Zoom undo,#F5D0A9
+File,⌘ + N,New project,#F5F5F5
+File,⌘ + O,Open project,#F5F5F5
+File,⌘ + S,Save project,#F5F5F5
+File,⌘ + Shift + S,Save As,#F5F5F5
+File,⌘ + E,Export project,#F5F5F5
+File,⌘ + P,Print (score editor),#F5F5F5
+File,⌘ + Q,Quit Logic Pro,#F5F5F5
+Help & Tips,⌘ + /,Show shortcut help,#EAD1DC
+Help & Tips,⌘ + Shift + ?,Open Logic Pro Help,#EAD1DC
+Help & Tips,Control + ⌘ + ?,Apple Support,#EAD1DC
+Help & Tips,Option + ⌘ + L,Show Quick Help,#EAD1DC
+Help & Tips,⌘ + Option + K,Show key command editor,#EAD1DC

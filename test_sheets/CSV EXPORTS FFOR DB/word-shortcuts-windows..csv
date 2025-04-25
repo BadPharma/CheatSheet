@@ -1,0 +1,157 @@
+section,shortcut,description,colour
+General,Ctrl + N,Create a new document.,#E0F7FA
+General,Ctrl + O,Open an existing document.,#E0F7FA
+General,Ctrl + S,Save the current document.,#E0F7FA
+General,Ctrl + P,Print the document.,#E0F7FA
+General,Ctrl + W,Close the current document.,#E0F7FA
+General,Ctrl + F,Open the navigation pane to search.,#E0F7FA
+General,Ctrl + Shift + S,Open the Save As dialog.,#E0F7FA
+General,Ctrl + Z,Undo the last action.,#E0F7FA
+General,Ctrl + Y,Redo the last action.,#E0F7FA
+General,Ctrl + Q,Close Microsoft Word.,#E0F7FA
+Text Formatting,Ctrl + B,Bold selected text.,#FFEBEE
+Text Formatting,Ctrl + I,Italicize selected text.,#FFEBEE
+Text Formatting,Ctrl + U,Underline selected text.,#FFEBEE
+Text Formatting,Ctrl + Shift + D,Double underline selected text.,#FFEBEE
+Text Formatting,Ctrl + E,Center align text.,#FFEBEE
+Text Formatting,Ctrl + L,Left align text.,#FFEBEE
+Text Formatting,Ctrl + R,Right align text.,#FFEBEE
+Text Formatting,Ctrl + J,Justify text.,#FFEBEE
+Text Formatting,Ctrl + Shift + >,Increase font size.,#FFEBEE
+Text Formatting,Ctrl + Shift + <,Decrease font size.,#FFEBEE
+Navigation & Selection,Ctrl + A,Select the entire document.,#FFF3E0
+Navigation & Selection,Ctrl + Left/Right Arrow,Move cursor to previous/next word.,#FFF3E0
+Navigation & Selection,Ctrl + Up/Down Arrow,Move cursor to previous/next paragraph.,#FFF3E0
+Navigation & Selection,Ctrl + Shift + Left/Right Arrow,Select previous/next word.,#FFF3E0
+Navigation & Selection,Ctrl + Shift + Up/Down Arrow,Select previous/next paragraph.,#FFF3E0
+Navigation & Selection,Ctrl + Home,Move cursor to the beginning of the document.,#FFF3E0
+Navigation & Selection,Ctrl + End,Move cursor to the end of the document.,#FFF3E0
+General,F12,Open Save As dialog.,#E0F7FA
+General,Ctrl + Shift + N,Open a new window.,#E0F7FA
+General,Ctrl + Shift + F12,Open the Print dialog.,#E0F7FA
+General,Alt + Ctrl + I,Switch to Print Preview.,#E0F7FA
+General,Alt + Ctrl + S,Split the document window.,#E0F7FA
+General,Ctrl + Shift + F,Open the Font dialog box.,#E0F7FA
+General,Ctrl + Alt + V,Paste special.,#E0F7FA
+General,F7,Open the Spelling and Grammar check.,#E0F7FA
+General,Shift + F7,Open the Thesaurus pane.,#E0F7FA
+Text Formatting,Ctrl + Shift + C,Copy formatting from selected text.,#FFEBEE
+Text Formatting,Ctrl + Shift + V,Apply copied formatting to selected text.,#FFEBEE
+Text Formatting,Ctrl + 1,Single-space lines.,#FFEBEE
+Text Formatting,Ctrl + 2,Double-space lines.,#FFEBEE
+Text Formatting,Ctrl + 5,Set line spacing to 1.5 lines.,#FFEBEE
+Text Formatting,Ctrl + Shift + K,Change selected text to small caps.,#FFEBEE
+Text Formatting,Ctrl + D,Open Font formatting dialog box.,#FFEBEE
+Text Formatting,Ctrl + Shift + L,Apply bullet points to selected text.,#FFEBEE
+Text Formatting,Ctrl + Alt + 1,Apply Heading 1 style to selected text.,#FFEBEE
+Text Formatting,Ctrl + Alt + 2,Apply Heading 2 style to selected text.,#FFEBEE
+Text Formatting,Ctrl + Alt + 3,Apply Heading 3 style to selected text.,#FFEBEE
+Editing,Ctrl + Shift + G,Open the Word Count dialog box.,#FFE0B2
+Editing,Ctrl + Backspace,Delete previous word.,#FFE0B2
+Editing,Ctrl + Delete,Delete next word.,#FFE0B2
+Editing,Ctrl + Shift + K,Insert a hyperlink.,#FFE0B2
+Editing,Alt + Shift + Arrow Up,Move selected paragraph up.,#FFE0B2
+Editing,Alt + Shift + Arrow Down,Move selected paragraph down.,#FFE0B2
+Editing,Ctrl + Shift + E,Turn track changes on or off.,#FFE0B2
+Editing,Ctrl + Spacebar,Remove text formatting.,#FFE0B2
+Editing,Ctrl + =,Apply subscript formatting to selected text.,#FFE0B2
+Editing,Ctrl + Shift + =,Apply superscript formatting to selected text.,#FFE0B2
+Navigation & Selection,Ctrl + Shift + Home,Select text from cursor to beginning of document.,#FFF3E0
+Navigation & Selection,Ctrl + Shift + End,Select text from cursor to end of document.,#FFF3E0
+Navigation & Selection,Ctrl + Shift + Page Up,Select text from cursor to beginning of current page.,#FFF3E0
+Navigation & Selection,Ctrl + Shift + Page Down,Select text from cursor to end of current page.,#FFF3E0
+Navigation & Selection,F5,Open the Find and Replace dialog (Go To tab).,#FFF3E0
+Navigation & Selection,Ctrl + Shift + F5,Set or clear bookmarks in a document.,#FFF3E0
+Navigation & Selection,Shift + F3,Change case of selected text (upper/lower/capitalize each).,#FFF3E0
+Navigation & Selection,F6,Move to the next pane or frame in the document.,#FFF3E0
+Navigation & Selection,Ctrl + F6,Switch between open Word documents.,#FFF3E0
+Navigation & Selection,Ctrl + F4,Close the current document window.,#FFF3E0
+General,Alt + Ctrl + F2,Open the Open dialog.,#E0F7FA
+General,Alt + Shift + R,Insert page number in header/footer.,#E0F7FA
+General,Ctrl + Shift + F3,Insert AutoText entry.,#E0F7FA
+General,Ctrl + Shift + H,Apply hidden text formatting.,#E0F7FA
+General,Alt + Shift + D,Insert the current date.,#E0F7FA
+General,Alt + Shift + T,Insert the current time.,#E0F7FA
+General,Ctrl + Enter,Insert a page break.,#E0F7FA
+General,Shift + Enter,Insert a line break.,#E0F7FA
+General,Alt + Ctrl + P,Switch to Print Layout view.,#E0F7FA
+General,Alt + Ctrl + O,Switch to Outline view.,#E0F7FA
+Text Formatting,Ctrl + Shift + P,Open the Font dialog with focus on the Size field.,#FFEBEE
+Text Formatting,Ctrl + Shift + Spacebar,Insert a non-breaking space.,#FFEBEE
+Text Formatting,Ctrl + Shift + Hyphen,Insert a non-breaking hyphen.,#FFEBEE
+Text Formatting,Alt + Ctrl + 1,Apply Heading 1 style.,#FFEBEE
+Text Formatting,Alt + Ctrl + 2,Apply Heading 2 style.,#FFEBEE
+Text Formatting,Alt + Ctrl + 3,Apply Heading 3 style.,#FFEBEE
+Text Formatting,Ctrl + Shift + >,Increase font size.,#FFEBEE
+Text Formatting,Ctrl + Shift + <,Decrease font size.,#FFEBEE
+Text Formatting,Ctrl + Shift + Q,Change text font to Symbol.,#FFEBEE
+Text Formatting,Ctrl + Shift + W,"Underline words only, not spaces.",#FFEBEE
+Editing,Ctrl + Shift + Hyphen,Insert an em dash.,#FFE0B2
+Editing,Ctrl + Alt + Hyphen,Insert an en dash.,#FFE0B2
+Editing,Ctrl + Shift + F9,Unlink a field.,#FFE0B2
+Editing,Alt + Shift + Left Arrow,Promote the selected paragraph (outline view).,#FFE0B2
+Editing,Alt + Shift + Right Arrow,Demote the selected paragraph (outline view).,#FFE0B2
+Editing,Ctrl + Shift + F5,Go to a bookmark.,#FFE0B2
+Editing,Ctrl + Shift + 8,Show or hide paragraph marks and other hidden formatting.,#FFE0B2
+Editing,Alt + Shift + F7,Open the Research pane.,#FFE0B2
+Editing,Ctrl + Alt + K,Insert an index entry.,#FFE0B2
+Editing,Alt + Ctrl + M,Insert a comment.,#FFE0B2
+Navigation & Selection,Ctrl + Arrow Left,Move the cursor one word to the left.,#FFF3E0
+Navigation & Selection,Ctrl + Arrow Right,Move the cursor one word to the right.,#FFF3E0
+Navigation & Selection,Ctrl + Arrow Up,Move the cursor to the beginning of the previous paragraph.,#FFF3E0
+Navigation & Selection,Ctrl + Arrow Down,Move the cursor to the beginning of the next paragraph.,#FFF3E0
+Navigation & Selection,Alt + Ctrl + Home,Set a mark for use with Go To.,#FFF3E0
+Navigation & Selection,Ctrl + Home,Move the cursor to the top of the document.,#FFF3E0
+Navigation & Selection,Ctrl + End,Move the cursor to the bottom of the document.,#FFF3E0
+Navigation & Selection,Ctrl + Page Up,Move the cursor to the previous page.,#FFF3E0
+Navigation & Selection,Ctrl + Page Down,Move the cursor to the next page.,#FFF3E0
+Navigation & Selection,Shift + Ctrl + Arrow Left,Select the previous word.,#FFF3E0
+Navigation & Selection,Shift + Ctrl + Arrow Right,Select the next word.,#FFF3E0
+Navigation & Selection,Shift + Ctrl + Arrow Up,Select to the beginning of the current paragraph.,#FFF3E0
+Navigation & Selection,Shift + Ctrl + Arrow Down,Select to the end of the current paragraph.,#FFF3E0
+Navigation & Selection,Ctrl + F10,Maximize the document window.,#FFF3E0
+Navigation & Selection,Ctrl + Shift + F10,Restore the document window to its normal size.,#FFF3E0
+Table Management,Alt + Shift + Up Arrow,Move selected row up.,#F3E5F5
+Table Management,Alt + Shift + Down Arrow,Move selected row down.,#F3E5F5
+Table Management,Alt + Ctrl + U,Remove table border.,#F3E5F5
+Table Management,Ctrl + Alt + Shift + T,Insert table of contents.,#F3E5F5
+Table Management,Ctrl + Shift + Enter,Split table.,#F3E5F5
+Table Management,Alt + Home,Go to the first cell in a row.,#F3E5F5
+Table Management,Alt + End,Go to the last cell in a row.,#F3E5F5
+Table Management,Ctrl + Tab,Insert a tab character in a table cell.,#F3E5F5
+Footnotes & Endnotes,Alt + Ctrl + F,Insert footnote.,#E8EAF6
+Footnotes & Endnotes,Alt + Ctrl + D,Insert endnote.,#E8EAF6
+Footnotes & Endnotes,Alt + Shift + P,Move to the previous footnote.,#E8EAF6
+Footnotes & Endnotes,Alt + Shift + N,Move to the next footnote.,#E8EAF6
+Styles,Ctrl + Shift + Alt + S,Open the Styles task pane.,#FFF9C4
+Styles,Ctrl + Shift + Alt + 1,Apply Heading 1 style.,#FFF9C4
+Styles,Ctrl + Shift + Alt + 2,Apply Heading 2 style.,#FFF9C4
+Styles,Ctrl + Shift + Alt + N,Apply Normal style.,#FFF9C4
+Styles,Alt + Ctrl + Shift + S,Copy formatting from selected text (similar to Format Painter).,#FFF9C4
+Styles,Ctrl + Shift + Alt + V,Paste formatting to text (similar to Format Painter).,#FFF9C4
+Outlining,Alt + Shift + +,Promote a paragraph to the next higher heading level.,#D1C4E9
+Outlining,Alt + Shift + -,Demote a paragraph to the next lower heading level.,#D1C4E9
+Outlining,Alt + Shift + Left Arrow,Promote selected text (Outline view).,#D1C4E9
+Outlining,Alt + Shift + Right Arrow,Demote selected text (Outline view).,#D1C4E9
+Outlining,Ctrl + Shift + N,Apply Normal style (Outline view).,#D1C4E9
+Outlining,Alt + Shift + A,Expand or collapse all text or headings.,#D1C4E9
+Reviewing,Ctrl + Shift + E,Toggle track changes on/off.,#C8E6C9
+Reviewing,Alt + Shift + C,Close the Reviewing Pane.,#C8E6C9
+Reviewing,Ctrl + Shift + G,Open the Word Count dialog.,#C8E6C9
+Reviewing,Ctrl + Shift + L,Apply the List Bullet style.,#C8E6C9
+Reviewing,Alt + Shift + K,Accept all changes in the document.,#C8E6C9
+Reviewing,Alt + Shift + J,Reject all changes in the document.,#C8E6C9
+Mail Merge,Alt + Shift + K,Preview a mail merge.,#FFCCBC
+Mail Merge,Alt + Shift + E,Edit the mail-merge data document.,#FFCCBC
+Mail Merge,Alt + Shift + P,Insert a merge field.,#FFCCBC
+Mail Merge,Alt + Shift + N,Merge a document.,#FFCCBC
+Mail Merge,Alt + Shift + F,Insert a merge field in mail-merge document.,#FFCCBC
+Citations & Bibliography,Alt + Shift + O,Mark a citation.,#FFF9C4
+Citations & Bibliography,Ctrl + Shift + I,Mark an index entry.,#FFF9C4
+Citations & Bibliography,Alt + Shift + X,Mark an index.,#FFF9C4
+Citations & Bibliography,Alt + Shift + I,Insert a citation.,#FFF9C4
+Citations & Bibliography,Alt + Shift + A,Create a bibliography from citations.,#FFF9C4
+Graphics,Ctrl + Shift + K,Insert a hyperlink.,#FFEBEE
+Graphics,Ctrl + Alt + G,Group selected objects.,#FFEBEE
+Graphics,Ctrl + Shift + G,Ungroup selected objects.,#FFEBEE
+Graphics,Alt + F9,Show/hide field codes.,#FFEBEE

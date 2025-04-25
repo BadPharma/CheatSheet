@@ -1,0 +1,64 @@
+Basic Navigation,show running-config,Display current configuration.,#1F77B4
+Basic Navigation,copy running-config startup-config,Save current configuration to startup config.,#1F77B4
+Basic Navigation,configure terminal,Enter global configuration mode.,#1F77B4
+Basic Navigation,show startup-config,Display the startup configuration.,#1F77B4
+Basic Navigation,exit,Exit from the current mode.,#1F77B4
+Host Naming,hostname <device_name>,Set the device's hostname.,#FF7F0E
+Interface Configuration,interface <interface_id>,Enter interface configuration mode.,#FF7F0E
+Interface Configuration,ip address <ip_address> <subnet_mask>,Assign an IP address to an interface.,#FF7F0E
+Interface Configuration,no shutdown,Enable the interface.,#FF7F0E
+Interface Configuration,shutdown,Disable the interface.,#FF7F0E
+Interface Configuration,show ip interface brief,Show summary of all interfaces and their IP status.,#FF7F0E
+Routing,show ip route,Display the routing table.,#2CA02C
+Routing,ip route <destination_network> <mask> <next_hop>,Configure a static route.,#2CA02C
+Routing,router ospf <process_id>,Enable OSPF routing.,#2CA02C
+Routing,router eigrp <AS_number>,Enable EIGRP routing.,#2CA02C
+Routing,router rip,Enable RIP routing.,#2CA02C
+Routing,network <network>,Define the network in routing protocols.,#2CA02C
+Switching,show vlan brief,Display the VLAN configuration.,#D62728
+Switching,vlan <vlan_id>,Create a new VLAN.,#D62728
+Switching,name <vlan_name>,"Name the VLAN (e.g., name HR_VLAN).",#D62728
+Switching,interface <interface_id>,Enter interface configuration mode.,#D62728
+Switching,switchport mode access,Set the interface to access mode.,#D62728
+Switching,switchport access vlan <vlan_id>,Assign the interface to a VLAN.,#D62728
+Switching,show spanning-tree,Display Spanning Tree Protocol status.,#D62728
+Security,enable secret <password>,Set the enable secret password for privileged exec.,#9467BD
+Security,ip domain-name <domain>,Set domain name for SSH access.,#9467BD
+Security,crypto key generate rsa,Generate RSA keys for SSH.,#9467BD
+Security,line vty 0 4,Enter VTY line configuration mode.,#9467BD
+Security,transport input ssh,Enable SSH-only access.,#9467BD
+Security,login local,Use local login for authentication.,#9467BD
+Security,username <username> secret <password>,Create a local user with a password.,#9467BD
+Troubleshooting,ping <destination_ip>,Send ICMP echo requests to test connectivity.,#8C564B
+Troubleshooting,traceroute <destination_ip>,Trace the route to the destination IP.,#8C564B
+Troubleshooting,show cdp neighbors,Display Cisco Discovery Protocol (CDP) neighbors.,#8C564B
+Troubleshooting,show ip arp,Display the ARP table.,#8C564B
+Troubleshooting,show processes cpu,Display CPU usage and running processes.,#8C564B
+Miscellaneous,reload,Reboot the router or switch.,#7F7F7F
+Miscellaneous,show version,Display device version information and uptime.,#7F7F7F
+Miscellaneous,show flash,Display contents of the flash memory.,#7F7F7F
+NAT,ip nat inside source list <access-list> interface <interface_id> overload,Configure NAT.,#FF9896
+Access Lists,access-list <number> permit <protocol> <source> <wildcard>,Create a standard access list.,#17BECF
+Access Lists,access-list <number> deny <protocol> <source> <wildcard>,Deny traffic in an access list.,#17BECF
+Access Lists,show access-lists,Display access list configurations.,#17BECF
+Quality of Service (QoS),class-map <class_name>,Create a class map for traffic classification.,#BCBD22
+Quality of Service (QoS),policy-map <policy_name>,Create a policy map for QoS configuration.,#BCBD22
+Quality of Service (QoS),service-policy input <policy_name>,Apply policy to incoming traffic.,#BCBD22
+DHCP,ip dhcp pool <pool_name>,Create a DHCP address pool.,#FFBB78
+DHCP,network <network> <subnet_mask>,Specify the network for the DHCP pool.,#FFBB78
+DHCP,default-router <router_ip>,Specify the default gateway for DHCP clients.,#FFBB78
+IPv6,ipv6 unicast-routing,Enable IPv6 routing.,#1F77B4
+IPv7,interface <interface_id>,Enter interface configuration mode.,#1F77B4
+IPv8,ipv6 address <ipv6_address>/<prefix_length>,Assign an IPv6 address to an interface.,#1F77B4
+Miscellaneous II,show users,Display logged-in users on the device.,#7F7F7F
+Miscellaneous II,show ip interface,Show IP interface information.,#7F7F7F
+Miscellaneous II,clear ip arp <interface>,Clear ARP cache for a specific interface.,#7F7F7F
+EtherChannel,interface Port-channel <number>,Configure a Port Channel interface.,#17BECF
+EtherChannel,channel-group <number> mode active,Add an interface to an EtherChannel.,#17BECF
+EtherChannel,show etherchannel summary,Display EtherChannel status and summary.,#17BECF
+NetFlow,ip flow ingress,Enable NetFlow on ingress traffic.,#BCBD22
+NetFlow,ip flow egress,Enable NetFlow on egress traffic.,#BCBD22
+NetFlow,show ip cache flow,Display NetFlow cache information.,#BCBD22
+Scripting,event manager applet <name>,Create an EEM applet for automation.,#9467BD
+Scripting,action <action_id>,Define an action within the applet.,#9467BD
+Scripting,event <event_type>,Define an event that triggers the applet.,#9467BD

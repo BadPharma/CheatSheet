@@ -1,0 +1,83 @@
+Section,Command,Description,Color
+General,"Cmd + ,",Open Preferences,#E3F2FD
+General,Cmd + S,Save project,#E3F2FD
+General,Cmd + Z,Undo last action,#E3F2FD
+General,Cmd + Shift + Z,Redo last action,#E3F2FD
+General,Cmd + Q,Quit Premiere Pro,#E3F2FD
+Timeline,V,Select Tool,#FFEBEE
+Timeline,A,Track Select Tool,#FFEBEE
+Timeline,B,Ripple Edit Tool,#FFEBEE
+Timeline,N,Rolling Edit Tool,#FFEBEE
+Timeline,C,Razor Tool,#FFEBEE
+Editing,Cmd + K,Add Edit (Cut at Playhead),#FFF3E0
+Editing,Cmd + D,Apply Default Transition,#FFF3E0
+Editing,Cmd + L,Link/Unlink selected clips,#FFF3E0
+Editing,Cmd + R,Speed/Duration,#FFF3E0
+Editing,Cmd + Option + G,Group selected clips,#FFF3E0
+Audio,Cmd + Shift + L,Adjust Audio Levels,#E1F5FE
+Audio,Cmd + Shift + D,Apply Default Audio Transition,#E1F5FE
+Playback,Spacebar,Start/Stop Playback,#E0F7FA
+Playback,L,Play forward,#E0F7FA
+Playback,J,Play backward,#E0F7FA
+Playback,K,Pause,#E0F7FA
+Effects,Cmd + Shift + E,Export Media,#FCE4EC
+Effects,Shift + 7,Open Effects panel,#FCE4EC
+Effects,Cmd + Option + K,Show/Hide Keyframes,#FCE4EC
+Markers,M,Add marker,#F1F8E9
+Markers,Cmd + M,Export sequence to Media Encoder,#F1F8E9
+Tools,H,Hand Tool,#FFEBEE
+Tools,T,Type Tool,#FFEBEE
+Tools,P,Pen Tool,#FFEBEE
+Tools,Z,Zoom Tool,#FFEBEE
+Shortcuts & Workflow,Cmd + Shift + N,New Sequence,#E3F2FD
+Shortcuts & Workflow,Cmd + I,Import Media,#E3F2FD
+Shortcuts & Workflow,Cmd + E,Export Sequence,#E3F2FD
+Shortcuts & Workflow,Cmd + Option + Z,Zoom to Sequence,#E3F2FD
+Shortcuts & Workflow,Cmd + Shift + A,Deselect All,#E3F2FD
+Navigation,Up Arrow,Jump to previous edit point,#FCE4EC
+Navigation,Down Arrow,Jump to next edit point,#FCE4EC
+Navigation,Left Arrow,Step back one frame,#FCE4EC
+Navigation,Right Arrow,Step forward one frame,#FCE4EC
+Navigation,Shift + Left Arrow,Move playhead 5 frames left,#FCE4EC
+Navigation,Shift + Right Arrow,Move playhead 5 frames right,#FCE4EC
+Metadata,Cmd + I,Show Clip Properties,#F1F8E9
+Metadata,Cmd + Shift + P,Edit Metadata,#F1F8E9
+General,Command + Shift + S,Save As…,#E3F2FD
+General,Command + Option + S,Save a Copy,#E3F2FD
+General,Command + W,Close Project,#E3F2FD
+General,Command + Q,Close Premiere Pro,#E3F2FD
+Timeline,Shift + Delete,Ripple Delete,#FFEBEE
+Timeline,Command + Shift + D,Add Video Dissolve,#FFEBEE
+Timeline,Command + T,Add Title,#FFEBEE
+Timeline,Command + Shift + N,New Video Track,#FFEBEE
+Editing,Command + Shift + /,Match Frame,#FFF3E0
+Editing,Command + Shift + M,Add Edit to All Tracks,#FFF3E0
+Editing,Command + Shift + V,Paste Insert,#FFF3E0
+Editing,Option + Shift + R,Replace with Clip from Source Monitor,#FFF3E0
+Editing,Command + Option + E,Edit Original,#FFF3E0
+Audio,Command + Shift + S,Solo Selected Track,#E1F5FE
+Audio,Command + U,Unlink Audio and Video,#E1F5FE
+Audio,Command + Option + M,Mute All Other Tracks,#E1F5FE
+Playback,Shift + Spacebar,Play in Reverse,#E0F7FA
+Playback,Shift + K,Play In to Out,#E0F7FA
+Playback,Command + Shift + J,Shuttle Stop,#E0F7FA
+Effects,Command + Option + F,Toggle Full Screen,#FCE4EC
+Effects,Command + Shift + 8,Open Effect Controls,#FCE4EC
+Effects,Command + Shift + K,Add Keyframe,#FCE4EC
+Effects,Command + Option + 1,Toggle Lumetri Scopes,#FCE4EC
+Markers,Shift + M,Go to Next Marker,#F1F8E9
+Markers,Command + Option + M,Go to Previous Marker,#F1F8E9
+Markers,Command + Option + K,Clear Selected Marker,#F1F8E9
+Tools,Shift + T,Text Tool,#FFEBEE
+Tools,Shift + E,Extract Tool,#FFEBEE
+Tools,Shift + B,Select Backward Tool,#FFEBEE
+Shortcuts & Workflow,Command + Option + Shift + N,New Project,#E3F2FD
+Shortcuts & Workflow,Command + Shift + F12,Project Settings,#E3F2FD
+Shortcuts & Workflow,Command + Option + N,New Bin,#E3F2FD
+Navigation,Command + Shift + Up Arrow,Move Layer Up,#FCE4EC
+Navigation,Command + Shift + Down Arrow,Move Layer Down,#FCE4EC
+Navigation,Option + Left Arrow,Trim Previous Edit to Playhead,#FCE4EC
+Navigation,Option + Right Arrow,Trim Next Edit to Playhead,#FCE4EC
+Metadata,Command + Shift + C,Copy Metadata,#F1F8E9
+Metadata,Command + Shift + V,Paste Metadata,#F1F8E9
+Metadata,Command + Option + S,Sync Metadata Across Projects,#F1F8E9

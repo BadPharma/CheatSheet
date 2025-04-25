@@ -1,0 +1,59 @@
+File Management,ls,List files and directories in the current directory.,#A8D8E0
+File Management,cd [directory],Change the current directory.,#A8D8E0
+File Management,pwd,Print the current working directory.,#A8D8E0
+File Management,mkdir [directory],Create a new directory.,#A8D8E0
+File Management,rmdir [directory],Remove an empty directory.,#A8D8E0
+File Management,rm [file],Remove a file.,#A8D8E0
+File Management,cp [source] [destination],Copy a file or directory.,#6D9BC3
+File Management,mv [source] [destination],Move or rename a file or directory.,#6D9BC3
+File Management,touch [file],Create an empty file or update the timestamp of an existing file.,#6D9BC3
+File Management,cat [file],Concatenate and display file contents.,#6D9BC3
+File Management,less [file],View the contents of a file one screen at a time.,#6D9BC3
+File Management,head [file],Display the first few lines of a file.,#6D9BC3
+File Management,tail [file],Display the last few lines of a file.,#6D9BC3
+File Permissions,chmod [permissions] [file],Change the file mode (permissions) of a file or directory.,#6DAF6D
+File Permissions,chown [user]:[group] [file],Change the ownership of a file or directory.,#6DAF6D
+File Permissions,ls -l,"List files in long format, showing permissions and ownership.",#6DAF6D
+File Search,find [directory] -name [filename],Search for files by name in a directory.,#F1C6B8
+File Search,grep [pattern] [file],Search for a pattern in a file.,#F1C6B8
+File Search,locate [filename],Find files by name using a pre-built index.,#F1C6B8
+System Information,top,Display running processes and system resource usage.,#FFDAB3
+System Information,ps,Display currently running processes.,#FFDAB3
+System Information,df -h,Show disk space usage in a human-readable format.,#FFDAB3
+System Information,du -h,Show disk usage of files and directories in a human-readable format.,#FFDAB3
+System Information,uname -a,"Display system information, including the kernel version and architecture.",#FFDAB3
+System Information,whoami,Display the currently logged-in user.,#FFDAB3
+Network Commands,ping [hostname],Test network connectivity to a specified host.,#D6E3F0
+Network Commands,ifconfig,Display or configure network interfaces.,#D6E3F0
+Network Commands,netstat,Display network connections and routing tables.,#D6E3F0
+Network Commands,curl [URL],Transfer data from or to a server using various protocols.,#D6E3F0
+Network Commands,wget [URL],Download files from the web.,#D6E3F0
+User Management,useradd [username],Create a new user account.,#B3D6E3
+User Management,passwd [username],Change the password for a user account.,#B3D6E3
+User Management,deluser [username],Remove a user account.,#B3D6E3
+User Management,groups [username],Display the groups that a user belongs to.,#B3D6E3
+User Management,su [username],Switch user to another user account.,#B3D6E3
+User Management,sudo [command],Execute a command with superuser privileges.,#B3D6E3
+Archiving and Compression,tar -cvf archive.tar [files],Create a tarball archive of files.,#F0B3B3
+Archiving and Compression,tar -xvf archive.tar,Extract files from a tarball archive.,#F0B3B3
+Archiving and Compression,gzip [file],Compress a file using gzip.,#F0B3B3
+Archiving and Compression,gunzip [file.gz],Decompress a gzipped file.,#F0B3B3
+Text Processing,sort [file],Sort lines in a file.,#F0C6B8
+Text Processing,uniq [file],Remove duplicate lines from a sorted file.,#F0C6B8
+Text Processing,awk '{print $1}' [file],Process and analyze text files.,#F0C6B8
+Text Processing,sed 's/old/new/g' [file],Stream editor for filtering and transforming text.,#F0C6B8
+Text Processing,wc [file],"Count lines, words, and characters in a file.",#F0C6B8
+System Administration,shutdown now,Shut down the system immediately.,#FFDAB3
+System Administration,reboot,Restart the system.,#FFDAB3
+System Administration,`service [service_name] start,stop,restart`
+System Administration,systemctl status [service_name],Check the status of a system service.,#FFDAB3
+Process Management,kill [PID],Terminate a process by its Process ID (PID).,#A0B3D6
+Process Management,killall [process_name],Terminate all processes by name.,#A0B3D6
+Process Management,bg,Resume a suspended job in the background.,#A0B3D6
+Process Management,fg,Bring a background job to the foreground.,#A0B3D6
+Process Management,jobs,List current jobs in the shell.,#A0B3D6
+Environment Variables,export VAR=value,Set an environment variable.,#A3C1B3
+Environment Variables,echo $VAR,Display the value of an environment variable.,#A3C1B3
+Environment Variables,env,List all environment variables.,#A3C1B3
+File Editing,nano [file],Open a file in the nano text editor.,#FFDAB3
+File Editing,vim [file],Open a file in the Vim text editor.,#FFDAB

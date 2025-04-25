@@ -1,0 +1,77 @@
+section,command,description,colour
+Navigation,Ctrl + ↑,Move to previous slide,#E6F9E6
+Navigation,Ctrl + ↓,Move to next slide,#E6F9E6
+Navigation,Home,Go to first slide,#E6F9E6
+Navigation,End,Go to last slide,#E6F9E6
+Navigation,Page Up,Previous slide (in Normal view),#E6F9E6
+Navigation,Page Down,Next slide (in Normal view),#E6F9E6
+Navigation,Ctrl + Shift + Tab,Switch between open presentations,#E6F9E6
+Editing,Ctrl + C,Copy,#F0F8FF
+Editing,Ctrl + X,Cut,#F0F8FF
+Editing,Ctrl + V,Paste,#F0F8FF
+Editing,Ctrl + Z,Undo,#F0F8FF
+Editing,Ctrl + Y,Redo,#F0F8FF
+Editing,Ctrl + A,Select all,#F0F8FF
+Editing,Delete,Delete selected object,#F0F8FF
+Editing,Ctrl + D,Duplicate selected slide/object,#F0F8FF
+Editing,Ctrl + Shift + C,Copy formatting,#F0F8FF
+Editing,Ctrl + Shift + V,Paste formatting,#F0F8FF
+Slides,Ctrl + M,Insert new slide,#FFF0F5
+Slides,Ctrl + Shift + D,Duplicate slide,#FFF0F5
+Slides,Ctrl + Shift + Up/Down,Move slide up/down,#FFF0F5
+Slides,Ctrl + G,Group selected objects,#FFF0F5
+Slides,Ctrl + Shift + G,Ungroup selected objects,#FFF0F5
+Slides,Ctrl + T,Open Font dialog,#FFF0F5
+Slides,Ctrl + Shift + H,Hide slide,#FFF0F5
+Slides,Ctrl + Shift + J,Justify text,#FFF0F5
+Formatting,Ctrl + B,Bold,#FFFACD
+Formatting,Ctrl + I,Italic,#FFFACD
+Formatting,Ctrl + U,Underline,#FFFACD
+Formatting,Ctrl + E,Center text,#FFFACD
+Formatting,Ctrl + L,Left align,#FFFACD
+Formatting,Ctrl + R,Right align,#FFFACD
+Formatting,Ctrl + Shift + >,Increase font size,#FFFACD
+Formatting,Ctrl + Shift + <,Decrease font size,#FFFACD
+Formatting,Alt + Shift + Left/Right Arrow,Promote/demote bullet level,#FFFACD
+Formatting,Ctrl + Space,Reset formatting,#FFFACD
+View,Alt + F5,Start Presenter View,#F0FFF0
+View,F5,Start presentation from beginning,#F0FFF0
+View,Shift + F5,Start presentation from current slide,#F0FFF0
+View,Esc,End slideshow,#F0FFF0
+View,Ctrl + Shift + B,Bring to back,#F0FFF0
+View,Ctrl + Shift + F,Bring to front,#F0FFF0
+View,"Alt + N, H",Insert header and footer,#F0FFF0
+View,Ctrl + F,Find,#F0FFF0
+Shapes & Objects,Ctrl + K,Insert hyperlink,#E0FFFF
+Shapes & Objects,"Alt + N, S, H",Insert shape,#E0FFFF
+Shapes & Objects,"Alt + N, P",Insert picture,#E0FFFF
+Shapes & Objects,"Alt + N, X",Insert text box,#E0FFFF
+Shapes & Objects,Ctrl + arrow keys,Nudge object,#E0FFFF
+Shapes & Objects,Shift + arrow keys,Resize object,#E0FFFF
+Shapes & Objects,Ctrl + G,Group objects,#E0FFFF
+Shapes & Objects,Ctrl + Shift + G,Ungroup objects,#E0FFFF
+Media,"Alt + N, V",Insert video,#F5F5DC
+Media,"Alt + N, A, A",Insert audio,#F5F5DC
+Media,Ctrl + Click,Select multiple media elements,#F5F5DC
+Media,Right-click media > Start option,Set playback start options,#F5F5DC
+Media,Format tab > Playback,Access media playback controls,#F5F5DC
+Review,"Alt + R, C",Add comment,#FAFAD2
+Review,"Alt + R, D",Delete comment,#FAFAD2
+Review,"Alt + R, N",Next comment,#FAFAD2
+Review,"Alt + R, P",Previous comment,#FAFAD2
+Review,Ctrl + Alt + M,New comment,#FAFAD2
+Review,Ctrl + Shift + E,Toggle track changes (for shared work),#FAFAD2
+File,Ctrl + N,New presentation,#E6E6FA
+File,Ctrl + O,Open presentation,#E6E6FA
+File,Ctrl + S,Save presentation,#E6E6FA
+File,Ctrl + P,Print presentation,#E6E6FA
+File,Ctrl + Q,Quit PowerPoint,#E6E6FA
+File,Ctrl + W,Close window,#E6E6FA
+File,F12,Save As,#E6E6FA
+File,Ctrl + F12,Open file,#E6E6FA
+Help & Tips,F1,Open Help,#FFEFD5
+Help & Tips,Alt + Q,"""Tell me what you want to do"" box",#FFEFD5
+Help & Tips,"Alt + F, H",Feedback,#FFEFD5
+Help & Tips,Ctrl + /,Show keyboard shortcuts,#FFEFD5
+Help & Tips,"Alt + F, T",Open Options,#FFEFD5
+Help & Tips,"Alt + W, K",Zoom menu,#FFEFD5

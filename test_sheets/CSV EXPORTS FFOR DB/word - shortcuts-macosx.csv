@@ -1,0 +1,76 @@
+section,command,description,colour
+Navigation,⌘ + ↑,Move to beginning of document,#DFF0D8
+Navigation,⌘ + ↓,Move to end of document,#DFF0D8
+Navigation,⌥ + ↑,Move up one paragraph,#DFF0D8
+Navigation,⌥ + ↓,Move down one paragraph,#DFF0D8
+Navigation,⌥ + ←,Move left one word,#DFF0D8
+Navigation,⌥ + →,Move right one word,#DFF0D8
+Navigation,⌘ + ←,Move to beginning of line,#DFF0D8
+Navigation,⌘ + →,Move to end of line,#DFF0D8
+Navigation,⌘ + Page Up,Move to previous page,#DFF0D8
+Navigation,⌘ + Page Down,Move to next page,#DFF0D8
+Editing,⌘ + X,Cut,#D9EDF7
+Editing,⌘ + C,Copy,#D9EDF7
+Editing,⌘ + V,Paste,#D9EDF7
+Editing,⌘ + Z,Undo,#D9EDF7
+Editing,⌘ + Y,Redo,#D9EDF7
+Editing,⌘ + A,Select all,#D9EDF7
+Editing,⌘ + F,Find,#D9EDF7
+Editing,⌘ + H,Replace,#D9EDF7
+Editing,Fn + Delete,Forward delete,#D9EDF7
+Editing,⌘ + Delete,Delete to beginning of line,#D9EDF7
+Formatting,⌘ + B,Bold,#FCF8E3
+Formatting,⌘ + I,Italic,#FCF8E3
+Formatting,⌘ + U,Underline,#FCF8E3
+Formatting,⌘ + Shift + K,Small caps,#FCF8E3
+Formatting,⌘ + D,Open Font dialog,#FCF8E3
+Formatting,⌘ + Shift + D,Double underline,#FCF8E3
+Formatting,⌘ + Shift + W,Word underline only,#FCF8E3
+Formatting,⌘ + Shift + L,Apply List Style,#FCF8E3
+Formatting,⌘ + E,Center text,#FCF8E3
+Formatting,⌘ + L,Align left,#FCF8E3
+Formatting,⌘ + R,Align right,#FCF8E3
+Formatting,⌘ + J,Justify text,#FCF8E3
+Inserting,⌘ + Shift + K,Insert hyperlink,#F2DEDE
+Inserting,⌘ + Shift + M,Insert comment,#F2DEDE
+Inserting,⌘ + Option + R,Insert registered trademark symbol (®),#F2DEDE
+Inserting,⌘ + Option + T,Insert trademark symbol (™),#F2DEDE
+Inserting,⌘ + Option + C,Insert copyright symbol (©),#F2DEDE
+Inserting,Control + ⌘ + Space,Emoji and special characters viewer,#F2DEDE
+Inserting,⌘ + Shift + N,New Style,#F2DEDE
+Inserting,⌘ + Option + Shift + V,Paste and Match Style,#F2DEDE
+View,⌘ + /,Show/Hide Formatting Marks,#D0E9C6
+View,⌘ + Option + P,Print Preview,#D0E9C6
+View,⌘ + Option + Shift + V,View draft,#D0E9C6
+View,⌘ + Shift + F,Full screen mode,#D0E9C6
+View,⌘ + Option + I,Toggle ribbon,#D0E9C6
+Reviewing,⌘ + Shift + E,Track Changes toggle,#F5D0A9
+Reviewing,⌘ + Option + A,Accept Change,#F5D0A9
+Reviewing,⌘ + Option + R,Reject Change,#F5D0A9
+Reviewing,⌘ + Shift + N,New Comment,#F5D0A9
+Reviewing,⌘ + Option + M,Edit Comment,#F5D0A9
+Reviewing,⌘ + Option + Shift + C,Compare Documents,#F5D0A9
+File Management,⌘ + N,New document,#E2D6F3
+File Management,⌘ + O,Open document,#E2D6F3
+File Management,⌘ + S,Save document,#E2D6F3
+File Management,⌘ + Shift + S,Save As,#E2D6F3
+File Management,⌘ + P,Print,#E2D6F3
+File Management,⌘ + Q,Quit Word,#E2D6F3
+File Management,⌘ + W,Close window,#E2D6F3
+Layout,⌘ + Shift + P,Paragraph dialog,#BFE3EF
+Layout,⌘ + Shift + >,Increase font size,#BFE3EF
+Layout,⌘ + Shift + <,Decrease font size,#BFE3EF
+Layout,⌘ + 0,Add/remove space before paragraph,#BFE3EF
+Layout,⌘ + Shift + L,Left indent,#BFE3EF
+Layout,⌘ + Shift + R,Right indent,#BFE3EF
+Layout,⌘ + Shift + C,Center vertical alignment,#BFE3EF
+Tables,Tab,Move to next cell,#FBEEC1
+Tables,Shift + Tab,Move to previous cell,#FBEEC1
+Tables,⌘ + Click,Select multiple cells,#FBEEC1
+Tables,⌘ + Option + T,Insert table,#FBEEC1
+Tables,⌘ + Option + V,Split table,#FBEEC1
+Tables,⌘ + Option + U,Merge cells,#FBEEC1
+Help & Tips,F1,Open Help,#EAD1DC
+Help & Tips,⌘ + /,Show available shortcuts,#EAD1DC
+Help & Tips,⌘ + Option + /,Search function,#EAD1DC
+Help & Tips,⌘ + Shift + ?,Word Online Help,#EAD1DC

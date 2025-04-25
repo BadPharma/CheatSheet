@@ -1,0 +1,36 @@
+sectopm,comman,description,colour
+General Shortcuts,Ctrl + N,Create a new design.,#A8D8E0
+General Shortcuts,Ctrl + O,Open an existing design.,#A8D8E0
+General Shortcuts,Ctrl + S,Save the current design.,#A8D8E0
+General Shortcuts,Ctrl + Z,Undo the last action.,#A8D8E0
+General Shortcuts,Ctrl + Y,Redo the last action.,#A8D8E0
+General Shortcuts,Ctrl + P,Print the current design.,#A8D8E0
+General Shortcuts,Ctrl + Shift + C,Copy the style of the selected element.,#A8D8E0
+General Shortcuts,Ctrl + Shift + V,Paste the style to the selected element.,#A8D8E0
+Element Shortcuts,Ctrl + D,Duplicate the selected element.,#6DAF6D
+Element Shortcuts,Delete,Delete the selected element.,#6DAF6D
+Element Shortcuts,Alt + Drag,Copy and move the selected element.,#6DAF6D
+Element Shortcuts,Ctrl + G,Group selected elements.,#6DAF6D
+Element Shortcuts,Ctrl + Shift + G,Ungroup selected elements.,#6DAF6D
+Text Shortcuts,T,Add a new text box.,#FFDAB3
+Text Shortcuts,Ctrl + B,Bold selected text.,#FFDAB3
+Text Shortcuts,Ctrl + I,Italicize selected text.,#FFDAB3
+Text Shortcuts,Ctrl + U,Underline selected text.,#FFDAB3
+Text Shortcuts,Ctrl + K,Create a hyperlink.,#FFDAB3
+Text Shortcuts,Ctrl + E,Center align the selected text.,#FFDAB3
+Text Shortcuts,Ctrl + L,Left align the selected text.,#FFDAB3
+Text Shortcuts,Ctrl + R,Right align the selected text.,#FFDAB3
+Navigation Shortcuts,Ctrl + +,Zoom in on the design.,#D6E3F0
+Navigation Shortcuts,Ctrl + -,Zoom out of the design.,#D6E3F0
+Navigation Shortcuts,Ctrl + 0,Fit the design to the screen.,#D6E3F0
+Navigation Shortcuts,Ctrl + Shift + Arrow Keys,Move selected elements in small increments.,#D6E3F0
+Navigation Shortcuts,Arrow Keys,Move the selected element by small increments.,#D6E3F0
+Image Shortcuts,Ctrl + A,Select all elements in the design.,#F1C6B8
+Image Shortcuts,Ctrl + E,Edit the selected image.,#F1C6B8
+Image Shortcuts,Ctrl + Shift + N,Create a new folder for your designs.,#F1C6B8
+Download & Share,Ctrl + Shift + P,Download the current design.,#F0B3B3
+Download & Share,Ctrl + Shift + S,Share the design link.,#F0B3B3
+Download & Share,Ctrl + Shift + R,Publish the design to social media.,#F0B3B3
+Miscellaneous,Ctrl + H,Hide or show the guides.,#A0B3D6
+Miscellaneous,Ctrl + ;,Show or hide the grid.,#A0B3D6
+Miscellaneous,Esc,Exit any active dialog or close a modal.,#A0B3D6

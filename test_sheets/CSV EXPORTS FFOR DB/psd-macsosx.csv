@@ -1,0 +1,123 @@
+sct,cmd,desc,clr
+Selection Tools,V,Move tool.,#FFCC80
+Selection Tools,M,Rectangular Marquee tool.,#FFCC80
+Selection Tools,L,Lasso tool.,#FFCC80
+Selection Tools,W,Magic Wand tool.,#FFCC80
+Selection Tools,Cmd + D,Deselect selection.,#FFCC80
+Selection Tools,Shift + Cmd + D,Reselect selection.,#FFCC80
+Selection Tools,Cmd + Option + Shift + E,Merge visible layers to a new layer.,#FFCC80
+Move & Transform,Cmd + T,Free Transform.,#81D4FA
+Move & Transform,Cmd + Option + Shift + T,Transform again with the same settings.,#81D4FA
+Move & Transform,Shift + Cmd + T,Repeat transformation.,#81D4FA
+Move & Transform,Option + Drag,Duplicate layer or selection while moving.,#81D4FA
+Brush Tools,B,Brush tool.,#FFD54F
+Brush Tools,Option + Cmd + Z,Step backward (multiple undos).,#FFD54F
+Brush Tools,[ or ],Decrease/increase brush size.,#FFD54F
+Brush Tools,Shift + [ or ],Decrease/increase brush hardness.,#FFD54F
+Brush Tools,D,Default foreground and background colors.,#FFD54F
+Brush Tools,X,Switch foreground and background colors.,#FFD54F
+Brush Tools,Option + Delete,Fill with foreground color.,#FFD54F
+Brush Tools,Cmd + Delete,Fill with background color.,#FFD54F
+Layers,Cmd + J,Duplicate selected layer.,#B39DDB
+Layers,Cmd + G,Group selected layers.,#B39DDB
+Layers,Cmd + Option + G,Create Clipping Mask.,#B39DDB
+Layers,Cmd + E,Merge selected layers.,#B39DDB
+Layers,Cmd + Option + Shift + E,Merge visible layers into new layer.,#B39DDB
+Layers,Shift + Cmd + N,Create a new layer.,#B39DDB
+Layers,Shift + Cmd + Option + N,New layer without dialog box.,#B39DDB
+Layers,Cmd + Option + Shift + C,Copy merged layers to clipboard.,#B39DDB
+History,Cmd + Z,Undo/Redo last action.,#FF8A65
+History,Shift + Cmd + Z,Step forward.,#FF8A65
+History,Cmd + Option + Z,Step backward.,#FF8A65
+History,Cmd + Y,Toggle history states.,#FF8A65
+History,Cmd + Option + Shift + K,History Options.,#FF8A65
+Pen Tool,P,Pen tool.,#A5D6A7
+Pen Tool,Option + Click,Convert anchor point.,#A5D6A7
+Pen Tool,Cmd + Click on Path,Switch to path selection.,#A5D6A7
+Pen Tool,Cmd + Option + Shift + P,Freeform Pen tool.,#A5D6A7
+Pen Tool,Cmd + Enter,Convert path to selection.,#A5D6A7
+Text,T,Type tool.,#FFAB91
+Text,Cmd + Option + Shift + T,Select all text.,#FFAB91
+Text,Cmd + Option + Shift + C,Align center.,#FFAB91
+Text,Cmd + Option + Shift + F,Align justify.,#FFAB91
+Text,Cmd + Option + Shift + L,Align left.,#FFAB91
+Text,Cmd + Option + Shift + R,Align right.,#FFAB91
+Text,Shift + Cmd + H,Toggle text anti-aliasing.,#FFAB91
+Filters,Cmd + Option + F,Apply last filter with settings.,#FFF176
+Filters,Cmd + F,Repeat last filter.,#FFF176
+Filters,Shift + Cmd + X,Liquify tool.,#FFF176
+Filters,Cmd + Option + Shift + R,Vanishing Point tool.,#FFF176
+Filters,Shift + Cmd + K,Filter Options.,#FFF176
+Shapes & Paths,U,"Shape tool (Rectangle, Ellipse, etc.).",#81C784
+Shapes & Paths,Shift + U,Cycle through shape tools.,#81C784
+Shapes & Paths,Cmd + T,Free Transform Path/Shape.,#81C784
+Shapes & Paths,Shift + Cmd + H,Show/Hide Shape Paths.,#81C784
+Navigation,Spacebar + Drag,Hand tool (move view).,#FFB74D
+Navigation,Cmd + Plus (+),Zoom in.,#FFB74D
+Navigation,Cmd + Minus (-),Zoom out.,#FFB74D
+Navigation,Cmd + 0,Fit on screen.,#FFB74D
+Navigation,Cmd + Option + 0,Zoom to 100%.,#FFB74D
+Navigation,F,Toggle full-screen mode.,#FFB74D
+Miscellaneous,Cmd + K,Open Preferences.,#AED581
+Miscellaneous,Tab,Show/Hide panels.,#AED581
+Miscellaneous,Shift + Tab,Show/Hide tools.,#AED581
+Miscellaneous,Cmd + R,Show/Hide rulers.,#AED581
+Miscellaneous,Cmd + ;,Show/Hide guides.,#AED581
+Miscellaneous,Cmd + ',Show/Hide grid.,#AED581
+election Tools,Shift + M,Toggle between Rectangular and Elliptical Marquee tools.,#FFB74D
+Selection Tools,Shift + L,"Toggle between Lasso, Polygonal Lasso, and Magnetic Lasso.",#FFB74D
+Selection Tools,Cmd + Option + Shift + M,Feather selection.,#FFB74D
+Selection Tools,Shift + Cmd + I,Inverse selection.,#FFB74D
+Selection Tools,Option + Shift + Cmd + D,Save selection as channel.,#FFB74D
+Selection Tools,Cmd + H,Hide selection borders.,#FFB74D
+Selection Tools,Shift + Option + Drag,Constrain proportions when making a selection.,#FFB74D
+Move & Transform,Shift + Cmd + R,Show/Hide rulers.,#FFD54F
+Move & Transform,Shift + Cmd + K,Open Color Settings dialog box.,#FFD54F
+Move & Transform,Cmd + K,Open Preferences.,#FFD54F
+Move & Transform,Cmd + ;,Lock guides.,#FFD54F
+Move & Transform,Cmd + Option + Shift + ;,Clear all guides.,#FFD54F
+Brush Tools,Shift + Option + Cmd + K,Bring up brush size and hardness preferences.,#81D4FA
+Brush Tools,Shift + Cmd + X,Open Liquify filter.,#81D4FA
+Brush Tools,Cmd + Option + Shift + P,Toggle pressure for size.,#81D4FA
+Brush Tools,Shift + Cmd + F,Open Fade command.,#81D4FA
+Brush Tools,Cmd + Option + Shift + G,Add a layer mask.,#81D4FA
+Brush Tools,Cmd + Option + Shift + L,Load a brush preset.,#81D4FA
+Layers,Cmd + Option + Shift + M,Open layer styles.,#FF8A65
+Layers,Cmd + Option + ],Move layer up.,#FF8A65
+Layers,Cmd + Option + [,Move layer down.,#FF8A65
+Layers,Cmd + Shift + ],Bring layer to front.,#FF8A65
+Layers,Cmd + Shift + [,Send layer to back.,#FF8A65
+Layers,Option + Click between layers,Create clipping mask between layers.,#FF8A65
+Layers,Cmd + Shift + U,Desaturate selected layer.,#FF8A65
+Layers,Cmd + Option + G,Group layers into folders.,#FF8A65
+History,Cmd + Option + Shift + H,Hide/show History panel.,#B39DDB
+History,Cmd + Shift + Option + Z,Clear all history states.,#B39DDB
+History,Cmd + Y,Redo history action.,#B39DDB
+Pen Tool,Cmd + Option + Shift + L,Load a path as a selection.,#81C784
+Pen Tool,Cmd + Shift + Enter,Complete a path and make it a selection.,#81C784
+Pen Tool,Shift + Cmd + H,Hide paths.,#81C784
+Pen Tool,Cmd + Option + Shift + H,Hide/Show anchor points.,#81C784
+Text,Cmd + Option + Shift + Z,Toggle between text and text box modes.,#FFAB91
+Text,Shift + Cmd + T,Open Character panel.,#FFAB91
+Text,Cmd + Option + Shift + K,Toggle anti-aliasing options.,#FFAB91
+Text,Option + Cmd + C,Center align text.,#FFAB91
+Text,Option + Cmd + R,Right align text.,#FFAB91
+Text,Cmd + Shift + O,Convert text to outlines.,#FFAB91
+Filters,Cmd + Option + Shift + G,Apply last filter with new settings.,#FFF176
+Filters,Cmd + Option + Shift + F,Open the Filter Gallery.,#FFF176
+Filters,Shift + Cmd + M,Open the Filter menu.,#FFF176
+Filters,Shift + Cmd + E,Apply filters destructively to layer.,#FFF176
+Filters,Cmd + Option + R,Open the Refine Edge dialog box.,#FFF176
+Shapes & Paths,Cmd + Option + Shift + O,Convert shape to path.,#A5D6A7
+Shapes & Paths,Shift + Cmd + B,Show/hide shapes and guides.,#A5D6A7
+Shapes & Paths,Cmd + Option + Shift + P,Convert path to shape.,#A5D6A7
+Shapes & Paths,Cmd + Shift + D,Duplicate shape layer.,#A5D6A7
+Navigation,Cmd + Space,Zoom in.,#FFCC80
+Navigation,Option + Space,Zoom out.,#FFCC80
+Navigation,Shift + Cmd + 1,Zoom to 100%.,#FFCC80
+Navigation,Cmd + 1,View pixel size.,#FFCC80
+Navigation,Shift + Cmd + P,Open Navigator panel.,#FFCC80
+Miscellaneous,Option + Shift + P,Print with preview.,#AED581
+Miscellaneous,Cmd + P,Print.,#AED581
+Miscellaneous,Shift + Cmd + F,Toggle fullscreen mode.,#AED581
+Miscellaneous,Shift + Cmd + S,Save for web.,#AED581

@@ -1,0 +1,62 @@
+section,command,description,colour
+Database Management,CREATE DATABASE db_name;,Create a new database.,#FF5733
+Database Management,DROP DATABASE db_name;,Delete an existing database.,#FF5733
+Database Management,USE db_name;,Select a database to use for subsequent queries.,#FF5733
+Table Management,"CREATE TABLE table_name (column1 datatype, ...);",Create a new table with specified columns and data types.,#33FF57
+Table Management,DROP TABLE table_name;,Delete an existing table.,#33FF57
+Table Management,ALTER TABLE table_name ADD column_name datatype;,Add a new column to an existing table.,#33FF57
+Table Management,ALTER TABLE table_name DROP COLUMN column_name;,Remove a column from an existing table.,#33FF57
+Table Management,ALTER TABLE table_name MODIFY COLUMN column_name datatype;,Change the data type of an existing column.,#33FF57
+Data Insertion,"INSERT INTO table_name (column1, column2) VALUES (value1, value2);",Insert new records into a table.,#33AFFF
+Data Insertion,"INSERT INTO table_name VALUES (value1, value2);",Insert new records into a table without specifying columns.,#33AFFF
+Data Querying,SELECT * FROM table_name;,Retrieve all records from a table.,#F0E68C
+Data Querying,"SELECT column1, column2 FROM table_name;",Retrieve specific columns from a table.,#F0E68C
+Data Querying,SELECT DISTINCT column_name FROM table_name;,Retrieve unique values from a specified column.,#F0E68C
+Filtering Data,SELECT * FROM table_name WHERE condition;,Retrieve records that meet a specified condition.,#F0E68C
+Filtering Data,SELECT * FROM table_name WHERE column_name = value;,Retrieve records with specific column values.,#F0E68C
+Ordering Data,SELECT * FROM table_name ORDER BY column_name ASC;,Retrieve records ordered by a specific column in ascending order.,#FFC300
+Ordering Data,SELECT * FROM table_name ORDER BY column_name DESC;,Retrieve records ordered by a specific column in descending order.,#FFC300
+Grouping Data,"SELECT column_name, COUNT(*) FROM table_name GROUP BY column_name;",Count records grouped by a specific column.,#FFC300
+Grouping Data,"SELECT column_name, AVG(column_name) FROM table_name GROUP BY column_name;",Calculate the average for grouped records.,#FFC300
+Joins,SELECT * FROM table1 INNER JOIN table2 ON table1.id = table2.id;,Retrieve records that match in both tables.,#C70039
+Joins,SELECT * FROM table1 LEFT JOIN table2 ON table1.id = table2.id;,Retrieve all records from the first table and matched records from the second.,#C70039
+Joins,SELECT * FROM table1 RIGHT JOIN table2 ON table1.id = table2.id;,Retrieve all records from the second table and matched records from the first.,#C70039
+Joins,SELECT * FROM table1 FULL JOIN table2 ON table1.id = table2.id;,Retrieve all records from both tables.,#C70039
+Joins,SELECT * FROM table1 CROSS JOIN table2;,Retrieve the Cartesian product of two tables.,#C70039
+Updating Data,UPDATE table_name SET column_name = value WHERE condition;,Update existing records in a table.,#900C3F
+Updating Data,"UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;",Update multiple columns in a record.,#900C3F
+Deleting Data,DELETE FROM table_name WHERE condition;,Delete records from a table that meet a specified condition.,#900C3F
+Deleting Data,DELETE FROM table_name;,Delete all records from a table (without removing the table).,#900C3F
+Creating Indexes,CREATE INDEX index_name ON table_name (column_name);,Create an index on a specified column for faster queries.,#FF33CC
+Dropping Indexes,DROP INDEX index_name;,Remove an existing index.,#FF33CC
+Transactions,BEGIN;,Start a new transaction.,#FFD700
+Transactions,COMMIT;,Save all changes made in the current transaction.,#FFD700
+Transactions,ROLLBACK;,Undo all changes made in the current transaction.,#FFD700
+Views,CREATE VIEW view_name AS SELECT * FROM table_name;,Create a view based on a query.,#33FFC1
+Views,DROP VIEW view_name;,Delete a view from the database.,#33FFC1
+Stored Procedures,CREATE PROCEDURE procedure_name AS BEGIN ... END;,Create a stored procedure for repetitive tasks.,#33FFC1
+Executing Stored Procedures,CALL procedure_name;,Execute a stored procedure.,#33FFC1
+Triggers,CREATE TRIGGER trigger_name BEFORE/AFTER INSERT ON table_name FOR EACH ROW BEGIN ... END;,Create a trigger for automated actions.,#33AFFF
+Triggers,DROP TRIGGER trigger_name;,Delete an existing trigger.,#33AFFF
+Data Types,"CREATE TABLE table_name (id INT, name VARCHAR(100));",Define data types for table columns.,#FFC300
+Data Types,CREATE TABLE table_name (created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);,Set a default timestamp for a column.,#FFC300
+Database Information,SHOW DATABASES;,List all databases on the server.,#33FFC1
+Database Information,SHOW TABLES;,List all tables in the selected database.,#33FFC1
+Database Information,DESCRIBE table_name;,"Show the structure of a table (columns, types, etc.).",#33FFC1
+SQL Injection Prevention,SELECT * FROM table_name WHERE column_name = ?;,Use parameterized queries to prevent SQL injection.,#FF5733
+Aggregate Functions,SELECT COUNT(column_name) FROM table_name;,Count the number of records in a column.,#FFD700
+Aggregate Functions,SELECT SUM(column_name) FROM table_name;,Calculate the sum of values in a column.,#FFD700
+Aggregate Functions,SELECT MAX(column_name) FROM table_name;,Retrieve the maximum value from a column.,#FFD700
+Aggregate Functions,SELECT MIN(column_name) FROM table_name;,Retrieve the minimum value from a column.,#FFD700
+Subqueries,SELECT * FROM table_name WHERE column_name IN (SELECT column_name FROM another_table);,Use a subquery to filter results.,#33FFC1
+Subqueries,SELECT * FROM table_name WHERE column_name = (SELECT MAX(column_name) FROM another_table);,Use a subquery to find specific values.,#33FFC1
+String Functions,SELECT UPPER(column_name) FROM table_name;,Convert a string to uppercase.,#FF33CC
+String Functions,SELECT LOWER(column_name) FROM table_name;,Convert a string to lowercase.,#FF33CC
+String Functions,SELECT LENGTH(column_name) FROM table_name;,Get the length of a string.,#FF33CC
+String Functions,"SELECT CONCAT(column1, ' ', column2) FROM table_name;",Concatenate two strings.,#FF33CC
+Date Functions,SELECT CURDATE();,Retrieve the current date.,#C70039
+Date Functions,SELECT NOW();,Retrieve the current date and time.,#C70039
+Date Functions,"SELECT DATE_ADD(date_column, INTERVAL 1 DAY) FROM table_name;",Add days to a date.,#C70039
+Date Functions,"SELECT DATE_SUB(date_column, INTERVAL 1 MONTH) FROM table_name;",Subtract months from a date.,#C70039
+Backup and Restore,mysqldump -u username -p database_name > backup.sql,Create a backup of a database.,#FF33CC
+Backup and Restore,mysql -u username -p database_name < backup.sql,Restore a database from a backup.,#FF33CC

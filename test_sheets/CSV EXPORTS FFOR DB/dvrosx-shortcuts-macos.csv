@@ -1,0 +1,109 @@
+Section,CMD,DESC,Clr
+General,Cmd + S,Save project.,#E0F7FA
+General,Cmd + Shift + S,Save project as...,#E0F7FA
+General,Cmd + Z,Undo the last action.,#E0F7FA
+General,Cmd + Shift + Z,Redo the last action.,#E0F7FA
+General,Cmd + Q,Quit DaVinci Resolve.,#E0F7FA
+Editing,Cmd + B,Blade tool to cut clips.,#FFEBEE
+Editing,Cmd + Shift + V,Paste attributes.,#FFEBEE
+Editing,Option + Drag,Copy clip to new location.,#FFEBEE
+Editing,Cmd + Backspace,Delete selected clip(s).,#FFEBEE
+Editing,Shift + Cmd + I,Mark in point.,#FFEBEE
+Editing,Shift + Cmd + O,Mark out point.,#FFEBEE
+Editing,Shift + F12,Insert clip to timeline.,#FFEBEE
+Editing,Shift + F11,Overwrite clip to timeline.,#FFEBEE
+Trimming,T,Toggle trim mode.,#F1F8E9
+Trimming,Cmd + [,Ripple trim start to playhead.,#F1F8E9
+Trimming,Cmd + ],Ripple trim end to playhead.,#F1F8E9
+Trimming,Shift + Cmd + [,Roll trim start.,#F1F8E9
+Trimming,Shift + Cmd + ],Roll trim end.,#F1F8E9
+Playback,Space,Start/stop playback.,#FFF3E0
+Playback,Cmd + /,Loop playback.,#FFF3E0
+Playback,Cmd + 7,Toggle viewer fullscreen.,#FFF3E0
+Playback,L,Play forward.,#FFF3E0
+Playback,J,Play backward.,#FFF3E0
+Playback,K,Stop playback.,#FFF3E0
+Playback,Cmd + R,Render cache.,#FFF3E0
+Timeline Navigation,Shift + Z,Zoom timeline to fit.,#F3E5F5
+Timeline Navigation,Cmd + +,Zoom in on timeline.,#F3E5F5
+Timeline Navigation,Cmd + -,Zoom out on timeline.,#F3E5F5
+Timeline Navigation,Shift + Cmd + /,Toggle snapping.,#F3E5F5
+Timeline Navigation,Cmd + 2,Go to the Edit page.,#F3E5F5
+Color Grading,Cmd + Y,Split screen view.,#E8F5E9
+Color Grading,Cmd + Shift + D,Toggle node graph on/off.,#E8F5E9
+Color Grading,Cmd + Shift + F,Fullscreen grading preview.,#E8F5E9
+Color Grading,Cmd + Option + 1,Show color wheels panel.,#E8F5E9
+Color Grading,Cmd + Option + 2,Show curves panel.,#E8F5E9
+Color Grading,Cmd + Option + 3,Show color match panel.,#E8F5E9
+Color Grading,Cmd + Option + 4,Show RGB mixer panel.,#E8F5E9
+Color Grading,Cmd + D,Bypass all grades and effects.,#E8F5E9
+Audio,Shift + Cmd + T,Add audio track.,#FFEBEE
+Audio,Cmd + Shift + K,Delete audio track.,#FFEBEE
+Audio,Cmd + Alt + L,Normalize audio levels.,#FFEBEE
+Fusion,Cmd + F,Switch to Fusion page.,#E1F5FE
+Fusion,Shift + Space,Open the Select Tool dialog.,#E1F5FE
+Fusion,Cmd + Shift + F,Open/close Fusion full screen mode.,#E1F5FE
+Fusion,Cmd + Option + F,Toggle Fit to Frame.,#E1F5FE
+Fusion,Cmd + G,Group selected nodes.,#E1F5FE
+Fusion,Cmd + U,Ungroup selected nodes.,#E1F5FE
+Fusion,Cmd + Shift + G,Create compound clip.,#E1F5FE
+General,Cmd + E,Export current project.,#E0F7FA
+General,Cmd + N,Create a new project.,#E0F7FA
+General,Cmd + I,Import media into the project.,#E0F7FA
+General,Cmd + 1,Go to the Media page.,#E0F7FA
+Editing,Cmd + K,Split selected clip(s).,#FFEBEE
+Editing,Shift + Cmd + C,Copy selected clip(s).,#FFEBEE
+Editing,Shift + Cmd + X,Cut selected clip(s).,#FFEBEE
+Editing,Shift + Cmd + V,Paste attributes from one clip to another.,#FFEBEE
+Editing,Cmd + Shift + E,Export timeline or clip.,#FFEBEE
+Trimming,Option + Left Arrow,Trim 1 frame left.,#F1F8E9
+Trimming,Option + Right Arrow,Trim 1 frame right.,#F1F8E9
+Trimming,Option + Up Arrow,Move selected clip up.,#F1F8E9
+Trimming,Option + Down Arrow,Move selected clip down.,#F1F8E9
+Trimming,Cmd + Option + T,Add transition at edit point.,#F1F8E9
+Playback,Shift + L,Increase playback speed.,#FFF3E0
+Playback,Shift + J,Decrease playback speed.,#FFF3E0
+Playback,Shift + Space,Play around current playhead position.,#FFF3E0
+Playback,Cmd + Option + F,Match frame.,#FFF3E0
+Playback,Shift + Cmd + Enter,Switch to Cinema Mode (fullscreen).,#FFF3E0
+Timeline Navigation,Cmd + T,Add a title to the timeline.,#F3E5F5
+Timeline Navigation,Cmd + Shift + T,Add a text effect to the timeline.,#F3E5F5
+Timeline Navigation,Option + ;,Navigate to the next edit point.,#F3E5F5
+Timeline Navigation,"Option + ,",Navigate to the previous edit point.,#F3E5F5
+Timeline Navigation,Cmd + Shift + F,Match frame from timeline to media pool.,#F3E5F5
+Color Grading,Cmd + Shift + N,Create new node.,#E8F5E9
+Color Grading,Cmd + Option + N,Add serial node.,#E8F5E9
+Color Grading,Cmd + Option + P,Add parallel node.,#E8F5E9
+Color Grading,Cmd + Option + L,Add layer node.,#E8F5E9
+Color Grading,Cmd + Shift + P,Open the Primary Color Wheels panel.,#E8F5E9
+Color Grading,Cmd + Shift + C,Open the Curves panel.,#E8F5E9
+Audio,Cmd + Shift + D,Duplicate selected audio track.,#FFEBEE
+Audio,Cmd + Option + M,Mute selected audio track.,#FFEBEE
+Audio,Cmd + Option + S,Solo selected audio track.,#FFEBEE
+Audio,Cmd + Shift + I,Insert silence into timeline.,#FFEBEE
+Fusion,Cmd + Option + B,Open the Blend panel.,#E1F5FE
+Fusion,Cmd + Shift + M,Add a Merge node.,#E1F5FE
+Fusion,Cmd + Shift + C,Add a Color Correction node.,#E1F5FE
+Fusion,Shift + Cmd + S,Open Spline Editor.,#E1F5FE
+Fusion,Cmd + Shift + X,Add Transform node.,#E1F5FE
+Fusion,Cmd + Shift + A,Add Alpha Matte node.,#E1F5FE
+General,Cmd + K,Open project settings.,#E0F7FA
+General,Cmd + O,Open an existing project.,#E0F7FA
+General,Shift + Cmd + W,Close current project.,#E0F7FA
+Editing,Cmd + Shift + M,Toggle mute selected clip(s).,#FFEBEE
+Editing,Shift + Cmd + R,Render in place.,#FFEBEE
+Editing,Cmd + Option + W,Insert a freeze frame.,#FFEBEE
+Editing,Shift + F,Find in Media Pool from the timeline.,#FFEBEE
+Editing,Shift + Cmd + F,Create Fusion composition.,#FFEBEE
+Trimming,Shift + Cmd + X,Extend edit to playhead.,#F1F8E9
+Trimming,Shift + Cmd + E,Extend edit to in or out point.,#F1F8E9
+Playback,Shift + Cmd + R,Play around in/out point.,#FFF3E0
+Playback,Shift + Cmd + M,Play all media with effects disabled.,#FFF3E0
+Timeline Navigation,Shift + Cmd + A,Toggle clip selection on timeline.,#F3E5F5
+Timeline Navigation,Cmd + F,Search timeline for clips.,#F3E5F5
+Color Grading,Cmd + Option + O,Open node key panel.,#E8F5E9
+Color Grading,Cmd + Option + E,Enable/disable selected node.,#E8F5E9
+Color Grading,Shift + Cmd + U,Undo last grade action.,#E8F5E9
+Audio,Cmd + Shift + 7,Switch to Fairlight audio page.,#FFEBEE
+Audio,Shift + Cmd + U,Ungroup linked audio tracks.,#FFEBEE
+Fusion,Shift + Cmd + N,Create a new Fusion composition.,#E1F5FE

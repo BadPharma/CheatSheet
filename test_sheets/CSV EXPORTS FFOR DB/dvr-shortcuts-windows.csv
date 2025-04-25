@@ -1,0 +1,115 @@
+Section,Command,Description,Color
+General,Ctrl + S,Save project.,#E0F7FA
+General,Ctrl + Shift + S,Save project as...,#E0F7FA
+General,Ctrl + Z,Undo the last action.,#E0F7FA
+General,Ctrl + Shift + Z,Redo the last action.,#E0F7FA
+General,Ctrl + Q,Quit DaVinci Resolve,#E0F7FA
+Editing,Ctrl + B,Blade tool to cut clips.,#FFEBEE
+Editing,Ctrl + Shift + V,Paste attributes.,#FFEBEE
+Editing,Alt + Drag,Copy clip to new location.,#FFEBEE
+Editing,Ctrl + Backspace,Delete selected clip(s).,#FFEBEE
+Editing,Shift + Ctrl + I,Mark in point.,#FFEBEE
+Editing,Shift + Ctrl + O,Mark out point.,#FFEBEE
+Editing,Shift + F12,Insert clip to timeline.,#FFEBEE
+Editing,Shift + F11,Overwrite clip to timeline.,#FFEBEE
+Trimming,T,Toggle trim mode.,#F1F8E9
+Trimming,Ctrl + [,Ripple trim start to playhead.,#F1F8E9
+Trimming,Ctrl + ],Ripple trim end to playhead.,#F1F8E9
+Trimming,Shift + Ctrl + [,Roll trim start.,#F1F8E9
+Trimming,Shift + Ctrl + ],Roll trim end.,#F1F8E9
+Playback,Space,Start/stop playback.,#FFF3E0
+Playback,Ctrl + /,Loop playback.,#FFF3E0
+Playback,Ctrl + 7,Toggle viewer fullscreen.,#FFF3E0
+Playback,L,Play forward.,#FFF3E0
+Playback,J,Play backward.,#FFF3E0
+Playback,K,Stop playback.,#FFF3E0
+Playback,Ctrl + R,Render cache.,#FFF3E0
+Timeline Navigation,Shift + Z,Zoom timeline to fit.,#F3E5F5
+Timeline Navigation,Ctrl + +,Zoom in on timeline.,#F3E5F5
+Timeline Navigation,Ctrl + -,Zoom out on timeline.,#F3E5F5
+Timeline Navigation,Shift + Ctrl + /,Toggle snapping.,#F3E5F5
+Timeline Navigation,Ctrl + 2,Go to the Edit page.,#F3E5F5
+Color Grading,Ctrl + Y,Split screen view.,#E8F5E9
+Color Grading,Ctrl + Shift + D,Toggle node graph on/off.,#E8F5E9
+Color Grading,Ctrl + Shift + F,Fullscreen grading preview.,#E8F5E9
+Color Grading,Ctrl + Alt + 1,Show color wheels panel.,#E8F5E9
+Color Grading,Ctrl + Alt + 2,Show curves panel.,#E8F5E9
+Color Grading,Ctrl + Alt + 3,Show color match panel.,#E8F5E9
+Color Grading,Ctrl + Alt + 4,Show RGB mixer panel.,#E8F5E9
+Color Grading,Ctrl + D,Bypass all grades and effects.,#E8F5E9
+Audio,Shift + Ctrl + T,Add audio track.,#FFEBEE
+Audio,Ctrl + Shift + K,Delete audio track.,#FFEBEE
+Audio,Ctrl + Alt + L,Normalize audio levels.,#FFEBEE
+Fusion,Ctrl + F,Switch to Fusion page.,#E1F5FE
+Fusion,Shift + Space,Open the Select Tool dialog.,#E1F5FE
+Fusion,Ctrl + Shift + F,Open/close Fusion full screen mode.,#E1F5FE
+Fusion,Ctrl + Alt + F,Toggle Fit to Frame.,#E1F5FE
+Fusion,Ctrl + G,Group selected nodes.,#E1F5FE
+Fusion,Ctrl + U,Ungroup selected nodes.,#E1F5FE
+Fusion,Ctrl + Shift + G,Create compound clip.,#E1F5FE
+General,Ctrl + E,Export current project.,#E0F7FA
+General,Ctrl + N,Create a new project.,#E0F7FA
+General,Ctrl + I,Import media into the project.,#E0F7FA
+General,Ctrl + 1,Go to the Media page.,#E0F7FA
+Editing,Ctrl + K,Split selected clip(s).,#FFEBEE
+Editing,Shift + Ctrl + C,Copy selected clip(s).,#FFEBEE
+Editing,Shift + Ctrl + X,Cut selected clip(s).,#FFEBEE
+Editing,Shift + Ctrl + V,Paste attributes from one clip to another.,#FFEBEE
+Editing,Ctrl + Shift + E,Export timeline or clip.,#FFEBEE
+Trimming,Alt + Left Arrow,Trim 1 frame left.,#F1F8E9
+Trimming,Alt + Right Arrow,Trim 1 frame right.,#F1F8E9
+Trimming,Alt + Up Arrow,Move selected clip up.,#F1F8E9
+Trimming,Alt + Down Arrow,Move selected clip down.,#F1F8E9
+Trimming,Ctrl + Alt + T,Add transition at edit point.,#F1F8E9
+Playback,Shift + L,Increase playback speed.,#FFF3E0
+Playback,Shift + J,Decrease playback speed.,#FFF3E0
+Playback,Shift + Space,Play around current playhead position.,#FFF3E0
+Playback,Ctrl + Alt + F,Match frame.,#FFF3E0
+Playback,Shift + Ctrl + Enter,Switch to Cinema Mode (fullscreen).,#FFF3E0
+Timeline Navigation,Ctrl + T,Add a title to the timeline.,#F3E5F5
+Timeline Navigation,Ctrl + Shift + T,Add a text effect to the timeline.,#F3E5F5
+Timeline Navigation,Alt + ;,Navigate to the next edit point.,#F3E5F5
+Timeline Navigation,"Alt + ,",Navigate to the previous edit point.,#F3E5F5
+Timeline Navigation,Ctrl + Shift + F,Match frame from timeline to media pool.,#F3E5F5
+Color Grading,Ctrl + Shift + N,Create new node.,#E8F5E9
+Color Grading,Ctrl + Alt + N,Add serial node.,#E8F5E9
+Color Grading,Ctrl + Alt + P,Add parallel node.,#E8F5E9
+Color Grading,Ctrl + Alt + L,Add layer node.,#E8F5E9
+Color Grading,Ctrl + Shift + P,Open the Primary Color Wheels panel.,#E8F5E9
+Color Grading,Ctrl + Shift + C,Open the Curves panel.,#E8F5E9
+Audio,Ctrl + Shift + D,Duplicate selected audio track.,#FFEBEE
+Audio,Ctrl + Alt + M,Mute selected audio track.,#FFEBEE
+Audio,Ctrl + Alt + S,Solo selected audio track.,#FFEBEE
+General,Ctrl + Shift + R,Reset all controls to default.,#E0F7FA
+General,Ctrl + Shift + I,Import project.,#E0F7FA
+General,Ctrl + Alt + S,Save project incrementally.,#E0F7FA
+General,Ctrl + F,Search for clips or effects.,#E0F7FA
+Editing,Alt + S,Toggle speed for selected clip.,#FFEBEE
+Editing,Ctrl + Shift + Up Arrow,Extend selected clip(s) to previous edit point.,#FFEBEE
+Editing,Ctrl + Shift + Down Arrow,Extend selected clip(s) to next edit point.,#FFEBEE
+Editing,Ctrl + Shift + D,Duplicate selected clips.,#FFEBEE
+Trimming,Ctrl + Alt + Left Arrow,Trim left edge of selected clip.,#F1F8E9
+Trimming,Ctrl + Alt + Right Arrow,Trim right edge of selected clip.,#F1F8E9
+Trimming,Alt + Shift + Left Arrow,Move the left edge of a clip while maintaining its length.,#F1F8E9
+Trimming,Alt + Shift + Right Arrow,Move the right edge of a clip while maintaining its length.,#F1F8E9
+Playback,Shift + Alt + Space,Play forward in slow motion.,#FFF3E0
+Playback,Shift + Ctrl + L,Loop playback for selected clips only.,#FFF3E0
+Playback,Shift + Ctrl + J,Frame by frame reverse playback.,#FFF3E0
+Playback,Shift + Ctrl + L,Frame by frame forward playback.,#FFF3E0
+Timeline Navigation,Ctrl + Shift + L,Toggle audio waveform display.,#F3E5F5
+Timeline Navigation,Ctrl + Shift + M,Add marker at playhead position.,#F3E5F5
+Timeline Navigation,Ctrl + 3,Go to the Color page.,#F3E5F5
+Timeline Navigation,Ctrl + 4,Go to the Fairlight page.,#F3E5F5
+Color Grading,Ctrl + Shift + C,Copy current grade to selected clips.,#E8F5E9
+Color Grading,Ctrl + Shift + L,Toggle node labels on/off.,#E8F5E9
+Color Grading,Ctrl + Alt + I,Invert selection in node graph.,#E8F5E9
+Color Grading,Alt + Drag,Adjust contrast on the selected node.,#E8F5E9
+Audio,Ctrl + Shift + M,Add audio mixer panel.,#FFEBEE
+Audio,Shift + Ctrl + M,Toggle audio mixer on/off.,#FFEBEE
+Audio,Ctrl + Shift + U,Unlink selected audio from video.,#FFEBEE
+Audio,Shift + Alt + M,Adjust audio gain on selected track.,#FFEBEE
+Fusion,Shift + Ctrl + A,Select all nodes in the graph.,#E1F5FE
+Fusion,Ctrl + Shift + H,Hide selected nodes in the graph.,#E1F5FE
+Fusion,Ctrl + Shift + N,Add a new background node.,#E1F5FE
+Fusion,Alt + Drag,Duplicate selected nodes.,#E1F5FE
+Fusion,Ctrl + Alt + R,Refresh all nodes in the graph.,#E1F5FE

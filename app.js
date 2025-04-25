@@ -682,6 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // 4. Update the dropdown to reflect deletion
         populateSectionDropdown();
+        enhanceSectionDropdown(); 
     }
         
     

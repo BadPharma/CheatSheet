@@ -1,0 +1,72 @@
+section,command,description,colour
+Navigation,⌘ + ← / →,Move cursor to session start/end,#DFF0D8
+Navigation,Tab,Move to next clip boundary,#DFF0D8
+Navigation,Option + Tab,Move to previous clip boundary,#DFF0D8
+Navigation,Control + Tab,Move to next transient,#DFF0D8
+Navigation,Control + Option + Tab,Move to previous transient,#DFF0D8
+Navigation,Return,Go to start,#DFF0D8
+Navigation,⌘ + F,Toggle Zoom Toggle,#DFF0D8
+Navigation,⌘ + ] / [,Zoom horizontal in/out,#DFF0D8
+Navigation,Control + Option + ↑ / ↓,Zoom vertical in/out,#DFF0D8
+Playback & Record,Spacebar,Play/Stop,#D9EDF7
+Playback & Record,⌘ + Spacebar,Record,#D9EDF7
+Playback & Record,F12,Record,#D9EDF7
+Playback & Record,3 (numpad),Record (quick key),#D9EDF7
+Playback & Record,Option + Spacebar,Loop playback,#D9EDF7
+Playback & Record,Control + Spacebar,Half-speed playback,#D9EDF7
+Playback & Record,Control + ⌘ + Spacebar,Half-speed record,#D9EDF7
+Playback & Record,7 (numpad),Click on/off,#D9EDF7
+Editing,B,Separate clip,#FCF8E3
+Editing,⌘ + E,Separate clip at selection,#FCF8E3
+Editing,⌘ + H,Heal separation,#FCF8E3
+Editing,T,Zoom in,#FCF8E3
+Editing,R,Zoom out,#FCF8E3
+Editing,⌘ + T,Trim start,#FCF8E3
+Editing,⌘ + Option + T,Trim end,#FCF8E3
+Editing,Option + H,Trim to fill,#FCF8E3
+Editing,⌘ + D,Duplicate selection,#FCF8E3
+Editing,Option + drag,Duplicate clip,#FCF8E3
+Editing,⌘ + Option + V,Paste to same location,#FCF8E3
+Tools,F1,Zoom Tool,#F2DEDE
+Tools,F2,Trim Tool,#F2DEDE
+Tools,F3,Selector Tool,#F2DEDE
+Tools,F4,Grabber Tool,#F2DEDE
+Tools,F5,Scrubber Tool,#F2DEDE
+Tools,F6,Pencil Tool,#F2DEDE
+Tools,F7,Smart Tool,#F2DEDE
+Tools,F8,Toggle Slip/Grid mode,#F2DEDE
+Tools,⌘ + 1 (alpha),Shuffle mode,#F2DEDE
+Tools,⌘ + 2 (alpha),Slip mode,#F2DEDE
+Tools,⌘ + 3 (alpha),Spot mode,#F2DEDE
+Tools,⌘ + 4 (alpha),Grid mode,#F2DEDE
+Tracks,Shift + ⌘ + N,New track dialog,#D0E9C6
+Tracks,⌘ + ↑ / ↓,Select next/previous track,#D0E9C6
+Tracks,⌘ + Shift + M,Mute track,#D0E9C6
+Tracks,⌘ + Shift + S,Solo track,#D0E9C6
+Tracks,⌘ + G,Create group,#D0E9C6
+Tracks,⌘ + Shift + G,Ungroup,#D0E9C6
+Tracks,Control + Option + G,Suspend groups,#D0E9C6
+Tracks,⌘ + Shift + D,Duplicate track,#D0E9C6
+Mixing,⌘ + =,Toggle Mix/Edit windows,#FBEEC1
+Mixing,⌘ + M,Mute clip,#FBEEC1
+Mixing,⌘ + /,Narrow mix view toggle,#FBEEC1
+Mixing,Option + click fader,Reset fader,#FBEEC1
+Mixing,Option + click pan,Center pan,#FBEEC1
+Mixing,⌘ + click insert/send,Bypass insert/send,#FBEEC1
+MIDI,⌘ + 4 (numpad),Open MIDI Editor,#E2D6F3
+MIDI,⌘ + Control + drag,Draw in note,#E2D6F3
+MIDI,⌘ + =,Switch to Score Editor,#E2D6F3
+MIDI,Control + click note,Velocity editing,#E2D6F3
+MIDI,Shift + drag,Extend note,#E2D6F3
+MIDI,Option + drag,Duplicate note,#E2D6F3
+File,⌘ + N,New session,#F5F5F5
+File,⌘ + O,Open session,#F5F5F5
+File,⌘ + S,Save,#F5F5F5
+File,⌘ + Shift + S,Save As,#F5F5F5
+File,⌘ + P,Print (score),#F5F5F5
+File,⌘ + Q,Quit Pro Tools,#F5F5F5
+Help & Tips,⌘ + /,Keyboard shortcuts dialog,#EAD1DC
+Help & Tips,⌘ + Shift + /,Search shortcuts,#EAD1DC
+Help & Tips,Option + click menu,Show hidden settings,#EAD1DC
+Help & Tips,Control + click,Access contextual menu,#EAD1DC
+Help & Tips,F1,Open Help,#EAD1DC
