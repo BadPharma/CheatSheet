@@ -26,7 +26,67 @@ document.addEventListener('DOMContentLoaded', () => {
     const templatesHeader = document.getElementById('templates-header');
     const templatesButton = document.getElementById('toggle-templates-button');
     const templateForm = document.getElementById('template-form');
- 
+    const newcatInput = document.getElementById('section-name');
+    const Hideall =  document.getElementById('hide-all-tiles-btn')
+    const darkmodetoggle = document.querySelector("#dark-mode-toggle");
+    const settingsmodalContent = document.querySelector("#settingsModal > div")
+    const custommodalContent = document.querySelector("#customModal > div")
+    const editmodalContent = document.querySelector("#editModal > div")
+    const editsectionModalContent = document.querySelector("#editSectionModal > div")
+    const sectionTitleinput = document.getElementById('sectionTitleInput');
+    
+    let isDarkMode = false;
+
+    function darkMode() {
+        isDarkMode = !isDarkMode;
+
+        const method = isDarkMode ? 'add' : 'remove';
+
+        if (sidebar) sidebar.classList[method]('darkmode');
+        if (newcatInput) newcatInput.classList[method]('darkmode');
+        if (commandInput) commandInput.classList[method]('darkmode');
+        if (descriptionInput) descriptionInput.classList[method]('darkmode');
+        if (sectionSelect) sectionSelect.classList[method]('darkmode');
+        if (settingsmodalContent) settingsmodalContent.classList[method]('darkmode');
+        if (custommodalContent) custommodalContent.classList[method]('darkmode');
+        if (editmodalContent) editmodalContent.classList[method]('darkmode');
+        if (editCommandInput) editCommandInput.classList[method]('darkmode');
+        if (editDescriptionInput) editDescriptionInput.classList[method]('darkmode');
+        if (editSectionSelect) editSectionSelect.classList[method]('darkmode');
+        if (editsectionModalContent) editsectionModalContent.classList[method]('darkmode');
+        if (sectionTitleinput) sectionTitleinput.classList[method]('darkmode');
+
+        const templatechoicesWrapper = document.querySelector('#template-select')?.closest('.choices .choices__inner');
+        if (templatechoicesWrapper) templatechoicesWrapper.classList[method]('darkmode'); 
+
+        const templatedropdown = document.querySelector('.choices__list--dropdown');
+        if (templatedropdown) templatedropdown.classList[method]('darkmode');
+
+        const entrychoicesWrapper = document.querySelector("#form-inputs > div > div.choices__inner");
+        if (entrychoicesWrapper) entrychoicesWrapper.classList[method]('darkmode');
+    }
+
+    const observer = new MutationObserver(mutations => {
+        if (!isDarkMode) return;
+    
+        mutations.forEach(mutation => {
+            mutation.addedNodes.forEach(node => {
+                if (node.nodeType === 1) { // Only element nodes
+                    // Check if it's a Choices element or contains one
+                    const inner = node.matches('.choices__inner') ? node : node.querySelector('.choices__inner');
+                    const dropdown = node.matches('.choices__list--dropdown') ? node : node.querySelector('.choices__list--dropdown');
+    
+                    if (inner) inner.classList.add('darkmode');
+                    if (dropdown) dropdown.classList.add('darkmode');
+                }
+            });
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+    });
     
 
 
@@ -253,6 +313,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return svgIcon;
     }
 
+    const eyeButton = document.createElement('button');
+    eyeButton.className = 'eye-button';
+    eyeButton.style.cursor = 'pointer';
+    eyeButton.style.background = 'none';
+    eyeButton.style.border = 'none';
+
+    // Append the SVG to the button
+    const eyeSvg = createEyeSvg(); // assuming this returns an <svg> element
+    eyeButton.appendChild(eyeSvg);
+
+    // Append the button to the container
+    Hideall.appendChild(eyeButton);
+
     // 🔥 Function to create the Trash SVG
     function createTrashSvg() {
         const trashSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -283,27 +356,30 @@ document.addEventListener('DOMContentLoaded', () => {
         return trashSvg;
     }
 
+    
+   
 
     // Function to hide all tiles and gray out the eye buttons
-    function hideAllTiles() {
-            const tiles = document.querySelectorAll('.tile'); // Select all tiles
-            const eyeButtons = document.querySelectorAll('.eye-button'); // Select all eye buttons
-            
-            // Hide each tile
-            tiles.forEach(tile => {
-                tile.style.display = 'none'; // Hide each tile
-            });
-            
-            // Gray out each eye button to indicate hidden state
-            eyeButtons.forEach(eyeButton => {
-                eyeButton.style.fill = 'gray'; // Gray out the eye button
-            });
-
-            showFeedback("All tiles hidden!", "info"); // Optional feedback
-       }
+    function toggleAllTiles() {
+        const tiles = document.querySelectorAll('.tile');
+        const eyeButtons = document.querySelectorAll('.eye-button');
+    
+        // Check if all tiles are currently hidden
+        const allHidden = Array.from(tiles).every(tile => tile.style.display === 'none');
+    
+        tiles.forEach(tile => {
+            tile.style.display = allHidden ? '' : 'none'; // Show or hide based on current state
+        });
+    
+        eyeButtons.forEach(eyeButton => {
+            eyeButton.style.fill = allHidden ? 'black' : 'gray'; // Set color based on state
+        });
+    
+        showFeedback(allHidden ? "All tiles shown!" : "All tiles hidden!", "info");
+    }
 
 // Event listener for the "Hide All Tiles" button
-    document.getElementById('hide-all-tiles-btn').addEventListener('click', hideAllTiles);
+    document.getElementById('hide-all-tiles-btn').addEventListener('click', toggleAllTiles);
 
     function createSection(sectionName, color) {
         const li = document.createElement('li');
@@ -1041,7 +1117,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function enhanceTemplateDropdown() {
         const element = document.getElementById('template-select');
-
         if (templateDropdown) {
             templateDropdown.destroy();
         }
@@ -1050,33 +1125,45 @@ document.addEventListener('DOMContentLoaded', () => {
             searchEnabled: true,
             itemSelectText: '',
             shouldSort: true,
-            allowHTML: false,
-           
-            
+            allowHTML: true
         });
+    
+        // Reapply dark mode if it's active
+        if (document.body.classList.contains('darkmode')) {
+            const choicesInner = document.querySelector('#template-select + .choices .choices__inner');
+            if (choicesInner) choicesInner.classList.add('darkmode');
+    
+            const dropdown = document.querySelector('.choices__list--dropdown');
+            if (dropdown) dropdown.classList.add('darkmode');
+        }
     }
+    
 
     let sectionDropdown;
 
     function enhanceSectionDropdown() {
-        const element2 = document.getElementById('section-select');
+        const element = document.getElementById('section-select');
         if (sectionDropdown) {
-        sectionDropdown.destroy();
+            sectionDropdown.destroy();
         }
     
-        sectionDropdown = new Choices(element2, {
+        sectionDropdown = new Choices(element, {
             searchEnabled: false,
             itemSelectText: '',
             shouldSort: true,
-            allowHTML: false,
-           
-            
+            allowHTML: false
         });
+    
+        if (document.body.classList.contains('darkmode')) {
+            const choicesInner = document.querySelector('#section-select+ .choices .choices__inner');
+            if (choicesInner) choicesInner.classList.add('darkmode');
+
+            const dropdown = document.querySelector('.choices__list--dropdown');
+            if (dropdown) dropdown.classList.add('darkmode');
+        }
     }
     
-    
 
-   
 
     document.getElementById('load-template-btn').addEventListener('click', () => {
         const templateSelect = document.getElementById('template-select');
@@ -1288,10 +1375,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    
+   
+
+    
+
 
     // Event listeners for toggling sidebar and sections
     toggleButton.addEventListener('click', toggleSectionList);
     sectionHeader.addEventListener('click', toggleSectionList);
+    darkmodetoggle.addEventListener('click',darkMode)
 
     sidebarTab.addEventListener('click', toggleSidebar);
 

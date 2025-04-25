@@ -23,17 +23,17 @@
             <h1>CheatSheet</h1>
             <strong>A BadPharma Project</strong>
         </div>
-
-        <button id="settings-btn" data-step="2.5" data-intro="Open your settings panel."><span class="btn-label">⚙️ Settings</span></button>
-
-    
-        <button id="hide-all-tiles-btn" data-step="3" data-intro="Click here to hide all tiles.">Hide All</button>
-    
+        
+        <div class="settings-buttons" >
+        <button id="settings-btn" data-step="2.5" data-intro="Open your settings panel."><span class="btn-label">⚙️</span></button>    
+        <button id="hide-all-tiles-btn" data-step="3" data-intro="Click here to hide all tiles."></button>
+        </div>
+        
         <div class="sections" data-step="4" data-intro="Here you can manage your categories.">
             <h2 id="section-header">Categories<span id="toggle-section-button" class="triangle-down"></span> </h2>
             <ul id="section-list"></ul>
             <div id="newSection">
-                <input type="text" id="section-name" placeholder="New category name" maxlength="30" data-step="5" data-intro="Enter a name for your new category here.">
+                <input type="text"  id="section-name" placeholder="New category name" maxlength="30" data-step="5" data-intro="Enter a name for your new category here.">
                 <label for="section-color" class="color-picker">
                     <input type="color" id="section-color" />
                     <span class="color-display"></span>
@@ -47,7 +47,7 @@
         <div class="add-entry-section" data-step="7" data-intro="Add entries to your sheet here.">
             <h2 id="add-entry-header">Entries<span id="toggle-add-form-button" class="triangle-down"></span> </h2>
             <div id="form-inputs">
-                <select id="section-select" ></select>
+                <select id="section-select" name="section" ></select>
                 <input type="text" id="command" placeholder="Shortcut / Title" maxlength="100" data-step="8" data-intro="Enter the command here.">
                 <textarea id="description" placeholder="Description" required rows="2" maxlength="500" data-step="9" data-intro="Enter a description for the command."></textarea>
             </div>
@@ -82,7 +82,7 @@
 
 </div>
   
-    <script src="app.js"></script> <!-- Ensure this is at the bottom -->
+  <!-- MODALS   -->
 
     <!-- Custom Confirmation Modal -->
 <div id="customModal" class="modal">
@@ -150,22 +150,21 @@
         <span id="closeSettingsModal" class="close">&times;</span>
         <h2>Settings</h2>
         <div class="settings-content">
-            <!-- Add any settings options here -->
+           
             <label>
-                <input type="checkbox" id="dark-mode-toggle">
-                Enable Dark Mode
-            </label>
+                <label class="circular-toggle">
+                    <input type="checkbox" id="dark-mode-toggle" />
+                    <span class="circle"></span>
+                    <h4> Dark Mode </h4>
+                  </label>
             <br />
-            <label>
-                <input type="checkbox" id="show-tips-toggle" checked>
-                Show Intro Tooltips
-            </label>
+            
         </div>
-        <button id="saveSettingsBtn">Save Settings</button>
+       
     </div>
 </div>
 
-
+<script src="app.js"></script> 
 
 </body>
 </html>

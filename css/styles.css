@@ -100,6 +100,8 @@ body::-webkit-scrollbar {
   }
 
 
+
+
 .left {
     display: block;
     height: 100%;
@@ -392,6 +394,17 @@ body::-webkit-scrollbar {
     
 }
 
+.sidebar.darkmode {
+    background-color: #333; /* Dark background for dark mode */
+    color: #fff; /* Light text for dark mode */
+}
+
+#section-name.darkmode, #section-select.darkmode, #command.darkmode, #description.darkmode, .choices__inner.darkmode, .choices__list--dropdown.darkmode, .modal-content.darkmode, #edit-section-select.darkmode, #edit-command.darkmode, #edit-description.darkmode,#sectionTitleInput.darkmode  {
+    background-color: #444; /* Dark background for inputs in dark mode */
+    color: #fff; /* Light text for inputs in dark mode */
+    border: 1px solid #555; /* Dark border for inputs in dark mode */
+}
+
 
 
 .sidebar-content {
@@ -415,7 +428,10 @@ body::-webkit-scrollbar {
     z-index: 100;
 }
 /* Sidebar toggle button styles */
-#hide-all-tiles-btn, #settings-btn, #add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn,  .custom-file-upload  {
+
+
+
+#add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn,  .custom-file-upload  {
     width: 100%;
     padding: 10px 16px;
     margin-top: 15px;
@@ -433,9 +449,7 @@ body::-webkit-scrollbar {
     transform: skew(-10deg,0deg);
 }
 
-button::before {    
-transform:skew(40deg,0deg);
-}
+
 
 .btn-label {
    display: inline-block;
@@ -444,9 +458,6 @@ transform:skew(40deg,0deg);
     transition: transform 0.2s ease, box-shadow 0.2s ease,scale 0.2s ease-in;
 }
 
-button:hover .btn-label {
-    transform: skew(-20deg,0deg)
-}
 
 
 
@@ -498,6 +509,7 @@ button:hover .btn-label {
 
 
 
+
 .header {
     display: block;
     justify-content: center;
@@ -506,17 +518,87 @@ button:hover .btn-label {
     margin-top: 0px;
 }
 
-#hide-all-tiles-btn{
-    
-    font-size: 0.8em;
-    font-weight: 900;
-    letter-spacing: 10px;
+.settings-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#hide-all-tiles-btn, #settings-btn {
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 60px;
+    padding: 10px 16px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 12px;
+    margin-right: 3%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    transform: skew(-10deg,0deg);
+   
     background-color: #947EB0;
 }
 
+.circular-toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .circular-toggle input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .circular-toggle input[type="checkbox"]:checked + .circle {
+    background-color: #eee; /* light bg when checked */
+  }
+  
+  .circular-toggle input[type="checkbox"]:checked + .circle::after {
+    transform: translate(-50%, -50%) scale(1.1);
+    background-color: #222; /* dark inner dot when checked */
+  }
+  
+  .circular-toggle .circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #222; /* default dark bg */
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .circular-toggle .circle::after {
+    content: '';
+    width: 60%;
+    height: 60%;
+    background-color: #fff; /* default light dot */
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%) scale(0.8);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+  
+  
+  
+  
 
 .sections {
-margin-top: 20px; /* Add margin to separate it from the section list */
+margin-top: 10px; /* Add margin to separate it from the section list */
 display: flex;
 flex-direction: column;
 flex-wrap: nowrap;
@@ -738,10 +820,11 @@ width: 100%;
     font-size: 1em; /* Font size */
 }
 
-#section-select, #template-select {
+#section-select {
     width: calc(100% - 0px); /* Full width with some padding */
     padding: 10px; /* Padding inside input fields */
     margin-bottom: 10px; /* Space between input fields */
+   
     border: 1px solid #ccc; /* Light border */
     border-radius: 5px; /* Rounded corners */
     font-size: 1em; /* Font size */
@@ -936,7 +1019,7 @@ transform: translateX(-100%);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #fefefe;
+    background-color: inherit;
     text-align: center;
     border-radius: 25px;
 }
