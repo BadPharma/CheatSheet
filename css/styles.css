@@ -1,7 +1,8 @@
 body, html {
     font-family: Aeonik;
-    background-color: #000000;   
+    background-color: antiquewhite;   
     height: 100%;
+    transition: background-color 1s ease, color 1s ease, border 1s ease; /
 } 
 
 /* CORE PAGE CSS */
@@ -397,13 +398,22 @@ body::-webkit-scrollbar {
 .sidebar.darkmode {
     background-color: #333; /* Dark background for dark mode */
     color: #fff; /* Light text for dark mode */
+    transition: background-color 1s ease, color 1s ease; /* Smooth transition for dark mode */
 }
 
 #section-name.darkmode, #section-select.darkmode, #command.darkmode, #description.darkmode, .choices__inner.darkmode, .choices__list--dropdown.darkmode, .modal-content.darkmode, #edit-section-select.darkmode, #edit-command.darkmode, #edit-description.darkmode,#sectionTitleInput.darkmode  {
     background-color: #444; /* Dark background for inputs in dark mode */
     color: #fff; /* Light text for inputs in dark mode */
     border: 1px solid #555; /* Dark border for inputs in dark mode */
+    transition: background-color 1s ease, color 1s ease, border 1s ease; /* Smooth transition for dark mode */
 }
+
+body.darkmode,html.darkmode {
+    background-color: #222; /* Dark background for body in dark mode */
+    transform: background-color 1s ease; 
+    }
+
+
 
 
 
@@ -431,7 +441,7 @@ body::-webkit-scrollbar {
 
 
 
-#add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn,  .custom-file-upload  {
+#add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn, .custom-file-upload {
     width: 100%;
     padding: 10px 16px;
     margin-top: 15px;
@@ -444,9 +454,14 @@ body::-webkit-scrollbar {
     font-weight: 600;
     letter-spacing: 0.8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease,background-color 1s ease, color 1s ease, border 1s ease;
     cursor: pointer;
     transform: skew(-10deg,0deg);
+}
+
+#add-section.darkmode, #add-entry.darkmode, #download-btn.darkmode, #load-template-btn.darkmode, .custom-file-upload.darkmode {
+    background-color: #947EB0;
+    transition: background-color 1s ease;
 }
 
 
@@ -972,6 +987,7 @@ transform: translateX(-100%);
     width: 30%; /* Could be more or less, depending on screen size */
     text-align: center;
     border-radius: 25px;
+    transition: background-color 1s ease, color 1s ease, border 1s ease; /
 }
 
 .close {

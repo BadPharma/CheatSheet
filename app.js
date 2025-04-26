@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     const sidebarTab = document.getElementById('sidebar-tab');
     const toggleButton = document.getElementById('toggle-section-button');
+    const addsectionbutton = document.getElementById('add-section');
     const toggleAddEntryButton = document.getElementById('toggle-add-form-button');
     const sectionHeader = document.getElementById('section-header');
     const reloadWarningModal = document.getElementById('reloadWarningModal');
@@ -26,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const templatesHeader = document.getElementById('templates-header');
     const templatesButton = document.getElementById('toggle-templates-button');
     const templateForm = document.getElementById('template-form');
+    const touchmybody = document.querySelector("body")
+    const onyour = document.querySelector("html");
     const newcatInput = document.getElementById('section-name');
     const Hideall =  document.getElementById('hide-all-tiles-btn')
     const darkmodetoggle = document.querySelector("#dark-mode-toggle");
@@ -34,6 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const editmodalContent = document.querySelector("#editModal > div")
     const editsectionModalContent = document.querySelector("#editSectionModal > div")
     const sectionTitleinput = document.getElementById('sectionTitleInput');
+    const confirmbtn = document.getElementById('confirmBtn');
+    const cancelbtn = document.getElementById('cancelBtn');
+    const customupload = document.getElementById('uploadxlsx');
+    const loadtemplatebtn = document.getElementById('load-template-btn');
+    
     
     let isDarkMode = false;
 
@@ -55,12 +63,28 @@ document.addEventListener('DOMContentLoaded', () => {
         if (editSectionSelect) editSectionSelect.classList[method]('darkmode');
         if (editsectionModalContent) editsectionModalContent.classList[method]('darkmode');
         if (sectionTitleinput) sectionTitleinput.classList[method]('darkmode');
+        if(addsectionbutton) addsectionbutton.classList[method]('darkmode');//ADD CSS FROM HERE IN THE AM
+        if(addEntryButton) addEntryButton.classList[method]('darkmode');
+        if(downloadBtn) downloadBtn.classList[method]('darkmode');
+        if(customupload) customupload.classList[method]('darkmode');
+        if(onyour) onyour.classList[method]('darkmode');
+        if(confirmbtn) confirmbtn.classList[method]('darkmode');
+        if(cancelbtn) cancelbtn.classList[method]('darkmode');
+        if(loadtemplatebtn) loadtemplatebtn.classList[method]('darkmode');
+        if(touchmybody) touchmybody.classList[method]('darkmode');
+        
 
         const templatechoicesWrapper = document.querySelector('#template-select')?.closest('.choices .choices__inner');
         if (templatechoicesWrapper) templatechoicesWrapper.classList[method]('darkmode'); 
 
         const templatedropdown = document.querySelector('.choices__list--dropdown');
         if (templatedropdown) templatedropdown.classList[method]('darkmode');
+
+        const sectiondropdown = document.querySelector("#template-form > div > div.choices__list.choices__list--dropdown")
+        if (sectiondropdown) sectiondropdown.classList[method]('darkmode');
+
+        const templatesearch = document.querySelector("#template-form > div > div.choices__list.choices__list--dropdown.darkmode > input")
+        if (templatesearch) templatesearch.classList[method]('darkmode');
 
         const entrychoicesWrapper = document.querySelector("#form-inputs > div > div.choices__inner");
         if (entrychoicesWrapper) entrychoicesWrapper.classList[method]('darkmode');
@@ -112,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('tourCompleted')) {
         tourRunning = false; // Prevent the tour from running if completed
     }
-
 
     const templates = [
         {
@@ -567,8 +590,7 @@ document.addEventListener('DOMContentLoaded', () => {
             configList.appendChild(tile);
     }
         
-        
-    
+
     // 🔹 Create a global object to track section visibility
     const sectionVisibility = {};
 
