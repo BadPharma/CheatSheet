@@ -1031,42 +1031,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
 
-   async function loadTemplate(templateFile) {
-    // Show confirmation dialog and store user response
-    const userResponse = await showConfirmationDialog(
-        "Do you want to clear the current data and load the new template, or merge it with the existing data?",
-        "Clear",
-        "Merge"
-    );
+    async function loadTemplate(templateFile) {
+        const currentConfigList = document.getElementById('config-list');
+        const isThereContent = currentConfigList.children.length > 0;
     
-    // Check if the user clicked off (null or undefined response means they closed the dialog)
-    if (userResponse === null || userResponse === undefined) {
-        showFeedback("Template load operation cancelled.", "info");
-        return; // Exit the function early if the dialog was cancelled
+        if (!templateFile) {
+            showFeedback("No template specified.", "warning");
+            return;
+        }
+    
+        // If there's content, show confirmation dialog
+        if (isThereContent) {
+            const userResponse = await showConfirmationDialog(
+                "Do you want to clear the current data and load the new template, or merge it with the existing data?",
+                "Clear",
+                "Merge"
+            );
+    
+            if (userResponse === null || userResponse === undefined) {
+                showFeedback("Template load operation cancelled.", "info");
+                return; // Exit early if dialog was cancelled
+            }
+    
+            if (userResponse) {
+                // User chose to clear existing data
+                configList.innerHTML = '';
+                sectionList.innerHTML = '';
+                sectionList.style.display = 'block';
+                sections = {};
+                showFeedback("Existing data cleared. Loading template...", "info");
+            } else {
+                showFeedback("Merging template with existing data...", "info");
+            }
+        } else {
+            // No content — just proceed without asking
+            configList.innerHTML = '';
+            sectionList.innerHTML = '';
+            sectionList.style.display = 'block';
+            sections = {};
+            showFeedback("Loading template...", "info");
+        }
+    
+        // Load and process the template
+        try {
+            const response = await fetch(templateFile);
+            const data = await response.arrayBuffer();
+            const workbook = XLSX.read(data, { type: 'array' });
+            processWorkbook(workbook);
+            showFeedback("Template loaded successfully!", "success");
+        } catch (error) {
+            console.error('Error loading template:', error);
+            showFeedback("Failed to load template.", "error");
+        }
     }
-
-    if (userResponse) {
-        // User chose to clear existing data
-        configList.innerHTML = '';
-        sectionList.innerHTML = '';
-        sectionList.style.display = 'block'; // Hide the section list
-        sections = {};
-        showFeedback("Existing data cleared. Loading template...", "info");
-    } else {
-        showFeedback("Merging template with existing data...", "info");
-    }
-
-    try {
-        const response = await fetch(templateFile);
-        const data = await response.arrayBuffer();
-        const workbook = XLSX.read(data, { type: 'array' });
-        processWorkbook(workbook);
-        showFeedback("Template loaded successfully!", "success");
-    } catch (error) {
-        console.error('Error loading template:', error);
-        showFeedback("Failed to load template.", "error");
-    }
-}
+    
 
   
 
@@ -1393,6 +1411,8 @@ document.addEventListener('DOMContentLoaded', () => {
             sectionList.innerHTML = ''; // Clear the section list
             sections = {}; // Reset the sections object
             populateSectionDropdown(); // Refresh the dropdown
+            enhanceSectionDropdown(); // Refresh the Choices dropdown
+            showFeedback("Sheet cleared successfully. Go on to create anew...", "success");
         }
     }
 
