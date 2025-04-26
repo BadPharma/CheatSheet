@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleAddEntryButton = document.getElementById('toggle-add-form-button');
     const sectionHeader = document.getElementById('section-header');
     const reloadWarningModal = document.getElementById('reloadWarningModal');
+    const copyToggle = document.getElementById('copy-toggle');
     const editModal = document.getElementById('editModal');
     const editSectionSelect = document.getElementById('edit-section-select');
     const editCommandInput = document.getElementById('edit-command');
@@ -42,10 +43,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const customupload = document.getElementById('uploadxlsx');
     const loadtemplatebtn = document.getElementById('load-template-btn');
     
-    
     let isDarkMode = false;
 
-    function darkMode() {
+    let isWarningModalVisible = false; // Flag to track modal visibility
+    let sections = {}; // Store sections with their colors and entries
+    let currentTile = null; // Reference to the currently edited tile
+    let draggedSectionName = null; // Variable to store the name of the dragged section
+
+    const tooltip = document.createElement('div');
+    tooltip.className = 'tooltip';
+    document.body.appendChild(tooltip); // Append tooltip to the body
+
+    const elements = document.querySelectorAll('[data-step]');
+    let currentStep = 1;
+    let tourRunning = true; // Track whether the tour is currently running
+
+    function sanitizeInput(input) {
+        return DOMPurify.sanitize(input);
+    }
+
+     //Dark Mode toggles
+     function darkMode() {
         isDarkMode = !isDarkMode;
 
         const method = isDarkMode ? 'add' : 'remove';
@@ -90,6 +108,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (entrychoicesWrapper) entrychoicesWrapper.classList[method]('darkmode');
     }
 
+    //Copy function toggle
+    copyToggle.addEventListener('change', () => {
+        if (copyToggle.checked) {
+            showFeedback("Copying command is now enabled!", "warning");
+        } else {
+            
+            showFeedback("Copying description is now enabled!", "success");
+        }
+    });
+
     const observer = new MutationObserver(mutations => {
         if (!isDarkMode) return;
     
@@ -112,25 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         subtree: true,
     });
     
-
-
-    let isWarningModalVisible = false; // Flag to track modal visibility
-    let sections = {}; // Store sections with their colors and entries
-    let currentTile = null; // Reference to the currently edited tile
-    let draggedSectionName = null; // Variable to store the name of the dragged section
-
-
-    function sanitizeInput(input) {
-        return DOMPurify.sanitize(input);
-    }
     
-    const tooltip = document.createElement('div');
-    tooltip.className = 'tooltip';
-    document.body.appendChild(tooltip); // Append tooltip to the body
-
-    const elements = document.querySelectorAll('[data-step]');
-    let currentStep = 1;
-    let tourRunning = true; // Track whether the tour is currently running
 
     // Check if the tour has already been completed
     if (localStorage.getItem('tourCompleted')) {
@@ -546,8 +556,13 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonContainer.appendChild(copyButton);
         
             copyButton.addEventListener('click', () => {
-                navigator.clipboard.writeText(description);
-                showFeedback("Description copied to clipboard!", "success");
+                if (copyToggle.checked) {
+                    navigator.clipboard.writeText(command);
+                    showFeedback("Command copied to clipboard!", "success");
+                } else {
+                    navigator.clipboard.writeText(description);
+                    showFeedback("Description copied to clipboard!", "success");
+                }
             });
         
             // Create the delete button
@@ -589,7 +604,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
             configList.appendChild(tile);
     }
-        
+     
+    
 
     // 🔹 Create a global object to track section visibility
     const sectionVisibility = {};
@@ -941,6 +957,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sections[sectionName].entries.push({ command, description });
             createTile(sectionName, command, description, sections[sectionName].color);
         }
+        populateSectionDropdown()
         enhanceSectionDropdown(); 
     }
 
