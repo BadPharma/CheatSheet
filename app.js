@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const sectionList = document.getElementById('section-list');
+    sectionList.style.display = 'none';
     const sectionSelect = document.getElementById('section-select');
     const commandInput = document.getElementById('command');
     const descriptionInput = document.getElementById('description');
@@ -63,6 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     newcatInput.maxLength = 45; // Set max length for new category input
 
+    let editor;
+
+    ClassicEditor
+    .create(document.querySelector('#editor'), {
+        toolbar: ['bold', 'italic','undo', 'redo'],
+    })
+    .then(newEditor => {
+        editor = newEditor; // Assign CKEditor instance to global variable
+    })
+    .catch(error => {
+        console.error("CKEditor initialization error:", error);
+    });
 
     function sanitizeInput(input) {
         return DOMPurify.sanitize(input);
@@ -423,6 +436,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('hide-all-tiles-btn').addEventListener('click', toggleAllTiles);
 
     function createSection(sectionName, color) {
+        sectionList.style.display = 'block'; 
+        sectionHeader.style.marginBottom = '0px';
         
         const li = document.createElement('li');
         li.style.backgroundColor = sanitizeInput(color);
@@ -435,7 +450,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create section name span
         const sectionNameSpan = document.createElement('span');
         sectionNameSpan.textContent = sanitizeInput(sectionName);
-      //  sectionList.style.display = 'block'; 
  
         // Title container
         const titleContainer = document.createElement('div');
@@ -450,7 +464,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Actions container
         const actionsContainer = document.createElement('div');
         actionsContainer.className = 'actions-container';
-       
         actionsContainer.style.alignItems = 'center';
     
         // 🖊️ Edit (Pencil) Button
@@ -534,7 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
    
     function createTile(sectionName, command, description, color, url) {
-        console.log('Creating tile with:', { sectionName, command, description, color, url }); // Debugging log
+        
     
         const tile = document.createElement('div');
         tile.className = 'tile';
@@ -628,7 +641,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // Add the tile to the config list
         configList.appendChild(tile);
-        console.log('Creating tile for section:', sectionName, 'with command:', command);
+        
 
     }
     
@@ -996,11 +1009,39 @@ document.addEventListener('DOMContentLoaded', () => {
         // 🔹 Update the eye button color based on visibility state
         eyeIcon.style.fill = allHidden ? "black" : "gray";
     }
+
+
+
+    document.getElementById('add-entry').addEventListener('click', () => {
+        const selectedSection = sectionSelect.value;
+        const command = commandInput.value.trim(); // Trim whitespace
+        const description =  editor.getData().trim();
+        const url = urlInput.value.trim(); // Trim whitespace
+    
+        if (!selectedSection) {
+            showFeedback("Please select a section to add the entry.", "error");
+            return;
+        }
+    
+        if (!command || !description) {
+            showFeedback("Command and description cannot be empty!", "error");
+            return;
+        }
+    
+        addEntryToSection(selectedSection, command, description,url);
+        commandInput.value = '';
+        description.innerHTML = '';
+        urlInput.value = ''; // Clear URL input field after adding
+        populateSectionDropdown(); // Refresh the dropdown
+        enhanceSectionDropdown(); // Refresh the Choices dropdown
+    
+        // Show feedback popup
+        showFeedback("New entry added successfully!", "success");
+        });
     
 
     function addEntryToSection(sectionName, command, description, url) {
-        // Debugging log to track the flow
-        console.log('Adding entry to section:', { sectionName, command, description, url });
+    
     
         if (sections[sectionName]) {
             // Add the entry to the section's entries
@@ -1177,7 +1218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const url = sanitizeInput(row[4] || ''); // Sanitize input for row[4] (empty string for blank URLs)
     
                 // Debugging log
-                console.log('Processing row:', { section, command, description, color, url });
+                
     
                 if (!sections[section]) {
                     createSection(section, color);
@@ -1186,7 +1227,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 addEntryToSection(section, command, description, url); // Add entry to section
             } 
         });
-        console.log('Processed workbook data:', sheetData);
+        
     }
     
 
@@ -1389,32 +1430,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
 
-    document.getElementById('add-entry').addEventListener('click', () => {
-    const selectedSection = sectionSelect.value;
-    const command = commandInput.value.trim(); // Trim whitespace
-    const description = descriptionInput.value.trim();
-    const url = urlInput.value.trim(); // Trim whitespace
-
-    if (!selectedSection) {
-        showFeedback("Please select a section to add the entry.", "error");
-        return;
-    }
-
-    if (!command || !description) {
-        showFeedback("Command and description cannot be empty!", "error");
-        return;
-    }
-
-    addEntryToSection(selectedSection, command, description,url);
-    commandInput.value = '';
-    descriptionInput.value = '';
-    urlInput.value = ''; // Clear URL input field after adding
-    populateSectionDropdown(); // Refresh the dropdown
-    enhanceSectionDropdown(); // Refresh the Choices dropdown
-
-    // Show feedback popup
-    showFeedback("New entry added successfully!", "success");
-    });
+    
 
 
     uploadXlsx.addEventListener('change', (event) => {
@@ -1436,6 +1452,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Populate the section dropdown
     function populateSectionDropdown() {
+       
+       
         sectionSelect.innerHTML = '';
         for (const sectionName in sections) {
             const option = document.createElement('option');

@@ -20,6 +20,8 @@
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+
     <title>CheatSheet</title>
 </head>
 <body>
@@ -66,7 +68,7 @@
         </div>
         
         <div class="sections" data-step="4" data-intro="Here you can manage your categories.">
-            <h2 id="section-header">Categories<span id="toggle-section-button" class="triangle-down"></span> </h2>
+            <h2 id="section-header">Sections<span id="toggle-section-button" class="triangle-down"></span> </h2>
             <ul id="section-list"></ul>
             <div id="newSection">
                 <input type="text"  id="section-name" placeholder="New category name" data-step="5" data-intro="Enter a name for your new category here.">
@@ -87,11 +89,11 @@
 
                     <input type="text" id="command" placeholder="Shortcut / Title" maxlength="100" data-step="8" data-intro="Enter the command here.">
 
-                    <textarea id="description" placeholder="Description" required rows="2" maxlength="500" data-step="9" data-intro="Enter a description for the command."></textarea>
-
+                    <div id="editor"></div>
+                    
                     <input type="text" id="url" placeholder="Optional URL" maxlength="2083" />
 
-
+                  
             </div>
             <button id="add-entry" data-step="10" data-intro="Click here to add your entry. and display it within your CheatSheet"><span class="btn-label">Add Cheat</span></button>
         </div>

@@ -85,7 +85,7 @@ body::-webkit-scrollbar {
     background-color: antiquewhite;
     text-align: center;
     padding: 10px 0; /* Adds some spacing */
-    z-index: 1000; /* Ensures it stays above other content */
+    z-index: 100; /* Ensures it stays above other content */
   }
   .sidebar::-webkit-scrollbar {
     width: 3px;
@@ -422,7 +422,7 @@ body::-webkit-scrollbar {
     background: antiquewhite;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-bottom-right-radius: 25px;
-    z-index: 10; /* Ensure it's above other elements */
+    z-index:99; /* Ensure it's above other elements */
     transition: transform 0.3s ease; /* Smooth transition for toggling */
     overflow: scroll;
     
@@ -435,6 +435,10 @@ body::-webkit-scrollbar {
     color: #fff; 
     border: 1px solid #555; 
     transition: background-color 1s ease, color 1s ease, border 1s ease; 
+}
+
+#section-header{
+    margin-bottom: 10px;
 }
 
 body.darkmode,html.darkmode {
@@ -473,7 +477,7 @@ body.darkmode,html.darkmode {
     margin-bottom: 10px;
     border: none;
     border-radius: 12px;
-    background-color: #4aa9dcc8;
+    background-color: #947EB0;
     color: antiquewhite;
     font-size: 1em;
     font-weight: 600;
@@ -656,7 +660,7 @@ button .btn-label svg {
 
 
 .sections {
-margin-top: 0px; 
+margin-top: 5px; 
 display: flex;
 flex-direction: column;
 flex-wrap: nowrap;
@@ -958,6 +962,17 @@ width: 100%;
     text-wrap: break-word;
 }
 
+#form-inputs > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div{
+    
+    margin-bottom: 10px; 
+    font-size: 0.78em;
+    height: 80px;
+    max-height: 120px;
+ 
+}
+
+
+
 
 .down-up-section {
     margin-top: 20px; /* Add margin to separate it from the section list */
@@ -1227,6 +1242,10 @@ transform: translateX(-100%);
 
 .feedback-popup.error {
     background-color: #f44336; /* Red for error */
+}
+
+.feedback-popup.info{
+    background-color: #7536f4; /* Red for error */
 }
 
 /* Text styles */
