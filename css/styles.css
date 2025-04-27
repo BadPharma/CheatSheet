@@ -1,7 +1,7 @@
 body, html {
     font-family: Aeonik;
     background-color: antiquewhite;   
-    height: 100%;
+    height: fit-content;
     transition: background-color 1s ease, color 1s ease, border 1s ease; /
 } 
 
@@ -72,6 +72,21 @@ body::-webkit-scrollbar {
     background: #555;
   }
 
+  #ad-footer {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 90px;
+    max-width: 728px; /* Google’s common ad width */
+    margin: 0 auto; /* Centers the footer horizontally */
+    background-color: antiquewhite;
+    text-align: center;
+    padding: 10px 0; /* Adds some spacing */
+    z-index: 1000; /* Ensures it stays above other content */
+  }
   .sidebar::-webkit-scrollbar {
     width: 3px;
   }
@@ -401,7 +416,7 @@ body::-webkit-scrollbar {
     transition: background-color 1s ease, color 1s ease; /* Smooth transition for dark mode */
 }
 
-#section-name.darkmode, #section-select.darkmode, #command.darkmode, #description.darkmode, .choices__inner.darkmode, .choices__list--dropdown.darkmode, .modal-content.darkmode, #edit-section-select.darkmode, #edit-command.darkmode, #edit-description.darkmode,#sectionTitleInput.darkmode  {
+#section-name.darkmode, #section-select.darkmode, #command.darkmode, #description.darkmode, .choices__inner.darkmode, .choices__list--dropdown.darkmode, .modal-content.darkmode, #edit-section-select.darkmode, #edit-command.darkmode, #edit-description.darkmode,#sectionTitleInput.darkmode, #ad-footer.darkmode  {
     background-color: #444; /* Dark background for inputs in dark mode */
     color: #fff; /* Light text for inputs in dark mode */
     border: 1px solid #555; /* Dark border for inputs in dark mode */
@@ -448,7 +463,7 @@ body.darkmode,html.darkmode {
     margin-bottom: 10px;
     border: none;
     border-radius: 12px;
-    background-color: #5ab9e9;
+    background-color: #4aa9dcc8;
     color: antiquewhite;
     font-size: 1em;
     font-weight: 600;
@@ -510,7 +525,7 @@ body.darkmode,html.darkmode {
     font-weight: 900;
     letter-spacing: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 40px;
+    margin-bottom: 160px;
 }
 
 #confirmBtn{
@@ -542,7 +557,8 @@ body.darkmode,html.darkmode {
 
 }
 
-#hide-all-tiles-btn, #settings-btn {
+#hide-all-tiles-btn, #settings-btn, #helpbtn {
+    display: flex;
     align-items: center;
     justify-content: center;
     height: 40px;
@@ -557,8 +573,24 @@ body.darkmode,html.darkmode {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
     transform: skew(-10deg,0deg);
-   
     background-color: #947EB0;
+}
+
+#hide-all-tiles-btn > button > svg{
+    width:22px;
+    height:22px;
+}
+
+button .btn-label svg {
+    width: 20px;  /* Set desired width */
+    height: 20px; /* Set desired height */
+    fill: #000000;   /* Set color if needed */
+  }
+
+#helpbtn .btn-label h1 {
+    margin: 0;
+    font-size: 1.4em;
+    font-weight: 900;
 }
 
 .circular-toggle {
@@ -611,11 +643,10 @@ body.darkmode,html.darkmode {
   }
   
   
-  
-  
+
 
 .sections {
-margin-top: 0px; /* Add margin to separate it from the section list */
+margin-top: 0px; 
 display: flex;
 flex-direction: column;
 flex-wrap: nowrap;
@@ -641,9 +672,25 @@ align-content: center;
     border-top: 10px solid rgb(144, 144, 144); /* Color of the triangle */
 }
 
+.title-container {
+ width: 80%;
+ text-wrap: break-word;
+ text-wrap-mode: normal;
+ word-break: break-word;
+   
+
+}
+
+#section-list li:hover .title-container {
+    transform: scale(1.05); /* Scale up the title on hover */
+    transition: transform 0.3s ease; /* Smooth transition */
+    width: 50%;
+    text-overflow: ellipsis;    
+}
+
 
 #section-list {
-    display: none;
+   
     list-style: none;
     width: calc(100% - 10px);
     padding: 0;
@@ -656,18 +703,21 @@ align-content: center;
 
 #section-list li {
     list-style: none;
-    padding: 10px;;
+    flex-grow: 1;
+    padding: 15px;
     margin-bottom: 15px;
     cursor: pointer;
     border-radius: 15px;
     transition: transform 0.3s ease, background-color 0.3s ease, font-size 0.3s ease, font-weight 0.3s ease;
-    font-size: 0.74em; /* Default font size */
+    font-size: 0.76em; /* Default font size */
     font-weight: 400;
     letter-spacing: 2px;
     word-wrap: break-word;
     justify-content: left;
     align-items: center;
 }
+
+
 
 
 u
@@ -687,8 +737,16 @@ u
     transform: scale(0.96); /* Scale up by 10% */
     background-color: #e0e0e0; /* Change background on hover */
     
-    font-size: 14px;
+    font-size: 0.71em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.actions-container{
+    display: none;
+}
+
+#section-list li:hover > .actions-container {
+display: flex;
 }
 
 /* Initially hide the buttons */
@@ -933,12 +991,12 @@ label{
     
 }
 
-#template-form.collapsed {
-    display: none;
+#template-form.collapsed, #section-list.collapsed {
+    display: none!important;
 }
 
 .collapsed {
-    display: none ;
+    display: none;
 }
 
 .open {
@@ -947,7 +1005,7 @@ label{
 }
 
 .closed {
-    margin-left: 70px;
+    margin-left: 50px;
    
 }
 
@@ -960,11 +1018,10 @@ transform: translateX(-100%);
 .config-list{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    
     align-items: center;
     justify-items: start;
-    transition: margin-left 0.6s ease; /* Smooth movement */
-    margin-bottom:20px;
+    transition: transform 2s ease, margin-left 0.6s ease;
+    margin-bottom:180px;
     margin-right:20px;
     gap: 25px 25px; 
     
@@ -998,11 +1055,11 @@ transform: translateX(-100%);
 }
 
 #settingsModal  .modal-content {
-    width: 200px;
-    min-width: 200px;
+    width: 170px;
+    min-width: 170px;
     max-width: 500px;
     height: 170px;
-    margin: 70px 265px ;
+   
 
 }
 
@@ -1164,6 +1221,17 @@ h2{
 .tile:hover .tile-header{
     margin-top: 5px !important;
 }
+
+@media (max-width: 600px) {
+    #ad-footer {
+      max-width: 100%;
+      width: 100%;
+      height: 50px;
+    }
+
+
+  }
+  
 
 @media screen and (max-height: 1080px) {
     body {

@@ -38,10 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const editmodalContent = document.querySelector("#editModal > div")
     const editsectionModalContent = document.querySelector("#editSectionModal > div")
     const sectionTitleinput = document.getElementById('sectionTitleInput');
+    const adfooter = document.getElementById('ad-footer')
     const confirmbtn = document.getElementById('confirmBtn');
     const cancelbtn = document.getElementById('cancelBtn');
     const customupload = document.getElementById('uploadxlsx');
     const loadtemplatebtn = document.getElementById('load-template-btn');
+    const   helpmodalContent = document.querySelector("#helpModal > div")
     
     let isDarkMode = false;
 
@@ -87,9 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if(customupload) customupload.classList[method]('darkmode');
         if(onyour) onyour.classList[method]('darkmode');
         if(confirmbtn) confirmbtn.classList[method]('darkmode');
+        if(adfooter) adfooter.classList[method]('darkmode');
         if(cancelbtn) cancelbtn.classList[method]('darkmode');
         if(loadtemplatebtn) loadtemplatebtn.classList[method]('darkmode');
         if(touchmybody) touchmybody.classList[method]('darkmode');
+        if (helpmodalContent) helpmodalContent.classList[method]('darkmode');
         
 
         const templatechoicesWrapper = document.querySelector('#template-select')?.closest('.choices .choices__inner');
@@ -140,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         subtree: true,
     });
     
-    
+    newcatInput.maxLength = 30; // Set max length for new category input
 
     // Check if the tour has already been completed
     if (localStorage.getItem('tourCompleted')) {
@@ -415,6 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('hide-all-tiles-btn').addEventListener('click', toggleAllTiles);
 
     function createSection(sectionName, color) {
+        
         const li = document.createElement('li');
         li.style.backgroundColor = sanitizeInput(color);
         li.dataset.sectionName = sanitizeInput(sectionName);
@@ -426,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create section name span
         const sectionNameSpan = document.createElement('span');
         sectionNameSpan.textContent = sanitizeInput(sectionName);
-        sectionList.style.display = 'block'; 
+      //  sectionList.style.display = 'block'; 
  
         // Title container
         const titleContainer = document.createElement('div');
@@ -434,11 +439,14 @@ document.addEventListener('DOMContentLoaded', () => {
         titleContainer.style.display = 'flex';
         titleContainer.style.alignItems = 'center';
         titleContainer.style.marginLeft = '12px';
+        
+       
         titleContainer.appendChild(sectionNameSpan);
     
         // Actions container
         const actionsContainer = document.createElement('div');
-        actionsContainer.style.display = 'flex';
+        actionsContainer.className = 'actions-container';
+       
         actionsContainer.style.alignItems = 'center';
     
         // 🖊️ Edit (Pencil) Button
@@ -814,7 +822,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Show the modal
             editModal.style.display = 'block';
     }
-        
+      
+
+   
+
+
       // Function to save the edits made in the modal
     document.getElementById('save-edit-btn').onclick = function () {[]
         if (!currentTile) {
@@ -1304,6 +1316,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const sectionNameInput = document.getElementById('section-name');
         const sectionColorInput = document.getElementById('section-color');
         
+
+
         const sectionName = sanitizeInput(sectionNameInput.value.trim()); // Trim whitespace
         const sectionColor = sectionColorInput.value;
     
@@ -1318,6 +1332,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
         createSection(sectionName, sectionColor);
         sectionNameInput.value = ''; // Clear input field after adding
+        populateSectionDropdown(); // Refresh the dropdown
+        enhanceSectionDropdown(); // Refresh the Choices dropdown
     });
     
 
@@ -1339,6 +1355,8 @@ document.addEventListener('DOMContentLoaded', () => {
     addEntryToSection(selectedSection, command, description);
     commandInput.value = '';
     descriptionInput.value = '';
+    populateSectionDropdown(); // Refresh the dropdown
+    enhanceSectionDropdown(); // Refresh the Choices dropdown
 
     // Show feedback popup
     showFeedback("New entry added successfully!", "success");
@@ -1410,6 +1428,21 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById("settingsModal").style.display = "none";
         }
     });
+
+    document.getElementById("helpbtn").addEventListener("click", () => {
+        document.getElementById("helpModal").style.display = "block";
+    });
+
+    document.getElementById("closeHelpModal").addEventListener("click", () => {
+        document.getElementById("helpModal").style.display = "none";
+    });
+   
+    window.addEventListener("click", (event) => {
+        if (event.target === document.getElementById("helpModal")) {
+            document.getElementById("helpModal").style.display = "none";
+        }
+    });
+
     
 
     // Prevent the default reload behavior
