@@ -83,9 +83,15 @@
         <div class="add-entry-section" data-step="7" data-intro="Add entries to your sheet here.">
             <h2 id="add-entry-header">Entries<span id="toggle-add-form-button" class="triangle-down"></span> </h2>
             <div id="form-inputs">
-                <select id="section-select" name="section" ></select>
-                <input type="text" id="command" placeholder="Shortcut / Title" maxlength="100" data-step="8" data-intro="Enter the command here.">
-                <textarea id="description" placeholder="Description" required rows="2" maxlength="500" data-step="9" data-intro="Enter a description for the command."></textarea>
+                <select id="section-select" name="section"></select>
+
+                    <input type="text" id="command" placeholder="Shortcut / Title" maxlength="100" data-step="8" data-intro="Enter the command here.">
+
+                    <textarea id="description" placeholder="Description" required rows="2" maxlength="500" data-step="9" data-intro="Enter a description for the command."></textarea>
+
+                    <input type="text" id="url" placeholder="Optional URL" maxlength="2083" />
+
+
             </div>
             <button id="add-entry" data-step="10" data-intro="Click here to add your entry. and display it within your CheatSheet"><span class="btn-label">Add Cheat</span></button>
         </div>
@@ -160,6 +166,8 @@
         <select id="edit-section-select"></select>
         <input type="text" id="edit-command" placeholder="Command" maxlength="100">
         <textarea id="edit-description" placeholder="Description" maxlength="150"></textarea>
+        <input type="text" id="edit-url-input" placeholder="Edit URL" maxlength="2083" />
+
         </div>
         <button id="save-edit-btn">Save Changes</button>
     </div>
@@ -198,7 +206,7 @@
         <div class="help-content">
             <p>Welcome to <strong>CheatSheet</strong>!</p>
 
-            <p>A productivity tool designed to help you create, organize, and manage customizable cheat sheets for your projects, workflows, or learning goals.</p>
+            <p>A productivity tool designed to help you create, organize, and manage customisable cheat sheets for your projects, workflows, or learning goals.</p>
           
             <h3>Features:</h3>
             <ul>
@@ -214,10 +222,11 @@
             <ul>
               <li>🌑 Dark mode toggle for easier viewing</li>
               <li>🖨 Copy function allowing you to switch between description and command mode</li>
+              <li>🧷 Urls: Each cheat can now have an optional accessible url. Were keeping URLS in cheat descriptions disabled for the time being, let us know if youd like this changed </li> 
              
             </ul>
           
-            <p><strong>Need help?</strong> Found a bug or have a feature request? Contact us at <a href="mailto:your@email.com">your@email.com</a>.</p>
+            <p><strong>Need help?</strong> Found a bug or have a feature request? Please contact us at <a href="mailto:your@email.com"></a>.  We take all feedback onboard!</p>
           
         </div>
        

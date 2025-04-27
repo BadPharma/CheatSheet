@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const customupload = document.getElementById('uploadxlsx');
     const loadtemplatebtn = document.getElementById('load-template-btn');
     const   helpmodalContent = document.querySelector("#helpModal > div")
+    const urlInput = document.getElementById('url');
     
     let isDarkMode = false;
 
@@ -59,6 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const elements = document.querySelectorAll('[data-step]');
     let currentStep = 1;
     let tourRunning = true; // Track whether the tour is currently running
+
+    newcatInput.maxLength = 45; // Set max length for new category input
+
 
     function sanitizeInput(input) {
         return DOMPurify.sanitize(input);
@@ -94,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(loadtemplatebtn) loadtemplatebtn.classList[method]('darkmode');
         if(touchmybody) touchmybody.classList[method]('darkmode');
         if (helpmodalContent) helpmodalContent.classList[method]('darkmode');
+        if(urlInput) urlInput.classList[method]('darkmode');
         
 
         const templatechoicesWrapper = document.querySelector('#template-select')?.closest('.choices .choices__inner');
@@ -144,8 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         subtree: true,
     });
     
-    newcatInput.maxLength = 30; // Set max length for new category input
-
+    
     // Check if the tour has already been completed
     if (localStorage.getItem('tourCompleted')) {
         tourRunning = false; // Prevent the tour from running if completed
@@ -528,91 +532,106 @@ document.addEventListener('DOMContentLoaded', () => {
         enhanceSectionDropdown(); // <-- Add this to refresh the Choices dropdown
     }
     
-        // Function to create a new tile with pencil and trash can icons
-     function createTile(sectionName, command, description, color) {
-            const tile = document.createElement('div');
-            tile.className = 'tile';
-            tile.dataset.section = sanitizeInput(sectionName);
-            tile.style.backgroundColor = sanitizeInput(color);
+   
+    function createTile(sectionName, command, description, color, url) {
+        console.log('Creating tile with:', { sectionName, command, description, color, url }); // Debugging log
+    
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        tile.dataset.section = sanitizeInput(sectionName);
+        tile.style.backgroundColor = sanitizeInput(color);
+    
+        // Create a container div for buttons
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'button-container';
         
-            // Create a container div for buttons
-            const buttonContainer = document.createElement('div');
-            buttonContainer.className = 'button-container';
-            
-               // Create the edit button
-               const pencilButton = document.createElement('button');
-               pencilButton.className = 'edit-button';
-               pencilButton.style.background = 'none';
-               pencilButton.style.border = 'none';
-               pencilButton.style.cursor = 'pointer';
-               pencilButton.appendChild(createPencilSvg());
-               buttonContainer.appendChild(pencilButton);
-           
-               pencilButton.addEventListener('click', () => {
-                   currentTile = tile;
-                   openEditModal(tile);
-               });
-            
+        // Create the edit button
+        const pencilButton = document.createElement('button');
+        pencilButton.className = 'edit-button';
+        pencilButton.style.background = 'none';
+        pencilButton.style.border = 'none';
+        pencilButton.style.cursor = 'pointer';
+        pencilButton.appendChild(createPencilSvg());
+        buttonContainer.appendChild(pencilButton);
+    
+        pencilButton.addEventListener('click', () => {
+            currentTile = tile;
+            openEditModal(tile);
+        });
+    
+        // Create the copy button
+        const copyButton = document.createElement('button');
+        copyButton.className = 'copy-button';
+        copyButton.style.background = 'none';
+        copyButton.style.border = 'none';
+        copyButton.style.cursor = 'pointer';
+        copyButton.appendChild(createCopySvg());
+        buttonContainer.appendChild(copyButton);
+    
+        copyButton.addEventListener('click', () => {
+            if (copyToggle.checked) {
+                navigator.clipboard.writeText(command);
+                showFeedback("Command copied to clipboard!", "success");
+            } else {
+                navigator.clipboard.writeText(description);
+                showFeedback("Description copied to clipboard!", "success");
+            }
+        });
+    
+        // Create the delete button
+        const trashButton = document.createElement('button');
+        trashButton.className = 'delete-button';
+        trashButton.style.background = 'none';
+        trashButton.style.border = 'none';
+        trashButton.style.cursor = 'pointer';
+        trashButton.appendChild(createTrashSvg());
+        buttonContainer.appendChild(trashButton);
+    
+        trashButton.addEventListener('click', () => {
+            configList.removeChild(tile);
+            const index = sections[sectionName].entries.findIndex(e => e.command === command);
+            if (index > -1) sections[sectionName].entries.splice(index, 1);
+            showFeedback("Entry deleted successfully!", "error");
+        });
+    
+        // Append the button container first (so it appears at the top)
+        tile.appendChild(buttonContainer);
+    
+        // Now, append the tile content **without using innerHTML**
+        const header = document.createElement('p');
+        header.className = 'tile-header';
+        header.textContent = sanitizeInput(sectionName);
+    
+        const strongText = document.createElement('strong');
+        strongText.textContent = sanitizeInput(command);
+    
+        const descriptionText = document.createElement('p');
+        descriptionText.className = 'description-text';
+        descriptionText.textContent = sanitizeInput(description);
+    
         
-            // Create the copy button
-            const copyButton = document.createElement('button');
-            copyButton.className = 'copy-button';
-            copyButton.style.background = 'none';
-            copyButton.style.border = 'none';
-            copyButton.style.cursor = 'pointer';
-            copyButton.appendChild(createCopySvg());
-            buttonContainer.appendChild(copyButton);
-        
-            copyButton.addEventListener('click', () => {
-                if (copyToggle.checked) {
-                    navigator.clipboard.writeText(command);
-                    showFeedback("Command copied to clipboard!", "success");
-                } else {
-                    navigator.clipboard.writeText(description);
-                    showFeedback("Description copied to clipboard!", "success");
-                }
-            });
-        
-            // Create the delete button
-            const trashButton = document.createElement('button');
-            trashButton.className = 'delete-button';
-            trashButton.style.background = 'none';
-            trashButton.style.border = 'none';
-            trashButton.style.cursor = 'pointer';
-            trashButton.appendChild(createTrashSvg());
-            buttonContainer.appendChild(trashButton);
-        
-            trashButton.addEventListener('click', () => {
-                configList.removeChild(tile);
-                const index = sections[sectionName].entries.findIndex(e => e.command === command);
-                if (index > -1) sections[sectionName].entries.splice(index, 1);
-                showFeedback("Entry deleted successfully!", "error");
-            });
-        
-         
-        
-            // Append the button container first (so it appears at the top)
-            tile.appendChild(buttonContainer);
-        
-            // Now, append the tile content **without using innerHTML**
-            const header = document.createElement('p');
-            header.className = 'tile-header';
-            header.textContent = sanitizeInput(sectionName);
-        
-            const strongText = document.createElement('strong');
-            strongText.textContent = sanitizeInput(command);
-        
-            const descriptionText = document.createElement('p');
-            descriptionText.className = 'description-text';
-            descriptionText.textContent = sanitizeInput(description);
-        
-            tile.appendChild(header);
-            tile.appendChild(strongText);
-            tile.appendChild(descriptionText);
-        
-            configList.appendChild(tile);
+    
+        tile.appendChild(header);
+        tile.appendChild(strongText);
+        tile.appendChild(descriptionText);
+
+        // Only show the URL if it exists
+        if (url && url.trim() !== '') {
+            const urlLink = document.createElement('a');
+            urlLink.className = 'url-link';
+            urlLink.href = sanitizeInput(url);
+            urlLink.textContent = 'Link';
+            urlLink.target = '_blank'; // Open in new tab
+            descriptionText.style.marginBottom = '8px'; // Remove margin from description text
+            tile.appendChild(urlLink);
+        }
+    
+        // Add the tile to the config list
+        configList.appendChild(tile);
+        console.log('Creating tile for section:', sectionName, 'with command:', command);
+
     }
-     
+    
     
 
     // 🔹 Create a global object to track section visibility
@@ -802,10 +821,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const sectionName = sanitizeInput(tile.dataset.section);
             const command = tile.querySelector('strong').textContent;
             const description = tile.querySelector('p:nth-of-type(2)').textContent;
+            const url = tile.querySelector('a')?.href || '';
+            
+
     
             // Pre-fill the modal inputs with the current tile data
             editCommandInput.value = command;
             editDescriptionInput.value = description;
+            editUrlInput.value = url;
     
             // Populate the section dropdown with the current section selected
             editSectionSelect.innerHTML = ''; // Clear the dropdown
@@ -837,10 +860,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const newSectionName = editSectionSelect.value;
         const newCommand = sanitizeInput(editCommandInput.value);
         const newDescription = sanitizeInput(editDescriptionInput.value);
-
+        const newUrl = sanitizeInput(editUrlInput.value);
+        const urlElement = currentTile.querySelector('a');
         // Update the tile's content
         currentTile.querySelector('strong').textContent = newCommand;
         currentTile.querySelector('p:nth-of-type(2)').textContent = newDescription; // Update newDescription;
+
+        
+        if (urlElement) {
+            urlElement.href = newUrl;
+        } else {
+            const newUrlElement = document.createElement('a');
+            newUrlElement.href = newUrl;
+            newUrlElement.textContent = 'Visit Link';
+            newUrlElement.target = '_blank';
+            currentTile.appendChild(newUrlElement);
+        }
 
         // If the section has changed, update it
         if (currentTile.dataset.section !== newSectionName) {
@@ -963,15 +998,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
 
-    // Function to add an entry to a section
-    function addEntryToSection(sectionName, command, description) {
+    function addEntryToSection(sectionName, command, description, url) {
+        // Debugging log to track the flow
+        console.log('Adding entry to section:', { sectionName, command, description, url });
+    
         if (sections[sectionName]) {
-            sections[sectionName].entries.push({ command, description });
-            createTile(sectionName, command, description, sections[sectionName].color);
+            // Add the entry to the section's entries
+            sections[sectionName].entries.push({ command, description, url });
+    
+            // Call the function to create the tile for the section
+            createTile(sectionName, command, description, sections[sectionName].color, url);
+        } else {
+            console.error('Section does not exist:', sectionName); // Debugging log
         }
-        populateSectionDropdown()
-        enhanceSectionDropdown(); 
+    
+        // Update dropdowns after adding entry
+        populateSectionDropdown();
+        enhanceSectionDropdown();
     }
+    
 
     // Function to bring all tiles of a section to the top
     function bringTilesToTop(sectionName) {
@@ -993,11 +1038,11 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const sectionName in sections) {
             const section = sections[sectionName];
             section.entries.forEach(entry => {
-                data.push([sectionName, entry.command, entry.description, section.color]);
+                data.push([sectionName, entry.command, entry.description, section.color,entry.url || '']);
             });
         }
 
-        data.unshift(["Catgegory", "Command", "Description", "Category Color (HEX code)"]);
+        data.unshift(["section", "command", "description", "colour","url"]);
         const worksheet = XLSX.utils.aoa_to_sheet(data);
         XLSX.utils.book_append_sheet(workbook, worksheet, "Cheatsheet");
         XLSX.writeFile(workbook, "cheatsheet.xlsx");
@@ -1122,21 +1167,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const firstSheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[firstSheetName];
         const sheetData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-
+    
         sheetData.forEach((row, index) => {
-            if (index > 0 && row.length === 4) {
+            if ((index > 0 && row.length === 4) || index > 0 && row.length === 5) {
                 const section = sanitizeInput(row[0]); // Sanitize input for section row[0];
                 const command = sanitizeInput(row[1]); // Sanitize input for row[1];
                 const description = sanitizeInput(row[2]); // Sanitize input for row[2];
                 const color = sanitizeInput(row[3]); // Sanitize input for row[3];
-
+                const url = sanitizeInput(row[4] || ''); // Sanitize input for row[4] (empty string for blank URLs)
+    
+                // Debugging log
+                console.log('Processing row:', { section, command, description, color, url });
+    
                 if (!sections[section]) {
                     createSection(section, color);
                 }
-                addEntryToSection(section, command, description);
-            }
+    
+                addEntryToSection(section, command, description, url); // Add entry to section
+            } 
         });
+        console.log('Processed workbook data:', sheetData);
     }
+    
 
     function populateTemplateDropdown(templateGroups) {
         const templateSelect = document.getElementById('template-select');
@@ -1341,6 +1393,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedSection = sectionSelect.value;
     const command = commandInput.value.trim(); // Trim whitespace
     const description = descriptionInput.value.trim();
+    const url = urlInput.value.trim(); // Trim whitespace
 
     if (!selectedSection) {
         showFeedback("Please select a section to add the entry.", "error");
@@ -1352,9 +1405,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    addEntryToSection(selectedSection, command, description);
+    addEntryToSection(selectedSection, command, description,url);
     commandInput.value = '';
     descriptionInput.value = '';
+    urlInput.value = ''; // Clear URL input field after adding
     populateSectionDropdown(); // Refresh the dropdown
     enhanceSectionDropdown(); // Refresh the Choices dropdown
 
