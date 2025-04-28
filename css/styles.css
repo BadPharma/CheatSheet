@@ -22,17 +22,18 @@ body, html {
     src: url("fonts/Aeonik-Black.woff2") format("woff2"),
       url("fonts/Aeonik-Black.woff") format("woff");
     font-weight: 800;
-    font-style: normal;
+    font-style: black;
   }
   
   /*Black Italic */
   @font-face {
     font-family: "Aeonik";
-    src: url("fonts/Aeonik-BlackItalic.woff2") format("woff2"),
-      url("fonts/Aeonik-BlackItalic.woff") format("woff");
-    font-weight: 800;
+    src: url("fonts/Aeonik-RegularItalic.woff2") format("woff2"),
+      url("fonts/Aeonik-RegularItalic.woff") format("woff");
+    font-weight: 400;
     font-style: italic;
   }
+   
   
   /* light */
   @font-face {
@@ -40,7 +41,7 @@ body, html {
     src: url("fonts/Aeonik-Light.woff2") format("woff2"),
       url("fonts/Aeonik-Light.woff") format("woff");
     font-weight: 200;
-    font-style: normal;
+    font-style: light;
   }
 
 body::-webkit-scrollbar {
@@ -163,7 +164,6 @@ body::-webkit-scrollbar {
 .tile {
     background-color: #f1f1f1;
     padding: 15px;
-    
     border-radius: 8px;
     display: inline-block;
     width: 190px;
@@ -486,6 +486,10 @@ body.darkmode,html.darkmode {
     transition: transform 0.2s ease, box-shadow 0.2s ease,background-color 1s ease, color 1s ease, border 1s ease;
     cursor: pointer;
     transform: skew(-10deg,0deg);
+}
+
+#add-entry {
+    margin-top: 0px;
 }
 
 #add-section.darkmode, #add-entry.darkmode, #download-btn.darkmode, #load-template-btn.darkmode, .custom-file-upload.darkmode {
@@ -872,6 +876,7 @@ li .eye-button, li .edit-button, li .delete-button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
  }
 
  #newSection.collapsed {
@@ -899,7 +904,7 @@ width: 100%;
 }
 
 .add-entry-section {
-    margin-top: 20px; /* Add margin to separate it from the section list */
+    margin-top: 10px; /* Add margin to separate it from the section list */
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -947,20 +952,31 @@ width: 100%;
     letter-spacing: 2px;
 }
 
+.ProseMirror {
+    height: 120px;
+    outline: none;
+    letter-spacing: 2px;
+    background-color: #fff;
+}
 
-#description{
+
+#description, #editor{
     width: calc(100% - 20px); /* Full width with some padding */
     max-width: calc(100% - 20px);
     min-width: calc(100% - 20px);
-    max-height:120px ;
+    height: 120px;
+    max-height:110px ;
     padding: 10px; /* Padding inside input fields */
     margin-bottom: 10px; /* Space between input fields */
+    background-color: #fff;
     border: 1px solid #ccc; /* Light border */
     border-radius: 5px; /* Rounded corners */
     font-size: 0.78em; /* Font size */
     font-family: Aeonik;
     text-wrap: break-word;
 }
+#editor > div > p
+
 
 #form-inputs > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div{
     
@@ -971,7 +987,9 @@ width: 100%;
  
 }
 
-
+#editor > div > p {
+margin: 0px;
+}
 
 
 .down-up-section {

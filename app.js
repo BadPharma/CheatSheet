@@ -1,3 +1,15 @@
+import { Editor } from 'https://esm.sh/@tiptap/core';
+import Document from 'https://esm.sh/@tiptap/extension-document';
+import Paragraph from 'https://esm.sh/@tiptap/extension-paragraph';
+import Text from 'https://esm.sh/@tiptap/extension-text';
+import Link from 'https://esm.sh/@tiptap/extension-link';
+import Bold from 'https://esm.sh/@tiptap/extension-bold';
+import Italic from 'https://esm.sh/@tiptap/extension-italic';
+import Underline from 'https://esm.sh/@tiptap/extension-underline';
+import BulletList from 'https://esm.sh/@tiptap/extension-bullet-list';
+import OrderedList from 'https://esm.sh/@tiptap/extension-ordered-list';
+import ListItem from 'https://esm.sh/@tiptap/extension-list-item';
+
 document.addEventListener('DOMContentLoaded', () => {
     const sectionList = document.getElementById('section-list');
     sectionList.style.display = 'none';
@@ -64,19 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     newcatInput.maxLength = 45; // Set max length for new category input
 
-    let editor;
-
-    ClassicEditor
-    .create(document.querySelector('#editor'), {
-        toolbar: ['bold', 'italic','undo', 'redo'],
-    })
-    .then(newEditor => {
-        editor = newEditor; // Assign CKEditor instance to global variable
-    })
-    .catch(error => {
-        console.error("CKEditor initialization error:", error);
-    });
-
+    
     function sanitizeInput(input) {
         return DOMPurify.sanitize(input);
     }
@@ -620,7 +620,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         const descriptionText = document.createElement('p');
         descriptionText.className = 'description-text';
-        descriptionText.textContent = sanitizeInput(description);
+        descriptionText.innerHTML = sanitizeInput(description);
     
         
     
@@ -860,9 +860,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
       
 
-   
-
-
       // Function to save the edits made in the modal
     document.getElementById('save-edit-btn').onclick = function () {[]
         if (!currentTile) {
@@ -1010,12 +1007,27 @@ document.addEventListener('DOMContentLoaded', () => {
         eyeIcon.style.fill = allHidden ? "black" : "gray";
     }
 
-
+    const editor = new Editor({
+        element: document.querySelector('#editor'),
+        extensions: [
+        Document,
+        Paragraph,
+        Text,
+        Link,
+        Bold,
+        Italic,
+        Underline,
+        BulletList,
+        OrderedList,
+        ListItem,
+        ],
+       
+      });
 
     document.getElementById('add-entry').addEventListener('click', () => {
         const selectedSection = sectionSelect.value;
         const command = commandInput.value.trim(); // Trim whitespace
-        const description =  editor.getData().trim();
+        const description =  editor.getHTML().trim();
         const url = urlInput.value.trim(); // Trim whitespace
     
         if (!selectedSection) {
@@ -1030,7 +1042,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         addEntryToSection(selectedSection, command, description,url);
         commandInput.value = '';
-        description.innerHTML = '';
+        description.textContent = '';
         urlInput.value = ''; // Clear URL input field after adding
         populateSectionDropdown(); // Refresh the dropdown
         enhanceSectionDropdown(); // Refresh the Choices dropdown

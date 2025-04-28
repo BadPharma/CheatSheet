@@ -20,7 +20,8 @@
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+    <script src="https://unpkg.com/@tiptap/core@2.0.0-beta.215/dist/tiptap-core.umd.min.js"></script>
+    <script src="https://unpkg.com/@tiptap/starter-kit@2.0.0-beta.215/dist/tiptap-starter-kit.umd.min.js"></script>
 
     <title>CheatSheet</title>
 </head>
@@ -91,7 +92,7 @@
 
                     <div id="editor"></div>
                     
-                    <input type="text" id="url" placeholder="Optional URL" maxlength="2083" />
+                    <input type="text" id="url" placeholder="Optional URL" maxlength="203" />
 
                   
             </div>
@@ -252,7 +253,7 @@
 </div>
 
 
-<script src="app.js"></script> 
+<script type="module" src="app.js"></script> 
 
 </body>
 </html>
