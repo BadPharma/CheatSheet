@@ -510,9 +510,19 @@ body.darkmode,html.darkmode {
 #button-row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    
     align-items: center;
     width: 100%;
+}
+
+#load-excel-btn > img {
+    width: 20px;
+    height: 20px;
+}
+
+#uploadxlsx > span {
+    font-size: 1.27em;
+    font-weight: 600;
 }
 
 #add-entry {
