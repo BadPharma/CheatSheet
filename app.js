@@ -12,10 +12,11 @@ import ListItem from 'https://esm.sh/@tiptap/extension-list-item';
 
 document.addEventListener('DOMContentLoaded', () => {
     const sectionList = document.getElementById('section-list');
+
     sectionList.style.display = 'none';
     const sectionSelect = document.getElementById('section-select');
     const commandInput = document.getElementById('command');
-    const descriptionInput = document.getElementById('description');
+    const editordiv = document.getElementById('editor');
     const configList = document.getElementById('config-list');
     const downloadBtn = document.getElementById('download-btn');
     const uploadXlsx = document.getElementById('upload-xlsx');
@@ -56,8 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelbtn = document.getElementById('cancelBtn');
     const customupload = document.getElementById('uploadxlsx');
     const loadtemplatebtn = document.getElementById('load-template-btn');
-    const   helpmodalContent = document.querySelector("#helpModal > div")
+    const  helpmodalContent = document.querySelector("#helpModal > div")
     const urlInput = document.getElementById('url');
+    let currentOneDriveFile = null;
+
     
     let isDarkMode = false;
 
@@ -90,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sidebar) sidebar.classList[method]('darkmode');
         if (newcatInput) newcatInput.classList[method]('darkmode');
         if (commandInput) commandInput.classList[method]('darkmode');
-        if (descriptionInput) descriptionInput.classList[method]('darkmode');
+        if (editordiv) editordiv.classList[method]('darkmode');
         if (sectionSelect) sectionSelect.classList[method]('darkmode');
         if (settingsmodalContent) settingsmodalContent.classList[method]('darkmode');
         if (custommodalContent) custommodalContent.classList[method]('darkmode');
@@ -113,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (helpmodalContent) helpmodalContent.classList[method]('darkmode');
         if(urlInput) urlInput.classList[method]('darkmode');
         
+        
 
         const templatechoicesWrapper = document.querySelector('#template-select')?.closest('.choices .choices__inner');
         if (templatechoicesWrapper) templatechoicesWrapper.classList[method]('darkmode'); 
@@ -128,6 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const entrychoicesWrapper = document.querySelector("#form-inputs > div > div.choices__inner");
         if (entrychoicesWrapper) entrychoicesWrapper.classList[method]('darkmode');
+
+        const descriptioninput = document.querySelector(".ProseMirror");
+        if (descriptioninput) descriptioninput.classList[method]('darkmode');
     }
 
     //Copy function toggle
@@ -994,7 +1001,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
     function toggleSectionVisibility(sectionName, eyeIcon) {
         const tiles = document.querySelectorAll(`.tile[data-section="${sectionName}"]`);
         let allHidden = [...tiles].every(tile => tile.style.display === "none");
@@ -1049,7 +1055,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // Show feedback popup
         showFeedback("New entry added successfully!", "success");
-        });
+    });
     
 
     function addEntryToSection(sectionName, command, description, url) {
@@ -1081,27 +1087,132 @@ document.addEventListener('DOMContentLoaded', () => {
         otherTiles.forEach(tile => configList.appendChild(tile));
     }
    
-  
-    
-    // Function to download XLSX
-    function downloadXLSX() {
-        const workbook = XLSX.utils.book_new();
-        const data = [];
+    const WorkbookManager = {
+        async createWorkbookBlob(formState) {
+    const wb = XLSX.utils.book_new();
 
-        for (const sectionName in sections) {
-            const section = sections[sectionName];
-            section.entries.forEach(entry => {
-                data.push([sectionName, entry.command, entry.description, section.color,entry.url || '']);
-            });
+    const wsData = [['Section', 'Command', 'Description', 'Colour', 'URL']];
+
+    for (const [sectionName, section] of Object.entries(formState)) {
+        const color = section.color || '';
+        for (const entry of section.entries) {
+            wsData.push([
+                sectionName,
+                entry.command || '',
+                entry.description || '',
+                color,
+                entry.url || ''
+            ]);
         }
-
-        data.unshift(["section", "command", "description", "colour","url"]);
-        const worksheet = XLSX.utils.aoa_to_sheet(data);
-        XLSX.utils.book_append_sheet(workbook, worksheet, "Cheatsheet");
-        XLSX.writeFile(workbook, "cheatsheet.xlsx");
     }
 
-    downloadBtn.addEventListener('click', downloadXLSX);
+    const ws = XLSX.utils.aoa_to_sheet(wsData);
+    XLSX.utils.book_append_sheet(wb, ws, "Cheatsheet");
+
+    const uint8array = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+    return new Blob([uint8array], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+}
+,
+    
+        async downloadLocally(blob, filename = 'cheatsheet.xlsx') {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        },
+    
+        async uploadToOneDrive(blob) {
+            if (!currentOneDriveFile?.id) {
+                console.warn("No OneDrive file selected for upload.");
+                return;
+            }
+    
+            try {
+                const accessToken = await getAccessToken(); // Always get a fresh token
+                const updateUrl = `https://graph.microsoft.com/v1.0/me/drive/items/${currentOneDriveFile.id}/content`;
+    
+                const response = await fetch(updateUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Content-Type': blob.type,
+                    },
+                    body: blob,
+                });
+    
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error("Upload failed:", errorText);
+                    throw new Error("Upload to OneDrive failed.");
+                }
+    
+                showFeedback("File updated on OneDrive successfully!", "success");
+            } catch (err) {
+                console.error("Upload error:", err);
+                showFeedback("Failed to update file on OneDrive.", "error");
+            }
+        },
+    
+        async exportWorkbook(sections, filename = 'cheatsheet.xlsx') {
+    try {
+        const blob = await this.createWorkbookBlob(sections);
+
+        if (currentOneDriveFile?.id) {
+            await this.uploadToOneDrive(blob);
+        } else {
+            await this.downloadLocally(blob, filename);
+        }
+    } catch (err) {
+        console.error("Export failed:", err);
+        showFeedback("An error occurred during export.", "error");
+    }
+},        
+    
+        setOneDriveFile(file) {
+            currentOneDriveFile = file;
+        },
+    
+        clearOneDriveFile() {
+            currentOneDriveFile = null;
+        }
+    };
+
+    
+   let lastBlobHash = null;
+
+function hashBlob(blob) {
+    return blob.size + ':' + blob.type;
+}
+
+downloadBtn.addEventListener('click', async () => {
+    try {
+        const blob = await WorkbookManager.createWorkbookBlob(sections);
+        const hash = hashBlob(blob);
+        
+        if (hash === lastBlobHash) {
+            console.log("No changes detected, skipping upload.");
+            return;
+        }
+
+        lastBlobHash = hash;
+        const filename = currentOneDriveFile?.name || 'cheatsheet.xlsx';
+
+        if (currentOneDriveFile?.id) {
+            await WorkbookManager.uploadToOneDrive(blob);
+        } else {
+            await WorkbookManager.downloadLocally(blob, filename);
+        }
+    } catch (err) {
+        console.error("Download/export failed:", err);
+        showFeedback("Failed to download or export file.", "error");
+    }
+});
+
+    
 
     // Function to handle XLSX upload
     async function handleXLSXUpload(file) {
@@ -1212,8 +1323,108 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
+    
+    // Microsoft Graph Integration
+    const msalInstance = new msal.PublicClientApplication({
+        auth: {
+        clientId: "47ef338a-be5e-42dd-b185-9a1a75215908",
+                redirectUri: "http://localhost:5500"
+        },
+        cache: {
+        cacheLocation: "localStorage",
+        storeAuthStateInCookie: false
+        },
+        system: {
+        loggerOptions: {
+            loggerCallback: (level, message, containsPii) => {
+            if (!containsPii) console.log(message);
+            },
+            piiLoggingEnabled: false,
+            logLevel: msal.LogLevel.Info,
+        }
+        }
+    });
+  
+    // Prevent redirect loops
+    msalInstance.handleRedirectPromise().catch((error) => {
+        console.error("Redirect handling error:", error);
+    });
+  const loginRequest = {
+    scopes: ["Files.ReadWrite", "User.Read"]
+  };
+
+    async function getAccessToken() {
+        const accounts = msalInstance.getAllAccounts();
+        if (accounts.length === 0) throw new Error("No signed-in account found.");
+
+        const response = await msalInstance.acquireTokenSilent({
+            scopes: ["Files.ReadWrite"],
+            account: accounts[0],
+        });
+
+        return response.accessToken;
+    }
+
+
 
   
+    document.getElementById('load-excel-btn').addEventListener('click', () => {
+        OneDrive.open({
+            clientId: "47ef338a-be5e-42dd-b185-9a1a75215908",
+            action: "download",
+            multiSelect: false,
+            advanced: { redirectUri: "http://localhost:5500" },
+            success: async (files) => {
+                const fileUrl = files.value[0]?.['@microsoft.graph.downloadUrl'];
+                if (!fileUrl) {
+                    showFeedback("No file selected or download URL unavailable.", "error");
+                    return;
+                }
+            
+                // ✅ Store selected file metadata so we can save back later
+                WorkbookManager.setOneDriveFile(files.value[0]);
+            
+                try {
+                    const userResponse = await showConfirmationDialog(
+                        "Do you want to clear the current list or merge it with the uploaded OneDrive file?",
+                        "Clear",
+                        "Merge"
+                    );
+            
+                    if (userResponse) {
+                        configList.innerHTML = '';
+                        sectionList.innerHTML = '';
+                        sectionList.style.display = 'block';
+                        sections = {};
+                        showFeedback("Existing data cleared. Loading file...", "info");
+                    } else {
+                        showFeedback("Merging file with existing data...", "info");
+                    }
+            
+                    const response = await fetch(fileUrl);
+                    const arrayBuffer = await response.arrayBuffer();
+                    const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+            
+                    processWorkbook(workbook);
+                    showFeedback("OneDrive file loaded successfully!", "success");
+            
+                } catch (error) {
+                    console.error('OneDrive load error:', error);
+                    showFeedback("Failed to load file from OneDrive.", "error");
+                }
+            }
+            ,
+            cancel: () => {
+                showFeedback("OneDrive file selection cancelled.", "info");
+            },
+            error: (e) => {
+                console.error("OneDrive Picker Error:", e);
+                showFeedback("An error occurred with the OneDrive picker.", "error");
+            }
+        });
+    });
+
+
 
     // Function to process the uploaded workbook
     function processWorkbook(workbook) {
@@ -1229,9 +1440,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const color = sanitizeInput(row[3]); // Sanitize input for row[3];
                 const url = sanitizeInput(row[4] || ''); // Sanitize input for row[4] (empty string for blank URLs)
     
-                // Debugging log
-                
-    
+              
                 if (!sections[section]) {
                     createSection(section, color);
                 }
@@ -1241,7 +1450,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
     }
-    
+
+
 
     function populateTemplateDropdown(templateGroups) {
         const templateSelect = document.getElementById('template-select');

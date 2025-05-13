@@ -22,12 +22,16 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://unpkg.com/@tiptap/core@2.0.0-beta.215/dist/tiptap-core.umd.min.js"></script>
     <script src="https://unpkg.com/@tiptap/starter-kit@2.0.0-beta.215/dist/tiptap-starter-kit.umd.min.js"></script>
+    <script src="https://alcdn.msauth.net/browser/2.37.0/js/msal-browser.min.js"></script>
+    <script type="text/javascript" src="https://js.live.net/v7.2/OneDrive.js"></script>
+    
+
 
     <title>CheatSheet</title>
 </head>
 <body>
     
-    <div id="sidebar-tab" class="sidebar-tab">☰</div>
+    <div id="sidebar-tab" class="sidebar-tab" title="Hides the sidebar">☰</div>
     
         
     <div id="sidebar" class="sidebar" data-step="1" data-intro="">
@@ -104,6 +108,11 @@
             <div id="down-up-buttons">
                 <button id="download-btn"><span class="btn-label">Download XLSX</span></button>
                 <label for="upload-xlsx" id="uploadxlsx" class="custom-file-upload"><span class="btn-label">Upload XLSX</span></label>
+                                <!-- Microsoft Sign-In + Load Excel Button -->
+                <button id="load-excel-btn">📄 Load Excel from OneDrive</button>
+                
+
+
                 <input type="file" id="upload-xlsx" accept=".xlsx"/>
             </div>
         </div>

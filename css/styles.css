@@ -430,7 +430,7 @@ body::-webkit-scrollbar {
 
 
 
-.sidebar.darkmode, #section-name.darkmode, #section-select.darkmode, #command.darkmode, #description.darkmode,#url.darkmode, .choices__inner.darkmode, .choices__list--dropdown.darkmode, .modal-content.darkmode, #edit-section-select.darkmode, #edit-command.darkmode, #edit-description.darkmode,#sectionTitleInput.darkmode, #ad-footer.darkmode  {
+.sidebar.darkmode,.ProseMirror.darkmode,#editor.darkmode, #section-name.darkmode, #section-select.darkmode, #command.darkmode, #description.darkmode,#url.darkmode, .choices__inner.darkmode, .choices__list--dropdown.darkmode, .modal-content.darkmode, #edit-section-select.darkmode, #edit-command.darkmode, #edit-description.darkmode,#sectionTitleInput.darkmode, #ad-footer.darkmode  {
     background-color: #444; 
     color: #fff; 
     border: 1px solid #555; 
@@ -953,10 +953,12 @@ width: 100%;
 }
 
 .ProseMirror {
-    height: 120px;
+    max-height: 120px;
+    width:100%;
     outline: none;
     letter-spacing: 2px;
     background-color: #fff;
+    overflow: auto;
 }
 
 
@@ -968,7 +970,7 @@ width: 100%;
     max-height:110px ;
     padding: 10px; /* Padding inside input fields */
     margin-bottom: 10px; /* Space between input fields */
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #ccc; /* Light border */
     border-radius: 5px; /* Rounded corners */
     font-size: 0.78em; /* Font size */
