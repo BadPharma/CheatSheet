@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const editordiv = document.getElementById('editor');
     const configList = document.getElementById('config-list');
     const downloadBtn = document.getElementById('download-btn');
+    const saveod = document.getElementById('save-btn');
     const uploadXlsx = document.getElementById('upload-xlsx');
     const sidebar = document.getElementById('sidebar');
     const sidebarTab = document.getElementById('sidebar-tab');
@@ -1182,35 +1183,52 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     
-   let lastBlobHash = null;
+let lastBlobHash = null;
 
-function hashBlob(blob) {
-    return blob.size + ':' + blob.type;
+// Hashing utility to detect changes
+async function hashBlob(blob) {
+    const arrayBuffer = await blob.arrayBuffer();
+    const hashBuffer = await crypto.subtle.digest('SHA-256', arrayBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
+// Download locally
 downloadBtn.addEventListener('click', async () => {
     try {
         const blob = await WorkbookManager.createWorkbookBlob(sections);
-        const hash = hashBlob(blob);
-        
+        const filename = currentOneDriveFile?.name || 'cheatsheet.xlsx';
+        await WorkbookManager.downloadLocally(blob, filename);
+    } catch (err) {
+        console.error("Download failed:", err);
+        showFeedback("Failed to download file.", "error");
+    }
+});
+
+// Save to OneDrive
+saveod.addEventListener('click', async () => {
+    try {
+        const blob = await WorkbookManager.createWorkbookBlob(sections);
+        const hash = await hashBlob(blob);
+
         if (hash === lastBlobHash) {
             console.log("No changes detected, skipping upload.");
             return;
         }
 
         lastBlobHash = hash;
-        const filename = currentOneDriveFile?.name || 'cheatsheet.xlsx';
 
         if (currentOneDriveFile?.id) {
             await WorkbookManager.uploadToOneDrive(blob);
         } else {
-            await WorkbookManager.downloadLocally(blob, filename);
+            showFeedback("No OneDrive file selected.", "error");
         }
     } catch (err) {
-        console.error("Download/export failed:", err);
-        showFeedback("Failed to download or export file.", "error");
+        console.error("Upload failed:", err);
+        showFeedback("Failed to upload to OneDrive.", "error");
     }
 });
+
 
     
 

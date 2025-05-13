@@ -470,7 +470,7 @@ body.darkmode,html.darkmode {
 
 
 
-#add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn  {
+#add-section, #add-entry, #load-template-btn, #clear-sheet-btn  {
     width: 100%;
     padding: 10px 16px;
     margin-top: 15px;
@@ -488,7 +488,7 @@ body.darkmode,html.darkmode {
     transform: skew(-10deg,0deg);
 }
 
-.custom-file-upload, #load-excel-btn {
+.custom-file-upload, #load-excel-btn, #download-btn, #save-btn {
     width: 33.3%;
     padding: 10px 16px;
     margin-top: 15px;
@@ -497,8 +497,7 @@ body.darkmode,html.darkmode {
     border-radius: 12px;
     background-color: #947EB0;
     color: antiquewhite;
-    font-size: 1em;
-    font-weight: 600;
+    
     letter-spacing: 0.8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease,background-color 1s ease, color 1s ease, border 1s ease;
@@ -507,7 +506,7 @@ body.darkmode,html.darkmode {
 
 }
 
-#button-row {
+.button-row {
     display: flex;
     flex-direction: row;
     
@@ -520,10 +519,6 @@ body.darkmode,html.darkmode {
     height: 20px;
 }
 
-#uploadxlsx > span {
-    font-size: 1.27em;
-    font-weight: 600;
-}
 
 #add-entry {
     margin-top: 0px;
