@@ -470,7 +470,7 @@ body.darkmode,html.darkmode {
 
 
 
-#add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn, .custom-file-upload {
+#add-section, #add-entry, #download-btn, #load-template-btn, #clear-sheet-btn  {
     width: 100%;
     padding: 10px 16px;
     margin-top: 15px;
@@ -486,6 +486,33 @@ body.darkmode,html.darkmode {
     transition: transform 0.2s ease, box-shadow 0.2s ease,background-color 1s ease, color 1s ease, border 1s ease;
     cursor: pointer;
     transform: skew(-10deg,0deg);
+}
+
+.custom-file-upload, #load-excel-btn {
+    width: 33.3%;
+    padding: 10px 16px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 12px;
+    background-color: #947EB0;
+    color: antiquewhite;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease,background-color 1s ease, color 1s ease, border 1s ease;
+    cursor: pointer;
+    transform: skew(-10deg,0deg);
+
+}
+
+#button-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 #add-entry {
@@ -1005,7 +1032,7 @@ margin: 0px;
 }
 
 #down-up-buttons {
-    display: block;
+    display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;

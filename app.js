@@ -1328,7 +1328,8 @@ downloadBtn.addEventListener('click', async () => {
     const msalInstance = new msal.PublicClientApplication({
         auth: {
         clientId: "47ef338a-be5e-42dd-b185-9a1a75215908",
-                redirectUri: "http://localhost:5500"
+                redirectUri: "https://badpharma.github.io/CheatSheet/"
+
         },
         cache: {
         cacheLocation: "localStorage",
