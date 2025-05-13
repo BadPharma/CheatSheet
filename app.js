@@ -1397,7 +1397,7 @@ downloadBtn.addEventListener('click', async () => {
                         sectionList.innerHTML = '';
                         sectionList.style.display = 'block';
                         sections = {};
-                        showFeedback("Existing data cleared. Loading file...", "info");
+                        showFeedback("Data cleared. Loading file...", "info");
                     } else {
                         showFeedback("Merging file with existing data...", "info");
                     }
