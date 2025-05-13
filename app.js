@@ -1170,7 +1170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Export failed:", err);
         showFeedback("An error occurred during export.", "error");
     }
-},        
+        },        
     
         setOneDriveFile(file) {
             currentOneDriveFile = file;
@@ -1325,46 +1325,86 @@ downloadBtn.addEventListener('click', async () => {
     
     
     // Microsoft Graph Integration
-    const msalInstance = new msal.PublicClientApplication({
-        auth: {
+const msalInstance = new msal.PublicClientApplication({
+    auth: {
         clientId: "47ef338a-be5e-42dd-b185-9a1a75215908",
-                redirectUri: "https://badpharma.github.io/CheatSheet/"
-
-        },
-        cache: {
+        redirectUri: "https://badpharma.github.io/CheatSheet/"
+    },
+    cache: {
         cacheLocation: "localStorage",
         storeAuthStateInCookie: false
-        },
-        system: {
+    },
+    system: {
         loggerOptions: {
             loggerCallback: (level, message, containsPii) => {
-            if (!containsPii) console.log(message);
+                if (!containsPii) console.log(message);
             },
             piiLoggingEnabled: false,
             logLevel: msal.LogLevel.Info,
         }
+    }
+});
+
+// Ensure we handle redirect properly (especially if loginRedirect is ever used)
+msalInstance.handleRedirectPromise()
+    .then((response) => {
+        if (response !== null) {
+            console.log("Redirect login success:", response.account);
         }
-    });
-  
-    // Prevent redirect loops
-    msalInstance.handleRedirectPromise().catch((error) => {
+    })
+    .catch((error) => {
         console.error("Redirect handling error:", error);
     });
-  const loginRequest = {
+
+const loginRequest = {
     scopes: ["Files.ReadWrite", "User.Read"]
-  };
+};
 
-    async function getAccessToken() {
-        const accounts = msalInstance.getAllAccounts();
-        if (accounts.length === 0) throw new Error("No signed-in account found.");
+// Optional: manual sign-in
+async function signIn() {
+    try {
+        const loginResponse = await msalInstance.loginPopup(loginRequest);
+        console.log("User signed in:", loginResponse.account);
+        return loginResponse.account;
+    } catch (error) {
+        console.error("Login error:", error);
+        throw error;
+    }
+}
 
+// Use this to get accessToken (handles silent or fallback to login)
+async function getAccessToken() {
+    let accounts = msalInstance.getAllAccounts();
+
+    if (accounts.length === 0) {
+        // No account, trigger login
+        await signIn();
+        accounts = msalInstance.getAllAccounts();
+
+        if (accounts.length === 0) {
+            throw new Error("Login failed. No account found.");
+        }
+    }
+
+    try {
         const response = await msalInstance.acquireTokenSilent({
-            scopes: ["Files.ReadWrite"],
+            ...loginRequest,
+            account: accounts[0],
+        });
+
+        return response.accessToken;
+    } catch (error) {
+        console.warn("Silent token acquisition failed, trying popup:", error);
+
+        // Fallback to interactive login
+        const response = await msalInstance.acquireTokenPopup({
+            ...loginRequest,
             account: accounts[0],
         });
 
         return response.accessToken;
     }
+}
 
 
 
