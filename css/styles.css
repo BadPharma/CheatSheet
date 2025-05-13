@@ -985,6 +985,7 @@ width: 100%;
 }
 
 .ProseMirror {
+    height: 120px;
     max-height: 120px;
     width:100%;
     outline: none;
