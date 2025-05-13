@@ -1374,7 +1374,7 @@ downloadBtn.addEventListener('click', async () => {
             clientId: "47ef338a-be5e-42dd-b185-9a1a75215908",
             action: "download",
             multiSelect: false,
-            advanced: { redirectUri: "http://localhost:5500" },
+            advanced: { redirectUri: "https://badpharma.github.io/CheatSheet/" },
             success: async (files) => {
                 const fileUrl = files.value[0]?.['@microsoft.graph.downloadUrl'];
                 if (!fileUrl) {
