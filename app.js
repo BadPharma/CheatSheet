@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const editModal = document.getElementById('editModal');
     const editSectionSelect = document.getElementById('edit-section-select');
     const editCommandInput = document.getElementById('edit-command');
+    const editUrlInput = document.getElementById('edit-url-input');
     const editDescriptionInput = document.getElementById('edit-description');
     const addEntryHeader = document.getElementById('add-entry-header');
     const addEntryButton = document.getElementById('add-entry');
