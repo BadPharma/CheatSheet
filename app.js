@@ -12,6 +12,7 @@ import ListItem from 'https://esm.sh/@tiptap/extension-list-item';
 
 document.addEventListener('DOMContentLoaded', () => {
     const sectionList = document.getElementById('section-list');        
+    const sectionList = document.getElementById('section-list');        
     const sectionSelect = document.getElementById('section-select');
     const commandInput = document.getElementById('command');
     const editordiv = document.getElementById('editor');
