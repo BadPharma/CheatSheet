@@ -11,12 +11,11 @@ import OrderedList from 'https://esm.sh/@tiptap/extension-ordered-list';
 import ListItem from 'https://esm.sh/@tiptap/extension-list-item';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const sectionList = document.getElementById('section-list');
-
-    sectionList.style.display = 'none';
+    const sectionList = document.getElementById('section-list');        
     const sectionSelect = document.getElementById('section-select');
     const commandInput = document.getElementById('command');
     const editordiv = document.getElementById('editor');
+    const editmodaleditor = document.getElementById('editmodaleditor');
     const configList = document.getElementById('config-list');
     const downloadBtn = document.getElementById('download-btn');
     const saveod = document.getElementById('save-btn');
@@ -62,26 +61,136 @@ document.addEventListener('DOMContentLoaded', () => {
     const  helpmodalContent = document.querySelector("#helpModal > div")
     const urlInput = document.getElementById('url');
     let currentOneDriveFile = null;
-
-    
+    let currentGoogleDriveFile = null;
     let isDarkMode = false;
-
-    let isWarningModalVisible = false; // Flag to track modal visibility
-    let sections = {}; // Store sections with their colors and entries
-    let currentTile = null; // Reference to the currently edited tile
-    let draggedSectionName = null; // Variable to store the name of the dragged section
-
+    let isWarningModalVisible = false; 
+    let sections = {}; 
+    let currentTile = null; 
+    let draggedSectionName = null; 
     const tooltip = document.createElement('div');
     tooltip.className = 'tooltip';
-    document.body.appendChild(tooltip); // Append tooltip to the body
-
+    document.body.appendChild(tooltip); 
     const elements = document.querySelectorAll('[data-step]');
     let currentStep = 1;
-    let tourRunning = true; // Track whether the tour is currently running
-
-    newcatInput.maxLength = 45; // Set max length for new category input
-
+    let tourRunning = true; 
+    newcatInput.maxLength = 45; 
+    sectionList.style.display = 'none';
     
+    const templates = [
+        {
+            category: 'Audio Editing',
+            templates: [
+                { name: 'Ableton Live 12 ', file: 'test_sheets/audio/al12-shortcuts-macosx.xlsx' },
+                { name: 'Ableton Live 12', file: 'test_sheets/audio/al12-shortcuts-windows.xlsx' }
+            ]
+        },
+        {
+            category: 'Design Tools',
+            templates: [
+                { name: 'Photoshop Shortcuts', file: 'test_sheets/design/psd-shortcuts-windows.xlsx' },
+                { name: 'Photoshop Shortcuts', file: 'test_sheets/design/psd-shortcuts-macosx.xlsx' },
+                { name: 'Canva Shortcuts', file: 'test_sheets/design/canva.-windows.xlsx' },
+                { name: 'Illustrator Shortcuts', file: 'test_sheets/design/ai-shortcuts-windows.xlsx' },
+                { name: 'Illustrator Shortcuts', file: 'test_sheets/design/ai-shortcuts-macosx.xlsx' },
+                { name: 'Lightroom Shortcuts', file: 'test_sheets/design/lightroom-macosx.xlsx' },
+                { name: 'Lightroom Shortcuts', file: 'test_sheets/design/lightroom-windows.xlsx' },
+                { name: 'Unreal Engine Shortcuts', file: 'test_sheets/design/ue-shortcuts-windows.xlsx' },
+            ]
+        },
+        {
+            category: 'Video Editing',
+            templates: [
+                { name: 'Davinci Resolve', file: 'test_sheets/video/dvrosx-shortcuts-macos.xlsx' },
+                { name: 'Davinci Resolve ', file: 'test_sheets/video/dvr-shortcuts-windows.xlsx' },
+                { name: 'Premiere Pro', file: 'test_sheets/video/premierepro-shortcuts-macosx.xlsx' },
+                { name: 'Premiere Pro', file: 'test_sheets/video/premierepro-shortcuts-windows.xlsx'},  
+            ]
+        },
+        {
+            category: 'Developer Tools',
+            templates: [
+                { name: 'Git', file: 'test_sheets/devtools/Git-test.xlsx' },
+                { name: 'SQL', file: 'test_sheets/devtools/sql.xlsx' },
+                { name: 'CSS', file: 'test_sheets/devtools/css.xlsx' },
+            ]
+        },
+        {
+            category: 'Operating Systems',
+            templates: [
+                { name: 'Cisco OS', file: 'test_sheets/os/cisco-test.xlsx' },
+                { name: 'UNIX', file: 'test_sheets/os/unix_cli.xlsx' }
+            ]
+        },
+        {
+            category: 'MS Office',
+            templates: [
+                { name: 'Excel Shortcuts', file: 'test_sheets/microsoft/excel-shortcuts-windows.xlsx' },
+                { name: 'Excel Functions', file: 'test_sheets/microsoft/excel-functions-windows.xlsx' },
+                { name: 'Word Shortcuts', file: 'test_sheets/microsoft/word-shortcuts-windows..xlsx' }
+            ]
+        }
+        
+    ];
+
+   async function loadTemplate(templateFile) {
+    const currentConfigList = document.getElementById('config-list');
+    const hasContent = currentConfigList.children.length > 0;
+
+    if (!templateFile) {
+        showFeedback("No template specified.", "warning");
+        return;
+    }
+
+    if (hasContent) {
+        const userResponse = await showConfirmationDialog(
+            "Do you want to clear the current data and load the new template, or merge it with the existing data?",
+            "Clear",
+            "Merge"
+        );
+
+        if (userResponse === null || userResponse === undefined) {
+            showFeedback("Template load operation cancelled.", "info");
+            return;
+        }
+
+        if (userResponse) {
+            clearUI();
+            showFeedback("Existing data cleared. Loading template...", "info");
+        } else {
+            showFeedback("Merging template with existing data...", "info");
+        }
+    } else {
+        clearUI();
+        showFeedback("Loading template...", "info");
+    }
+
+    try {
+        const data = await fetchTemplate(templateFile);
+        const workbook = await parseWorkbook(data);
+        processWorkbook(workbook); // Ensure this is optimized
+        showFeedback("Template loaded successfully!", "success");
+    } catch (error) {
+        console.error('Error loading template:', error);
+        showFeedback("Failed to load template.", "error");
+    }
+}
+    function clearUI() {
+    configList.innerHTML = '';
+    sectionList.innerHTML = '';
+    sectionList.style.display = 'block';
+    sections = {};
+}
+
+async function fetchTemplate(templateFile) {
+    const response = await fetch(templateFile);
+    return response.arrayBuffer();
+}
+
+async function parseWorkbook(arrayBuffer) {
+    return XLSX.read(arrayBuffer, { type: 'array' });
+}
+
+
     function sanitizeInput(input) {
         return DOMPurify.sanitize(input);
     }
@@ -117,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(touchmybody) touchmybody.classList[method]('darkmode');
         if (helpmodalContent) helpmodalContent.classList[method]('darkmode');
         if(urlInput) urlInput.classList[method]('darkmode');
+        if (editmodaleditor) editmodaleditor.classList[method]('darkmode');
         
         
 
@@ -176,62 +286,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('tourCompleted')) {
         tourRunning = false; // Prevent the tour from running if completed
     }
-
-    const templates = [
-        {
-            category: 'Audio Editing',
-            templates: [
-                { name: 'Ableton Live 12 ', file: 'test_sheets/audio/al12-shortcuts-macosx.xlsx' },
-                { name: 'Ableton Live 12', file: 'test_sheets/audio/al12-shortcuts-windows.xlsx' }
-            ]
-        },
-        {
-            category: 'Design Tools',
-            templates: [
-                { name: 'Photoshop Shortcuts', file: 'test_sheets/design/psd-shortcuts-windows.xlsx' },
-                { name: 'Photoshop Shortcuts', file: 'test_sheets/design/psd-shortcuts-macosx.xlsx' },
-                { name: 'Canva Shortcuts', file: 'test_sheets/design/canva.-windows.xlsx' },
-                { name: 'Illustrator Shortcuts', file: 'test_sheets/design/ai-shortcuts-windows.xlsx' },
-                { name: 'Illustrator Shortcuts', file: 'test_sheets/design/ai-shortcuts-macosx.xlsx' },
-                { name: 'Lightroom Shortcuts', file: 'test_sheets/design/lightroom-macosx.xlsx' },
-                { name: 'Lightroom Shortcuts', file: 'test_sheets/design/lightroom-windows.xlsx' },
-                { name: 'Unreal Engine Shortcuts', file: 'test_sheets/design/ue-shortcuts-windows.xlsx' },
-            ]
-        },
-        {
-            category: 'Video Editing',
-            templates: [
-                { name: 'Davinci Resolve', file: 'test_sheets/video/dvrosx-shortcuts-macos.xlsx' },
-                { name: 'Davinci Resolve ', file: 'test_sheets/video/dvr-shortcuts-windows.xlsx' },
-                { name: 'Premiere Pro', file: 'test_sheets/video/premierepro-shortcuts-macosx.xlsx' },
-                { name: 'Premiere Pro', file: 'test_sheets/video/premierepro-shortcuts-windows.xlsx'},  
-            ]
-        },
-        {
-            category: 'Developer Tools',
-            templates: [
-                { name: 'Git', file: 'test_sheets/devtools/Git-test.xlsx' },
-                { name: 'SQL', file: 'test_sheets/devtools/sql.xlsx' },
-                { name: 'CSS', file: 'test_sheets/devtools/css.xlsx' },
-            ]
-        },
-        {
-            category: 'Operating Systems',
-            templates: [
-                { name: 'Cisco OS', file: 'test_sheets/os/cisco-test.xlsx' },
-                { name: 'UNIX', file: 'test_sheets/os/unix_cli.xlsx' }
-            ]
-        },
-        {
-            category: 'MS Office',
-            templates: [
-                { name: 'Excel Shortcuts', file: 'test_sheets/microsoft/excel-shortcuts-windows.xlsx' },
-                { name: 'Excel Functions', file: 'test_sheets/microsoft/excel-functions-windows.xlsx' },
-                { name: 'Word Shortcuts', file: 'test_sheets/microsoft/word-shortcuts-windows..xlsx' }
-            ]
-        }
-        
-    ];
 
 
           // Function to show tooltip
@@ -294,6 +348,118 @@ document.addEventListener('DOMContentLoaded', () => {
             endTour(); // End the tour when Enter is pressed
         }
     });
+
+
+// === Google API Initialization ===
+const GOOGLE_CLIENT_ID = "1086141678197-jemm9dmpugiefiqh8amomk81clkk94lt.apps.googleusercontent.com";
+const GOOGLE_API_KEY = "AIzaSyDU6Ctrg02BcGpicSlqDoDqkSFLqZXojak";
+let pickerApiLoaded = false;
+
+let accessToken = null;
+let tokenClient;
+
+function onGAPILoad() {
+    gapi.load('client:picker', async () => {
+        await gapi.client.init({
+            apiKey: GOOGLE_API_KEY,
+            discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"]
+        });
+
+        tokenClient = google.accounts.oauth2.initTokenClient({
+            client_id: GOOGLE_CLIENT_ID,
+            scope: 'https://www.googleapis.com/auth/drive',
+            callback: (tokenResponse) => {
+                if (tokenResponse.error) {
+                    console.error(tokenResponse);
+                    showFeedback("Failed to authenticate with Google.", "error");
+                    return;
+                }
+                accessToken = tokenResponse.access_token;
+                pickerApiLoaded = true;
+            }
+        });
+
+        // Prompt for login + get token
+        tokenClient.requestAccessToken();
+    });
+}
+
+
+window.onload = () => {
+    gapi.load('client:picker', () => {
+        gapi.client.init({
+            apiKey: GOOGLE_API_KEY,
+            discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"]
+        });
+
+        gapi.load('picker', () => {
+            pickerApiLoaded = true;
+        });
+
+        tokenClient = google.accounts.oauth2.initTokenClient({
+            client_id: GOOGLE_CLIENT_ID,
+            scope: 'https://www.googleapis.com/auth/drive',
+            callback: (tokenResponse) => {
+                if (tokenResponse.error) {
+                    console.error(tokenResponse);
+                    showFeedback("Failed to authenticate with Google.", "error");
+                    return;
+                }
+                accessToken = tokenResponse.access_token;
+                pickerApiLoaded = true;
+                launchGooglePicker();
+            }
+        });
+    });
+};
+
+function launchGooglePicker() {
+    if (!accessToken) {
+        showFeedback("Google access token not available.", "error");
+        return;
+    }
+
+    const picker = new google.picker.PickerBuilder()
+        .addView(google.picker.ViewId.DOCS)
+        .setOAuthToken(accessToken)
+        .setDeveloperKey(GOOGLE_API_KEY)
+        .setCallback(async (data) => {
+            if (data.action === google.picker.Action.PICKED) {
+                const file = data.docs[0];
+                const fileId = file.id;
+                const fileName = file.name;
+
+                try {
+                    const res = await fetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`, {
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`
+                        }
+                    });
+                    const arrayBuffer = await res.arrayBuffer();
+                    const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+
+                    const userResponse = await showConfirmationDialog("Clear or merge data?", "Clear", "Merge");
+                    if (userResponse) {
+                        configList.innerHTML = '';
+                        sectionList.innerHTML = '';
+                        sections = {};
+                    }
+
+                    processWorkbook(workbook);
+                    WorkbookManager.setGoogleDriveFile({ id: fileId, name: fileName });
+                    showFeedback("Google Drive file loaded!", "success");
+                } catch (err) {
+                    console.error(err);
+                    showFeedback("Failed to load file.", "error");
+                }
+            }
+        })
+        .build();
+
+    picker.setVisible(true);
+}
+
+
 
     // SVG's 
     // Function to create the pencil (edit) SVG
@@ -842,14 +1008,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Get the current values from the tile
             const sectionName = sanitizeInput(tile.dataset.section);
             const command = tile.querySelector('strong').textContent;
-            const description = tile.querySelector('p:nth-of-type(2)').textContent;
+            const description = tile.querySelector('p:nth-of-type(2)').innerHTML;
             const url = tile.querySelector('a')?.href || '';
             
 
     
             // Pre-fill the modal inputs with the current tile data
             editCommandInput.value = command;
-            editDescriptionInput.value = description;
+            editor2.commands.setContent(description);
             editUrlInput.value = url;
     
             // Populate the section dropdown with the current section selected
@@ -878,12 +1044,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const newSectionName = editSectionSelect.value;
         const newCommand = sanitizeInput(editCommandInput.value);
-        const newDescription = sanitizeInput(editDescriptionInput.value);
+        const newDescription = sanitizeInput(editor2.getHTML());
         const newUrl = sanitizeInput(editUrlInput.value);
         const urlElement = currentTile.querySelector('a');
         // Update the tile's content
         currentTile.querySelector('strong').textContent = newCommand;
-        currentTile.querySelector('p:nth-of-type(2)').textContent = newDescription; // Update newDescription;
+        currentTile.querySelector('p:nth-of-type(2)').innerHTML = newDescription;
+         // Update newDescription;
 
         
         if (urlElement) {
@@ -892,7 +1059,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const newUrlElement = document.createElement('a');
             newUrlElement.href = newUrl;
             newUrlElement.textContent = 'Visit Link';
-            newUrlElement.target = '_blank';
+            newUrlElement.target = '_blank'; // Open in new tab
             currentTile.appendChild(newUrlElement);
         }
 
@@ -1032,6 +1199,24 @@ document.addEventListener('DOMContentLoaded', () => {
        
       });
 
+      const editor2 = new Editor({
+        element: document.querySelector('#editmodaleditor'),
+        extensions: [
+        Document,
+        Paragraph,
+        Text,
+        Link,
+        Bold,   
+        Italic,
+        Underline,
+        BulletList,
+        OrderedList,
+        ListItem,       
+        ],
+       
+      });
+        
+
     document.getElementById('add-entry').addEventListener('click', () => {
         const selectedSection = sectionSelect.value;
         const command = commandInput.value.trim(); // Trim whitespace
@@ -1050,7 +1235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         addEntryToSection(selectedSection, command, description,url);
         commandInput.value = '';
-        description.textContent = '';
+        editor.commands.clearContent();
         urlInput.value = ''; // Clear URL input field after adding
         populateSectionDropdown(); // Refresh the dropdown
         enhanceSectionDropdown(); // Refresh the Choices dropdown
@@ -1183,6 +1368,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Add these to WorkbookManager:
+        WorkbookManager.uploadToGoogleDrive = async function (blob) {
+            if (!currentGoogleDriveFile?.id) {
+                console.warn("No Google Drive file selected for upload.");
+                showFeedback("No Google Drive file selected.", "error");
+                return;
+            }
+
+            try {
+                const token = accessToken;
+        if (!token) {
+            showFeedback("Google Drive not authenticated.", "error");
+            return;
+        }
+                const response = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${currentGoogleDriveFile.id}?uploadType=media`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': blob.type,
+                    },
+                    body: blob
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error("Google Drive upload failed:", errorText);
+                    showFeedback("Failed to upload to Google Drive.", "error");
+                } else {
+                    showFeedback("File updated on Google Drive successfully!", "success");
+                }
+            } catch (error) {
+                console.error("Google Drive upload error:", error);
+                showFeedback("Upload to Google Drive failed.", "error");
+            }
+        };
+
+        WorkbookManager.setGoogleDriveFile = function(file) {
+            currentGoogleDriveFile = file;
+        };
+
     
 let lastBlobHash = null;
 
@@ -1231,7 +1456,44 @@ saveod.addEventListener('click', async () => {
 });
 
 
-    
+
+
+// Load from Google Drive (requires gapi picker)
+// === Google Drive Load Button Handler ===
+document.getElementById('load-google-btn').addEventListener('click', () => {
+    if (!pickerApiLoaded || !tokenClient) {
+        showFeedback("Google Picker not ready.", "error");
+        return;
+    }
+
+    tokenClient.callback = (tokenResponse) => {
+        if (tokenResponse.error) {
+            console.error(tokenResponse);
+            showFeedback("Failed to authenticate with Google.", "error");
+            return;
+        }
+        accessToken = tokenResponse.access_token;
+        launchGooglePicker();
+    };
+
+    tokenClient.requestAccessToken();
+});
+
+// === Google Drive Save Button Handler ===
+document.getElementById('save-google-btn').addEventListener('click', async () => {
+    try {
+        const blob = await WorkbookManager.createWorkbookBlob(sections);
+
+        if (currentGoogleDriveFile?.id) {
+            await WorkbookManager.uploadToGoogleDrive(blob);
+        } else {
+            showFeedback("No Google Drive file selected.", "error");
+        }
+    } catch (err) {
+        console.error("Google Drive upload failed:", err);
+        showFeedback("Upload to Google Drive failed.", "error");
+    }
+});
 
     // Function to handle XLSX upload
     async function handleXLSXUpload(file) {
@@ -1288,59 +1550,7 @@ saveod.addEventListener('click', async () => {
     }
     
 
-    async function loadTemplate(templateFile) {
-        const currentConfigList = document.getElementById('config-list');
-        const isThereContent = currentConfigList.children.length > 0;
     
-        if (!templateFile) {
-            showFeedback("No template specified.", "warning");
-            return;
-        }
-    
-        // If there's content, show confirmation dialog
-        if (isThereContent) {
-            const userResponse = await showConfirmationDialog(
-                "Do you want to clear the current data and load the new template, or merge it with the existing data?",
-                "Clear",
-                "Merge"
-            );
-    
-            if (userResponse === null || userResponse === undefined) {
-                showFeedback("Template load operation cancelled.", "info");
-                return; // Exit early if dialog was cancelled
-            }
-    
-            if (userResponse) {
-                // User chose to clear existing data
-                configList.innerHTML = '';
-                sectionList.innerHTML = '';
-                sectionList.style.display = 'block';
-                sections = {};
-                showFeedback("Existing data cleared. Loading template...", "info");
-            } else {
-                showFeedback("Merging template with existing data...", "info");
-            }
-        } else {
-            // No content — just proceed without asking
-            configList.innerHTML = '';
-            sectionList.innerHTML = '';
-            sectionList.style.display = 'block';
-            sections = {};
-            showFeedback("Loading template...", "info");
-        }
-    
-        // Load and process the template
-        try {
-            const response = await fetch(templateFile);
-            const data = await response.arrayBuffer();
-            const workbook = XLSX.read(data, { type: 'array' });
-            processWorkbook(workbook);
-            showFeedback("Template loaded successfully!", "success");
-        } catch (error) {
-            console.error('Error loading template:', error);
-            showFeedback("Failed to load template.", "error");
-        }
-    }
     
     
     // Microsoft Graph Integration
@@ -1428,7 +1638,7 @@ async function getAccessToken() {
 
 
   
-    document.getElementById('load-excel-btn').addEventListener('click', () => {
+document.getElementById('load-excel-btn').addEventListener('click', () => {
         OneDrive.open({
             clientId: "47ef338a-be5e-42dd-b185-9a1a75215908",
             action: "download",
@@ -1482,7 +1692,7 @@ async function getAccessToken() {
                 showFeedback("An error occurred with the OneDrive picker.", "error");
             }
         });
-    });
+});
 
 
 
