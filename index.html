@@ -24,6 +24,9 @@
     <script src="https://unpkg.com/@tiptap/starter-kit@2.0.0-beta.215/dist/tiptap-starter-kit.umd.min.js"></script>
     <script src="https://alcdn.msauth.net/browser/2.37.0/js/msal-browser.min.js"></script>
     <script type="text/javascript" src="https://js.live.net/v7.2/OneDrive.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
     
 
 
@@ -106,19 +109,18 @@
         <div class="down-up-section" data-step="11" data-intro="Save or upload your entries here.">
             <h2 id="down-up-header"> Save / Upload <span id="toggle-down-up-button" class="triangle-down"></span> </h2>
             <div id="down-up-buttons">
-                <div class="button-row">
+                <div class="button-row" id="downloadBtns">
                 <button id="download-btn" title="Download your CheatSheet as a .xlsx file"><span class="btn-label">↓</span></button>
                 <button id="save-btn" title ="Save your OneDrive File"><span class="btn-label">💾</span></button>
+                <button id="save-google-btn" title="Save your Google Drive File">📁</button>
                 </div>
 
-
-
                 <div class="button-row" id="uploadBtns">
-                <label for="upload-xlsx" id="uploadxlsx" class="custom-file-upload" title="Upload from your local storage"><span class="btn-label">↑</span></label>
-                                <!-- Microsoft Sign-In + Load Excel Button -->
-                <button id="load-excel-btn" title="Load a CheatSheet from Onedrive or Sharepoint"><img src="icons/Microsoft_Office_OneDrive_(2019–present).svg" alt="Microsoft Sign-in"></button>
+                <label for="upload-xlsx" id="uploadxlsx" class="custom-file-upload" title="Upload from your local storage"><span class="btn-label">↑</span></label><input type="file" id="upload-xlsx" accept=".xlsx"/>
+                <button id="load-excel-btn" title="Load a CheatSheet from Onedrive or Sharepoint"><img src="icons/Microsoft_Office_OneDrive_(2019–present).svg" alt="Microsoft Sign-in" ></button>
+                <button id="load-google-btn" title="Load a CheatSheet from Google Drive"><img src="icons/google-drive-logo-main-icon.png" ></button>
 
-                <input type="file" id="upload-xlsx" accept=".xlsx"/>
+                
                 </div>
             </div>
         </div>
@@ -183,7 +185,7 @@
         <div class="modal-entry-area">
         <select id="edit-section-select"></select>
         <input type="text" id="edit-command" placeholder="Command" maxlength="100">
-        <textarea id="edit-description" placeholder="Description" maxlength="150"></textarea>
+        <div id="editmodaleditor"></div>
         <input type="text" id="edit-url-input" placeholder="Edit URL" maxlength="2083" />
 
         </div>
@@ -241,7 +243,7 @@
               <li>🌑 Dark mode toggle for easier viewing</li>
               <li>🖨 Copy function allowing you to switch between description and command mode</li>
               <li>🧷 Urls: Each cheat can now have an optional accessible url. Were keeping URLS in cheat descriptions disabled for the time being, let us know if youd like this changed </li> 
-             
+             <li> <img src="icons/Microsoft_Office_OneDrive_(2019–present).svg" height="17px" /> OneDrive: Load Cheatsheets directly from your OneDrive or Shardrive account. Usingthe save buttom you can also update the sheet directly from within the Cheatsheet UI  </li> 
             </ul>
           
             <p><strong>Need help?</strong> Found a bug or have a feature request? Please contact us at <a href="mailto:your@email.com"></a>.  We take all feedback onboard!</p>
