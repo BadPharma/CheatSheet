@@ -12,7 +12,7 @@ import ListItem from 'https://esm.sh/@tiptap/extension-list-item';
 
 document.addEventListener('DOMContentLoaded', () => {
     const sectionList = document.getElementById('section-list');        
-    const sectionList = document.getElementById('section-list');        
+        
     const sectionSelect = document.getElementById('section-select');
     const commandInput = document.getElementById('command');
     const editordiv = document.getElementById('editor');
@@ -352,7 +352,7 @@ async function parseWorkbook(arrayBuffer) {
 
 
 // === Google API Initialization ===
-const GOOGLE_CLIENT_ID = "m";
+const GOOGLE_CLIENT_ID = "";
 const GOOGLE_API_KEY = "";
 let pickerApiLoaded = false;
 
