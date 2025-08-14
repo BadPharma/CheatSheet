@@ -11,8 +11,7 @@ import OrderedList from 'https://esm.sh/@tiptap/extension-ordered-list';
 import ListItem from 'https://esm.sh/@tiptap/extension-list-item';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const sectionList = document.getElementById('section-list');        
-        
+    const sectionList = document.getElementById('section-list');           
     const sectionSelect = document.getElementById('section-select');
     const commandInput = document.getElementById('command');
     const editordiv = document.getElementById('editor');
@@ -61,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadtemplatebtn = document.getElementById('load-template-btn');
     const  helpmodalContent = document.querySelector("#helpModal > div")
     const urlInput = document.getElementById('url');
+    
     let currentOneDriveFile = null;
     let currentGoogleDriveFile = null;
     let isDarkMode = false;
@@ -168,7 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
         const data = await fetchTemplate(templateFile);
         const workbook = await parseWorkbook(data);
-        processWorkbook(workbook); // Ensure this is optimized
+        processWorkbook(workbook);
+        refreshMasonry();// Ensure this is optimized
         showFeedback("Template loaded successfully!", "success");
     } catch (error) {
         console.error('Error loading template:', error);
@@ -447,6 +448,7 @@ function launchGooglePicker() {
                     }
 
                     processWorkbook(workbook);
+                    refreshMasonry();
                     WorkbookManager.setGoogleDriveFile({ id: fileId, name: fileName });
                     showFeedback("Google Drive file loaded!", "success");
                 } catch (err) {
@@ -814,10 +816,12 @@ function launchGooglePicker() {
             descriptionText.style.marginBottom = '8px'; // Remove margin from description text
             tile.appendChild(urlLink);
         }
+
+        
     
         // Add the tile to the config list
         configList.appendChild(tile);
-        
+        refreshMasonry();
 
     }
     
@@ -1273,6 +1277,8 @@ function launchGooglePicker() {
         configList.innerHTML = '';
         sectionTiles.forEach(tile => configList.appendChild(tile));
         otherTiles.forEach(tile => configList.appendChild(tile));
+        refreshMasonry();
+
     }
    
     const WorkbookManager = {
@@ -2044,9 +2050,32 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
             });
         }
     });
+            
 
-    
-   
+                let msnry;
+
+        function initMasonry() {
+            if (msnry) msnry.destroy();
+
+            msnry = new Masonry(configList, {
+                itemSelector: '.tile',
+                columnWidth: '.tile', // detect width from first tile
+                gutter: 25,
+                fitWidth: false,
+                horizontalOrder: true
+            });
+        }
+
+        function refreshMasonry() {
+            if (!msnry) {
+                initMasonry();
+            } else {
+                msnry.reloadItems();
+                msnry.layout();
+            }
+        }
+
+
 
     
 

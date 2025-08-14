@@ -161,13 +161,23 @@ body::-webkit-scrollbar {
 }
 
 
+.config-list {
+    display: block !important;   /* Masonry works on block containers */
+    position: relative;   
+    width: 100%; 
+    height: auto !important;     /* Needed for absolute-positioned children */
+}
+
+
+
 .tile {
     background-color: #f1f1f1;
     padding: 15px;
+    margin-bottom: 25px;
     border-radius: 8px;
-    display: inline-block;
-    width: 190px;
-    max-width: 190px; 
+    display: block;
+    width: 200px;
+    max-width: 200; 
     max-height: fit-content;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
     position: relative;
@@ -431,7 +441,7 @@ body::-webkit-scrollbar {
 
 
 .sidebar.darkmode,.ProseMirror.darkmode,#editor.darkmode, #section-name.darkmode, #section-select.darkmode, #command.darkmode, #description.darkmode,#url.darkmode, .choices__inner.darkmode, .choices__list--dropdown.darkmode, .modal-content.darkmode, #edit-section-select.darkmode, #edit-command.darkmode, #edit-description.darkmode,#sectionTitleInput.darkmode, #ad-footer.darkmode  {
-    background-color: #444; 
+    background-color: #222; 
     color: #fff; 
     border: 1px solid #555; 
     transition: background-color 1s ease, color 1s ease, border 1s ease; 
@@ -1109,18 +1119,6 @@ label{
 transform: translateX(-100%);
 }
 
-
-.config-list{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    align-items: center;
-    justify-items: start;
-    transition: transform 2s ease, margin-left 0.6s ease;
-    margin-bottom:180px;
-    margin-right:20px;
-    gap: 25px 25px; 
-    
-}
 
 
 /* Modal styles */
