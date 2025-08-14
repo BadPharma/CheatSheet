@@ -164,8 +164,8 @@ body::-webkit-scrollbar {
 .config-list {
     display: block !important;   /* Masonry works on block containers */
     position: relative;   
-    width: 100%; 
-    height: auto !important;     /* Needed for absolute-positioned children */
+    
+        /* Needed for absolute-positioned children */
 }
 
 
