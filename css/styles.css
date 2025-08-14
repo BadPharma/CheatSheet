@@ -161,11 +161,21 @@ body::-webkit-scrollbar {
 }
 
 
+.config{
+    width: auto;
+    height: 100%;
+    position: relative;
+    overflow: auto;
+    
+}
+
+
 .config-list {
     display: block !important;   /* Masonry works on block containers */
     position: relative;   
+    width: auto;
     
-        /* Needed for absolute-positioned children */
+  
 }
 
 
@@ -177,7 +187,8 @@ body::-webkit-scrollbar {
     border-radius: 8px;
     display: block;
     width: 200px;
-    max-width: 200; 
+    min-width: 100px;
+    max-width: 200px; 
     max-height: fit-content;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
     position: relative;

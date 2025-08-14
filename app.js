@@ -1127,11 +1127,12 @@ function launchGooglePicker() {
         }, 3000);
     }
 
+    const configdiv = document.getElementById('config');
     // Function to toggle the sidebar visibility
     function toggleSidebar() {
         sidebar.classList.toggle('collapsed');
-        configList.classList.toggle('closed');
-        configList.classList.toggle('open');
+       
+        configdiv.classList.toggle('open');
     }
 
     function handleSectionDragStart(event) {
@@ -2053,15 +2054,16 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
             
 
                 let msnry;
-
+        const gutterWidth = configList.parentElement.offsetWidth * 0.01; // 2% of parent width
         function initMasonry() {
             if (msnry) msnry.destroy();
 
             msnry = new Masonry(configList, {
                 itemSelector: '.tile',
                 columnWidth: '.tile', // detect width from first tile
-                gutter: 25,
-                fitWidth: false,
+                gutter: gutterWidth,
+                fitWidth: true,
+                resize: true,
                 horizontalOrder: true
             });
         }
