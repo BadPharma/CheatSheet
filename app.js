@@ -1133,6 +1133,7 @@ function launchGooglePicker() {
         sidebar.classList.toggle('collapsed');
        
         configdiv.classList.toggle('open');
+        refreshMasonry();
     }
 
     function handleSectionDragStart(event) {
@@ -2054,7 +2055,7 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
             
 
                 let msnry;
-        const gutterWidth = configList.parentElement.offsetWidth * 0.01; // 2% of parent width
+        const gutterWidth = configList.parentElement.offsetWidth * 0.02; // 2% of parent width
         function initMasonry() {
             if (msnry) msnry.destroy();
 
