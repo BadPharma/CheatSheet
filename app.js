@@ -14,8 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const sectionList = document.getElementById('section-list');           
     const sectionSelect = document.getElementById('section-select');
     const commandInput = document.getElementById('command');
-    const editordiv = document.getElementById('editor');
-    const editmodaleditor = document.getElementById('editmodaleditor');
     const configList = document.getElementById('config-list');
     const downloadBtn = document.getElementById('download-btn');
     const saveod = document.getElementById('save-btn');
@@ -23,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     const sidebarTab = document.getElementById('sidebar-tab');
     const toggleButton = document.getElementById('toggle-section-button');
-    const addsectionbutton = document.getElementById('add-section');
     const toggleAddEntryButton = document.getElementById('toggle-add-form-button');
     const sectionHeader = document.getElementById('section-header');
     const reloadWarningModal = document.getElementById('reloadWarningModal');
@@ -32,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const editSectionSelect = document.getElementById('edit-section-select');
     const editCommandInput = document.getElementById('edit-command');
     const editUrlInput = document.getElementById('edit-url-input');
-    const editDescriptionInput = document.getElementById('edit-description');
     const addEntryHeader = document.getElementById('add-entry-header');
     const addEntryButton = document.getElementById('add-entry');
     const formInputs = document.getElementById('form-inputs');
@@ -43,24 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const templatesHeader = document.getElementById('templates-header');
     const templatesButton = document.getElementById('toggle-templates-button');
     const templateForm = document.getElementById('template-form');
-    const touchmybody = document.querySelector("body")
-    const onyour = document.querySelector("html");
     const newcatInput = document.getElementById('section-name');
     const Hideall =  document.getElementById('hide-all-tiles-btn')
-    const darkmodetoggle = document.querySelector("#dark-mode-toggle");
-    const settingsmodalContent = document.querySelector("#settingsModal > div")
-    const custommodalContent = document.querySelector("#customModal > div")
-    const editmodalContent = document.querySelector("#editModal > div")
-    const editsectionModalContent = document.querySelector("#editSectionModal > div")
-    const sectionTitleinput = document.getElementById('sectionTitleInput');
-    const adfooter = document.getElementById('ad-footer')
-    const confirmbtn = document.getElementById('confirmBtn');
-    const cancelbtn = document.getElementById('cancelBtn');
-    const customupload = document.getElementById('uploadxlsx');
-    const loadtemplatebtn = document.getElementById('load-template-btn');
-    const  helpmodalContent = document.querySelector("#helpModal > div")
     const urlInput = document.getElementById('url');
-    
     let currentOneDriveFile = null;
     let currentGoogleDriveFile = null;
     let isDarkMode = false;
@@ -197,59 +178,6 @@ async function parseWorkbook(arrayBuffer) {
         return DOMPurify.sanitize(input);
     }
 
-     //Dark Mode toggles
-     function darkMode() {
-        isDarkMode = !isDarkMode;
-
-        const method = isDarkMode ? 'add' : 'remove';
-
-        if (sidebar) sidebar.classList[method]('darkmode');
-        if (newcatInput) newcatInput.classList[method]('darkmode');
-        if (commandInput) commandInput.classList[method]('darkmode');
-        if (editordiv) editordiv.classList[method]('darkmode');
-        if (sectionSelect) sectionSelect.classList[method]('darkmode');
-        if (settingsmodalContent) settingsmodalContent.classList[method]('darkmode');
-        if (custommodalContent) custommodalContent.classList[method]('darkmode');
-        if (editmodalContent) editmodalContent.classList[method]('darkmode');
-        if (editCommandInput) editCommandInput.classList[method]('darkmode');
-        if (editDescriptionInput) editDescriptionInput.classList[method]('darkmode');
-        if (editSectionSelect) editSectionSelect.classList[method]('darkmode');
-        if (editsectionModalContent) editsectionModalContent.classList[method]('darkmode');
-        if (sectionTitleinput) sectionTitleinput.classList[method]('darkmode');
-        if(addsectionbutton) addsectionbutton.classList[method]('darkmode');//ADD CSS FROM HERE IN THE AM
-        if(addEntryButton) addEntryButton.classList[method]('darkmode');
-        if(downloadBtn) downloadBtn.classList[method]('darkmode');
-        if(customupload) customupload.classList[method]('darkmode');
-        if(onyour) onyour.classList[method]('darkmode');
-        if(confirmbtn) confirmbtn.classList[method]('darkmode');
-        if(adfooter) adfooter.classList[method]('darkmode');
-        if(cancelbtn) cancelbtn.classList[method]('darkmode');
-        if(loadtemplatebtn) loadtemplatebtn.classList[method]('darkmode');
-        if(touchmybody) touchmybody.classList[method]('darkmode');
-        if (helpmodalContent) helpmodalContent.classList[method]('darkmode');
-        if(urlInput) urlInput.classList[method]('darkmode');
-        if (editmodaleditor) editmodaleditor.classList[method]('darkmode');
-        
-        
-
-        const templatechoicesWrapper = document.querySelector('#template-select')?.closest('.choices .choices__inner');
-        if (templatechoicesWrapper) templatechoicesWrapper.classList[method]('darkmode'); 
-
-        const templatedropdown = document.querySelector('.choices__list--dropdown');
-        if (templatedropdown) templatedropdown.classList[method]('darkmode');
-
-        const sectiondropdown = document.querySelector("#template-form > div > div.choices__list.choices__list--dropdown")
-        if (sectiondropdown) sectiondropdown.classList[method]('darkmode');
-
-        const templatesearch = document.querySelector("#template-form > div > div.choices__list.choices__list--dropdown.darkmode > input")
-        if (templatesearch) templatesearch.classList[method]('darkmode');
-
-        const entrychoicesWrapper = document.querySelector("#form-inputs > div > div.choices__inner");
-        if (entrychoicesWrapper) entrychoicesWrapper.classList[method]('darkmode');
-
-        const descriptioninput = document.querySelector(".ProseMirror");
-        if (descriptioninput) descriptioninput.classList[method]('darkmode');
-    }
 
     //Copy function toggle
     copyToggle.addEventListener('change', () => {
@@ -2086,7 +2014,7 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
     // Event listeners for toggling sidebar and sections
     toggleButton.addEventListener('click', toggleSectionList);
     sectionHeader.addEventListener('click', toggleSectionList);
-    darkmodetoggle.addEventListener('click',darkMode)
+    
 
     sidebarTab.addEventListener('click', toggleSidebar);
 
