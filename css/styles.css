@@ -499,7 +499,7 @@ body.darkmode,html.darkmode {
     margin-bottom: 10px;
     border: none;
     border-radius: 12px;
-    background-color: #947EB0;
+    background-color: #1B998B;
     color: antiquewhite;
     font-size: 1em;
     font-weight: 600;
@@ -517,15 +517,33 @@ body.darkmode,html.darkmode {
     margin-bottom: 10px;
     border: none;
     border-radius: 12px;
-    background-color: #947EB0;
+    background-color: #1B998B;
     color: antiquewhite;
-    
     letter-spacing: 0.8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease,background-color 1s ease, color 1s ease, border 1s ease;
     cursor: pointer;
     transform: skew(-10deg,0deg);
 
+}
+
+#hide-all-tiles-btn, #settings-btn, #helpbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 60px;
+    padding: 10px 16px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 12px;
+    margin-right: 3%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    transform: skew(-10deg,0deg);
+    background-color: #1B998B;
 }
 
 .button-row {
@@ -592,7 +610,7 @@ body.darkmode,html.darkmode {
 #clear-sheet-btn {
     position: relative;
     margin-top: 20px;
-    background-color: #CC0033;
+    background-color: #AD343E;
     font-size: 1.2em;
     font-weight: 900;
     letter-spacing: 10px;
@@ -630,24 +648,7 @@ body.darkmode,html.darkmode {
 
 }
 
-#hide-all-tiles-btn, #settings-btn, #helpbtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    width: 60px;
-    padding: 10px 16px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 12px;
-    margin-right: 3%;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
-    transform: skew(-10deg,0deg);
-    background-color: #947EB0;
-}
+
 
 #hide-all-tiles-btn > button > svg{
     width:22px;
@@ -682,19 +683,19 @@ button .btn-label svg {
   }
   
   .circular-toggle input[type="checkbox"]:checked + .circle {
-    background-color: #eee; /* light bg when checked */
+    background-color: #222; /* light bg when checked */
   }
   
   .circular-toggle input[type="checkbox"]:checked + .circle::after {
     transform: translate(-50%, -50%) scale(1.1);
-    background-color: #222; /* dark inner dot when checked */
+    background-color: antiquewhite; /* dark inner dot when checked */
   }
   
   .circular-toggle .circle {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background-color: #222; /* default dark bg */
+    background-color: antiquewhite; /* default dark bg */
     transition: background-color 0.3s ease;
     display: flex;
     align-items: center;
@@ -706,7 +707,7 @@ button .btn-label svg {
     content: '';
     width: 60%;
     height: 60%;
-    background-color: #fff; /* default light dot */
+    background-color: #222; /* default light dot */
     border-radius: 50%;
     transition: all 0.3s ease;
     transform: translate(-50%, -50%) scale(0.8);
@@ -1013,13 +1014,28 @@ width: 100%;
     letter-spacing: 2px;
     background-color: #fff;
     overflow: auto;
+    color: #000;
 }
 
+#editor{
+    width: calc(100% - 20px);
+    height: 120px;
+    max-height: 120px;
+    padding: 10px; /* Padding inside input fields */
+    margin-bottom: 10px; /* Space between input fields */
+    background-color: #ffffff;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 0.78em; /* Font size */
+    font-family: Aeonik;
+    text-wrap: break-word;
+    text-align: left;
+}
 
-#description, #editor, #editmodaleditor{
-    width: calc(100% - 20px); /* Full width with some padding */
+#description, #editmodaleditor{
+    width: 80%; /* Full width with some padding */
     max-width: calc(100% - 20px);
-    min-width: calc(100% - 20px);
+    
     height: 120px;
     max-height:110px ;
     padding: 10px; /* Padding inside input fields */
@@ -1149,11 +1165,13 @@ transform: translateX(-100%);
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #222;
+    color: antiquewhite;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     min-width: 300px;
+    max-width: 900px;
     width: 30%; /* Could be more or less, depending on screen size */
     text-align: center;
     border-radius: 25px;

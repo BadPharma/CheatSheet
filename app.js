@@ -687,7 +687,8 @@ function launchGooglePicker() {
         copyButton.appendChild(createCopySvg());
         buttonContainer.appendChild(copyButton);
     
-        copyButton.addEventListener('click', () => {
+            // Shared copy handler
+        function handleCopy() {
             if (copyToggle.checked) {
                 navigator.clipboard.writeText(command);
                 showFeedback("Command copied to clipboard!", "success");
@@ -695,7 +696,20 @@ function launchGooglePicker() {
                 navigator.clipboard.writeText(description);
                 showFeedback("Description copied to clipboard!", "success");
             }
+        }
+
+        // Click copy button
+        copyButton.addEventListener('click', handleCopy);
+
+        // Double-click anywhere on tile (except buttons) to copy
+        tile.addEventListener('dblclick', (e) => {
+            // Prevent firing when double-clicking on buttons
+            if (!e.target.closest('button')) {
+                handleCopy();
+            }
         });
+
+            
     
         // Create the delete button
         const trashButton = document.createElement('button');
@@ -713,10 +727,10 @@ function launchGooglePicker() {
             showFeedback("Entry deleted successfully!", "error");
         });
     
-        // Append the button container first (so it appears at the top)
+        
         tile.appendChild(buttonContainer);
     
-        // Now, append the tile content **without using innerHTML**
+        
         const header = document.createElement('p');
         header.className = 'tile-header';
         header.textContent = sanitizeInput(sectionName);
@@ -962,6 +976,8 @@ function launchGooglePicker() {
                 }
                 editSectionSelect.appendChild(option);
             }
+
+
     
             // Show the modal
             editModal.style.display = 'block';
@@ -1004,11 +1020,13 @@ function launchGooglePicker() {
             bringTilesToTop(newSectionName); // Optional: Re-arrange the tiles by section
         }
 
+       
+
         // Close the modal after saving
         editModal.style.display = 'none';
     };
-        
-
+    
+    
     // Function to toggle the section list visibility
     function toggleSectionList() {
         sectionList.classList.toggle('collapsed');
@@ -1982,8 +2000,8 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
     });
             
 
-                let msnry;
-        const gutterWidth = configList.parentElement.offsetWidth * 0.02; // 2% of parent width
+        let msnry;
+        const gutterWidth = configList.parentElement.offsetWidth * 0.01; // 2% of parent width
         function initMasonry() {
             if (msnry) msnry.destroy();
 
