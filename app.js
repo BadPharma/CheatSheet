@@ -1948,6 +1948,12 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
         }
     });
 
+      window.addEventListener("click", (event) => {
+        if (event.target === document.getElementById("editModal")) {
+            document.getElementById("editModal").style.display = "none";
+        }
+    });
+
     document.getElementById("helpbtn").addEventListener("click", () => {
         document.getElementById("helpModal").style.display = "block";
     });
