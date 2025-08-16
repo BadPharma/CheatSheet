@@ -167,16 +167,16 @@ body::-webkit-scrollbar {
     height: 100%;
     position: relative;
     overflow: hidden;
-    margin-left: 80px;
+    margin-left: 40px;
     z-index: 1000;
     
 }
 
 
-.config-list {
+#config-list {
     display: block !important;   /* Masonry works on block containers */
     position: relative;   
-    width: auto;
+    width: 100% !important;
     overflow: hidden;
   
 }
@@ -1200,6 +1200,11 @@ label{
 .hidden {
 transform: translateX(-100%);
 }
+
+.hidden-tile {
+  display: none;
+}
+
 
 
 

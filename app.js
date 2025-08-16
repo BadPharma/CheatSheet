@@ -745,6 +745,7 @@ function launchGooglePicker() {
     sections[sanitizeInput(sectionName)] = { color: color, entries: [] };
     populateSectionDropdown();
     enhanceSectionDropdown();
+    refreshMasonry(); // Ensure this is optimized
 }
 
 
@@ -935,6 +936,7 @@ function launchGooglePicker() {
             newEyeButton.onclick = (event) => {
                 event.stopPropagation();
                 toggleSectionVisibility(newName, newEyeButton);
+                 refreshMasonry();
             };
 
             // ✅ Keep eye icon color consistent with visibility state
@@ -1230,10 +1232,14 @@ function launchGooglePicker() {
     
         tiles.forEach(tile => {
             tile.style.display = allHidden ? "" : "none"; // Toggle visibility
+        
         });
     
         // 🔹 Update the eye button color based on visibility state
         eyeIcon.style.fill = allHidden ? "black" : "gray";
+        
+
+        refreshMasonry(); // Refresh the layout after toggling visibility
     }
 
     const editor = new Editor({
@@ -1317,6 +1323,7 @@ function launchGooglePicker() {
         populateSectionDropdown();
         enhanceSectionDropdown();
         refreshMasonry();
+        
     }
     
 
@@ -2109,13 +2116,13 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
             
 
         let msnry;
-        const gutterWidth = configList.parentElement.offsetWidth * 0.01; // 2% of parent width
+        const gutterWidth = configList.parentElement.offsetWidth * 0.02; // 2% of parent width
         function initMasonry() {
             if (msnry) msnry.destroy();
 
             msnry = new Masonry(configList, {
                 itemSelector: '.tile',
-                columnWidth: '.tile', // detect width from first tile
+                columnWidth: 210, // detect width from first tile
                 gutter: gutterWidth,
                 fitWidth: true,
                 resize: true,
