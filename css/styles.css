@@ -2,7 +2,8 @@ body, html {
     font-family: Aeonik;
     background-color: #222;   
     height: fit-content;
-    transition: background-color 1s ease, color 1s ease, border 1s ease; /
+    transition: background-color 1s ease, color 1s ease, border 1s ease; 
+    z-index: 8000;
 } 
 
 /* CORE PAGE CSS */
@@ -88,31 +89,31 @@ body::-webkit-scrollbar {
     padding: 10px 0; /* Adds some spacing */
     z-index: 100; /* Ensures it stays above other content */
   }
-  .sidebar::-webkit-scrollbar {
+  .scrollable::-webkit-scrollbar {
     width: 3px;
   }
 
-  .sidebar::-webkit-scrollbar:hover {
+  .scrollable::-webkit-scrollbar:hover {
     width: 8px;
   }
   
   
-  .sidebar::-webkit-scrollbar-track {
+  .scrollable::-webkit-scrollbar-track {
     width: 3px;
     background-color: rgb(35, 34, 32);
     transition: background-color 2s ease-in-out;
   }
- .sidebar::-webkit-scrollbar-track:hover {
+ .scrollable::-webkit-scrollbar-track:hover {
     width: 8px;
     background-color: antiquewhite;
     transition: background-color 2s ease-in;
   }
   
-  .sidebar::-webkit-scrollbar-thumb {
+  .scrollable::-webkit-scrollbar-thumb {
     background: rgb(102, 101, 99);
   }
   
-  .sidebar::-webkit-scrollbar-thumb:hover {
+ .scrollable::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
 
@@ -166,7 +167,8 @@ body::-webkit-scrollbar {
     height: 100%;
     position: relative;
     overflow: hidden;
-    margin-left: 55px;
+    margin-left: 80px;
+    z-index: 1000;
     
 }
 
@@ -184,6 +186,7 @@ body::-webkit-scrollbar {
 .tile {
     background-color: #f1f1f1;
     padding: 15px;
+    padding-right: 0;
     margin-bottom: 25px;
     border-radius: 8px;
     display: block;
@@ -432,41 +435,36 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    justify-content: center;
     position: fixed; /* Make the sidebar fixed */
     left: 0; /* Align it to the left of the screen */
     top: 0; /* Start from the top */
     height:100%; 
-    width: 220px;
-    padding: 20px;
+    width: 260px;
+    padding-left: 6px;
+    padding-right: 10px;
     padding-top: 45px;
     padding-bottom: 70px;;
     background: #333;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-bottom-right-radius: 25px;
-    z-index:99; /* Ensure it's above other elements */
+    z-index:8000; /* Ensure it's above other elements */
     transition: transform 0.3s ease; /* Smooth transition for toggling */
-    overflow: scroll;
-    
+    overflow:visible;
+}
+
+.scrollable {
+height: 100%;
+width: 103%;
+overflow-y: auto;         
+overflow-x: hidden;
+margin-right:80%;
+ 
 }
 
 
 
-.sidebar.darkmode,.ProseMirror.darkmode,#editor.darkmode, #section-name.darkmode, #section-select.darkmode, #command.darkmode, #description.darkmode,#url.darkmode, .choices__inner.darkmode, .choices__list--dropdown.darkmode, .modal-content.darkmode, #edit-section-select.darkmode, #edit-command.darkmode, #edit-description.darkmode,#sectionTitleInput.darkmode, #ad-footer.darkmode  {
-    background-color: #222; 
-    color: #fff; 
-    border: 1px solid #555; 
-    transition: background-color 1s ease, color 1s ease, border 1s ease; 
-}
 
-#section-header{
-    margin-bottom: 10px;
-}
-
-body.darkmode,html.darkmode {
-    background-color: #222; 
-    transform: background-color 1s ease; 
-    }
 
 .sidebar-content {
     flex-grow: 1;
@@ -479,21 +477,17 @@ body.darkmode,html.darkmode {
 
 .sidebar-tab {
     position: fixed;
-    left: 20px;
+    left: 16px;
     top: 23px;
     cursor: pointer;
-    background: #fff;
+    background: none;
+    color: #fff;
     border-radius: 50%;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 100;
+    z-index: 9000;
 }
-/* Sidebar toggle button styles */
-
-
 
 #add-section, #add-entry, #load-template-btn, #clear-sheet-btn  {
-    width: 100%;
+    
     padding: 10px 16px;
     margin-top: 15px;
     margin-bottom: 10px;
@@ -507,7 +501,8 @@ body.darkmode,html.darkmode {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease,background-color 1s ease, color 1s ease, border 1s ease;
     cursor: pointer;
-    transform: skew(-10deg,0deg);
+   
+
 }
 
 .custom-file-upload, #load-excel-btn, #download-btn, #save-btn,#load-google-btn, #save-google-btn {
@@ -523,8 +518,12 @@ body.darkmode,html.darkmode {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease,background-color 1s ease, color 1s ease, border 1s ease;
     cursor: pointer;
-    transform: skew(-10deg,0deg);
+    
 
+}
+
+#load-template-btn{
+    width: 100%;
 }
 
 #hide-all-tiles-btn, #settings-btn, #helpbtn {
@@ -542,7 +541,7 @@ body.darkmode,html.darkmode {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
-    transform: skew(-10deg,0deg);
+    
     background-color: #1B998B;
 }
 
@@ -562,19 +561,16 @@ body.darkmode,html.darkmode {
 
 #add-entry {
     margin-top: 0px;
+    width: 90%;
 }
 
-#add-section.darkmode, #add-entry.darkmode, #download-btn.darkmode, #load-template-btn.darkmode, .custom-file-upload.darkmode {
-    background-color: #947EB0;
-    transition: background-color 1s ease;
-}
 
 
 
 .btn-label {
    display: inline-block;
     font-weight: 700;
-    transform: skew(10deg,0deg);
+    
     transition: transform 0.2s ease, box-shadow 0.2s ease,scale 0.2s ease-in;
 }
 
@@ -608,14 +604,17 @@ body.darkmode,html.darkmode {
 }
 
 #clear-sheet-btn {
+    width: 90%;
     position: relative;
     margin-top: 20px;
+    
     background-color: #AD343E;
     font-size: 1.2em;
     font-weight: 900;
     letter-spacing: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 160px;
+    align-self: center;
 }
 
 #confirmBtn{
@@ -720,14 +719,14 @@ button .btn-label svg {
 
 
 .sections {
-margin-top: 5px; 
+margin-top: 10px; 
 display: flex;
 flex-direction: column;
 flex-wrap: nowrap;
-align-items: center;
+align-items: flex-start;
 justify-content: center;
 align-content: center;
-   
+z-index: 1; /* Ensure it's above other elements */
 }
 
 #toggle-section-button, #toggle-add-form-button, #toggle-down-up-button, #toggle-templates-button {
@@ -764,36 +763,36 @@ align-content: center;
 
 
 #section-list {
-   
+   overflow: visible;
     list-style: none;
-    width: calc(100% - 10px);
+    width: 90%;
     padding: 0;
-    transition: max-height 0.3s ease, padding 0.3s ease, font-size 0.3s ease, box-shadow 0.3s ease; /* Added padding transition */
-
-    max-width: 250px;
-    
+    transition: max-height 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease; /* Added padding transition */
+    max-width: 250px; 
 }
 
 #section-list li {
     list-style: none;
     flex-grow: 1;
-    padding: 15px;
-    margin-bottom: 15px;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
     cursor: pointer;
     border-radius: 15px;
-    transition: transform 0.3s ease, background-color 0.3s ease, font-size 0.3s ease, font-weight 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease,  font-weight 0.3s ease;
     font-size: 0.76em; /* Default font size */
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 2px;
     word-wrap: break-word;
     justify-content: left;
     align-items: center;
+    overflow: visible;
+    z-index: 2000;
+
 }
 
 
 
-
-u
 #section-list li.dragging {
     opacity: 0.5;
   }
@@ -809,8 +808,6 @@ u
 #section-list li:hover {
     transform: scale(0.96); /* Scale up by 10% */
     background-color: #e0e0e0; /* Change background on hover */
-    
-    font-size: 0.6em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -828,16 +825,65 @@ u
     transition: visbility 1s ease, opacity 1s ease;
 }
 
-/* Initially hide the buttons */
-li .eye-button, li .edit-button, li .delete-button {
-    opacity: 0; 
-    transition: opacity 0.3s ease-in-out; /* Smooth transition */
-  }
+/* Ellipsis button style */
+.ellipsis-button {
+  color: inherit;
+  font-size: 18px;
+  padding: 4px;
+  line-height: 1;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+
+.ellipsis-button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Submenu container */
+.section-submenu {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+  width: 30px;
+
+  border-radius: 6px;
+
+  position: absolute;
+  top: 40%;
+  left:96%;
+  z-index: 9000;
+  min-width: 10px;
+  overflow: visible;
+  margin-left: 6px;
+}
+
+/* Each submenu button */
+.section-submenu button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.15s ease;
   
-  /* Show buttons on hover over the list item */
-  li:hover .eye-button, li:hover .edit-button, li:hover .delete-button {
-    opacity: 1;
-  }
+}
+
+.section-submenu button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* SVG inside buttons */
+.section-submenu button svg {
+  pointer-events: none;
+  width: 18px;
+  height: 18px;
+}
+
+
 
 @keyframes wink {
     0%, 100% {
@@ -930,7 +976,7 @@ li .eye-button, li .edit-button, li .delete-button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
  }
 
  #newSection.collapsed {
@@ -950,7 +996,7 @@ li .eye-button, li .edit-button, li .delete-button {
 
 #form-inputs {
 
-width: 100%;
+width: 90%;
 }
 
 #form-inputs .choices {
@@ -958,11 +1004,12 @@ width: 100%;
 }
 
 .add-entry-section {
+    width: 100%;
     margin-top: 10px; /* Add margin to separate it from the section list */
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     align-content: center;
    
@@ -1064,13 +1111,14 @@ margin: 0px;
 
 
 .down-up-section {
-    margin-top: 20px; /* Add margin to separate it from the section list */
+    margin-top: 10px; /* Add margin to separate it from the section list */
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    align-items: center;
+    align-items:flex-start;
     justify-content: center;
     align-content: center;
+    
 }
 
 #down-up-buttons {
@@ -1079,7 +1127,7 @@ margin: 0px;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 90%;
      
 }
 
@@ -1105,12 +1153,12 @@ label{
 }
 
 .templates-section{
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
    
 }
 
@@ -1121,7 +1169,7 @@ label{
     align-items: center;
     justify-content: center;
     align-content: center;
-    width: 100%;
+    width: 90%;
     
 }
 
@@ -1134,7 +1182,7 @@ label{
 }
 
 .open {
-    margin-left: 260px;
+    margin-left: 290px;
     
 }
 
@@ -1154,7 +1202,7 @@ transform: translateX(-100%);
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 101; /* Sit on top */
+    z-index: 9999; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -1179,10 +1227,11 @@ transform: translateX(-100%);
 }
 
 #settingsModal  .modal-content {
-    width: 170px;
-    min-width: 170px;
+    width: fit-content;
+    min-width: 300px;
     max-width: 500px;
-    height: 170px;
+    min-height: 280px;
+    height: fit-content;
    
 
 }
@@ -1195,6 +1244,8 @@ transform: translateX(-100%);
     text-align: end;
     border-radius: 25px;
     height: fit-content;
+    gap: 40px;
+    margin-top: 40px;
 }
 
 .close {
@@ -1299,7 +1350,7 @@ transform: translateX(-100%);
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    z-index: 9999;
     opacity: 0; /* Invisible by default */
     transition: opacity 0.3s ease;
 }
@@ -1333,6 +1384,10 @@ transform: translateX(-100%);
 font-weight: 900;
 font-size: 1.8em;
 color: antiquewhite;
+}
+
+.section-header{
+    margin-left: 20px;
 }
 
 .sections h2, .add-entry-section h2,.down-up-section h2, .templates-section h2{

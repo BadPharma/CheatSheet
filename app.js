@@ -19,12 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveod = document.getElementById('save-btn');
     const uploadXlsx = document.getElementById('upload-xlsx');
     const sidebar = document.getElementById('sidebar');
+    const scrollable = document.querySelector('.scrollable');
     const sidebarTab = document.getElementById('sidebar-tab');
     const toggleButton = document.getElementById('toggle-section-button');
     const toggleAddEntryButton = document.getElementById('toggle-add-form-button');
-    const sectionHeader = document.getElementById('section-header');
+    const sectionHeader = document.getElementById('sections-header');
     const reloadWarningModal = document.getElementById('reloadWarningModal');
     const copyToggle = document.getElementById('copy-toggle');
+    const dblClickToggle = document.getElementById('dblclick-toggle');
     const editModal = document.getElementById('editModal');
     const editSectionSelect = document.getElementById('edit-section-select');
     const editCommandInput = document.getElementById('edit-command');
@@ -188,6 +190,16 @@ async function parseWorkbook(arrayBuffer) {
             showFeedback("Copying description is now enabled!", "success");
         }
     });
+
+        function handleDoubleClickToggle() {
+        if (dblClickToggle.checked) {
+            showFeedback("Double-click is now enabled!", "success");
+        } else {
+            showFeedback("Double-click is now disabled!", "error");
+        }
+        }
+
+        dblClickToggle.addEventListener('change', handleDoubleClickToggle);
 
     const observer = new MutationObserver(mutations => {
         if (!isDarkMode) return;
@@ -541,115 +553,203 @@ function launchGooglePicker() {
 // Event listener for the "Hide All Tiles" button
     document.getElementById('hide-all-tiles-btn').addEventListener('click', toggleAllTiles);
 
-    function createSection(sectionName, color) {
-        sectionList.style.display = 'block'; 
-        sectionHeader.style.marginBottom = '0px';
-        
-        const li = document.createElement('li');
-        li.style.backgroundColor = sanitizeInput(color);
-        li.dataset.sectionName = sanitizeInput(sectionName);
-        li.draggable = true;
-        li.style.display = 'flex';
-        li.style.alignItems = 'center';
-        li.style.justifyContent = 'space-between';
+  function createSection(sectionName, color) {
+    sectionList.style.display = 'block'; 
     
-        // Create section name span
-        const sectionNameSpan = document.createElement('span');
-        sectionNameSpan.textContent = sanitizeInput(sectionName);
- 
-        // Title container
-        const titleContainer = document.createElement('div');
-        titleContainer.className = 'title-container';
-        titleContainer.style.display = 'flex';
-        titleContainer.style.alignItems = 'center';
-        titleContainer.style.marginLeft = '12px';
-        
-       
-        titleContainer.appendChild(sectionNameSpan);
-    
-        // Actions container
-        const actionsContainer = document.createElement('div');
-        actionsContainer.className = 'actions-container';
-        actionsContainer.style.alignItems = 'center';
-    
-        // 🖊️ Edit (Pencil) Button
-        const pencilButton = document.createElement('button');
-        pencilButton.className = 'edit-button';
-        pencilButton.style.background = 'none';
-        pencilButton.style.border = 'none';
-        pencilButton.style.cursor = 'pointer';
-        pencilButton.appendChild(createPencilSvg());
-    
-        // 👁️ Eye Button for toggling visibility
-        const eyeButton = document.createElement('button');
-        eyeButton.className = 'eye-button';
-        eyeButton.style.cursor = 'pointer';
-        eyeButton.style.background = 'none';
-        eyeButton.style.border = 'none';
-        eyeButton.appendChild(createEyeSvg());
-    
-        // 🗑️ Trash Button (from separate function)
-        const trashButton = document.createElement('button');
-        trashButton.className = 'delete-button';
-        trashButton.style.background = 'none';
-        trashButton.style.border = 'none';
-        trashButton.style.cursor = 'pointer';
-        trashButton.appendChild(createTrashSvg());
-    
-        // Append buttons to actions container
-        actionsContainer.appendChild(eyeButton);
-        actionsContainer.appendChild(pencilButton);
-        actionsContainer.appendChild(trashButton);
-    
-        li.appendChild(titleContainer);
-        li.appendChild(actionsContainer);
-        sectionList.appendChild(li);
 
-        li.addEventListener("dragstart", handleSectionDragStart);
-        li.addEventListener("dragover", handleSectionDragOver);
-        li.addEventListener("drop", handleSectionDrop);
+    const sidebarScroll = document.querySelector('.scrollable');
     
-        // Store the section data
-        sections[sanitizeInput(sectionName)] = { color: color, entries: [] };
-        populateSectionDropdown();
-        
+    const li = document.createElement('li');
+    li.style.backgroundColor = sanitizeInput(color);
+    li.dataset.sectionName = sanitizeInput(sectionName);
+    li.draggable = true;
+    li.style.display = 'flex';
+    li.style.alignItems = 'center';
+    li.style.justifyContent = 'space-between';
+    li.style.position = 'relative';
 
-        // 🗑️ Trash Button: Delete section with custom confirmation dialog
-        trashButton.addEventListener('click', async (event) => {
-        event.stopPropagation();
+    // Section name span
+    const sectionNameSpan = document.createElement('span');
+    sectionNameSpan.textContent = sanitizeInput(sectionName);
+
+    // Title container
+    const titleContainer = document.createElement('div');
+    titleContainer.className = 'title-container';
+    titleContainer.style.display = 'flex';
+    titleContainer.style.alignItems = 'center';
+    titleContainer.style.marginLeft = '12px';
+    titleContainer.appendChild(sectionNameSpan);
+
+    // Ellipsis button
+    const ellipsisButton = document.createElement('button');
+    ellipsisButton.innerHTML = '&#x22EE;'; // vertical ellipsis
+    ellipsisButton.className = 'ellipsis-button';
+    ellipsisButton.style.background = 'none';
+    ellipsisButton.style.border = 'none';
+    ellipsisButton.style.cursor = 'pointer';
+    ellipsisButton.style.fontSize = '18px';
+    ellipsisButton.style.opacity = '0';
+    ellipsisButton.style.transition = 'opacity 0.2s ease';
+
+    // Submenu
+    const submenu = document.createElement('div');
+    submenu.className = 'section-submenu';
+    submenu.style.position = 'absolute';
+   
+    submenu.style.display = 'none';
+    submenu.style.gap = '4px';
+    submenu.style.zIndex = '9999';
+    submenu.style.flexDirection = 'column';
+    submenu.style.background = color;
+
+    // Eye button
+    const eyeButton = document.createElement('button');
+    eyeButton.className = 'eye-button';
+    eyeButton.title = 'Toggle Section Visibility';
+    eyeButton.style.background = 'none';
+    eyeButton.style.border = 'none';
+    eyeButton.style.cursor = 'pointer';
+    eyeButton.appendChild(createEyeSvg());
+
+    // Pencil button
+    const pencilButton = document.createElement('button');
+    pencilButton.className = 'edit-button';
+    pencilButton.title = 'Edit Section Title';
+    pencilButton.style.background = 'none';
+    pencilButton.style.border = 'none';
+    pencilButton.style.cursor = 'pointer';
+    pencilButton.appendChild(createPencilSvg());
+
+    // Trash button
+    const trashButton = document.createElement('button');
+    trashButton.title = 'Delete Section';
+    trashButton.className = 'delete-button';
+    trashButton.style.background = 'none';
+    trashButton.style.border = 'none';
+    trashButton.style.cursor = 'pointer';
+    trashButton.appendChild(createTrashSvg());
+
+    // Append buttons to submenu
+    submenu.appendChild(eyeButton);
+    submenu.appendChild(pencilButton);
+    submenu.appendChild(trashButton);
+
+    // Append submenu to body instead of li or sidebar
+   // Append submenu to the li
+// Append submenu to li (keeps it logically with the section)
+    sidebar.appendChild(submenu);
+
     
-        const confirmed = await showConfirmationDialog(
-        `Are you sure you want to permanently delete the section "${sectionName}" and all of its associated tiles?`, 
-        "Delete", 
-        "Cancel"
-        );
-    
-        if (confirmed) {
-        deleteSection(sectionName, li);
-        showFeedback(`Section "${sectionName}" deleted successfully.`, "success");
+
+    ellipsisButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        // Close all other submenus first
+        document.querySelectorAll('.section-submenu').forEach(menu => {
+            if (menu !== submenu) {
+                menu.style.display = 'none';
+            }
+        });
+
+        // Toggle this submenu
+        submenu.style.display = submenu.style.display === 'none' ? 'flex' : 'none';
+
+        if (submenu.style.display === 'flex') {
+            submenu.style.position = 'absolute';
+            submenu.style.zIndex = '9999';
+             positionSubmenu(); // Position submenu next to the li
         }
     });
 
     
-        // 👁️ Eye Button: Toggle visibility
-        eyeButton.addEventListener('click', (event) => {
-            event.stopPropagation();
-            toggleSectionVisibility(sectionName, eyeButton);
+        // Helper to place submenu next to the li
+        function positionSubmenu() {
+        const liRect = li.getBoundingClientRect();
+        const sidebarRect = sidebar.getBoundingClientRect();
+
+        // Align top with the li, place to the right of the sidebar
+        submenu.style.top  = `${liRect.top - sidebarRect.top + 5 }px`;
+        submenu.style.left = `89%`; // Align left with the sidebar
+
+       
+        }
+
+                    // Keep submenu aligned if the sidebar scrolls
+        sidebarScroll.addEventListener('scroll', () => {
+        if (submenu.style.display === 'flex') positionSubmenu();
         });
-    
-        // 🖊️ Pencil Button: Edit section
-        pencilButton.addEventListener('click', (event) => {
-            event.stopPropagation();
-            editSectionTitle(sectionNameSpan, li);
+
+
+    // Hide submenu when clicking outside
+   // Hide submenu ONLY when clicking outside (not on mouseleave)
+        document.addEventListener('click', (e) => {
+            if (!submenu.contains(e.target) && !ellipsisButton.contains(e.target)) {
+                submenu.style.display = 'none';
+            }
         });
-    
-        // Click to bring tiles to top
-        li.addEventListener('click', () => bringTilesToTop(sectionName));
-    
-        // Update dropdown menu
-        populateSectionDropdown();
-        enhanceSectionDropdown(); // <-- Add this to refresh the Choices dropdown
-    }
+
+
+    // Hover behavior for ellipsis
+    li.addEventListener('mouseenter', () => {
+        ellipsisButton.style.opacity = '1';
+    });
+    li.addEventListener('mouseleave', () => {
+        ellipsisButton.style.opacity = '0';
+        // submenu stays if clicked
+    });
+
+    // Delete section
+    trashButton.addEventListener('click', async (event) => {
+        event.stopPropagation();
+        const confirmed = await showConfirmationDialog(
+            `Are you sure you want to permanently delete the section "${sectionName}" and all of its associated tiles?`, 
+            "Delete", 
+            "Cancel"
+        );
+        if (confirmed) {
+            deleteSection(sectionName, li);
+            showFeedback(`Section "${sectionName}" deleted successfully.`, "success");
+            submenu.remove(); // remove submenu from DOM
+        }
+    });
+
+    // Toggle visibility
+    eyeButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        toggleSectionVisibility(sectionName, eyeButton);
+    });
+
+    // Edit section
+    pencilButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        editSectionTitle(sectionNameSpan, li);
+    });
+
+    // Bring tiles to top when clicking li
+    li.addEventListener('click', () => bringTilesToTop(sectionName));
+
+    // Drag & drop
+    li.addEventListener("dragstart", handleSectionDragStart);
+    li.addEventListener("dragover", handleSectionDragOver);
+    li.addEventListener("drop", handleSectionDrop);
+
+    // Assemble UI
+    const actionsContainer = document.createElement('div');
+    actionsContainer.appendChild(ellipsisButton);
+
+    li.appendChild(titleContainer);
+    li.appendChild(actionsContainer);
+    sectionList.appendChild(li);
+
+    // Store section data
+    sections[sanitizeInput(sectionName)] = { color: color, entries: [] };
+    populateSectionDropdown();
+    enhanceSectionDropdown();
+}
+
+
+
+
     
    
     function createTile(sectionName, command, description, color, url) {
@@ -701,14 +801,15 @@ function launchGooglePicker() {
         // Click copy button
         copyButton.addEventListener('click', handleCopy);
 
-        // Double-click anywhere on tile (except buttons) to copy
-        tile.addEventListener('dblclick', (e) => {
-            // Prevent firing when double-clicking on buttons
-            if (!e.target.closest('button')) {
-                handleCopy();
-            }
-        });
 
+     
+        function handleDoubleClick(e) {
+        if (dblClickToggle.checked && !e.target.closest('button')) {
+            handleCopy();
+        }
+        }
+
+        tile.addEventListener('dblclick', handleDoubleClick);
             
     
         // Create the delete button
@@ -1192,6 +1293,7 @@ function launchGooglePicker() {
         urlInput.value = ''; // Clear URL input field after adding
         populateSectionDropdown(); // Refresh the dropdown
         enhanceSectionDropdown(); // Refresh the Choices dropdown
+        refreshMasonry();
     
         // Show feedback popup
         showFeedback("New entry added successfully!", "success");
@@ -1214,6 +1316,7 @@ function launchGooglePicker() {
         // Update dropdowns after adding entry
         populateSectionDropdown();
         enhanceSectionDropdown();
+        refreshMasonry();
     }
     
 
@@ -1226,7 +1329,6 @@ function launchGooglePicker() {
         sectionTiles.forEach(tile => configList.appendChild(tile));
         otherTiles.forEach(tile => configList.appendChild(tile));
         refreshMasonry();
-
     }
    
     const WorkbookManager = {

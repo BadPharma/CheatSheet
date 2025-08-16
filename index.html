@@ -74,9 +74,9 @@
         <button title="Hide all tiles" id="hide-all-tiles-btn" data-step="" data-intro="Click here to hide all tiles."></button>
         <button title="Help and Updates" id="helpbtn" data-step="" data-intro="Click here to hide all tiles."><span class="btn-label"><h1>?</h1></span></button>
         </div>
-        
+        <div class="scrollable">
         <div class="sections" data-step="4" data-intro="Here you can manage your categories.">
-            <h2 id="section-header">Sections<span id="toggle-section-button" class="triangle-down"></span> </h2>
+            <h2 id="sections-header" class="section-header">Sections<span id="toggle-section-button" class="triangle-down"></span> </h2>
             <ul id="section-list"></ul>
             <div id="newSection">
                 <input type="text"  id="section-name" placeholder="New category name" data-step="5" data-intro="Enter a name for your new category here.">
@@ -91,7 +91,7 @@
         
     
         <div class="add-entry-section" data-step="7" data-intro="Add entries to your sheet here.">
-            <h2 id="add-entry-header">Entries<span id="toggle-add-form-button" class="triangle-down"></span> </h2>
+            <h2 id="add-entry-header" class="section-header">Entries<span id="toggle-add-form-button" class="triangle-down"></span> </h2>
             <div id="form-inputs">
                 <select id="section-select" name="section"></select>
 
@@ -107,7 +107,7 @@
         </div>
     
         <div class="down-up-section" data-step="11" data-intro="Save or upload your entries here.">
-            <h2 id="down-up-header"> Save / Upload <span id="toggle-down-up-button" class="triangle-down"></span> </h2>
+            <h2 id="down-up-header" class="section-header"> Save / Upload <span id="toggle-down-up-button" class="triangle-down"></span> </h2>
             <div id="down-up-buttons">
                 <div class="button-row" id="downloadBtns">
                 <button id="download-btn" title="Download your CheatSheet as a .xlsx file"><span class="btn-label">↓</span></button>
@@ -126,7 +126,7 @@
         </div>
     
         <div class="templates-section" data-step="12" data-intro="Load one of our templates from our database">
-            <h2 id="templates-header"> Templates <span id="toggle-templates-button" class="triangle-down"></span> </h2>
+            <h2 id="templates-header" class="section-header"> Templates <span id="toggle-templates-button" class="triangle-down"></span> </h2>
             <div id="template-form">
                 <select id="template-select" name="template"></select>
                 <button id="load-template-btn"><span class="btn-label">Load Template</span></button>
@@ -137,6 +137,9 @@
        
     </div>
     
+    </div>
+
+
    <div id="config" class="config open">
     <div id="config-list" ></div>
     </div>
@@ -206,7 +209,15 @@
                     <input type="checkbox" id="copy-toggle" />
                     <span class="circle"></span>
                     <h4> Copy function </h4>
+                  </label>  
+
+                <label class="circular-toggle">
+                    <input type="checkbox" id="dblclick-toggle" />
+                    <span class="circle"></span>
+                    <h4> Double click copy </h4>
+                  
                   </label>
+            
             
         </div>
        
