@@ -453,21 +453,10 @@ body::-webkit-scrollbar {
     overflow:visible;
 }
 
-
-.collapsed {
-     transform: translateX(-100%); /* Move it fully to the left */
-}
-
-.open {
-    margin-left: 290px;
+.sidebar.collapsed {
+    transform: translateX(-100%); /* Hide the sidebar off-screen */
     
 }
-
-.closed {
-    margin-left: 50px;
-   
-}
-
 
 .scrollable {
 height: 100%;
@@ -1191,6 +1180,20 @@ label{
 
 #template-form.collapsed, #section-list.collapsed {
     display: none!important;
+}
+
+#form-inputs.collapsed  {
+    display: none;
+}
+
+.open {
+    margin-left: 290px;
+    
+}
+
+.closed {
+    margin-left: 50px;
+   
 }
 
 
