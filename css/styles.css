@@ -1113,12 +1113,11 @@ width: 90%;
 #description, #editmodaleditor{
     width: 80%; /* Full width with some padding */
     max-width: calc(100% - 20px);
-    
     height: 120px;
     max-height:110px ;
     padding: 10px; /* Padding inside input fields */
     margin-bottom: 10px; /* Space between input fields */
-    background-color: #ffffff;
+    background-color: #222;
     border: 1px solid #ccc; /* Light border */
     border-radius: 5px; /* Rounded corners */
     font-size: 0.78em; /* Font size */
@@ -1208,7 +1207,7 @@ label{
     display: none!important;
 }
 
-#form-inputs.collapsed  {
+.collapsed  {
     display: none;
 }
 
@@ -1252,14 +1251,21 @@ transform: translateX(-100%);
     background-color: #222;
     color: antiquewhite;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 40px 20px 20px 20px;
     border: 1px solid #888;
     min-width: 400px;
     max-width: 900px;
+    min-height: 200px;
     width: 30%; /* Could be more or less, depending on screen size */
     text-align: center;
     border-radius: 25px;
     transition: background-color 1s ease, color 1s ease, border 1s ease; /
+}
+
+#modalMessage{
+    line-height: 200%;
+    margin-bottom: 30px;
+   
 }
 
 #settingsModal  .modal-content {
@@ -1320,6 +1326,8 @@ transform: translateX(-100%);
     border: 1px solid #ccc;
     font-size: 1em; /* Font size */
     letter-spacing: 2px;
+    background-color: #222;
+    color: antiquewhite;
 }
 
 
@@ -1342,6 +1350,8 @@ transform: translateX(-100%);
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    background-color: #222;
+    color: antiquewhite;
     
     
 }
