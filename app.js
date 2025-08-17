@@ -1154,13 +1154,10 @@ function launchGooglePicker() {
         templatesButton.classList.toggle('collapsed');
     }
 
-
-    // Close the modal when the user clicks the 'x'
     document.getElementById('closeEditModal').onclick = function () {
         editModal.style.display = 'none';
     };
 
-    // Function to show the feedback popup
     function showFeedback(message, type = 'success') {
         const feedbackPopup = document.getElementById('feedback-popup');
         const feedbackMessage = document.getElementById('feedback-message');
@@ -1431,8 +1428,7 @@ function launchGooglePicker() {
         }
     };
 
-    // Add these to WorkbookManager:
-        WorkbookManager.uploadToGoogleDrive = async function (blob) {
+     WorkbookManager.uploadToGoogleDrive = async function (blob) {
             if (!currentGoogleDriveFile?.id) {
                 console.warn("No Google Drive file selected for upload.");
                 showFeedback("No Google Drive file selected.", "error");
@@ -1465,11 +1461,11 @@ function launchGooglePicker() {
                 console.error("Google Drive upload error:", error);
                 showFeedback("Upload to Google Drive failed.", "error");
             }
-        };
+    };
 
-        WorkbookManager.setGoogleDriveFile = function(file) {
+     WorkbookManager.setGoogleDriveFile = function(file) {
             currentGoogleDriveFile = file;
-        };
+    };
 
     
 let lastBlobHash = null;
@@ -1611,12 +1607,8 @@ document.getElementById('save-google-btn').addEventListener('click', async () =>
         // Safely read the file as an ArrayBuffer
         reader.readAsArrayBuffer(file);
     }
-    
 
-    
-    
-    
-    // Microsoft Graph Integration
+// Microsoft Graph Integration
 const msalInstance = new msal.PublicClientApplication({
     auth: {
         clientId: "47ef338a-be5e-42dd-b185-9a1a75215908",
@@ -1698,8 +1690,6 @@ async function getAccessToken() {
     }
 }
 
-
-
   
 document.getElementById('load-excel-btn').addEventListener('click', () => {
         OneDrive.open({
@@ -1757,10 +1747,8 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
         });
 });
 
-
-
     // Function to process the uploaded workbook
-    function processWorkbook(workbook) {
+function processWorkbook(workbook) {
         const firstSheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[firstSheetName];
         const sheetData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
@@ -1782,11 +1770,11 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
             } 
         });
         
-    }
+}
 
 
 
-    function populateTemplateDropdown(templateGroups) {
+function populateTemplateDropdown(templateGroups) {
         const templateSelect = document.getElementById('template-select');
         templateSelect.innerHTML = ''; // Clear existing options
     
@@ -1841,11 +1829,11 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
 
        
 
-    }
+}
     
-    let templateDropdown;
+let templateDropdown;
 
-    function enhanceTemplateDropdown() {
+function enhanceTemplateDropdown() {
         const element = document.getElementById('template-select');
         if (templateDropdown) {
             templateDropdown.destroy();
@@ -1866,12 +1854,12 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
             const dropdown = document.querySelector('.choices__list--dropdown');
             if (dropdown) dropdown.classList.add('darkmode');
         }
-    }
+}
     
 
-    let sectionDropdown;
+let sectionDropdown;
 
-    function enhanceSectionDropdown() {
+function enhanceSectionDropdown() {
         const element = document.getElementById('section-select');
         if (sectionDropdown) {
             sectionDropdown.destroy();
@@ -1891,11 +1879,9 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
             const dropdown = document.querySelector('.choices__list--dropdown');
             if (dropdown) dropdown.classList.add('darkmode');
         }
-    }
-    
+}
 
-
-    document.getElementById('load-template-btn').addEventListener('click', () => {
+document.getElementById('load-template-btn').addEventListener('click', () => {
         const templateSelect = document.getElementById('template-select');
         const selectedTemplate = templateSelect.value;
     
@@ -1905,9 +1891,9 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
             showFeedback("Please select a template to load.", "warning");
         }
     });
-    // Function to show custom confirmation dialog
+    
     // ✅ Enhanced Confirmation Dialog with Custom Button Text
-    function showConfirmationDialog(message, confirmText = "Confirm", cancelText = "Cancel") {
+function showConfirmationDialog(message, confirmText = "Confirm", cancelText = "Cancel") {
     return new Promise((resolve) => {
         const modal = document.getElementById('customModal');
         const modalMessage = document.getElementById('modalMessage');
@@ -1948,7 +1934,7 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
             }
         };
     });
-    }
+}
 
 
     document.getElementById('section-color').addEventListener('input', (event) => {
@@ -1985,9 +1971,6 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
     });
     
 
-    
-
-
     uploadXlsx.addEventListener('change', (event) => {
         const file = event.target.files[0];
 
@@ -2005,24 +1988,22 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
         handleXLSXUpload(file); // Process the file
     });
 
-    // Populate the section dropdown
-    function populateSectionDropdown() {
+ function populateSectionDropdown() {
        
-       
-        sectionSelect.innerHTML = '';
-        for (const sectionName in sections) {
-            const option = document.createElement('option');
-            option.value = sectionName;
-            option.textContent = sectionName;
-            sectionSelect.appendChild(option);
-        }
+sectionSelect.innerHTML = '';
+    for (const sectionName in sections) {
+        const option = document.createElement('option');
+        option.value = sectionName;
+        option.textContent = sectionName;
+        sectionSelect.appendChild(option);
     }
+}
 
     // Function to show the reload warning modal
-    function showReloadWarning() {
-        reloadWarningModal.style.display = 'block';
-        isWarningModalVisible = true; // Set the flag to true
-    }
+function showReloadWarning() {
+    
+    isWarningModalVisible = true; // Set the flag to true
+}
 
     // Event listener for the leave button (proceed with reload)
     document.getElementById('leave-button').addEventListener('click', () => {
