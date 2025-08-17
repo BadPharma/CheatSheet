@@ -1224,8 +1224,6 @@ function launchGooglePicker() {
     draggedSectionName = null; // Reset the dragged section name
     }
 
-
-
     function toggleSectionVisibility(sectionName, eyeIcon) {
         const tiles = document.querySelectorAll(`.tile[data-section="${sectionName}"]`);
         let allHidden = [...tiles].every(tile => tile.style.display === "none");
@@ -1238,7 +1236,8 @@ function launchGooglePicker() {
         // 🔹 Update the eye button color based on visibility state
         eyeIcon.style.fill = allHidden ? "black" : "gray";
         
-
+        populateSectionDropdown();
+        enhanceSectionDropdown(); 
         refreshMasonry(); // Refresh the layout after toggling visibility
     }
 
@@ -2116,7 +2115,7 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
             
 
         let msnry;
-        const gutterWidth = configList.parentElement.offsetWidth * 0.02; // 2% of parent width
+        const gutterWidth = 15; // 
         function initMasonry() {
             if (msnry) msnry.destroy();
 
@@ -2139,6 +2138,10 @@ document.getElementById('load-excel-btn').addEventListener('click', () => {
             }
         }
 
+
+   window.onresize = function refreshMasonryonwindowResize() {    
+    refreshMasonry();
+    }
 
 
     

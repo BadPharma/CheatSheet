@@ -52,7 +52,7 @@ body::-webkit-scrollbar {
   body::-webkit-scrollbar:hover {
     width: 8px;
   }
-  
+
   
   body::-webkit-scrollbar-track {
     width: 50px;
@@ -73,6 +73,13 @@ body::-webkit-scrollbar {
   body::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+
+
+
+.choices__list--dropdown {
+  scrollbar-width: auto;              /* auto | thin | none */
+  scrollbar-color: antiquewhite #222;   /* thumb color | track color */
+}
 
   #ad-footer {
     display: block;
@@ -269,7 +276,6 @@ body::-webkit-scrollbar {
 .choices {
    width: 100%;
     max-width: 100%;
-    
     height:fit-content;
     min-height: 10px;
     display: flex;
@@ -278,14 +284,29 @@ body::-webkit-scrollbar {
     
 }
 
+.choices__heading {
+    background-color: #222;
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted, .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+    background-color: #1B998B;
+    color: antiquewhite;
+}
 
 
 .choices__inner {
     min-height: 0px;
     max-width: 100%;
+    border: 1px solid #cccccc5a; /* Light border */
     font-size: 0.74em;
+}
 
+.choices__list, .choices__inner, .choices__list--dropdown.is-active {
+    background-color: #222;
+    border-color: #222;
+    border:none;
     
+    color: antiquewhite;
 }
 
 .choices.is-open {
@@ -1030,21 +1051,25 @@ width: 90%;
 
 
 #section-name, #command {
-    width: calc(100% - 20px); /* Full width with some padding */
+    width: 90%; /* Full width with some padding */
     padding: 10px; /* Padding inside input fields */
     margin-bottom: 10px; /* Space between input fields */
-    border: 1px solid #ccc; /* Light border */
+    border: 1px solid #cccccc5a; /* Light border */
     border-radius: 5px; /* Rounded corners */
     font-size: 0.78em; /* Font size */
+    background-color: #222;
+    color: antiquewhite;
 }
 
 #url {
-    width: calc(100% - 20px); /* Full width with some padding */
+    width: 90%; /* Full width with some padding */
     padding: 10px; /* Padding inside input fields */
     margin-bottom: 10px; /* Space between input fields */
-    border: 1px solid #ccc; /* Light border */
+    border: 1px solid #cccccc73; /* Light border */
     border-radius: 5px; /* Rounded corners */
     font-size: 0.78em; /* Font size */
+    background-color: #222;
+    color: antiquewhite;
 }
 
 #section-select {
@@ -1065,9 +1090,9 @@ width: 90%;
     width:100%;
     outline: none;
     letter-spacing: 2px;
-    background-color: #fff;
+    background-color: #222;
     overflow: auto;
-    color: #000;
+    color: antiquewhite;
 }
 
 #editor{
@@ -1076,8 +1101,8 @@ width: 90%;
     max-height: 120px;
     padding: 10px; /* Padding inside input fields */
     margin-bottom: 10px; /* Space between input fields */
-    background-color: #ffffff;
-    border: 1px solid #ccc; /* Light border */
+    background-color: #222;
+    border: 1px solid #cccccc72; /* Light border */
     border-radius: 5px; /* Rounded corners */
     font-size: 0.78em; /* Font size */
     font-family: Aeonik;
