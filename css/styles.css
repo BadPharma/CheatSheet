@@ -96,31 +96,33 @@ body::-webkit-scrollbar {
     padding: 10px 0; /* Adds some spacing */
     z-index: 100; /* Ensures it stays above other content */
   }
-  .scrollable::-webkit-scrollbar {
+  .scrollable::-webkit-scrollbar, #tdlcont::-webkit-scrollbar {
     width: 3px;
+    height: 6px;
   }
 
-  .scrollable::-webkit-scrollbar:hover {
+  .scrollable::-webkit-scrollbar:hover, #tdlcont::-webkit-scrollbar:hover {
     width: 8px;
   }
   
   
-  .scrollable::-webkit-scrollbar-track {
+  .scrollable::-webkit-scrollbar-track, #tdlcont::-webkit-scrollbar-track {
     width: 3px;
+    height: 60%;
     background-color: rgb(35, 34, 32);
     transition: background-color 2s ease-in-out;
   }
- .scrollable::-webkit-scrollbar-track:hover {
+ .scrollable::-webkit-scrollbar-track:hover, #tdlcont::-webkit-scrollbar-track:hover {
     width: 8px;
     background-color: antiquewhite;
     transition: background-color 2s ease-in;
   }
   
-  .scrollable::-webkit-scrollbar-thumb {
+  .scrollable::-webkit-scrollbar-thumb, #tdlcont::-webkit-scrollbar-thumb {
     background: rgb(102, 101, 99);
   }
   
- .scrollable::-webkit-scrollbar-thumb:hover {
+ .scrollable::-webkit-scrollbar-thumb:hover, #tdlcont::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
 
@@ -178,6 +180,8 @@ body::-webkit-scrollbar {
     z-index: 1000;
     
 }
+
+
 
 
 #config-list {
@@ -532,6 +536,79 @@ margin-right:80%;
 
 }
 
+#todo-listcontainer li {
+ list-style: none;
+ user-select: none;
+ color: antiquewhite;
+ margin-bottom: 5px;
+
+
+}
+
+.checkmark {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    background-size: cover; /* Ensure the background image covers the entire div */
+}
+
+.checkmark.complete {
+    background-color: #ffff;/* Replace with the path to your checkmark image */
+}
+
+.check{
+    text-decoration: line-through;
+    color: #888!important; /* Optional: Change color to indicate completion */
+    
+}
+
+.crosscheck {
+    color:#888!important;
+    text-decoration: none;
+}
+
+#todo-listcontainer li span {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+#todo-listcontainer {
+    padding-inline-start: 13px; 
+     columns: 3; /* Scroll if content exceeds max height */
+     max-height: 100px; /* Adjust as needed */
+}
+
+#tdlcont {
+    display: flex;
+    flex-direction: column-reverse;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    margin-left: 35px;
+    max-height: 180px; /* Adjust as needed */
+    overflow: scroll;
+    max-width:80%; /* Ensure the container doesn't exceed its width */
+}
+
+#tdlheader {
+    display: flex;
+    margin-left: 13px;
+    color: antiquewhite;
+    font-size: 1.2em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}
+
+
+
 .custom-file-upload, #load-excel-btn, #download-btn, #save-btn,#load-google-btn, #save-google-btn {
     width: 33.3%;
     padding: 10px 16px;
@@ -546,7 +623,21 @@ margin-right:80%;
     transition: transform 0.2s ease, box-shadow 0.2s ease,background-color 1s ease, color 1s ease, border 1s ease;
     cursor: pointer;
     
+}
 
+#add-todo {
+     width: 13.3%;
+    padding: 2px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 12px;
+    background-color: #1B998B;
+    color: antiquewhite;
+    letter-spacing: 0.8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease,background-color 1s ease, color 1s ease, border 1s ease;
+    cursor: pointer; 
 }
 
 #load-template-btn{
@@ -754,7 +845,7 @@ button .btn-label svg {
   
 
 
-.sections {
+.sections, .to-do {
 margin-top: 10px; 
 display: flex;
 flex-direction: column;
@@ -765,7 +856,7 @@ align-content: center;
 z-index: 1; /* Ensure it's above other elements */
 }
 
-#toggle-section-button, #toggle-add-form-button, #toggle-down-up-button, #toggle-templates-button {
+#toggle-section-button, #toggle-add-form-button, #toggle-down-up-button, #toggle-templates-button, #toggle-todo-button {
     display: inline-block;
     margin-left: 10px; /* Space between header and triangle */
     width: 0;
@@ -776,7 +867,7 @@ z-index: 1; /* Ensure it's above other elements */
     transition: transform 0.5s ease,border-top 2s ease; /* Smooth rotation */
 }
 
-#toggle-section-button.collapsed,#toggle-add-form-button.collapsed,#toggle-down-up-button.collapsed,#toggle-templates-button.collapsed {
+#toggle-section-button.collapsed,#toggle-add-form-button.collapsed,#toggle-down-up-button.collapsed,#toggle-templates-button.collapsed,#toggle-todo-button.collapsed {
     transform: rotate(-90deg); /* Rotate triangle when collapsed */
     border-top: 10px solid rgb(144, 144, 144); /* Color of the triangle */
 }
@@ -1059,7 +1150,7 @@ width: 90%;
 
 
 
-#section-name, #command {
+#section-name, #command, #todo-input {
     width: 90%; /* Full width with some padding */
     padding: 10px; /* Padding inside input fields */
     margin-bottom: 10px; /* Space between input fields */
@@ -1068,6 +1159,11 @@ width: 90%;
     font-size: 0.78em; /* Font size */
     background-color: #222;
     color: antiquewhite;
+}
+
+#todo-inputcontainer {
+display: flex;
+width: 90%;
 }
 
 #url {
@@ -1221,7 +1317,7 @@ label{
 }
 
 .open {
-    margin-left: 290px;
+    margin-left: 290px !important;
     
 }
 
@@ -1279,9 +1375,9 @@ transform: translateX(-100%);
 
 #settingsModal  .modal-content {
     width: fit-content;
-    min-width: 300px;
+    min-width: 400px;
     max-width: 500px;
-    min-height: 280px;
+    min-height: 480px;
     height: fit-content;
    
 
@@ -1298,6 +1394,32 @@ transform: translateX(-100%);
     gap: 40px;
     margin-top: 40px;
 }
+
+.settings-menu {
+  list-style: none;
+  padding: 20px 20px 20px 0px;
+  gap: 10px;
+  font-size: 1.4em;
+  text-align: left;
+  border-right: 1px solid #ccc;
+}
+
+.settings-menu-item {
+ margin-bottom: 50px;
+  cursor: pointer;
+  
+}
+
+.settings {
+   align-items: center;
+    padding: 40px;
+   
+}
+
+.not-selected {
+    display: none;
+}  
+
 
 .close {
     color: #aaa;
@@ -1441,15 +1563,15 @@ font-size: 1.8em;
 color: antiquewhite;
 }
 
-.section-header{
-    margin-left: 20px;
-}
 
-.sections h2, .add-entry-section h2,.down-up-section h2, .templates-section h2{
+
+.section-header{
     font-weight: 400;
     font-size: 1.1em;
     letter-spacing: 3px;
     color: antiquewhite;
+     margin-left: 20px;
+
 }
 
 h2{

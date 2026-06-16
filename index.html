@@ -72,9 +72,30 @@
               </svg>
            </span></button>    
         <button title="Hide all tiles" id="hide-all-tiles-btn" data-step="" data-intro="Click here to hide all tiles."></button>
-        <button title="Help and Updates" id="helpbtn" data-step="" data-intro="Click here to hide all tiles."><span class="btn-label"><h1>?</h1></span></button>
+        
         </div>
+
+   
+
         <div class="scrollable">
+
+ <div class="to-do">
+        <h2 id="todo-header" class="section-header">To Do <span id="toggle-todo-button" class="triangle-down"></span></h2>
+        
+
+        <div id="todo-inputcontainer">
+            <input type="text" id="todo-input" placeholder="New To Do" data-step="3" data-intro="Enter a new To Do here." maxlength="60">
+            <button id="add-todo" data-step="3.5" data-intro="add."><span class="btn-label">+</span></button>
+        <div> 
+                    
+        </div>
+
+
+
+        </div>
+    </div>
+
+
         <div class="sections" data-step="4" data-intro="Here you can manage your categories.">
             <h2 id="sections-header" class="section-header">Sections<span id="toggle-section-button" class="triangle-down"></span> </h2>
             <ul id="section-list"></ul>
@@ -138,7 +159,13 @@
     </div>
     
     </div>
+    <div id="tdlcont" class="open">
+        <h2 id="tdlheader"> To Do List</h2>
+    <ul id="todo-listcontainer">
 
+    </ul>
+
+        </div>
 
    <div id="config" class="config open">
     <div id="config-list" >
@@ -205,8 +232,18 @@
         <span id="closeSettingsModal" class="close">&times;</span>
         <h2>Settings</h2>
         <div class="settings-content">
-           
-          
+           <div id="menucont">
+            <ul class="settings-menu">
+                <li class="settings-menu-item" data-section="functionality">Functionality</li>
+                <li class="settings-menu-item" data-section="appearance">Appearance</li>
+                <li class="settings-menu-item" data-section="help">Help & Updates</li>
+                <li class="settings-menu-item" data-section="about">About</li>
+            </ul>
+            </div>
+
+    
+        <div class="settings " data-section="functionality">
+          <!--Functionality Settings--> 
                       
                 <label class="circular-toggle">
                     <input type="checkbox" id="copy-toggle" />
@@ -220,19 +257,27 @@
                     <h4> Double click copy </h4>
                   
                   </label>
-            
-            
         </div>
-       
-    </div>
-</div>
 
-<!-- Help & Updates Modal -->
-<div id="helpModal" class="modal">
-    <div class="modal-content">
-        <span id="closeHelpModal" class="close">&times;</span>
-        <h2>Help & Updates</h2>
-        <div class="help-content">
+         <div class="settings not-selected" data-section="appearance">
+          <!--Functionality Settings--> 
+                      
+                <label class="circular-toggle">
+                    <input type="checkbox" id="copy-toggle" />
+                    <span class="circle"></span>
+                    <h4> Copy function </h4>
+                  </label>  
+
+                <label class="circular-toggle">
+                    <input type="checkbox" id="dblclick-toggle" />
+                    <span class="circle"></span>
+                    <h4> Double click copy </h4>
+                  
+                  </label>
+        </div>
+        <div class="settings not-selected" data-section="help">
+          <!--Functionality Settings--> 
+               <div class="help-content">
             <p>Welcome to <strong>CheatSheet</strong>!</p>
 
             <p>A productivity tool designed to help you create, organize, and manage customisable cheat sheets for your projects, workflows, or learning goals.</p>
@@ -258,9 +303,13 @@
             <p><strong>Need help?</strong> Found a bug or have a feature request? Please contact us at <a href="mailto:your@email.com"></a>.  We take all feedback onboard!</p>
           
         </div>
-       
+        </div>
+            
+
     </div>
 </div>
+
+
 
 <!-- Reload Warning Modal -->
 <div id="reloadWarningModal" class="modal">

@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const dblClickToggle = document.getElementById('dblclick-toggle');
     const editModal = document.getElementById('editModal');
     const editSectionSelect = document.getElementById('edit-section-select');
+    const todoheader = document.getElementById('todo-header');
+    const todobutton = document.getElementById('toggle-todo-button');
+    const tdlInput =document.getElementById('todo-input');
     const editCommandInput = document.getElementById('edit-command');
     const editUrlInput = document.getElementById('edit-url-input');
     const addEntryHeader = document.getElementById('add-entry-header');
@@ -40,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const downUpButtons = document.getElementById('down-up-buttons');
     const templatesHeader = document.getElementById('templates-header');
     const templatesButton = document.getElementById('toggle-templates-button');
+    const addtdlitemBtn = document.getElementById('add-todo');
     const templateForm = document.getElementById('template-form');
     const newcatInput = document.getElementById('section-name');
     const Hideall =  document.getElementById('hide-all-tiles-btn')
@@ -403,7 +407,6 @@ function launchGooglePicker() {
 }
 
 
-
     // SVG's 
     // Function to create the pencil (edit) SVG
     function createPencilSvg() {
@@ -428,7 +431,6 @@ function launchGooglePicker() {
 
         return pencilSvg;
     }
-
 
     function createCopySvg() {
         const copySvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -634,9 +636,7 @@ function launchGooglePicker() {
     submenu.appendChild(pencilButton);
     submenu.appendChild(trashButton);
 
-    // Append submenu to body instead of li or sidebar
-   // Append submenu to the li
-// Append submenu to li (keeps it logically with the section)
+  
     sidebar.appendChild(submenu);
 
     
@@ -748,10 +748,62 @@ function launchGooglePicker() {
     refreshMasonry(); // Ensure this is optimized
 }
 
+function todolist(listItem) {
 
+const tdlcont = document.getElementById('todo-listcontainer');
+const cleanInput = sanitizeInput(tdlInput.value.trim());
 
+if(cleanInput.value === '') {
+    showFeedback("Please enter a task before adding.", "warning");
+    return;
+} 
+else {
+    const newItem = document.createElement('li');
+    const check = document.createElement('div');
+    const span = document.createElement('span');
+    check.classList.add('checkmark');
+    newItem.innerHTML = tdlInput.value;
+    tdlcont.appendChild(newItem);
+    newItem.prepend(check);
 
-    
+   
+    span.innerHTML = '\u00D7';
+    newItem.appendChild(span); 
+}
+tdlInput.value = '';
+saveTodoList();
+
+}
+
+const checkring = document.querySelector("#todo-listcontainer > li > div")
+
+tdlcont.addEventListener('click', function(e) {
+    if (e.target.tagName === 'LI') {
+        e.target.classList.toggle('check');
+       
+    } else if (e.target.tagName === 'SPAN') {
+        e.target.parentElement.remove();
+        showFeedback("Task removed!", "info");
+        saveTodoList();
+    } else if (e.target.tagName === 'DIV') {
+        e.target.classList.toggle('complete');
+        saveTodoList();
+    }
+});
+
+tdlInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        todolist();
+    }
+});
+
+function saveTodoList() {
+    localStorage.setItem('todo-list', tdlcont.innerHTML);
+}
+
+function loadTodoList() {
+    tdlcont.innerHTML = localStorage.getItem('todo-list');
+}
    
     function createTile(sectionName, command, description, color, url) {
         
@@ -868,7 +920,6 @@ function launchGooglePicker() {
         refreshMasonry();
 
     }
-    
     
 
     // 🔹 Create a global object to track section visibility
@@ -1129,7 +1180,17 @@ function launchGooglePicker() {
         editModal.style.display = 'none';
     };
     
-    
+    function toggletodolist() {
+        const todolist = document.getElementById('todo-list');
+        
+        const todoinput = document.getElementById('todo-input');
+
+        todoinput.classList.toggle('collapsed');
+        todobutton.classList.toggle('collapsed'); // Toggle triangle direction
+        todolist.classList.toggle('collapsed');
+    }
+
+
     // Function to toggle the section list visibility
     function toggleSectionList() {
         sectionList.classList.toggle('collapsed');
@@ -1154,6 +1215,7 @@ function launchGooglePicker() {
         templatesButton.classList.toggle('collapsed');
     }
 
+ 
     document.getElementById('closeEditModal').onclick = function () {
         editModal.style.display = 'none';
     };
@@ -1176,9 +1238,12 @@ function launchGooglePicker() {
     const configdiv = document.getElementById('config');
     // Function to toggle the sidebar visibility
     function toggleSidebar() {
+        const tdlcontainer = document.getElementById('tdlcont');
         sidebar.classList.toggle('collapsed');
        
         configdiv.classList.toggle('open');
+        tdlcontainer.classList.toggle('open');
+        
         refreshMasonry();
     }
 
@@ -1937,16 +2002,16 @@ function showConfirmationDialog(message, confirmText = "Confirm", cancelText = "
 }
 
 
-    document.getElementById('section-color').addEventListener('input', (event) => {
+document.getElementById('section-color').addEventListener('input', (event) => {
         // Get the selected color
         const selectedColor = event.target.value;
     
         // Update the color display span's background color to show the sselected color
         const colorDisplay = document.querySelector('.color-display');
         colorDisplay.style.backgroundColor = selectedColor;
-    });
+});
     
-    document.getElementById('add-section').addEventListener('click', () => {
+document.getElementById('add-section').addEventListener('click', () => {
         const sectionNameInput = document.getElementById('section-name');
         const sectionColorInput = document.getElementById('section-color');
         
@@ -1968,10 +2033,10 @@ function showConfirmationDialog(message, confirmText = "Confirm", cancelText = "
         sectionNameInput.value = ''; // Clear input field after adding
         populateSectionDropdown(); // Refresh the dropdown
         enhanceSectionDropdown(); // Refresh the Choices dropdown
-    });
+});
     
 
-    uploadXlsx.addEventListener('change', (event) => {
+uploadXlsx.addEventListener('change', (event) => {
         const file = event.target.files[0];
 
             if (!file) {
@@ -1986,7 +2051,7 @@ function showConfirmationDialog(message, confirmText = "Confirm", cancelText = "
             }
 
         handleXLSXUpload(file); // Process the file
-    });
+});
 
  function populateSectionDropdown() {
        
@@ -2003,6 +2068,39 @@ sectionSelect.innerHTML = '';
 function showReloadWarning() {
     
     isWarningModalVisible = true; // Set the flag to true
+}
+
+function settingsMenu() {
+    const menuItems = document.querySelectorAll('.settings-menu-item');
+    const settingsPanels = document.querySelectorAll('.settings');
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const targetSection = item.dataset.section;
+
+            // Hide all settings panels
+            settingsPanels.forEach(panel => {
+                panel.classList.add('not-selected');
+            });
+
+            // Remove active state from all menu items
+            menuItems.forEach(menuItem => {
+                menuItem.classList.remove('active');
+            });
+
+            // Show matching panel
+            const targetPanel = document.querySelector(
+                `.settings[data-section="${targetSection}"]`
+            );
+
+            if (targetPanel) {
+                targetPanel.classList.remove('not-selected');
+            }
+
+            // Highlight selected menu item
+            item.classList.add('active');
+        });
+    });
 }
 
     // Event listener for the leave button (proceed with reload)
@@ -2043,13 +2141,9 @@ function showReloadWarning() {
         }
     });
 
-    document.getElementById("helpbtn").addEventListener("click", () => {
-        document.getElementById("helpModal").style.display = "block";
-    });
+  
 
-    document.getElementById("closeHelpModal").addEventListener("click", () => {
-        document.getElementById("helpModal").style.display = "none";
-    });
+
    
     window.addEventListener("click", (event) => {
         if (event.target === document.getElementById("helpModal")) {
@@ -2126,31 +2220,21 @@ function showReloadWarning() {
 
 
     
-
+    
 
     // Event listeners for toggling sidebar and sections
     toggleButton.addEventListener('click', toggleSectionList);
     sectionHeader.addEventListener('click', toggleSectionList);
-    
-
     sidebarTab.addEventListener('click', toggleSidebar);
-
     addEntryHeader.addEventListener('click', toggleFormInputs);
     toggleAddEntryButton.addEventListener('click', toggleFormInputs); 
-    
     downUpHeader.addEventListener('click', toggleDownUp);
-
     templatesHeader.addEventListener('click', toggleTemplateSection);
-    
-
-    // Attach the clear sheet function to the button
+    addtdlitemBtn.addEventListener('click', todolist);
+    todoheader.addEventListener('click', toggletodolist);
     document.getElementById('clear-sheet-btn').addEventListener('click', clearSheet);
-
-    // Populate the template dropdown on page load
     populateTemplateDropdown(templates);
     enhanceTemplateDropdown();
-    // Initialize the section dropdown with Choices.js
-    
-
-    
+    loadTodoList()
+    settingsMenu();
 });
