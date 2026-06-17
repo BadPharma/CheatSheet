@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const todoheader = document.getElementById('todo-header');
     const todobutton = document.getElementById('toggle-todo-button');
     const tdlInput =document.getElementById('todo-input');
+    const tdlcont = document.getElementById('todo-listcontainer');
     const editCommandInput = document.getElementById('edit-command');
     const editUrlInput = document.getElementById('edit-url-input');
     const addEntryHeader = document.getElementById('add-entry-header');
@@ -750,10 +751,10 @@ function launchGooglePicker() {
 
 function todolist(listItem) {
 
-const tdlcont = document.getElementById('todo-listcontainer');
+
 const cleanInput = sanitizeInput(tdlInput.value.trim());
 
-if(cleanInput.value === '') {
+if(cleanInput === '') {
     showFeedback("Please enter a task before adding.", "warning");
     return;
 } 
@@ -800,6 +801,7 @@ tdlInput.addEventListener('keydown', function(e) {
 function saveTodoList() {
     localStorage.setItem('todo-list', tdlcont.innerHTML);
 }
+
 
 function loadTodoList() {
     tdlcont.innerHTML = localStorage.getItem('todo-list');
