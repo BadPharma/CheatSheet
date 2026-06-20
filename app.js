@@ -185,17 +185,7 @@ async function parseWorkbook(arrayBuffer) {
         return DOMPurify.sanitize(input);
     }
 
-
-    //Copy function toggle
-    copyToggle.addEventListener('change', () => {
-        if (copyToggle.checked) {
-            showFeedback("Copying command is now enabled!", "warning");
-        } else {
-            
-            showFeedback("Copying description is now enabled!", "success");
-        }
-    });
-
+    
         function handleDoubleClickToggle() {
         if (dblClickToggle.checked) {
             showFeedback("Double-click is now enabled!", "success");
@@ -1184,7 +1174,7 @@ function loadTodoList() {
     
     function toggletodolist() {
         const todolist = document.getElementById('todo-list');
-        
+        const todobutton = document.getElementById('add-todo');
         const todoinput = document.getElementById('todo-input');
 
         todoinput.classList.toggle('collapsed');
@@ -1216,6 +1206,93 @@ function loadTodoList() {
         templateForm.classList.toggle('collapsed');
         templatesButton.classList.toggle('collapsed');
     }
+
+    // SETTINGS TOGGLES //
+    //Functionality toggles
+    copyToggle.addEventListener('change', () => {
+        if (copyToggle.checked) {
+            
+            showFeedback("Copying command is now enabled!", "warning");
+        } else {
+            
+            showFeedback("Copying description is now enabled!", "success");
+        }
+    });
+
+
+    //Appearance toggles
+    const tdlSettingsToggle = document.getElementById('tdl-settingstoggle');
+    tdlSettingsToggle.addEventListener('change', () => {
+        if (tdlSettingsToggle.checked) {
+            const tdsb = document.getElementById('to-do');
+            tdsb.style.display = 'none';
+            const tdlcont = document.getElementById('tdlcont');
+            tdlcont.style.display = 'none';
+            showFeedback("To-Do List is now hidden!", "error");
+            
+        } else {
+            const tdsb = document.getElementById('to-do');
+             const tdlcont = document.getElementById('tdlcont');
+            tdlcont.style.display = 'flex';
+            tdsb.style.display = 'block';
+            showFeedback("To-Do List is now enabled!", "success");
+            
+        }
+    });
+
+    const sectionSettingsToggle = document.getElementById('section-settingstoggle');
+    sectionSettingsToggle.addEventListener('change', () => {
+        if (sectionSettingsToggle.checked) {
+            const sectionList = document.getElementById('sections');
+            sectionList.style.display = 'none';
+            showFeedback("Section List is now hidden!", "error");
+        } else {
+            const sectionList = document.getElementById('sections');
+            sectionList.style.display = 'block';
+            showFeedback("Section List is now enabled!", "success");
+        }
+    });
+
+    const entrysettingsToggle = document.getElementById('entries-settingstoggle');
+    entrysettingsToggle.addEventListener('change', () => {
+        if (entrysettingsToggle.checked) {
+            const addEntrySection = document.getElementById('add-entry-section');
+            addEntrySection.style.display = 'none';
+            showFeedback("Add Entry Form is now hidden!", "error");
+        } else {
+            const addEntrySection = document.getElementById('add-entry-section');
+            addEntrySection.style.display = 'flex';
+            showFeedback("Add Entry Form is now enabled!", "success");
+        }
+    });
+
+
+    const savesettingsToggle = document.getElementById('save-upload-settingstoggle');
+    savesettingsToggle.addEventListener('change', () => {
+        if (savesettingsToggle.checked) {
+            const downup = document.getElementById('down-up-section');
+            downup.style.display = 'none';
+            showFeedback("Saving is now enabled!", "success");
+        } else {
+            const downup = document.getElementById('down-up-section');
+            downup.style.display = 'flex';
+            showFeedback("Saving is now disabled!", "error");
+        }
+    });
+
+    const templatesettingsToggle = document.getElementById('templates-settingstoggle');
+    templatesettingsToggle.addEventListener('change', () => {
+        if (templatesettingsToggle.checked) {
+            const templateSection = document.getElementById('templates-section');
+            templateSection.style.display = 'none';
+            showFeedback("Templates hidden!", "error");
+        } else {
+            const templateSection = document.getElementById('templates-section');
+            templateSection.style.display = 'flex';
+            showFeedback("Templates visible!", "success");
+        }
+    });
+
 
  
     document.getElementById('closeEditModal').onclick = function () {

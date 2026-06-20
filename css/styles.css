@@ -845,7 +845,7 @@ button .btn-label svg {
   
 
 
-.sections, .to-do {
+#sections, .to-do {
 margin-top: 10px; 
 display: flex;
 flex-direction: column;
@@ -1130,7 +1130,7 @@ width: 90%;
     margin-bottom: 10px;
 }
 
-.add-entry-section {
+#add-entry-section {
     width: 100%;
     margin-top: 10px; /* Add margin to separate it from the section list */
     display: flex;
@@ -1142,7 +1142,7 @@ width: 90%;
    
 }
 
-.add-entry-section.expanded #add-entry-form {
+#add-entry-section.expanded #add-entry-form {
     max-height: 300px; /* Set this to a value that allows the form to be fully visible */
     padding: 10px; /* Add padding when expanded */
 }
@@ -1245,7 +1245,7 @@ margin: 0px;
 }
 
 
-.down-up-section {
+#down-up-section {
     margin-top: 10px; /* Add margin to separate it from the section list */
     display: flex;
     flex-direction: column;
@@ -1287,7 +1287,7 @@ label{
     background-color: #0056b3; /* Darker blue on hover */
 }
 
-.templates-section{
+#templates-section{
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -1374,11 +1374,13 @@ transform: translateX(-100%);
 }
 
 #settingsModal  .modal-content {
-    width: fit-content;
-    min-width: 400px;
+    width: 480px;
+    min-width: 480px;
     max-width: 500px;
     min-height: 480px;
-    height: fit-content;
+    height: 480px;
+    overflow: hidden;
+    padding:40px 20px 20px 0px;
    
 
 }
@@ -1386,34 +1388,75 @@ transform: translateX(-100%);
 .settings-content {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     text-align: end;
     border-radius: 25px;
     height: fit-content;
-    gap: 40px;
+    
     margin-top: 40px;
 }
 
 .settings-menu {
   list-style: none;
-  padding: 20px 20px 20px 0px;
+  padding: 0px 0px 20px 0px;
   gap: 10px;
-  font-size: 1.4em;
+  font-size: 1.2em;
   text-align: left;
   border-right: 1px solid #ccc;
 }
 
 .settings-menu-item {
- margin-bottom: 50px;
-  cursor: pointer;
+ padding: 25px 10px 25px 10px;
+ cursor: pointer;
+ border-radius: 0px 0px 0px 0px;  
   
 }
 
-.settings {
+.settings-grid {
    align-items: center;
-    padding: 40px;
-   
+    display: grid;
+    justify-items: start;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr auto;
+}
+
+.settings{
+    width: 300px;
+    max-width: 300px;
+    min-width: 300px;
+    padding-right: 20px;
+    margin-left: 20px;
+}
+
+.settings-subtitle {
+    text-align: left;
+    
+}
+
+.settings-item{
+    
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+    padding: 2px;
+    border-radius: 15px;
+    background-color: #222;
+    color: antiquewhite;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease; /* Smooth transition */
+}
+
+.active {
+    background-color: #b4baba;
+    color: rgb(0, 0, 0);
+    border: 1px solid #aab4b2;
+}
+
+.help-content {
+    overflow-y: scroll;
 }
 
 
