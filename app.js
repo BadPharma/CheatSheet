@@ -521,8 +521,6 @@ function launchGooglePicker() {
         return trashSvg;
     }
 
-    
-   
 
     // Function to hide all tiles and gray out the eye buttons
     function toggleAllTiles() {
@@ -791,6 +789,7 @@ tdlInput.addEventListener('keydown', function(e) {
 function saveTodoList() {
     localStorage.setItem('todo-list', tdlcont.innerHTML);
 }
+
 
 
 function loadTodoList() {
@@ -1292,8 +1291,6 @@ function loadTodoList() {
             showFeedback("Templates visible!", "success");
         }
     });
-
-
  
     document.getElementById('closeEditModal').onclick = function () {
         editModal.style.display = 'none';

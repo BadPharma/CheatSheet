@@ -99,6 +99,7 @@ body::-webkit-scrollbar {
   .scrollable::-webkit-scrollbar, #tdlcont::-webkit-scrollbar {
     width: 3px;
     height: 6px;
+   
   }
 
   .scrollable::-webkit-scrollbar:hover, #tdlcont::-webkit-scrollbar:hover {
@@ -111,6 +112,8 @@ body::-webkit-scrollbar {
     height: 60%;
     background-color: rgb(35, 34, 32);
     transition: background-color 2s ease-in-out;
+        border-radius: 55px;
+    z-index: 4000;
   }
  .scrollable::-webkit-scrollbar-track:hover, #tdlcont::-webkit-scrollbar-track:hover {
     width: 8px;
@@ -120,10 +123,13 @@ body::-webkit-scrollbar {
   
   .scrollable::-webkit-scrollbar-thumb, #tdlcont::-webkit-scrollbar-thumb {
     background: rgb(102, 101, 99);
+    border-radius: 25px;
+    z-index: 40;
   }
   
  .scrollable::-webkit-scrollbar-thumb:hover, #tdlcont::-webkit-scrollbar-thumb:hover {
     background: #555;
+        border-radius: 25px;
   }
 
 
@@ -586,12 +592,13 @@ margin-right:80%;
     display: flex;
     flex-direction: column;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 2px;
     margin-bottom: 8px;
     margin-left: 35px;
     max-height: 180px; /* Adjust as needed */
-    overflow: scroll;
+    overflow-x: scroll;
     max-width:80%; /* Ensure the container doesn't exceed its width */
+    z-index: 8000;
 }
 
 #tdlheader {
